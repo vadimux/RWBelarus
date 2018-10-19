@@ -1,0 +1,6 @@
+framework module Pods_RWBelarus {
+  umbrella header "Pods-RWBelarus-umbrella.h"
+
+  export *
+  module * { export * }
+}
