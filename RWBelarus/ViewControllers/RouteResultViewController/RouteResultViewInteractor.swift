@@ -20,7 +20,7 @@ class RouteResultViewInteractor: RouteResultViewControllerInteractor {
     
     func prepareForShowResult(completion: @escaping (_ route: [Route]?,_ error: String?) -> ()) {
         
-        NetworkManager.getRouteBetweenCities(from: fromData?.value ?? "", to: toData?.value ?? "", date: "everyday", fromExp: fromData?.exp ?? "", fromEsr: fromData?.ecp ?? "", toExp: toData?.exp ?? "", toEsr: toData?.ecp ?? "") { result in
+        NetworkManager.getRouteBetweenCities(from: fromData?.value ?? "", to: toData?.value ?? "", date: "tomorrow", fromExp: fromData?.exp ?? "", fromEsr: fromData?.ecp ?? "", toExp: toData?.exp ?? "", toEsr: toData?.ecp ?? "") { result in
             switch result {
             case .success(let autocomplete):
                 completion(autocomplete, nil)

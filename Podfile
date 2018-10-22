@@ -7,11 +7,11 @@ use_frameworks!
 inhibit_all_warnings!
 
 target 'RWBelarus' do
-
-pod 'SwiftLint'
-pod 'SwiftSoup'
-pod 'R.swift'
-pod 'Toast-Swift'
-pod 'Alamofire'
-
+    
+    pod 'SwiftLint'
+    pod 'SwiftSoup'
+    pod 'R.swift'
+    pod 'Toast-Swift'
+    pod 'Alamofire'
+    
 end

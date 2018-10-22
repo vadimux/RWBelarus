@@ -31,8 +31,51 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 0 images.
+  /// This `R.image` struct is generated, and contains static references to 6 images.
   struct image {
+    /// Image `city`.
+    static let city = Rswift.ImageResource(bundle: R.hostingBundle, name: "city")
+    /// Image `international`.
+    static let international = Rswift.ImageResource(bundle: R.hostingBundle, name: "international")
+    /// Image `interregionalBusiness`.
+    static let interregionalBusiness = Rswift.ImageResource(bundle: R.hostingBundle, name: "interregionalBusiness")
+    /// Image `interregionalEconomy`.
+    static let interregionalEconomy = Rswift.ImageResource(bundle: R.hostingBundle, name: "interregionalEconomy")
+    /// Image `regionBusiness`.
+    static let regionBusiness = Rswift.ImageResource(bundle: R.hostingBundle, name: "regionBusiness")
+    /// Image `region`.
+    static let region = Rswift.ImageResource(bundle: R.hostingBundle, name: "region")
+    
+    /// `UIImage(named: "city", bundle: ..., traitCollection: ...)`
+    static func city(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.city, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "international", bundle: ..., traitCollection: ...)`
+    static func international(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.international, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "interregionalBusiness", bundle: ..., traitCollection: ...)`
+    static func interregionalBusiness(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.interregionalBusiness, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "interregionalEconomy", bundle: ..., traitCollection: ...)`
+    static func interregionalEconomy(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.interregionalEconomy, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "region", bundle: ..., traitCollection: ...)`
+    static func region(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.region, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "regionBusiness", bundle: ..., traitCollection: ...)`
+    static func regionBusiness(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.regionBusiness, compatibleWith: traitCollection)
+    }
+    
     fileprivate init() {}
   }
   
@@ -41,12 +84,14 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 2 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 3 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `autocompleteCell`.
     static let autocompleteCell: Rswift.ReuseIdentifier<AutocompleteCell> = Rswift.ReuseIdentifier(identifier: "autocompleteCell")
     /// Reuse identifier `searchResultCell`.
     static let searchResultCell: Rswift.ReuseIdentifier<SearchResultCell> = Rswift.ReuseIdentifier(identifier: "searchResultCell")
+    /// Reuse identifier `ticketInfoCell`.
+    static let ticketInfoCell: Rswift.ReuseIdentifier<TicketInfoCell> = Rswift.ReuseIdentifier(identifier: "ticketInfoCell")
     
     fileprivate init() {}
   }
@@ -90,8 +135,18 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.string` struct is generated, and contains static references to 0 localization tables.
+  /// This `R.string` struct is generated, and contains static references to 2 localization tables.
   struct string {
+    /// This `R.string.launchScreen` struct is generated, and contains static references to 0 localization keys.
+    struct launchScreen {
+      fileprivate init() {}
+    }
+    
+    /// This `R.string.main` struct is generated, and contains static references to 0 localization keys.
+    struct main {
+      fileprivate init() {}
+    }
+    
     fileprivate init() {}
   }
   

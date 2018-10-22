@@ -31,10 +31,16 @@ class RouteResultViewController: UIViewController {
         prepareResultForTableView()
     }
     
-   private func prepareResultForTableView() {
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+    }
+    
+    private func prepareResultForTableView() {
         
         self.resultTableView.makeToastActivity(.center)
-    
+        self.resultTableView.hideEmptyCells()
+        
         interactor.prepareForShowResult() { result, error in
             self.searchResult = result ?? []
             guard let count = result?.count, count > 0 else {

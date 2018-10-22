@@ -128,8 +128,6 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         }
         return cell
     }
-    
-
 }
 
 extension SearchViewController: UITextFieldDelegate {

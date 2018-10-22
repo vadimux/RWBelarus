@@ -50,6 +50,8 @@ class NetworkManager {
         let TIME_START = "b[class=train_start-time]"
         let TRAVEL_TIME = "span[class=train_time-total]"
         let DAYS = "td[class=train_item train_days regional_only hidden]"
+        let STOPSEXCEPT = "td[class=train_item train_halts regional_only everyday_regional_only hidden]"
+        let AB = "td[class=train_item train_details non_regional_only]"
         
         let ELECTRONIC_REGISTRATION = "i[class=b-spec spec_reserved]"
         let FAVOURITE_TRAIN = "i[class=b-spec spec_comfort]"
@@ -67,31 +69,48 @@ class NetworkManager {
                     return
                 }
 
+                var routeList = [Route]()
+                
                 do {
+                    
                     let doc: Document = try SwiftSoup.parse(html)
                     
-                    let trainId = try doc.select(TRAIN_ID)
-                    let travelTime = try doc.select(TRAVEL_TIME)
-                    let startTime = try doc.select(TIME_START)
-                    let finishTime = try doc.select(TIME_END)
-                    let routeName = try doc.select(PATH)
-                    let days = try doc.select(DAYS)
-                    let trainType = try doc.select(TRAIN_TYPE)
-
-                    var routeList = [Route]()
+                    guard let table: Element = try doc.select("table").first() else {
+                        return
+                    }
                     
-                    for i in 0..<trainId.array().count {
+                    let trCollection: Elements = try table.select("tr")
+
+                    for element in trCollection {
+                        let trainId = try element.select(TRAIN_ID).first()?.text()
+                        let travelTime = try element.select(TRAVEL_TIME).first()?.text()
+                        let startTime = try element.select(TIME_START).first()?.text()
+                        let finishTime = try element.select(TIME_END).first()?.text()
+                        let routeName = try element.select(PATH).first()?.text()
+                        let days = try element.select(DAYS).first()?.text()
+                        let trainType = try element.select(TRAIN_TYPE).first()?.text()
+                        let exceptStops = try element.select(STOPSEXCEPT).first()?.text()
+                        let elementPlace = try element.select("ul[class=train_details-group]")
                         
-                        let trainId = try trainId.array()[i].text()
-                        let travelTime = try travelTime.array()[i].text()
-                        let days = try days.array()[i].text()
-                        let startTime = try startTime.array()[i].text()
-                        let finishTime = try finishTime.array()[i].text()
-                        let routeName = try routeName.array()[i].text()
+                        print(trainId)
+                        var placesList = [TrainPlace]()
                         
-                        let route = Route(trainId: trainId, travelTime: travelTime, startTime: startTime, finishTime: finishTime, routeName: routeName, days: days)
+                        for j in 0..<elementPlace.array().count {
+                            let countPlace = try elementPlace.array()[j].getElementsByClass("train_seats lnk")
+                            let name = try elementPlace.array()[j].getElementsByClass("train_note").text()
+                            for i in 0..<countPlace.array().count {
+                                let cost = try elementPlace.array()[j].getElementsByClass("train_price").text()
+                                let count = try countPlace.array()[i].text()
+                                let link = try elementPlace.array()[j].attr("data-get")
+                                placesList.append(TrainPlace(name: name, count: count, link: link, cost: cost))
+                            }
+                        }
+                        
+                        let route = Route(trainId: trainId, travelTime: travelTime, startTime: startTime, finishTime: finishTime, routeName: routeName, days: days, trainType: trainType, exceptStops: exceptStops, place: placesList)
+                        
                         routeList.append(route)
                     }
+                    routeList.remove(at: 0)
                     completion(.success(routeList))
                 } catch let error {
                     completion(.failure(error))

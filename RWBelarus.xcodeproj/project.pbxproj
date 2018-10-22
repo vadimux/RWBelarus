@@ -18,7 +18,12 @@
 		A795F4E12179BE0E003B942F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E02179BE0E003B942F /* Constants.swift */; };
 		A795F4E32179BE42003B942F /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E22179BE42003B942F /* APIConfiguration.swift */; };
 		A795F4E82179C080003B942F /* RouteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E72179C080003B942F /* RouteAPI.swift */; };
-		A795F4EA2179D89B003B942F /* Locale+currentLanguageCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E92179D89B003B942F /* Locale+currentLanguageCode.swift */; };
+		A795F4EA2179D89B003B942F /* Locale+CurrentLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E92179D89B003B942F /* Locale+CurrentLocale.swift */; };
+		A7D1A3CB217DB14900B374DE /* UIView+Inspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1A3CA217DB14900B374DE /* UIView+Inspectable.swift */; };
+		A7D1A3CD217DB16300B374DE /* String+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1A3CC217DB16300B374DE /* String+Localizable.swift */; };
+		A7D1A3CF217DCC7B00B374DE /* TrainPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1A3CE217DCC7B00B374DE /* TrainPlace.swift */; };
+		A7D1A3D1217DE12C00B374DE /* TicketInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1A3D0217DE12C00B374DE /* TicketInfoCell.swift */; };
+		A7D1A3D3217DEAC600B374DE /* UITableView+hideEmptyCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1A3D2217DEAC600B374DE /* UITableView+hideEmptyCells.swift */; };
 		A7EF0C512177027F00C075E0 /* RouteResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EF0C502177027F00C075E0 /* RouteResultViewController.swift */; };
 		A7EF0C532177029100C075E0 /* RouteResultViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EF0C522177029100C075E0 /* RouteResultViewInteractor.swift */; };
 		A7EF0C55217702EF00C075E0 /* RouteResultViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EF0C54217702EF00C075E0 /* RouteResultViewCoordinator.swift */; };
@@ -53,7 +58,16 @@
 		A795F4E02179BE0E003B942F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A795F4E22179BE42003B942F /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
 		A795F4E72179C080003B942F /* RouteAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAPI.swift; sourceTree = "<group>"; };
-		A795F4E92179D89B003B942F /* Locale+currentLanguageCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+currentLanguageCode.swift"; sourceTree = "<group>"; };
+		A795F4E92179D89B003B942F /* Locale+CurrentLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+CurrentLocale.swift"; sourceTree = "<group>"; };
+		A7D1A3C6217DB0EB00B374DE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		A7D1A3C7217DB0EB00B374DE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		A7D1A3C8217DB0FA00B374DE /* be-BY */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "be-BY"; path = "be-BY.lproj/Main.strings"; sourceTree = "<group>"; };
+		A7D1A3C9217DB0FA00B374DE /* be-BY */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "be-BY"; path = "be-BY.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		A7D1A3CA217DB14900B374DE /* UIView+Inspectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Inspectable.swift"; sourceTree = "<group>"; };
+		A7D1A3CC217DB16300B374DE /* String+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
+		A7D1A3CE217DCC7B00B374DE /* TrainPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainPlace.swift; sourceTree = "<group>"; };
+		A7D1A3D0217DE12C00B374DE /* TicketInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketInfoCell.swift; sourceTree = "<group>"; };
+		A7D1A3D2217DEAC600B374DE /* UITableView+hideEmptyCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+hideEmptyCells.swift"; sourceTree = "<group>"; };
 		A7EF0C502177027F00C075E0 /* RouteResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultViewController.swift; sourceTree = "<group>"; };
 		A7EF0C522177029100C075E0 /* RouteResultViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultViewInteractor.swift; sourceTree = "<group>"; };
 		A7EF0C54217702EF00C075E0 /* RouteResultViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultViewCoordinator.swift; sourceTree = "<group>"; };
@@ -161,9 +175,9 @@
 		A739C7602174DB900080F151 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				A7EF0C4F2177025500C075E0 /* RouteResultViewController */,
 				A7F45DA62175B3580099A9E1 /* TabsViewController */,
 				A739C7612174DBE80080F151 /* SearchViewController */,
+				A7EF0C4F2177025500C075E0 /* RouteResultViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -181,7 +195,10 @@
 			isa = PBXGroup;
 			children = (
 				A776C1672176240700859BB8 /* UIViewController+dismissKeyboard.swift */,
-				A795F4E92179D89B003B942F /* Locale+currentLanguageCode.swift */,
+				A795F4E92179D89B003B942F /* Locale+CurrentLocale.swift */,
+				A7D1A3CA217DB14900B374DE /* UIView+Inspectable.swift */,
+				A7D1A3CC217DB16300B374DE /* String+Localizable.swift */,
+				A7D1A3D2217DEAC600B374DE /* UITableView+hideEmptyCells.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -230,6 +247,7 @@
 			isa = PBXGroup;
 			children = (
 				A7F45DD02175E35A0099A9E1 /* Route.swift */,
+				A7D1A3CE217DCC7B00B374DE /* TrainPlace.swift */,
 				A7F45DD22175E3D10099A9E1 /* TrainRoute.swift */,
 				A7F45DD62175EA170099A9E1 /* AutocompleteAPIModel.swift */,
 			);
@@ -249,6 +267,7 @@
 			children = (
 				A7F45DDA2175FCDB0099A9E1 /* AutocompleteCell.swift */,
 				A7EF0C5821770C4B00C075E0 /* SearchResultCell.swift */,
+				A7D1A3D0217DE12C00B374DE /* TicketInfoCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -400,17 +419,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7F45DA12175B1A50099A9E1 /* Coordinator.swift in Sources */,
+				A7D1A3CB217DB14900B374DE /* UIView+Inspectable.swift in Sources */,
 				A7EF0C55217702EF00C075E0 /* RouteResultViewCoordinator.swift in Sources */,
 				A7F45DD32175E3D10099A9E1 /* TrainRoute.swift in Sources */,
+				A7D1A3D1217DE12C00B374DE /* TicketInfoCell.swift in Sources */,
 				A7F45DAA2175B55D0099A9E1 /* SearchViewInteractor.swift in Sources */,
 				A795F4DF2179BD74003B942F /* APIRouter.swift in Sources */,
 				A7F45DA82175B37E0099A9E1 /* TabsViewController.swift in Sources */,
 				A7F45D9E2175B05D0099A9E1 /* AppCoordinator.swift in Sources */,
-				A795F4EA2179D89B003B942F /* Locale+currentLanguageCode.swift in Sources */,
+				A795F4EA2179D89B003B942F /* Locale+CurrentLocale.swift in Sources */,
 				A7F45DA32175B25E0099A9E1 /* R.generated.swift in Sources */,
 				A7EF0C532177029100C075E0 /* RouteResultViewInteractor.swift in Sources */,
+				A7D1A3CD217DB16300B374DE /* String+Localizable.swift in Sources */,
 				A739C7632174DC180080F151 /* SearchViewController.swift in Sources */,
+				A7D1A3D3217DEAC600B374DE /* UITableView+hideEmptyCells.swift in Sources */,
 				A7EF0C5921770C4B00C075E0 /* SearchResultCell.swift in Sources */,
+				A7D1A3CF217DCC7B00B374DE /* TrainPlace.swift in Sources */,
 				A7F45DAC2175B5AD0099A9E1 /* SearchViewCoordinator.swift in Sources */,
 				A7F45DD72175EA170099A9E1 /* AutocompleteAPIModel.swift in Sources */,
 				A7EF0C512177027F00C075E0 /* RouteResultViewController.swift in Sources */,
@@ -432,6 +456,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				A739C7512174DB160080F151 /* Base */,
+				A7D1A3C6217DB0EB00B374DE /* ru */,
+				A7D1A3C8217DB0FA00B374DE /* be-BY */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -440,6 +466,8 @@
 			isa = PBXVariantGroup;
 			children = (
 				A739C7562174DB180080F151 /* Base */,
+				A7D1A3C7217DB0EB00B374DE /* ru */,
+				A7D1A3C9217DB0FA00B374DE /* be-BY */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -451,6 +479,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -512,6 +541,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

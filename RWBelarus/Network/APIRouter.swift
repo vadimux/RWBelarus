@@ -59,7 +59,6 @@ enum APIRouter: URLRequestConvertible {
             urlParameters?.queryItems = parameters
         }
         
-//        var urlRequest = URLRequest(url: url.appendingPathComponent(path))
         var urlRequest = URLRequest(url: (urlParameters?.url)!)
         
         // HTTP Method
