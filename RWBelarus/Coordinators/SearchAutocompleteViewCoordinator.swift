@@ -33,4 +33,7 @@ class SearchAutocompleteViewCoordinator: Coordinator, SearchAutocompleteViewCont
     func stop(with completion: CoordinatorCallback?) {
     }
     
+    func dismiss(vc: UIViewController) {
+        vc.dismiss(animated: true)
+    }
 }

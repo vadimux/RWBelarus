@@ -16,6 +16,7 @@ protocol SearchAutocompleteViewControllerInteractor: class {
 }
 
 protocol SearchAutocompleteViewControllerCoordinator: class {
+    func dismiss(vc: UIViewController)
 //    func showResult(vc: UIViewController, from: AutocompleteAPIElement?, to: AutocompleteAPIElement?)
 }
 
@@ -29,18 +30,25 @@ class SearchAutocompleteViewController: UIViewController {
     
     private var textTimer: Timer?
     private var autocompleteResult: AutocompleteAPI?
+    let searchController = UISearchController(searchResultsController: nil)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        fromTextField.addTarget(self, action: #selector(SearchViewController.textFieldDidChange(_:)), for: .editingChanged)
-//        toTextField.addTarget(self, action: #selector(SearchViewController.textFieldDidChange(_:)), for: .editingChanged)
         configureUI()
     }
     
     private func configureUI() {
         autocompleteTableView.isHidden = true
         autocompleteTableView.tableFooterView = UIView()
+        
+        self.navigationItem.setHidesBackButton(true, animated:true)
+        self.searchController.searchBar.delegate = self
+        self.searchController.hidesNavigationBarDuringPresentation = false
+        self.searchController.searchBar.searchBarStyle = .minimal
+        self.searchController.searchBar.showsCancelButton = true
+        self.navigationItem.titleView = self.searchController.searchBar
+        self.definesPresentationContext = true
     }
     
     @objc func textFieldDidChange(_ textField: UITextField) {
@@ -113,5 +121,12 @@ extension SearchAutocompleteViewController: UITableViewDataSource, UITableViewDe
 //            self.hideTableView()
 //        }
         return cell
+    }
+}
+
+extension SearchAutocompleteViewController: UISearchBarDelegate {
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        self.coordinator?.dismiss(vc: self)
     }
 }

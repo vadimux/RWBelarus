@@ -35,9 +35,6 @@ class SearchViewCoordinator: Coordinator, SearchViewControllerCoordinator {
     }
     
     func showStation(vc: UIViewController) {
-        
-//        vc.navigationController?.navigationBar.topItem?.title = "Назад к поиску"
-//        rootViewController.hero.navigationAnimationType = .fade
 
         let searchAutocompleteViewCoordinator = SearchAutocompleteViewCoordinator(rootViewController: vc.navigationController!)
         searchAutocompleteViewCoordinator.start(with: nil)
