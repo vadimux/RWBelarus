@@ -13,5 +13,6 @@ target 'RWBelarus' do
     pod 'R.swift'
     pod 'Toast-Swift'
     pod 'Alamofire'
+    pod 'Hero'
     
 end

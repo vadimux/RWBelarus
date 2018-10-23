@@ -19,25 +19,136 @@ enum TrainType: String {
 }
 
 class Route {
-    let trainId: String?
-    let travelTime: String?
-    let startTime: String?
-    let finishTime: String?
-    let routeName: String?
-    let days: String?
-    let trainType: TrainType
-    let exceptStops: String?
-    let place: [TrainPlace]?
     
-    init(trainId: String?, travelTime: String?, startTime: String?, finishTime: String?, routeName: String?, days: String?, trainType: String?, exceptStops: String?, place: [TrainPlace]?) {
-        self.trainId = trainId
-        self.travelTime = travelTime
-        self.startTime = startTime
-        self.finishTime = finishTime
-        self.routeName = routeName
-        self.days = days
-        self.trainType = TrainType(rawValue: trainType ?? "") ?? .unknown
-        self.exceptStops = exceptStops
-        self.place = place
+    var trainId: String = ""
+    var travelTime: String = ""
+    var startTime: String = ""
+    var finishTime: String = ""
+    var routeName: String = ""
+    var days: String = ""
+    var trainType: TrainType = .unknown
+    var exceptStops: String = ""
+    var place: [TrainPlace] = [TrainPlace]()
+}
+
+extension Route {
+    class Builder {
+        
+        private var trainId: String?
+        private var travelTime: String?
+        private var startTime: String?
+        private var finishTime: String?
+        private var routeName: String?
+        private var days: String?
+        private var trainType: TrainType?
+        private var exceptStops: String?
+        private var place: [TrainPlace]?
+        
+        init(routeObject: Route? = nil) {
+            if let routeObject = routeObject {
+                trainId = routeObject.trainId
+                travelTime = routeObject.travelTime
+                startTime = routeObject.startTime
+                finishTime = routeObject.finishTime
+                routeName = routeObject.routeName
+                days = routeObject.days
+                trainType = routeObject.trainType
+                exceptStops = routeObject.exceptStops
+                place = routeObject.place
+            }
+        }
+        
+        func trainId(_ trainId: String) -> Builder {
+            self.trainId = trainId
+            return self
+        }
+        
+        func travelTime(_ travelTime: String) -> Builder {
+            self.travelTime = travelTime
+            return self
+        }
+        
+        func startTime(_ startTime: String) -> Builder {
+            self.startTime = startTime
+            return self
+        }
+        
+        func finishTime(_ finishTime: String) -> Builder {
+            self.finishTime = finishTime
+            return self
+        }
+        
+        func routeName(_ routeName: String) -> Builder {
+            self.routeName = routeName
+            return self
+        }
+        
+        func days(_ days: String) -> Builder {
+            self.days = days
+            return self
+        }
+        
+        func trainType(_ trainType: TrainType) -> Builder {
+            self.trainType = trainType
+            return self
+        }
+        
+        func exceptStops(_ exceptStops: String) -> Builder {
+            self.exceptStops = exceptStops
+            return self
+        }
+        
+        func place(_ place: [TrainPlace]) -> Builder {
+            self.place = place
+            return self
+        }
+        
+        func build() -> Route {
+            
+            let routeObject = Route()
+            
+            if let trainId = trainId {
+                routeObject.trainId = trainId
+            }
+            if let travelTime = travelTime {
+                routeObject.travelTime = travelTime
+            }
+            if let startTime = startTime {
+                routeObject.startTime = startTime
+            }
+            if let finishTime = finishTime {
+                routeObject.finishTime = finishTime
+            }
+            
+            if let routeName = routeName {
+                routeObject.routeName = routeName
+            }
+            
+            if let days = days {
+                routeObject.days = days
+            }
+            
+            if let trainType = trainType {
+                routeObject.trainType = trainType
+            }
+            
+            if let exceptStops = exceptStops {
+                routeObject.exceptStops = exceptStops
+            }
+            
+            if let place = place {
+                routeObject.place = place
+            }
+            
+            return routeObject
+        }
+    }
+    
+    static func from(routeObject: Route?) -> Builder {
+        return Builder(routeObject: routeObject)
+    }
+    
+    static func create() -> Builder {
+        return Builder()
     }
 }

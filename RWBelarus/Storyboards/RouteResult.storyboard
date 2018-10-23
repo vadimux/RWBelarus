@@ -31,7 +31,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="355.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="tP9-d2-JQ6">
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="tP9-d2-JQ6">
                                                     <rect key="frame" x="10" y="10" width="355" height="325"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="top" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="TbV-Tg-osZ">
@@ -87,7 +87,6 @@
                                                                     <constraints>
                                                                         <constraint firstAttribute="trailing" secondItem="oBc-dD-MrO" secondAttribute="trailing" id="2mA-SI-hUg"/>
                                                                         <constraint firstAttribute="bottom" secondItem="oBc-dD-MrO" secondAttribute="bottom" id="VMM-Y5-hlK"/>
-                                                                        <constraint firstItem="oBc-dD-MrO" firstAttribute="top" secondItem="aST-vb-zby" secondAttribute="top" id="WEE-0f-NgY"/>
                                                                         <constraint firstItem="oBc-dD-MrO" firstAttribute="leading" secondItem="aST-vb-zby" secondAttribute="leading" id="ff8-nV-orE"/>
                                                                     </constraints>
                                                                 </view>
@@ -95,6 +94,7 @@
                                                             <constraints>
                                                                 <constraint firstItem="nvc-Q5-AoJ" firstAttribute="leading" secondItem="Z59-XU-gBF" secondAttribute="trailing" constant="8" id="MeV-TN-LOz"/>
                                                                 <constraint firstAttribute="bottom" secondItem="aST-vb-zby" secondAttribute="bottom" id="oCJ-h3-cAo"/>
+                                                                <constraint firstItem="aST-vb-zby" firstAttribute="top" secondItem="TbV-Tg-osZ" secondAttribute="top" id="uly-Bl-I7B"/>
                                                             </constraints>
                                                         </stackView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label LabelLabelLabelLabel LabelLabelLabelabel abel abel" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Veq-ry-M4B">

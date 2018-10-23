@@ -19,6 +19,9 @@
 		A795F4E32179BE42003B942F /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E22179BE42003B942F /* APIConfiguration.swift */; };
 		A795F4E82179C080003B942F /* RouteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E72179C080003B942F /* RouteAPI.swift */; };
 		A795F4EA2179D89B003B942F /* Locale+CurrentLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E92179D89B003B942F /* Locale+CurrentLocale.swift */; };
+		A7B40D6A217EF28D0005C914 /* SearchAutocompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B40D69217EF28D0005C914 /* SearchAutocompleteViewController.swift */; };
+		A7B40D6C217EF5150005C914 /* SearchAutocompleteViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B40D6B217EF5150005C914 /* SearchAutocompleteViewInteractor.swift */; };
+		A7B40D7A217F60EB0005C914 /* SearchAutocompleteViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B40D79217F60EB0005C914 /* SearchAutocompleteViewCoordinator.swift */; };
 		A7D1A3CB217DB14900B374DE /* UIView+Inspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1A3CA217DB14900B374DE /* UIView+Inspectable.swift */; };
 		A7D1A3CD217DB16300B374DE /* String+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1A3CC217DB16300B374DE /* String+Localizable.swift */; };
 		A7D1A3CF217DCC7B00B374DE /* TrainPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1A3CE217DCC7B00B374DE /* TrainPlace.swift */; };
@@ -59,6 +62,9 @@
 		A795F4E22179BE42003B942F /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
 		A795F4E72179C080003B942F /* RouteAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAPI.swift; sourceTree = "<group>"; };
 		A795F4E92179D89B003B942F /* Locale+CurrentLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+CurrentLocale.swift"; sourceTree = "<group>"; };
+		A7B40D69217EF28D0005C914 /* SearchAutocompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAutocompleteViewController.swift; sourceTree = "<group>"; };
+		A7B40D6B217EF5150005C914 /* SearchAutocompleteViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAutocompleteViewInteractor.swift; sourceTree = "<group>"; };
+		A7B40D79217F60EB0005C914 /* SearchAutocompleteViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAutocompleteViewCoordinator.swift; sourceTree = "<group>"; };
 		A7D1A3C6217DB0EB00B374DE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		A7D1A3C7217DB0EB00B374DE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		A7D1A3C8217DB0FA00B374DE /* be-BY */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "be-BY"; path = "be-BY.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -177,6 +183,7 @@
 			children = (
 				A7F45DA62175B3580099A9E1 /* TabsViewController */,
 				A739C7612174DBE80080F151 /* SearchViewController */,
+				A7B40D68217EF2570005C914 /* SearchAutocompleteViewController */,
 				A7EF0C4F2177025500C075E0 /* RouteResultViewController */,
 			);
 			path = ViewControllers;
@@ -201,6 +208,15 @@
 				A7D1A3D2217DEAC600B374DE /* UITableView+hideEmptyCells.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A7B40D68217EF2570005C914 /* SearchAutocompleteViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A7B40D69217EF28D0005C914 /* SearchAutocompleteViewController.swift */,
+				A7B40D6B217EF5150005C914 /* SearchAutocompleteViewInteractor.swift */,
+			);
+			path = SearchAutocompleteViewController;
 			sourceTree = "<group>";
 		};
 		A7EF0C4F2177025500C075E0 /* RouteResultViewController */ = {
@@ -231,6 +247,7 @@
 				A7F45DA42175B27B0099A9E1 /* TabsScreenCoordinator.swift */,
 				A7F45DAB2175B5AD0099A9E1 /* SearchViewCoordinator.swift */,
 				A7EF0C54217702EF00C075E0 /* RouteResultViewCoordinator.swift */,
+				A7B40D79217F60EB0005C914 /* SearchAutocompleteViewCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -354,6 +371,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RWBelarus/Pods-RWBelarus-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
@@ -363,6 +381,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
@@ -421,8 +440,11 @@
 				A7F45DA12175B1A50099A9E1 /* Coordinator.swift in Sources */,
 				A7D1A3CB217DB14900B374DE /* UIView+Inspectable.swift in Sources */,
 				A7EF0C55217702EF00C075E0 /* RouteResultViewCoordinator.swift in Sources */,
+				A7B40D6C217EF5150005C914 /* SearchAutocompleteViewInteractor.swift in Sources */,
+				A7B40D6A217EF28D0005C914 /* SearchAutocompleteViewController.swift in Sources */,
 				A7F45DD32175E3D10099A9E1 /* TrainRoute.swift in Sources */,
 				A7D1A3D1217DE12C00B374DE /* TicketInfoCell.swift in Sources */,
+				A7B40D7A217F60EB0005C914 /* SearchAutocompleteViewCoordinator.swift in Sources */,
 				A7F45DAA2175B55D0099A9E1 /* SearchViewInteractor.swift in Sources */,
 				A795F4DF2179BD74003B942F /* APIRouter.swift in Sources */,
 				A7F45DA82175B37E0099A9E1 /* TabsViewController.swift in Sources */,

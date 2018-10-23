@@ -48,6 +48,7 @@ class AppCoordinator: Coordinator {
         UITabBar.appearance().tintColor = .blue
         UITabBar.appearance().backgroundColor = .white
         
+        rootViewController.hero.isEnabled = true
         rootViewController.navigationBar.barTintColor = .white
         rootViewController.setNavigationBarHidden(true, animated: false)
     }

@@ -235,8 +235,18 @@ struct _R: Rswift.Validatable {
       
       let bundle = R.hostingBundle
       let name = "Search"
+      let searchAutocompleteNavigationViewController = StoryboardViewControllerResource<UIKit.UINavigationController>(identifier: "SearchAutocompleteNavigationViewController")
+      let searchAutocompleteViewController = StoryboardViewControllerResource<SearchAutocompleteViewController>(identifier: "SearchAutocompleteViewController")
       let searchNavigationController = StoryboardViewControllerResource<UIKit.UINavigationController>(identifier: "SearchNavigationController")
       let searchViewController = StoryboardViewControllerResource<SearchViewController>(identifier: "SearchViewController")
+      
+      func searchAutocompleteNavigationViewController(_: Void = ()) -> UIKit.UINavigationController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: searchAutocompleteNavigationViewController)
+      }
+      
+      func searchAutocompleteViewController(_: Void = ()) -> SearchAutocompleteViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: searchAutocompleteViewController)
+      }
       
       func searchNavigationController(_: Void = ()) -> UIKit.UINavigationController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: searchNavigationController)
@@ -247,8 +257,10 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
+        if _R.storyboard.search().searchAutocompleteViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'searchAutocompleteViewController' could not be loaded from storyboard 'Search' as 'SearchAutocompleteViewController'.") }
         if _R.storyboard.search().searchViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'searchViewController' could not be loaded from storyboard 'Search' as 'SearchViewController'.") }
         if _R.storyboard.search().searchNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'searchNavigationController' could not be loaded from storyboard 'Search' as 'UIKit.UINavigationController'.") }
+        if _R.storyboard.search().searchAutocompleteNavigationViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'searchAutocompleteNavigationViewController' could not be loaded from storyboard 'Search' as 'UIKit.UINavigationController'.") }
       }
       
       fileprivate init() {}

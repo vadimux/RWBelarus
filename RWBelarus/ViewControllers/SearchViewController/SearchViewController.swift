@@ -8,15 +8,16 @@
 
 import UIKit
 import Toast_Swift
+import Hero
 
 protocol SearchViewControllerInteractor: class {
     var fromData: AutocompleteAPIElement? { get set }
     var toData: AutocompleteAPIElement? { get set }
-    func callAutocomplete(for station: String, completion: @escaping (_ route: AutocompleteAPI?, _ error: String?) -> ())
 }
 
 protocol SearchViewControllerCoordinator: class {
     func showResult(vc: UIViewController, from: AutocompleteAPIElement?, to: AutocompleteAPIElement?)
+    func showStation(vc: UIViewController)
 }
 
 class SearchViewController: UIViewController {
@@ -24,116 +25,63 @@ class SearchViewController: UIViewController {
     var interactor: SearchViewControllerInteractor!
     var coordinator: SearchViewControllerCoordinator?
     
-    @IBOutlet weak var fromTextField: UITextField!
-    @IBOutlet weak var toTextField: UITextField!
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var stackViewVC: UIStackView!
-    @IBOutlet weak var autocompleteTableView: UITableView!
+    @IBOutlet weak var fromView: UIView!
+    @IBOutlet weak var toView: UIView!
+    @IBOutlet weak var additionalFromLabel: UILabel!
+    @IBOutlet weak var additionalToLabel: UILabel!
+
+    @IBOutlet weak var fromLabel: UILabel!
+    @IBOutlet weak var toLabel: UILabel!
     
-    private var textTimer: Timer?
-    private var autocompleteResult: AutocompleteAPI?
-    private var activeTextFieldTag: Int = -1
+    fileprivate let heroTransition = HeroTransition()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fromTextField.addTarget(self, action: #selector(SearchViewController.textFieldDidChange(_:)), for: .editingChanged)
-        toTextField.addTarget(self, action: #selector(SearchViewController.textFieldDidChange(_:)), for: .editingChanged)
         configureUI()
         self.hideKeyboardWhenTappedAround()
+        
+        self.navigationController?.delegate = self
+        self.navigationController?.hero.navigationAnimationType = .fade
     }
     
     private func configureUI() {
-        autocompleteTableView.isHidden = true
-        autocompleteTableView.tableFooterView = UIView()
-    }
-    
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        
-        if textTimer != nil {
-            textTimer?.invalidate()
-            textTimer = nil
-        }
-        
-        guard let station = textField.text else {
-            self.hideTableView()
-            return
-        }
-        textTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(callAutocomplete(_:)), userInfo: station, repeats: false)
-    }
-    
-    @objc private func callAutocomplete(_ timer: Timer) {
-        
-        self.view.makeToastActivity(.center)
-        
-        guard let station = timer.userInfo as? String, station.count > 0 else {
-            self.hideTableView()
-            return
-        }
-        
-        interactor.callAutocomplete(for: station) { result, error in
-            self.autocompleteResult = result
-            guard let count = result?.count, count > 0 else {
-                self.hideTableView()
-                return
-            }
-            DispatchQueue.main.async {
-                self.autocompleteTableView.isHidden = false
-                self.view.hideToastActivity()
-                self.autocompleteTableView.reloadData()
-                self.stackViewVC.removeArrangedSubview(self.autocompleteTableView)
-                self.stackViewVC.setNeedsLayout()
-                self.stackViewVC.layoutIfNeeded()
-                self.stackViewVC.insertArrangedSubview(self.autocompleteTableView, at: self.activeTextFieldTag + 1)
-                self.stackViewVC.setNeedsLayout()
-            }
-        }
+        fromLabel.text = "1".localized
+        toLabel.text = "2".localized
+        additionalFromLabel.isHidden = true
+        additionalToLabel.isHidden = true
+        self.hero.isEnabled = true
+        self.hero.modalAnimationType = .selectBy(presenting:.zoom, dismissing:.zoomOut)
     }
     
     @IBAction func searchButtonTapped(_ sender: Any) {
         coordinator?.showResult(vc: self, from: self.interactor.fromData, to: self.interactor.toData)
     }
     
-    private func hideTableView() {
-        DispatchQueue.main.async {
-            self.view.hideToastActivity()
-            self.autocompleteTableView.isHidden = true
-        }
-    }
-    
-}
-
-extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return autocompleteResult?.count ?? 0
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    @IBAction func tapOnView(_ sender: Any) {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.autocompleteCell, for: indexPath)!
-        guard let result = autocompleteResult else {
-            return UITableViewCell()
-        }
-        cell.configure(with: result[indexPath.row])
-        cell.tapped = { model in
-            if self.activeTextFieldTag == 0 {
-                self.fromTextField.text = model.value
-                self.interactor.fromData = model
+        if let info = sender as? UITapGestureRecognizer {
+            
+            if info.view?.tag == 0 {
+                print("from")
+                coordinator?.showStation(vc: self)
             } else {
-                self.toTextField.text = model.value
-                self.interactor.toData = model
+                print("to")
             }
-            self.hideTableView()
         }
-        return cell
     }
 }
 
-extension SearchViewController: UITextFieldDelegate {
+extension SearchViewController: UINavigationControllerDelegate {
+    func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning)
+        -> UIViewControllerInteractiveTransitioning? {
+            return heroTransition.navigationController(navigationController, interactionControllerFor: animationController)
+    }
     
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        self.activeTextFieldTag = textField.tag
-        self.hideTableView()
+    func navigationController(_ navigationController: UINavigationController,
+                              animationControllerFor operation: UINavigationController.Operation,
+                              from fromVC: UIViewController,
+                              to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        return heroTransition.navigationController(navigationController, animationControllerFor: operation, from: fromVC, to: toVC)
     }
 }

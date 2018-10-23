@@ -98,8 +98,8 @@ class SearchResultCell: UITableViewCell {
             }
         }()
         
-        if let place = element.place, place.count > 0 {
-            self.ticketInfo = place
+        if element.place.count > 0 {
+            self.ticketInfo = element.place
             self.ticketTableView.reloadData()
         }
         model = element
