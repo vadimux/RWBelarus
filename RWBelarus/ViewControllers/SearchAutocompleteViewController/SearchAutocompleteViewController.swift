@@ -10,14 +10,12 @@ import UIKit
 import Toast_Swift
 
 protocol SearchAutocompleteViewControllerInteractor: class {
-//    var fromData: AutocompleteAPIElement? { get set }
-//    var toData: AutocompleteAPIElement? { get set }
     func callAutocomplete(for station: String, completion: @escaping (_ route: AutocompleteAPI?, _ error: String?) -> ())
 }
 
 protocol SearchAutocompleteViewControllerCoordinator: class {
     func dismiss(vc: UIViewController)
-//    func showResult(vc: UIViewController, from: AutocompleteAPIElement?, to: AutocompleteAPIElement?)
+    func dismiss(vc: UIViewController, withData: AutocompleteAPIElement)
 }
 
 
@@ -30,39 +28,50 @@ class SearchAutocompleteViewController: UIViewController {
     
     private var textTimer: Timer?
     private var autocompleteResult: AutocompleteAPI?
-    let searchController = UISearchController(searchResultsController: nil)
-
+    private let searchController = UISearchController(searchResultsController: nil)
+    private var searchElement: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
     }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        delay(0.1) {
+            self.searchController.searchBar.becomeFirstResponder()
+        }
+    }
+    
+    private func delay(_ delay: Double, completion: @escaping () -> Void) {
+        let when = DispatchTime.now() + delay
+        DispatchQueue.main.asyncAfter(deadline: when, execute: completion)
+    }
     
     private func configureUI() {
         autocompleteTableView.isHidden = true
         autocompleteTableView.tableFooterView = UIView()
-        
         self.navigationItem.setHidesBackButton(true, animated:true)
+        configureSearchBar()
+    }
+    
+    private func configureSearchBar() {
+        
+        self.searchController.dimsBackgroundDuringPresentation = false
         self.searchController.searchBar.delegate = self
         self.searchController.hidesNavigationBarDuringPresentation = false
         self.searchController.searchBar.searchBarStyle = .minimal
         self.searchController.searchBar.showsCancelButton = true
+        self.searchController.searchBar.placeholder = "Поиск станции или города".localized
+        self.searchController.searchBar.barTintColor = .clear
+        self.searchController.searchBar.tintColor = .white
+        self.searchController.searchBar.autocapitalizationType = .allCharacters
+        self.searchController.searchBar.setTextColor(color: .white)
+        self.searchController.searchBar.setTextFieldClearButtonColor(color: .white)
+        self.searchController.searchBar.setPlaceholderTextColor(color: .white)
         self.navigationItem.titleView = self.searchController.searchBar
         self.definesPresentationContext = true
-    }
-    
-    @objc func textFieldDidChange(_ textField: UITextField) {
-        
-        if textTimer != nil {
-            textTimer?.invalidate()
-            textTimer = nil
-        }
-        
-        guard let station = textField.text else {
-            self.hideTableView()
-            return
-        }
-        textTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(callAutocomplete(_:)), userInfo: station, repeats: false)
     }
     
     @objc private func callAutocomplete(_ timer: Timer) {
@@ -70,31 +79,29 @@ class SearchAutocompleteViewController: UIViewController {
         self.view.makeToastActivity(.center)
         
         guard let station = timer.userInfo as? String, station.count > 0 else {
-            self.hideTableView()
+            self.view.hideToastActivity()
             return
         }
         
         interactor.callAutocomplete(for: station) { result, error in
             self.autocompleteResult = result
-            guard let count = result?.count, count > 0 else {
-                self.hideTableView()
+            if let error = error {
+                self.view.makeToast(error)
+                self.view.hideToastActivity()
                 return
             }
-            DispatchQueue.main.async {
-                self.autocompleteTableView.isHidden = false
-                self.view.hideToastActivity()
+            guard let count = result?.count, count > 0 else {
                 self.autocompleteTableView.reloadData()
+                self.view.hideToastActivity()
+                return
             }
-        }
-    }
-    
-    private func hideTableView() {
-        DispatchQueue.main.async {
+
+            self.autocompleteTableView.isHidden = false
+            self.searchElement = station
+            self.autocompleteTableView.reloadData()
             self.view.hideToastActivity()
-            self.autocompleteTableView.isHidden = true
         }
     }
-    
 }
 
 extension SearchAutocompleteViewController: UITableViewDataSource, UITableViewDelegate {
@@ -109,17 +116,10 @@ extension SearchAutocompleteViewController: UITableViewDataSource, UITableViewDe
         guard let result = autocompleteResult else {
             return UITableViewCell()
         }
-        cell.configure(with: result[indexPath.row])
-//        cell.tapped = { model in
-//            if self.activeTextFieldTag == 0 {
-//                self.fromTextField.text = model.value
-//                self.interactor.fromData = model
-//            } else {
-//                self.toTextField.text = model.value
-//                self.interactor.toData = model
-//            }
-//            self.hideTableView()
-//        }
+        cell.configure(with: result[indexPath.row], searchElement: self.searchElement)
+        cell.tapped = { model in
+            self.coordinator?.dismiss(vc: self, withData: model)
+        }
         return cell
     }
 }
@@ -128,5 +128,13 @@ extension SearchAutocompleteViewController: UISearchBarDelegate {
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.coordinator?.dismiss(vc: self)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if textTimer != nil {
+            textTimer?.invalidate()
+            textTimer = nil
+        }
+        textTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(callAutocomplete(_:)), userInfo: searchText, repeats: false)
     }
 }

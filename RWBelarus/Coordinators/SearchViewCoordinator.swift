@@ -26,17 +26,15 @@ class SearchViewCoordinator: Coordinator, SearchViewControllerCoordinator {
     
     }
     
-    func showResult(vc: UIViewController, from: AutocompleteAPIElement?, to: AutocompleteAPIElement?) {
-        
-        vc.navigationController?.navigationBar.topItem?.title = "Назад к поиску"
-        
-        let routeResultViewCoordinator = RouteResultViewCoordinator(rootViewController: vc.navigationController!, fromData: from, toData: to)
+    func showResult(vc: UIViewController, from: AutocompleteAPIElement, to: AutocompleteAPIElement) {
+        guard let navVC = vc.navigationController else { return }
+        let routeResultViewCoordinator = RouteResultViewCoordinator(rootViewController: navVC, fromData: from, toData: to)
         routeResultViewCoordinator.start(with: nil)
     }
     
-    func showStation(vc: UIViewController) {
-
-        let searchAutocompleteViewCoordinator = SearchAutocompleteViewCoordinator(rootViewController: vc.navigationController!)
+    func showStationsList(vc: UIViewController, for tagView: Int?) {
+        guard let tagView = tagView, let navVC = vc.navigationController else { return }
+        let searchAutocompleteViewCoordinator = SearchAutocompleteViewCoordinator(rootViewController: navVC, tagView: tagView)
         searchAutocompleteViewCoordinator.start(with: nil)
     }
     

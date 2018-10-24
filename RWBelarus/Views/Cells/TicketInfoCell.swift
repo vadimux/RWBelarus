@@ -23,8 +23,6 @@ class TicketInfoCell: UITableViewCell {
     }
     
     func configure(with placeInfo: TrainPlace) {
-        print("***")
-        print(placeInfo.name, placeInfo.cost, placeInfo.count)
         type.text = placeInfo.name
         priceLabel.text = placeInfo.cost
         countLabel.text = placeInfo.count

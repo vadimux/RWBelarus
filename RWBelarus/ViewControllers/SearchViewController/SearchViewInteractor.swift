@@ -13,5 +13,4 @@ class SearchViewInteractor: SearchViewControllerInteractor {
     var fromData: AutocompleteAPIElement?
     var toData: AutocompleteAPIElement?
 
-
 }

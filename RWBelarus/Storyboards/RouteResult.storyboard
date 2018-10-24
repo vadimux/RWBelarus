@@ -262,7 +262,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GQx-3v-KXZ"/>
                     </view>
-                    <navigationItem key="navigationItem" id="AdB-SV-Zdt"/>
+                    <navigationItem key="navigationItem" id="AdB-SV-Zdt">
+                        <barButtonItem key="backBarButtonItem" title=" " id="muj-zg-PFi"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="resultTableView" destination="QjC-jd-dwD" id="MeJ-KC-tba"/>
                     </connections>
@@ -279,6 +281,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="65n-lR-rBd">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

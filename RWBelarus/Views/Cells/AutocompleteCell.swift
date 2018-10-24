@@ -22,9 +22,13 @@ class AutocompleteCell: UITableViewCell {
         autocompleteLabel.text = nil
     }
     
-    func configure(with element: AutocompleteAPIElement) {
+    func configure(with element: AutocompleteAPIElement, searchElement: String?) {
         
-        autocompleteLabel.text = element.label
+        if let element = element.label?.uppercased(), let searchElement = searchElement {
+            let string: NSMutableAttributedString = NSMutableAttributedString(string: (element))
+            string.setColor(color: .red, forText: searchElement)
+            autocompleteLabel.attributedText = string
+        }
         
         tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedInCell))
         tapRecognizer?.numberOfTapsRequired = 1
@@ -39,4 +43,13 @@ class AutocompleteCell: UITableViewCell {
     @objc private func tappedInCell(recognizer: UITapGestureRecognizer?) {
         tapped?(model)
     }
+}
+
+extension NSMutableAttributedString {
+    
+    func setColor(color: UIColor, forText stringValue: String) {
+        let range: NSRange = self.mutableString.range(of: stringValue, options: .caseInsensitive)
+        self.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: range)
+    }
+    
 }

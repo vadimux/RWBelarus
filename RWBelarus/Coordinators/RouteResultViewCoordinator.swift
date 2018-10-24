@@ -13,10 +13,10 @@ class RouteResultViewCoordinator: Coordinator, RouteResultViewControllerCoordina
     
     var rootViewController: UINavigationController
     var childCoordinators: [Coordinator] = []
-    var fromData: AutocompleteAPIElement?
-    var toData: AutocompleteAPIElement?
+    var fromData: AutocompleteAPIElement
+    var toData: AutocompleteAPIElement
     
-    init(rootViewController: UINavigationController, fromData: AutocompleteAPIElement?, toData: AutocompleteAPIElement?) {
+    init(rootViewController: UINavigationController, fromData: AutocompleteAPIElement, toData: AutocompleteAPIElement) {
         self.rootViewController = rootViewController
         self.fromData = fromData
         self.toData = toData

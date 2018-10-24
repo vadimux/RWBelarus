@@ -14,9 +14,11 @@ class SearchAutocompleteViewCoordinator: Coordinator, SearchAutocompleteViewCont
     
     var rootViewController: UINavigationController
     var childCoordinators: [Coordinator] = []
+    var tagView: Int
     
-    init(rootViewController: UINavigationController) {
+    init(rootViewController: UINavigationController, tagView: Int) {
         self.rootViewController = rootViewController
+        self.tagView = tagView
     }
     
     func start(with completion: CoordinatorCallback?) {
@@ -33,7 +35,20 @@ class SearchAutocompleteViewCoordinator: Coordinator, SearchAutocompleteViewCont
     func stop(with completion: CoordinatorCallback?) {
     }
     
+    func dismiss(vc: UIViewController, withData: AutocompleteAPIElement) {
+        if let rootVC = rootViewController.viewControllers.first as? SearchViewController {
+            if self.tagView == 0 {
+                rootVC.interactor.fromData = withData
+            } else {
+                rootVC.interactor.toData = withData
+            }
+        }
+        _ = vc.navigationController?.popViewController(animated: false)
+        vc.dismiss(animated: true)
+    }
+    
     func dismiss(vc: UIViewController) {
+        _ = vc.navigationController?.popViewController(animated: false)
         vc.dismiss(animated: true)
     }
 }

@@ -43,8 +43,12 @@ class AppCoordinator: Coordinator {
     
     func setupAppearance() {
         UINavigationBar.appearance().tintColor = .blue
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.brown]
-        UIBarButtonItem.appearance().setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.brown], for: .normal)
+        UIBarButtonItem.appearance(whenContainedInInstancesOf: [UISearchBar.self]).title = "Отмена".localized
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UIBarButtonItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.clear], for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.clear], for: .highlighted)
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         UITabBar.appearance().tintColor = .blue
         UITabBar.appearance().backgroundColor = .white
         

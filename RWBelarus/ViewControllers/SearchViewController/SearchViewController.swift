@@ -16,8 +16,8 @@ protocol SearchViewControllerInteractor: class {
 }
 
 protocol SearchViewControllerCoordinator: class {
-    func showResult(vc: UIViewController, from: AutocompleteAPIElement?, to: AutocompleteAPIElement?)
-    func showStation(vc: UIViewController)
+    func showResult(vc: UIViewController, from: AutocompleteAPIElement, to: AutocompleteAPIElement)
+    func showStationsList(vc: UIViewController, for tagView: Int?)
 }
 
 class SearchViewController: UIViewController {
@@ -33,21 +33,37 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var fromLabel: UILabel!
     @IBOutlet weak var toLabel: UILabel!
     
-    fileprivate let heroTransition = HeroTransition()
+    private let heroTransition = HeroTransition()
+    private var isChangeDirectionTapped = false
+    private var routeElements = [AutocompleteAPIElement?](repeating: nil, count: 2) //[from, to]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
         self.hideKeyboardWhenTappedAround()
-        
         self.navigationController?.delegate = self
         self.navigationController?.hero.navigationAnimationType = .fade
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if let fromData = interactor.fromData {
+            additionalFromLabel.isHidden = false
+            fromLabel.text = fromData.value?.uppercased()
+            routeElements[0] = fromData
+        }
+        if let toData = interactor.toData {
+            additionalToLabel.isHidden = false
+            toLabel.text = toData.value?.uppercased()
+            routeElements[1] = toData
+        }
+    }
+    
     private func configureUI() {
-        fromLabel.text = "1".localized
-        toLabel.text = "2".localized
+        fromLabel.text = "Откуда".localized
+        toLabel.text = "Куда".localized
         additionalFromLabel.isHidden = true
         additionalToLabel.isHidden = true
         self.hero.isEnabled = true
@@ -55,20 +71,42 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func searchButtonTapped(_ sender: Any) {
-        coordinator?.showResult(vc: self, from: self.interactor.fromData, to: self.interactor.toData)
+        guard let fromAddress = self.interactor.fromData, let toAddress = self.interactor.toData else {
+            self.view.makeToast("error")
+            return
+        }
+        coordinator?.showResult(vc: self, from: fromAddress, to: toAddress)
     }
     
     @IBAction func tapOnView(_ sender: Any) {
-        
         if let info = sender as? UITapGestureRecognizer {
-            
-            if info.view?.tag == 0 {
-                print("from")
-                coordinator?.showStation(vc: self)
-            } else {
-                print("to")
-            }
+            coordinator?.showStationsList(vc: self, for: info.view?.tag)
         }
+    }
+    @IBAction func changeDirectionTapped(_ sender: Any) {
+        
+        isChangeDirectionTapped = !isChangeDirectionTapped
+        let countEmpty = routeElements.reduce(0) { $1 == nil ? $0 + 1 : $0 }
+        
+        switch countEmpty {
+        case 2:
+            self.view.makeToast("error")
+        case 0:
+            if isChangeDirectionTapped {
+                fromLabel.text = routeElements[1]?.value?.uppercased()
+                toLabel.text = routeElements[0]?.value?.uppercased()
+                interactor.fromData = routeElements[1]
+                interactor.toData = routeElements[0]
+            } else {
+                fromLabel.text = routeElements[0]?.value?.uppercased()
+                toLabel.text = routeElements[1]?.value?.uppercased()
+                interactor.fromData = routeElements[0]
+                interactor.toData = routeElements[1]
+            }
+        default:
+            return
+        }
+        
     }
 }
 

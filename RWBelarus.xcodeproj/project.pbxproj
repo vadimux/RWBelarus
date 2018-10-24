@@ -13,6 +13,7 @@
 		A739C7542174DB180080F151 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A739C7532174DB180080F151 /* Assets.xcassets */; };
 		A739C7572174DB180080F151 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A739C7552174DB180080F151 /* LaunchScreen.storyboard */; };
 		A739C7632174DC180080F151 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A739C7622174DC180080F151 /* SearchViewController.swift */; };
+		A7701DA92180414E00F4026D /* UISearchBar+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7701DA82180414E00F4026D /* UISearchBar+Color.swift */; };
 		A776C1682176240700859BB8 /* UIViewController+dismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A776C1672176240700859BB8 /* UIViewController+dismissKeyboard.swift */; };
 		A795F4DF2179BD74003B942F /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4DE2179BD74003B942F /* APIRouter.swift */; };
 		A795F4E12179BE0E003B942F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E02179BE0E003B942F /* Constants.swift */; };
@@ -56,6 +57,7 @@
 		A739C7582174DB180080F151 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A739C7622174DC180080F151 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		A75C502E252E6C5728935AB7 /* Pods_RWBelarus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RWBelarus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7701DA82180414E00F4026D /* UISearchBar+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Color.swift"; sourceTree = "<group>"; };
 		A776C1672176240700859BB8 /* UIViewController+dismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+dismissKeyboard.swift"; sourceTree = "<group>"; };
 		A795F4DE2179BD74003B942F /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		A795F4E02179BE0E003B942F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 				A7D1A3CA217DB14900B374DE /* UIView+Inspectable.swift */,
 				A7D1A3CC217DB16300B374DE /* String+Localizable.swift */,
 				A7D1A3D2217DEAC600B374DE /* UITableView+hideEmptyCells.swift */,
+				A7701DA82180414E00F4026D /* UISearchBar+Color.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -442,6 +445,7 @@
 				A7EF0C55217702EF00C075E0 /* RouteResultViewCoordinator.swift in Sources */,
 				A7B40D6C217EF5150005C914 /* SearchAutocompleteViewInteractor.swift in Sources */,
 				A7B40D6A217EF28D0005C914 /* SearchAutocompleteViewController.swift in Sources */,
+				A7701DA92180414E00F4026D /* UISearchBar+Color.swift in Sources */,
 				A7F45DD32175E3D10099A9E1 /* TrainRoute.swift in Sources */,
 				A7D1A3D1217DE12C00B374DE /* TicketInfoCell.swift in Sources */,
 				A7B40D7A217F60EB0005C914 /* SearchAutocompleteViewCoordinator.swift in Sources */,
