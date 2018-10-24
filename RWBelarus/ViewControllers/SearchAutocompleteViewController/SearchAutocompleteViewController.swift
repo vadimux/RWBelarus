@@ -28,7 +28,7 @@ class SearchAutocompleteViewController: UIViewController {
     
     private var textTimer: Timer?
     private var autocompleteResult: AutocompleteAPI?
-    private let searchController = UISearchController(searchResultsController: nil)
+    private let searchController = CustomSearchController()
     private var searchElement: String?
     
     override func viewDidLoad() {
@@ -58,18 +58,7 @@ class SearchAutocompleteViewController: UIViewController {
     
     private func configureSearchBar() {
         
-        self.searchController.dimsBackgroundDuringPresentation = false
         self.searchController.searchBar.delegate = self
-        self.searchController.hidesNavigationBarDuringPresentation = false
-        self.searchController.searchBar.searchBarStyle = .minimal
-        self.searchController.searchBar.showsCancelButton = true
-        self.searchController.searchBar.placeholder = "Поиск станции или города".localized
-        self.searchController.searchBar.barTintColor = .clear
-        self.searchController.searchBar.tintColor = .white
-        self.searchController.searchBar.autocapitalizationType = .allCharacters
-        self.searchController.searchBar.setTextColor(color: .white)
-        self.searchController.searchBar.setTextFieldClearButtonColor(color: .white)
-        self.searchController.searchBar.setPlaceholderTextColor(color: .white)
         self.navigationItem.titleView = self.searchController.searchBar
         self.definesPresentationContext = true
     }
@@ -79,6 +68,8 @@ class SearchAutocompleteViewController: UIViewController {
         self.view.makeToastActivity(.center)
         
         guard let station = timer.userInfo as? String, station.count > 0 else {
+            self.autocompleteResult = nil
+            self.autocompleteTableView.reloadData()
             self.view.hideToastActivity()
             return
         }
@@ -91,6 +82,7 @@ class SearchAutocompleteViewController: UIViewController {
                 return
             }
             guard let count = result?.count, count > 0 else {
+                self.autocompleteResult = nil
                 self.autocompleteTableView.reloadData()
                 self.view.hideToastActivity()
                 return
@@ -102,6 +94,11 @@ class SearchAutocompleteViewController: UIViewController {
             self.view.hideToastActivity()
         }
     }
+    
+    @IBAction func cancelTapped(_ sender: Any) {
+        self.coordinator?.dismiss(vc: self)
+    }
+    
 }
 
 extension SearchAutocompleteViewController: UITableViewDataSource, UITableViewDelegate {
@@ -125,10 +122,6 @@ extension SearchAutocompleteViewController: UITableViewDataSource, UITableViewDe
 }
 
 extension SearchAutocompleteViewController: UISearchBarDelegate {
-
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        self.coordinator?.dismiss(vc: self)
-    }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if textTimer != nil {

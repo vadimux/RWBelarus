@@ -192,10 +192,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDs-cb-IPp">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="54"/>
                                 <subviews>
                                     <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="AXK-dJ-Ocu">
-                                        <rect key="frame" x="10" y="6" width="355" height="29"/>
+                                        <rect key="frame" x="10" y="13" width="355" height="29"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <segments>
                                             <segment title="Города и станции"/>
@@ -208,12 +208,12 @@
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="AXK-dJ-Ocu" secondAttribute="trailing" constant="10" id="35y-hI-y8g"/>
                                     <constraint firstItem="AXK-dJ-Ocu" firstAttribute="centerY" secondItem="rDs-cb-IPp" secondAttribute="centerY" id="i3q-Vf-3Ws"/>
-                                    <constraint firstAttribute="height" constant="40" id="j8B-eM-ZvW"/>
+                                    <constraint firstAttribute="height" constant="54" id="j8B-eM-ZvW"/>
                                     <constraint firstItem="AXK-dJ-Ocu" firstAttribute="leading" secondItem="rDs-cb-IPp" secondAttribute="leading" constant="10" id="nVG-sw-WJD"/>
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHZ-vH-vVC">
-                                <rect key="frame" x="8" y="40" width="359" height="563"/>
+                                <rect key="frame" x="8" y="54" width="359" height="549"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="autocompleteCell" id="y08-zu-x7O" customClass="AutocompleteCell" customModule="RWBelarus" customModuleProvider="target">
@@ -261,6 +261,19 @@
                     </view>
                     <navigationItem key="navigationItem" id="Gp4-S4-PSp">
                         <nil key="title"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="ntz-xb-g4g">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="X1L-Wi-243">
+                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Отмена">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelTapped:" destination="GcY-U4-fQq" eventType="touchUpInside" id="ADs-Ie-BZg"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                     </navigationItem>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>

@@ -50,16 +50,6 @@ extension UISearchBar {
         }
     }
     
-    func setTextFieldClearButtonColor(color: UIColor) {
-        
-        if let textField = getSearchBarTextField() {
-            let button = textField.value(forKey: "clearButton") as! UIButton
-            if let image = button.imageView?.image {
-                button.setImage(image.transform(withNewColor: color), for: .normal)
-            }
-        }
-    }
-    
     func setSearchImageColor(color: UIColor) {
         
         if let imageView = getSearchBarTextField()?.leftView as? UIImageView {

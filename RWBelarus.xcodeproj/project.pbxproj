@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0DB84C262180F8BC002CD803 /* CustomSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB84C252180F8BC002CD803 /* CustomSearchController.swift */; };
 		813434B83F4E2DE6301F856E /* Pods_RWBelarus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A75C502E252E6C5728935AB7 /* Pods_RWBelarus.framework */; };
 		A739C74D2174DB160080F151 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A739C74C2174DB160080F151 /* AppDelegate.swift */; };
 		A739C7522174DB160080F151 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A739C7502174DB160080F151 /* Main.storyboard */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		0165E49A68D0F07BEF232CAD /* Pods-RWBelarus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RWBelarus.release.xcconfig"; path = "Target Support Files/Pods-RWBelarus/Pods-RWBelarus.release.xcconfig"; sourceTree = "<group>"; };
+		0DB84C252180F8BC002CD803 /* CustomSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchController.swift; sourceTree = "<group>"; };
 		A739C7492174DB150080F151 /* RWBelarus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RWBelarus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A739C74C2174DB160080F151 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A739C7512174DB160080F151 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -218,6 +220,7 @@
 			children = (
 				A7B40D69217EF28D0005C914 /* SearchAutocompleteViewController.swift */,
 				A7B40D6B217EF5150005C914 /* SearchAutocompleteViewInteractor.swift */,
+				0DB84C252180F8BC002CD803 /* CustomSearchController.swift */,
 			);
 			path = SearchAutocompleteViewController;
 			sourceTree = "<group>";
@@ -458,6 +461,7 @@
 				A7EF0C532177029100C075E0 /* RouteResultViewInteractor.swift in Sources */,
 				A7D1A3CD217DB16300B374DE /* String+Localizable.swift in Sources */,
 				A739C7632174DC180080F151 /* SearchViewController.swift in Sources */,
+				0DB84C262180F8BC002CD803 /* CustomSearchController.swift in Sources */,
 				A7D1A3D3217DEAC600B374DE /* UITableView+hideEmptyCells.swift in Sources */,
 				A7EF0C5921770C4B00C075E0 /* SearchResultCell.swift in Sources */,
 				A7D1A3CF217DCC7B00B374DE /* TrainPlace.swift in Sources */,
