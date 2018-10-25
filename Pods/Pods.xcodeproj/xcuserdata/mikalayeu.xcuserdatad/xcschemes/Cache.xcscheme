@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F29F8ABF65CBFCF20E7EFA8369FD2D60"
-               BlueprintName = "R.swift"
+               BlueprintIdentifier = "6F51DB10451C0C260C13D3D4D44F18A6"
+               BlueprintName = "Cache"
                ReferencedContainer = "container:Pods.xcodeproj"
-               BuildableName = "R.swift">
+               BuildableName = "Cache.framework">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

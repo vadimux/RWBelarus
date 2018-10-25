@@ -7,14 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0DB84C262180F8BC002CD803 /* CustomSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DB84C252180F8BC002CD803 /* CustomSearchController.swift */; };
 		813434B83F4E2DE6301F856E /* Pods_RWBelarus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A75C502E252E6C5728935AB7 /* Pods_RWBelarus.framework */; };
 		A739C74D2174DB160080F151 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A739C74C2174DB160080F151 /* AppDelegate.swift */; };
 		A739C7522174DB160080F151 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A739C7502174DB160080F151 /* Main.storyboard */; };
 		A739C7542174DB180080F151 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A739C7532174DB180080F151 /* Assets.xcassets */; };
 		A739C7572174DB180080F151 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A739C7552174DB180080F151 /* LaunchScreen.storyboard */; };
 		A739C7632174DC180080F151 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A739C7622174DC180080F151 /* SearchViewController.swift */; };
-		A7701DA92180414E00F4026D /* UISearchBar+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7701DA82180414E00F4026D /* UISearchBar+Color.swift */; };
 		A776C1682176240700859BB8 /* UIViewController+dismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A776C1672176240700859BB8 /* UIViewController+dismissKeyboard.swift */; };
 		A795F4DF2179BD74003B942F /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4DE2179BD74003B942F /* APIRouter.swift */; };
 		A795F4E12179BE0E003B942F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E02179BE0E003B942F /* Constants.swift */; };
@@ -50,7 +48,6 @@
 
 /* Begin PBXFileReference section */
 		0165E49A68D0F07BEF232CAD /* Pods-RWBelarus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RWBelarus.release.xcconfig"; path = "Target Support Files/Pods-RWBelarus/Pods-RWBelarus.release.xcconfig"; sourceTree = "<group>"; };
-		0DB84C252180F8BC002CD803 /* CustomSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomSearchController.swift; sourceTree = "<group>"; };
 		A739C7492174DB150080F151 /* RWBelarus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RWBelarus.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A739C74C2174DB160080F151 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A739C7512174DB160080F151 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -59,7 +56,6 @@
 		A739C7582174DB180080F151 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A739C7622174DC180080F151 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		A75C502E252E6C5728935AB7 /* Pods_RWBelarus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RWBelarus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A7701DA82180414E00F4026D /* UISearchBar+Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UISearchBar+Color.swift"; sourceTree = "<group>"; };
 		A776C1672176240700859BB8 /* UIViewController+dismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+dismissKeyboard.swift"; sourceTree = "<group>"; };
 		A795F4DE2179BD74003B942F /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		A795F4E02179BE0E003B942F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
@@ -210,7 +206,6 @@
 				A7D1A3CA217DB14900B374DE /* UIView+Inspectable.swift */,
 				A7D1A3CC217DB16300B374DE /* String+Localizable.swift */,
 				A7D1A3D2217DEAC600B374DE /* UITableView+hideEmptyCells.swift */,
-				A7701DA82180414E00F4026D /* UISearchBar+Color.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -220,7 +215,6 @@
 			children = (
 				A7B40D69217EF28D0005C914 /* SearchAutocompleteViewController.swift */,
 				A7B40D6B217EF5150005C914 /* SearchAutocompleteViewInteractor.swift */,
-				0DB84C252180F8BC002CD803 /* CustomSearchController.swift */,
 			);
 			path = SearchAutocompleteViewController;
 			sourceTree = "<group>";
@@ -377,6 +371,7 @@
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-RWBelarus/Pods-RWBelarus-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Cache/Cache.framework",
 				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
@@ -387,6 +382,7 @@
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
@@ -448,7 +444,6 @@
 				A7EF0C55217702EF00C075E0 /* RouteResultViewCoordinator.swift in Sources */,
 				A7B40D6C217EF5150005C914 /* SearchAutocompleteViewInteractor.swift in Sources */,
 				A7B40D6A217EF28D0005C914 /* SearchAutocompleteViewController.swift in Sources */,
-				A7701DA92180414E00F4026D /* UISearchBar+Color.swift in Sources */,
 				A7F45DD32175E3D10099A9E1 /* TrainRoute.swift in Sources */,
 				A7D1A3D1217DE12C00B374DE /* TicketInfoCell.swift in Sources */,
 				A7B40D7A217F60EB0005C914 /* SearchAutocompleteViewCoordinator.swift in Sources */,
@@ -461,7 +456,6 @@
 				A7EF0C532177029100C075E0 /* RouteResultViewInteractor.swift in Sources */,
 				A7D1A3CD217DB16300B374DE /* String+Localizable.swift in Sources */,
 				A739C7632174DC180080F151 /* SearchViewController.swift in Sources */,
-				0DB84C262180F8BC002CD803 /* CustomSearchController.swift in Sources */,
 				A7D1A3D3217DEAC600B374DE /* UITableView+hideEmptyCells.swift in Sources */,
 				A7EF0C5921770C4B00C075E0 /* SearchResultCell.swift in Sources */,
 				A7D1A3CF217DCC7B00B374DE /* TrainPlace.swift in Sources */,
