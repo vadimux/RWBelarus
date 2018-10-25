@@ -22,26 +22,20 @@ protocol SearchAutocompleteViewControllerCoordinator: class {
 class SearchAutocompleteViewController: UIViewController {
     
     @IBOutlet weak var autocompleteTableView: UITableView!
-
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     var interactor: SearchAutocompleteViewControllerInteractor!
     var coordinator: SearchAutocompleteViewControllerCoordinator?
     
     private var textTimer: Timer?
     private var autocompleteResult: AutocompleteAPI?
-    private let searchController = CustomSearchController()
     private var searchElement: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        delay(0.1) {
-            self.searchController.searchBar.becomeFirstResponder()
-        }
+        searchBar.becomeFirstResponder()
     }
     
     private func delay(_ delay: Double, completion: @escaping () -> Void) {
@@ -53,13 +47,6 @@ class SearchAutocompleteViewController: UIViewController {
         autocompleteTableView.isHidden = true
         autocompleteTableView.tableFooterView = UIView()
         self.navigationItem.setHidesBackButton(true, animated:true)
-        configureSearchBar()
-    }
-    
-    private func configureSearchBar() {
-        
-        self.searchController.searchBar.delegate = self
-        self.navigationItem.titleView = self.searchController.searchBar
         self.definesPresentationContext = true
     }
     
