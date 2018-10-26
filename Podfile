@@ -15,5 +15,6 @@ target 'RWBelarus' do
     pod 'Alamofire'
     pod 'Hero'
     pod 'Cache'
+    pod 'JTAppleCalendar'
     
 end

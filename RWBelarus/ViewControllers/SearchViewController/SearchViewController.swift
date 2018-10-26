@@ -18,6 +18,7 @@ protocol SearchViewControllerInteractor: class {
 protocol SearchViewControllerCoordinator: class {
     func showResult(vc: UIViewController, from: AutocompleteAPIElement, to: AutocompleteAPIElement)
     func showStationsList(vc: UIViewController, for tagView: Int?)
+    func showCalendar(currentDate: Date, completion: @escaping (_ selectedDate: Date) -> Void)
 }
 
 class SearchViewController: UIViewController {
@@ -32,6 +33,8 @@ class SearchViewController: UIViewController {
 
     @IBOutlet weak var fromLabel: UILabel!
     @IBOutlet weak var toLabel: UILabel!
+    
+    @IBOutlet weak var infoStackView: UIStackView!
     
     private let heroTransition = HeroTransition()
     private var isChangeDirectionTapped = false
@@ -64,10 +67,10 @@ class SearchViewController: UIViewController {
     private func configureUI() {
         fromLabel.text = "Откуда".localized
         toLabel.text = "Куда".localized
+        
         additionalFromLabel.isHidden = true
         additionalToLabel.isHidden = true
         self.hero.isEnabled = true
-        self.hero.modalAnimationType = .selectBy(presenting:.zoom, dismissing:.zoomOut)
     }
     
     @IBAction func searchButtonTapped(_ sender: Any) {
@@ -107,6 +110,11 @@ class SearchViewController: UIViewController {
             return
         }
         
+    }
+    @IBAction func calendarTapped(_ sender: Any) {
+        coordinator?.showCalendar(currentDate: Date()) { (date) in
+            print(date)
+        }
     }
 }
 

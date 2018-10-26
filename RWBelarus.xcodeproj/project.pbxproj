@@ -19,6 +19,10 @@
 		A795F4E32179BE42003B942F /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E22179BE42003B942F /* APIConfiguration.swift */; };
 		A795F4E82179C080003B942F /* RouteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E72179C080003B942F /* RouteAPI.swift */; };
 		A795F4EA2179D89B003B942F /* Locale+CurrentLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E92179D89B003B942F /* Locale+CurrentLocale.swift */; };
+		A7B2E3902182E75F00CC7273 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B2E38F2182E75F00CC7273 /* CalendarViewController.swift */; };
+		A7B2E3922182ED4600CC7273 /* CalendarViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B2E3912182ED4600CC7273 /* CalendarViewCoordinator.swift */; };
+		A7B2E3942182EDD900CC7273 /* CalendarViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B2E3932182EDD900CC7273 /* CalendarViewInteractor.swift */; };
+		A7B2E3962182EEE500CC7273 /* DialogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B2E3952182EEE500CC7273 /* DialogViewController.swift */; };
 		A7B40D6A217EF28D0005C914 /* SearchAutocompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B40D69217EF28D0005C914 /* SearchAutocompleteViewController.swift */; };
 		A7B40D6C217EF5150005C914 /* SearchAutocompleteViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B40D6B217EF5150005C914 /* SearchAutocompleteViewInteractor.swift */; };
 		A7B40D7A217F60EB0005C914 /* SearchAutocompleteViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B40D79217F60EB0005C914 /* SearchAutocompleteViewCoordinator.swift */; };
@@ -62,6 +66,10 @@
 		A795F4E22179BE42003B942F /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
 		A795F4E72179C080003B942F /* RouteAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAPI.swift; sourceTree = "<group>"; };
 		A795F4E92179D89B003B942F /* Locale+CurrentLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+CurrentLocale.swift"; sourceTree = "<group>"; };
+		A7B2E38F2182E75F00CC7273 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
+		A7B2E3912182ED4600CC7273 /* CalendarViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewCoordinator.swift; sourceTree = "<group>"; };
+		A7B2E3932182EDD900CC7273 /* CalendarViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewInteractor.swift; sourceTree = "<group>"; };
+		A7B2E3952182EEE500CC7273 /* DialogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DialogViewController.swift; sourceTree = "<group>"; };
 		A7B40D69217EF28D0005C914 /* SearchAutocompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAutocompleteViewController.swift; sourceTree = "<group>"; };
 		A7B40D6B217EF5150005C914 /* SearchAutocompleteViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAutocompleteViewInteractor.swift; sourceTree = "<group>"; };
 		A7B40D79217F60EB0005C914 /* SearchAutocompleteViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAutocompleteViewCoordinator.swift; sourceTree = "<group>"; };
@@ -183,8 +191,10 @@
 			children = (
 				A7F45DA62175B3580099A9E1 /* TabsViewController */,
 				A739C7612174DBE80080F151 /* SearchViewController */,
+				A7B2E38E2182E68400CC7273 /* CalendarViewController */,
 				A7B40D68217EF2570005C914 /* SearchAutocompleteViewController */,
 				A7EF0C4F2177025500C075E0 /* RouteResultViewController */,
+				A7B2E3952182EEE500CC7273 /* DialogViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -208,6 +218,15 @@
 				A7D1A3D2217DEAC600B374DE /* UITableView+hideEmptyCells.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A7B2E38E2182E68400CC7273 /* CalendarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A7B2E38F2182E75F00CC7273 /* CalendarViewController.swift */,
+				A7B2E3932182EDD900CC7273 /* CalendarViewInteractor.swift */,
+			);
+			path = CalendarViewController;
 			sourceTree = "<group>";
 		};
 		A7B40D68217EF2570005C914 /* SearchAutocompleteViewController */ = {
@@ -248,6 +267,7 @@
 				A7F45DAB2175B5AD0099A9E1 /* SearchViewCoordinator.swift */,
 				A7EF0C54217702EF00C075E0 /* RouteResultViewCoordinator.swift */,
 				A7B40D79217F60EB0005C914 /* SearchAutocompleteViewCoordinator.swift */,
+				A7B2E3912182ED4600CC7273 /* CalendarViewCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -373,6 +393,7 @@
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/Cache/Cache.framework",
 				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
+				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
@@ -384,6 +405,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
@@ -455,20 +477,24 @@
 				A7F45DA32175B25E0099A9E1 /* R.generated.swift in Sources */,
 				A7EF0C532177029100C075E0 /* RouteResultViewInteractor.swift in Sources */,
 				A7D1A3CD217DB16300B374DE /* String+Localizable.swift in Sources */,
+				A7B2E3902182E75F00CC7273 /* CalendarViewController.swift in Sources */,
 				A739C7632174DC180080F151 /* SearchViewController.swift in Sources */,
 				A7D1A3D3217DEAC600B374DE /* UITableView+hideEmptyCells.swift in Sources */,
 				A7EF0C5921770C4B00C075E0 /* SearchResultCell.swift in Sources */,
 				A7D1A3CF217DCC7B00B374DE /* TrainPlace.swift in Sources */,
+				A7B2E3942182EDD900CC7273 /* CalendarViewInteractor.swift in Sources */,
 				A7F45DAC2175B5AD0099A9E1 /* SearchViewCoordinator.swift in Sources */,
 				A7F45DD72175EA170099A9E1 /* AutocompleteAPIModel.swift in Sources */,
 				A7EF0C512177027F00C075E0 /* RouteResultViewController.swift in Sources */,
 				A7F45DDB2175FCDB0099A9E1 /* AutocompleteCell.swift in Sources */,
 				A795F4E12179BE0E003B942F /* Constants.swift in Sources */,
+				A7B2E3962182EEE500CC7273 /* DialogViewController.swift in Sources */,
 				A7F45DA52175B27B0099A9E1 /* TabsScreenCoordinator.swift in Sources */,
 				A739C74D2174DB160080F151 /* AppDelegate.swift in Sources */,
 				A776C1682176240700859BB8 /* UIViewController+dismissKeyboard.swift in Sources */,
 				A795F4E32179BE42003B942F /* APIConfiguration.swift in Sources */,
 				A795F4E82179C080003B942F /* RouteAPI.swift in Sources */,
+				A7B2E3922182ED4600CC7273 /* CalendarViewCoordinator.swift in Sources */,
 				A7F45DD12175E35A0099A9E1 /* Route.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

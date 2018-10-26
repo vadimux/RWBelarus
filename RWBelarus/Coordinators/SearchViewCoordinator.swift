@@ -38,5 +38,14 @@ class SearchViewCoordinator: Coordinator, SearchViewControllerCoordinator {
         searchAutocompleteViewCoordinator.start(with: nil)
     }
     
+    func showCalendar(currentDate: Date, completion: @escaping (Date) -> Void) {
+        let config = CalendarConfig.init(title: "Выберите день".localized, multiSelectionAvailable: false, begin: currentDate)
+        let coordinator = CalendarViewCoordinator.init(rootViewController: self.rootViewController, config: config)
+        coordinator.periodSelectionActionHandler = { beginDate, endDate in
+            completion(beginDate ?? Date())
+        }
+        coordinator.start(with: nil)
+    }
+    
 }
 
