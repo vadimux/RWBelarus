@@ -26,9 +26,9 @@ class SearchViewCoordinator: Coordinator, SearchViewControllerCoordinator {
     
     }
     
-    func showResult(vc: UIViewController, from: AutocompleteAPIElement, to: AutocompleteAPIElement) {
+    func showResult(vc: UIViewController, from: AutocompleteAPIElement, to: AutocompleteAPIElement, date: String) {
         guard let navVC = vc.navigationController else { return }
-        let routeResultViewCoordinator = RouteResultViewCoordinator(rootViewController: navVC, fromData: from, toData: to)
+        let routeResultViewCoordinator = RouteResultViewCoordinator(rootViewController: navVC, fromData: from, toData: to, date: date)
         routeResultViewCoordinator.start(with: nil)
     }
     

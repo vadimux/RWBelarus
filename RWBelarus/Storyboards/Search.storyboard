@@ -159,6 +159,9 @@
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="localizedTitle" value="сегодня"/>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="todayTapped:" destination="kkp-aO-mmZ" eventType="touchUpInside" id="3wf-vC-j8X"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gkl-ok-xTP">
                                                         <rect key="frame" x="53" y="0.0" width="40" height="27"/>
@@ -169,6 +172,9 @@
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="localizedTitle" value="завтра"/>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="tomorrowTapped:" destination="kkp-aO-mmZ" eventType="touchUpInside" id="1Fv-cJ-Cb0"/>
+                                                        </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pam-Od-79W">
                                                         <rect key="frame" x="98" y="0.0" width="63" height="27"/>
@@ -179,11 +185,17 @@
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="localizedTitle" value="на все дни"/>
                                                         </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="everydayTapped:" destination="kkp-aO-mmZ" eventType="touchUpInside" id="4gl-ua-csL"/>
+                                                        </connections>
                                                     </button>
                                                 </subviews>
                                             </stackView>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYb-0R-vby">
-                                                <rect key="frame" x="0.0" y="23" width="54" height="34"/>
+                                                <rect key="frame" x="0.0" y="23" width="80" height="34"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="80" id="CHi-Zg-M2M"/>
+                                                </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                 <state key="normal" title="Button"/>
                                                 <connections>
@@ -216,9 +228,6 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1j-EW-HHy">
                                 <rect key="frame" x="5" y="143" width="30" height="30"/>
                                 <state key="normal" title="+"/>
-                                <connections>
-                                    <action selector="changeDirectionTapped:" destination="kkp-aO-mmZ" eventType="touchUpInside" id="gLM-96-ye9"/>
-                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -241,8 +250,10 @@
                     <connections>
                         <outlet property="additionalFromLabel" destination="mRi-jD-1MP" id="qzo-ZI-Isu"/>
                         <outlet property="additionalToLabel" destination="7wE-dY-xui" id="aC7-LN-2WG"/>
+                        <outlet property="dateButton" destination="aYb-0R-vby" id="lru-az-iee"/>
                         <outlet property="fromLabel" destination="PS9-hT-s6a" id="cKl-La-cfN"/>
                         <outlet property="fromView" destination="Uh4-di-HCa" id="RvP-ph-fN0"/>
+                        <outlet property="searchButton" destination="IWV-PB-GUF" id="r3C-KP-gU1"/>
                         <outlet property="toLabel" destination="1IL-mS-Xff" id="ab9-cJ-haV"/>
                         <outlet property="toView" destination="tw4-P0-2Fv" id="hZQ-SS-6CR"/>
                     </connections>
@@ -349,7 +360,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CalendarCell" id="RtV-6f-YZk" customClass="CalendarCell" customModule="Educe" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CalendarCell" id="RtV-6f-YZk" customClass="CalendarCell" customModule="RWBelarus" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">

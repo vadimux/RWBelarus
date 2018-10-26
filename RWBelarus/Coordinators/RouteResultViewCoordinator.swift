@@ -15,11 +15,13 @@ class RouteResultViewCoordinator: Coordinator, RouteResultViewControllerCoordina
     var childCoordinators: [Coordinator] = []
     var fromData: AutocompleteAPIElement
     var toData: AutocompleteAPIElement
+    var date: String
     
-    init(rootViewController: UINavigationController, fromData: AutocompleteAPIElement, toData: AutocompleteAPIElement) {
+    init(rootViewController: UINavigationController, fromData: AutocompleteAPIElement, toData: AutocompleteAPIElement, date: String) {
         self.rootViewController = rootViewController
         self.fromData = fromData
         self.toData = toData
+        self.date = date
     }
     
     func start(with completion: CoordinatorCallback?) {
@@ -29,7 +31,7 @@ class RouteResultViewCoordinator: Coordinator, RouteResultViewControllerCoordina
         }
         
         viewController.coordinator = self
-        viewController.interactor = RouteResultViewInteractor(fromData: fromData, toData: toData)
+        viewController.interactor = RouteResultViewInteractor(fromData: fromData, toData: toData, date: date)
         rootViewController.pushViewController(viewController, animated: true)
     }
     

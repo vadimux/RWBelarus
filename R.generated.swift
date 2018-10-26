@@ -31,8 +31,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 7 images.
+  /// This `R.image` struct is generated, and contains static references to 8 images.
   struct image {
+    /// Image `bzhd_0`.
+    static let bzhd_0 = Rswift.ImageResource(bundle: R.hostingBundle, name: "bzhd_0")
     /// Image `city`.
     static let city = Rswift.ImageResource(bundle: R.hostingBundle, name: "city")
     /// Image `crossIcon`.
@@ -47,6 +49,11 @@ struct R: Rswift.Validatable {
     static let regionBusiness = Rswift.ImageResource(bundle: R.hostingBundle, name: "regionBusiness")
     /// Image `region`.
     static let region = Rswift.ImageResource(bundle: R.hostingBundle, name: "region")
+    
+    /// `UIImage(named: "bzhd_0", bundle: ..., traitCollection: ...)`
+    static func bzhd_0(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.bzhd_0, compatibleWith: traitCollection)
+    }
     
     /// `UIImage(named: "city", bundle: ..., traitCollection: ...)`
     static func city(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
@@ -91,12 +98,14 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 4 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 5 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `CalendarCell`.
     static let calendarCell: Rswift.ReuseIdentifier<CalendarCell> = Rswift.ReuseIdentifier(identifier: "CalendarCell")
     /// Reuse identifier `autocompleteCell`.
     static let autocompleteCell: Rswift.ReuseIdentifier<AutocompleteCell> = Rswift.ReuseIdentifier(identifier: "autocompleteCell")
+    /// Reuse identifier `requestCell`.
+    static let requestCell: Rswift.ReuseIdentifier<RequestCell> = Rswift.ReuseIdentifier(identifier: "requestCell")
     /// Reuse identifier `searchResultCell`.
     static let searchResultCell: Rswift.ReuseIdentifier<SearchResultCell> = Rswift.ReuseIdentifier(identifier: "searchResultCell")
     /// Reuse identifier `ticketInfoCell`.
@@ -232,6 +241,7 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
+        if UIKit.UIImage(named: "bzhd_0") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'bzhd_0' is used in storyboard 'RouteResult', but couldn't be loaded.") }
         if _R.storyboard.routeResult().routeResultViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'routeResultViewController' could not be loaded from storyboard 'RouteResult' as 'RouteResultViewController'.") }
         if _R.storyboard.routeResult().routeResultNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'routeResultNavigationController' could not be loaded from storyboard 'RouteResult' as 'UIKit.UINavigationController'.") }
       }
