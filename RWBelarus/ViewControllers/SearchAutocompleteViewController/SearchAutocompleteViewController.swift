@@ -8,6 +8,7 @@
 
 import UIKit
 import Toast_Swift
+import Cache
 
 protocol SearchAutocompleteViewControllerInteractor: class {
     func callAutocomplete(for station: String, completion: @escaping (_ route: AutocompleteAPI?, _ error: String?) -> ())
@@ -38,16 +39,25 @@ class SearchAutocompleteViewController: UIViewController {
         searchBar.becomeFirstResponder()
     }
     
-    private func delay(_ delay: Double, completion: @escaping () -> Void) {
-        let when = DispatchTime.now() + delay
-        DispatchQueue.main.asyncAfter(deadline: when, execute: completion)
-    }
-    
     private func configureUI() {
         autocompleteTableView.isHidden = true
         autocompleteTableView.tableFooterView = UIView()
         self.navigationItem.setHidesBackButton(true, animated:true)
         self.definesPresentationContext = true
+        
+        
+        if let searchTextField = self.searchBar.value(forKey: "_searchField") as? UITextField, let clearButton = searchTextField.value(forKey: "_clearButton") as? UIButton, let placeholder = searchTextField.value(forKey: "placeholderLabel") as? UILabel {
+            let templateImage = clearButton.imageView?.image?.withRenderingMode(.alwaysTemplate)
+            clearButton.setImage(templateImage, for: .normal)
+            clearButton.tintColor = .white
+            placeholder.textColor = .white
+        }
+        
+        let cache = Cache.sharedInstance
+        if let tmp = try? cache.checkCache(), tmp == true {
+            let result = try? cache.retrieveFromCache()
+            print(result)
+        }
     }
     
     @objc private func callAutocomplete(_ timer: Timer) {
@@ -102,6 +112,8 @@ extension SearchAutocompleteViewController: UITableViewDataSource, UITableViewDe
         }
         cell.configure(with: result[indexPath.row], searchElement: self.searchElement)
         cell.tapped = { model in
+            let cache = Cache.sharedInstance
+            try? cache.saveToCache(autocompleteElement: model)
             self.coordinator?.dismiss(vc: self, withData: model)
         }
         return cell

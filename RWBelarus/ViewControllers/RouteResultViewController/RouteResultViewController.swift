@@ -59,12 +59,16 @@ class RouteResultViewController: UIViewController {
 extension RouteResultViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchResult.count
+        return searchResult.count + 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.row == 0 {
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.requestCell, for: indexPath)!
+            return cell
+        }
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.searchResultCell, for: indexPath)!
-        cell.configure(with: searchResult[indexPath.row])
+        cell.configure(with: searchResult[indexPath.row - 1])
         cell.tapped = { model in
             print(model)
         }

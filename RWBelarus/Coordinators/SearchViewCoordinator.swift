@@ -26,9 +26,9 @@ class SearchViewCoordinator: Coordinator, SearchViewControllerCoordinator {
     
     }
     
-    func showResult(vc: UIViewController, from: AutocompleteAPIElement, to: AutocompleteAPIElement) {
+    func showResult(vc: UIViewController, from: AutocompleteAPIElement, to: AutocompleteAPIElement, date: String) {
         guard let navVC = vc.navigationController else { return }
-        let routeResultViewCoordinator = RouteResultViewCoordinator(rootViewController: navVC, fromData: from, toData: to)
+        let routeResultViewCoordinator = RouteResultViewCoordinator(rootViewController: navVC, fromData: from, toData: to, date: date)
         routeResultViewCoordinator.start(with: nil)
     }
     
@@ -36,6 +36,15 @@ class SearchViewCoordinator: Coordinator, SearchViewControllerCoordinator {
         guard let tagView = tagView, let navVC = vc.navigationController else { return }
         let searchAutocompleteViewCoordinator = SearchAutocompleteViewCoordinator(rootViewController: navVC, tagView: tagView)
         searchAutocompleteViewCoordinator.start(with: nil)
+    }
+    
+    func showCalendar(currentDate: Date, completion: @escaping (Date) -> Void) {
+        let config = CalendarConfig.init(title: "Выберите день".localized, multiSelectionAvailable: false, begin: currentDate)
+        let coordinator = CalendarViewCoordinator.init(rootViewController: self.rootViewController, config: config)
+        coordinator.periodSelectionActionHandler = { beginDate, endDate in
+            completion(beginDate ?? Date())
+        }
+        coordinator.start(with: nil)
     }
     
 }

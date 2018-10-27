@@ -31,10 +31,14 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 6 images.
+  /// This `R.image` struct is generated, and contains static references to 8 images.
   struct image {
+    /// Image `bzhd_0`.
+    static let bzhd_0 = Rswift.ImageResource(bundle: R.hostingBundle, name: "bzhd_0")
     /// Image `city`.
     static let city = Rswift.ImageResource(bundle: R.hostingBundle, name: "city")
+    /// Image `crossIcon`.
+    static let crossIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "crossIcon")
     /// Image `international`.
     static let international = Rswift.ImageResource(bundle: R.hostingBundle, name: "international")
     /// Image `interregionalBusiness`.
@@ -46,9 +50,19 @@ struct R: Rswift.Validatable {
     /// Image `region`.
     static let region = Rswift.ImageResource(bundle: R.hostingBundle, name: "region")
     
+    /// `UIImage(named: "bzhd_0", bundle: ..., traitCollection: ...)`
+    static func bzhd_0(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.bzhd_0, compatibleWith: traitCollection)
+    }
+    
     /// `UIImage(named: "city", bundle: ..., traitCollection: ...)`
     static func city(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.city, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "crossIcon", bundle: ..., traitCollection: ...)`
+    static func crossIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.crossIcon, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "international", bundle: ..., traitCollection: ...)`
@@ -84,10 +98,14 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 3 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 5 reuse identifiers.
   struct reuseIdentifier {
+    /// Reuse identifier `CalendarCell`.
+    static let calendarCell: Rswift.ReuseIdentifier<CalendarCell> = Rswift.ReuseIdentifier(identifier: "CalendarCell")
     /// Reuse identifier `autocompleteCell`.
     static let autocompleteCell: Rswift.ReuseIdentifier<AutocompleteCell> = Rswift.ReuseIdentifier(identifier: "autocompleteCell")
+    /// Reuse identifier `requestCell`.
+    static let requestCell: Rswift.ReuseIdentifier<RequestCell> = Rswift.ReuseIdentifier(identifier: "requestCell")
     /// Reuse identifier `searchResultCell`.
     static let searchResultCell: Rswift.ReuseIdentifier<SearchResultCell> = Rswift.ReuseIdentifier(identifier: "searchResultCell")
     /// Reuse identifier `ticketInfoCell`.
@@ -223,6 +241,7 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
+        if UIKit.UIImage(named: "bzhd_0") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'bzhd_0' is used in storyboard 'RouteResult', but couldn't be loaded.") }
         if _R.storyboard.routeResult().routeResultViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'routeResultViewController' could not be loaded from storyboard 'RouteResult' as 'RouteResultViewController'.") }
         if _R.storyboard.routeResult().routeResultNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'routeResultNavigationController' could not be loaded from storyboard 'RouteResult' as 'UIKit.UINavigationController'.") }
       }
@@ -234,11 +253,16 @@ struct _R: Rswift.Validatable {
       typealias InitialController = UIKit.UITabBarController
       
       let bundle = R.hostingBundle
+      let calendarViewController = StoryboardViewControllerResource<CalendarViewController>(identifier: "CalendarViewController")
       let name = "Search"
       let searchAutocompleteNavigationViewController = StoryboardViewControllerResource<UIKit.UINavigationController>(identifier: "SearchAutocompleteNavigationViewController")
       let searchAutocompleteViewController = StoryboardViewControllerResource<SearchAutocompleteViewController>(identifier: "SearchAutocompleteViewController")
       let searchNavigationController = StoryboardViewControllerResource<UIKit.UINavigationController>(identifier: "SearchNavigationController")
       let searchViewController = StoryboardViewControllerResource<SearchViewController>(identifier: "SearchViewController")
+      
+      func calendarViewController(_: Void = ()) -> CalendarViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: calendarViewController)
+      }
       
       func searchAutocompleteNavigationViewController(_: Void = ()) -> UIKit.UINavigationController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: searchAutocompleteNavigationViewController)
@@ -257,8 +281,11 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
+        if UIKit.UIImage(named: "arrowRight") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'arrowRight' is used in storyboard 'Search', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "arrowLeftBlue") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'arrowLeftBlue' is used in storyboard 'Search', but couldn't be loaded.") }
         if _R.storyboard.search().searchAutocompleteViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'searchAutocompleteViewController' could not be loaded from storyboard 'Search' as 'SearchAutocompleteViewController'.") }
         if _R.storyboard.search().searchViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'searchViewController' could not be loaded from storyboard 'Search' as 'SearchViewController'.") }
+        if _R.storyboard.search().calendarViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'calendarViewController' could not be loaded from storyboard 'Search' as 'CalendarViewController'.") }
         if _R.storyboard.search().searchNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'searchNavigationController' could not be loaded from storyboard 'Search' as 'UIKit.UINavigationController'.") }
         if _R.storyboard.search().searchAutocompleteNavigationViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'searchAutocompleteNavigationViewController' could not be loaded from storyboard 'Search' as 'UIKit.UINavigationController'.") }
       }

@@ -13,11 +13,14 @@ import Hero
 protocol SearchViewControllerInteractor: class {
     var fromData: AutocompleteAPIElement? { get set }
     var toData: AutocompleteAPIElement? { get set }
+    func convertLabelDate(date: Date) -> String
+    func convertSearchFormatDate(date: Date) -> String
 }
 
 protocol SearchViewControllerCoordinator: class {
-    func showResult(vc: UIViewController, from: AutocompleteAPIElement, to: AutocompleteAPIElement)
+    func showResult(vc: UIViewController, from: AutocompleteAPIElement, to: AutocompleteAPIElement, date: String)
     func showStationsList(vc: UIViewController, for tagView: Int?)
+    func showCalendar(currentDate: Date, completion: @escaping (_ selectedDate: Date) -> Void)
 }
 
 class SearchViewController: UIViewController {
@@ -25,17 +28,28 @@ class SearchViewController: UIViewController {
     var interactor: SearchViewControllerInteractor!
     var coordinator: SearchViewControllerCoordinator?
     
+    @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var fromView: UIView!
     @IBOutlet weak var toView: UIView!
     @IBOutlet weak var additionalFromLabel: UILabel!
     @IBOutlet weak var additionalToLabel: UILabel!
-
     @IBOutlet weak var fromLabel: UILabel!
+//        didSet {
+//            print("fromLabel")
+//            let countEmpty = routeElements.reduce(0) { $1 == nil ? $0 + 1 : $0 }
+//            print(countEmpty)
+//            guard let button = self.searchButton else { return }
+//            button.isEnabled = countEmpty == 0 ? true : false
+//        }
+//    }
     @IBOutlet weak var toLabel: UILabel!
+    @IBOutlet weak var searchButton: UIButton!
     
     private let heroTransition = HeroTransition()
     private var isChangeDirectionTapped = false
     private var routeElements = [AutocompleteAPIElement?](repeating: nil, count: 2) //[from, to]
+    private var date: String!
+    private let kObservedPropertyName = "text"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +63,9 @@ class SearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        fromLabel.addObserver(self, forKeyPath: kObservedPropertyName, options: .new, context: nil)
+        toLabel.addObserver(self, forKeyPath: kObservedPropertyName, options: .new, context: nil)
+        
         if let fromData = interactor.fromData {
             additionalFromLabel.isHidden = false
             fromLabel.text = fromData.value?.uppercased()
@@ -61,13 +78,33 @@ class SearchViewController: UIViewController {
         }
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        fromLabel.removeObserver(self, forKeyPath: kObservedPropertyName)
+        toLabel.removeObserver(self, forKeyPath: kObservedPropertyName)
+    }
+    
     private func configureUI() {
         fromLabel.text = "Откуда".localized
         toLabel.text = "Куда".localized
         additionalFromLabel.isHidden = true
         additionalToLabel.isHidden = true
         self.hero.isEnabled = true
-        self.hero.modalAnimationType = .selectBy(presenting:.zoom, dismissing:.zoomOut)
+        
+        //by default
+        self.dateButton.setTitle("на все дни".localized, for: .normal)
+        self.date = "everyday"
+        self.searchButton.isEnabled = false
+    }
+
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == kObservedPropertyName {
+            if let _ = change?[.newKey] {
+                let countEmpty = routeElements.reduce(0) { $1 == nil ? $0 + 1 : $0 }
+                self.searchButton.isEnabled = countEmpty == 1 || countEmpty == 0 ? true : false
+            }
+        }
     }
     
     @IBAction func searchButtonTapped(_ sender: Any) {
@@ -75,7 +112,7 @@ class SearchViewController: UIViewController {
             self.view.makeToast("error")
             return
         }
-        coordinator?.showResult(vc: self, from: fromAddress, to: toAddress)
+        coordinator?.showResult(vc: self, from: fromAddress, to: toAddress, date: self.date)
     }
     
     @IBAction func tapOnView(_ sender: Any) {
@@ -83,14 +120,13 @@ class SearchViewController: UIViewController {
             coordinator?.showStationsList(vc: self, for: info.view?.tag)
         }
     }
+
     @IBAction func changeDirectionTapped(_ sender: Any) {
         
         isChangeDirectionTapped = !isChangeDirectionTapped
         let countEmpty = routeElements.reduce(0) { $1 == nil ? $0 + 1 : $0 }
         
         switch countEmpty {
-        case 2:
-            self.view.makeToast("error")
         case 0:
             if isChangeDirectionTapped {
                 fromLabel.text = routeElements[1]?.value?.uppercased()
@@ -106,8 +142,32 @@ class SearchViewController: UIViewController {
         default:
             return
         }
-        
     }
+    
+    @IBAction func calendarTapped(_ sender: Any) {
+        coordinator?.showCalendar(currentDate: Date()) { (date) in
+            let newDate = self.interactor.convertLabelDate(date: date)
+            let searchDate = self.interactor.convertSearchFormatDate(date: date)
+            self.dateButton.setTitle(newDate, for: .normal)
+            self.date = searchDate
+        }
+    }
+    
+    @IBAction func todayTapped(_ sender: Any) {
+        self.dateButton.setTitle("cегодня".localized, for: .normal)
+        self.date = "today"
+    }
+    
+    @IBAction func tomorrowTapped(_ sender: Any) {
+        self.dateButton.setTitle("завтра".localized, for: .normal)
+        self.date = "tomorrow"
+    }
+    
+    @IBAction func everydayTapped(_ sender: Any) {
+        self.dateButton.setTitle("на все дни".localized, for: .normal)
+        self.date = "everyday"
+    }
+
 }
 
 extension SearchViewController: UINavigationControllerDelegate {
@@ -123,3 +183,4 @@ extension SearchViewController: UINavigationControllerDelegate {
         return heroTransition.navigationController(navigationController, animationControllerFor: operation, from: fromVC, to: toVC)
     }
 }
+

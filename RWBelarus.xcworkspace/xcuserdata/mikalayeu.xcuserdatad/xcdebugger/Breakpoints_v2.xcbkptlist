@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RWBelarus/Views/Cells/SearchResultCell.swift"
-            timestampString = "561999875.757454"
+            timestampString = "562064444.090466"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "67"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "RWBelarus/Network/RouteAPI.swift"
-            timestampString = "561999875.757529"
+            timestampString = "562075795.0245"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "136"
@@ -100,16 +100,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "RWBelarus/ViewControllers/SearchViewController/SearchViewController.swift"
-            timestampString = "561999875.757785"
+            filePath = "RWBelarus/Views/Cells/AutocompleteCell.swift"
+            timestampString = "562174369.663111"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "78"
-            endingLineNumber = "78"
-            landmarkName = "navigationController(_:interactionControllerFor:)"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "configure(with:searchElement:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
