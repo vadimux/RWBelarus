@@ -23,10 +23,10 @@ class SearchAutocompleteViewCoordinator: Coordinator, SearchAutocompleteViewCont
     
     func start(with completion: CoordinatorCallback?) {
         
-        guard let navViewController = R.storyboard.search.searchAutocompleteNavigationViewController(), let viewController = navViewController.topViewController as? SearchAutocompleteViewController else {
-            preconditionFailure("RouteResult Storyboard should contain RouteResultNavigationController and RouteResultViewController")
+        guard let viewController = R.storyboard.search.searchAutocompleteViewController() else {
+            preconditionFailure("RouteResult Storyboard should contain SearchAutocompleteViewController")
         }
-
+        
         viewController.coordinator = self
         viewController.interactor = SearchAutocompleteViewInteractor()
         rootViewController.show(viewController, sender: self)

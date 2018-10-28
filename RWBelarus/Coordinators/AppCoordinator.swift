@@ -42,13 +42,14 @@ class AppCoordinator: Coordinator {
     // MARK: - Functions
     
     func setupAppearance() {
-        UINavigationBar.appearance().tintColor = .blue
+        UINavigationBar.appearance().tintColor = .white
         UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        
         UIBarButtonItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.clear], for: .normal)
         UIBarButtonItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.clear], for: .highlighted)
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = .white
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         UITabBar.appearance().tintColor = .blue
         UITabBar.appearance().backgroundColor = .white
         

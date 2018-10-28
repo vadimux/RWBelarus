@@ -9,6 +9,7 @@
 import UIKit
 
 protocol RouteResultViewControllerInteractor: class {
+    func prepareForTitle() -> String
     func prepareForShowResult(completion: @escaping (_ route: [Route]?,_ error: String?) -> ())
 }
 
@@ -28,12 +29,8 @@ class RouteResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = interactor?.prepareForTitle()
         prepareResultForTableView()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-
     }
     
     private func prepareResultForTableView() {

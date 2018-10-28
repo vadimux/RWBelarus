@@ -78,7 +78,7 @@ class SearchResultCell: UITableViewCell {
         finishTime.text = element.finishTime
         daysLabel.text = element.days
         exceptStationLabel.text = element.exceptStops
-        
+        trainRouteLabel.sizeToFit()
         typeTrainImage.image = {
             switch element.trainType {
             case .internationalLines:

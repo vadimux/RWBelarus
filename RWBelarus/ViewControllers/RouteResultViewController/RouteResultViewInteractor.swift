@@ -10,9 +10,9 @@ import Foundation
 
 class RouteResultViewInteractor: RouteResultViewControllerInteractor {
     
-    var fromData: AutocompleteAPIElement
-    var toData: AutocompleteAPIElement
-    var date: String
+    private var fromData: AutocompleteAPIElement
+    private var toData: AutocompleteAPIElement
+    private var date: String
     
     init(fromData: AutocompleteAPIElement, toData: AutocompleteAPIElement, date: String) {
         self.fromData = fromData
@@ -30,5 +30,17 @@ class RouteResultViewInteractor: RouteResultViewControllerInteractor {
                 completion(nil, error.localizedDescription)
             }
         }
+    }
+    
+    func prepareForTitle() -> String {
+        guard let from = fromData.value?.uppercased(), let to = toData.value?.uppercased() else { return ""}
+        return "\(from) - \(to)"
+    }
+    
+    private func convertLabelDate(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E, d MMM"
+        let newDate = dateFormatter.string(from: date)
+        return newDate
     }
 }
