@@ -37,5 +37,11 @@ class RouteResultViewCoordinator: Coordinator, RouteResultViewControllerCoordina
     
     func stop(with completion: CoordinatorCallback?) {
     }
+    
+    func showFullRoute(vc: UIViewController, for route: Route) {
+        guard let navVC = vc.navigationController else { return }
+        let fullRouteViewCoordinator = FullRouteViewCoordinator(rootViewController: navVC, route: route)
+        fullRouteViewCoordinator.start(with: nil)
+    }
         
 }

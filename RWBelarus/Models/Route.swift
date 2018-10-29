@@ -26,6 +26,9 @@ class Route {
     var finishTime: String = ""
     var routeName: String = ""
     var days: String = ""
+    var fromExp: String = ""
+    var toExp: String = ""
+    var date: String = ""
     var trainType: TrainType = .unknown
     var exceptStops: String = ""
     var place: [TrainPlace] = [TrainPlace]()
@@ -40,6 +43,9 @@ extension Route {
         private var finishTime: String?
         private var routeName: String?
         private var days: String?
+        private var fromExp: String?
+        private var toExp: String?
+        private var date: String?
         private var trainType: TrainType?
         private var exceptStops: String?
         private var place: [TrainPlace]?
@@ -50,11 +56,14 @@ extension Route {
                 travelTime = routeObject.travelTime
                 startTime = routeObject.startTime
                 finishTime = routeObject.finishTime
+                fromExp = routeObject.fromExp
+                toExp = routeObject.toExp
                 routeName = routeObject.routeName
                 days = routeObject.days
                 trainType = routeObject.trainType
                 exceptStops = routeObject.exceptStops
                 place = routeObject.place
+                date = routeObject.date
             }
         }
         
@@ -78,8 +87,23 @@ extension Route {
             return self
         }
         
+        func date(_ date: String) -> Builder {
+            self.date = date
+            return self
+        }
+        
         func routeName(_ routeName: String) -> Builder {
             self.routeName = routeName
+            return self
+        }
+        
+        func fromExp(_ fromExp: String) -> Builder {
+            self.fromExp = fromExp
+            return self
+        }
+        
+        func toExp(_ toExp: String) -> Builder {
+            self.toExp = toExp
             return self
         }
         
@@ -124,6 +148,18 @@ extension Route {
                 routeObject.routeName = routeName
             }
             
+            if let toExp = toExp {
+                routeObject.toExp = toExp
+            }
+            
+            if let date = date {
+                routeObject.date = date
+            }
+            
+            if let fromExp = fromExp {
+                routeObject.fromExp = fromExp
+            }
+            
             if let days = days {
                 routeObject.days = days
             }
@@ -143,11 +179,7 @@ extension Route {
             return routeObject
         }
     }
-    
-    static func from(routeObject: Route?) -> Builder {
-        return Builder(routeObject: routeObject)
-    }
-    
+
     static func create() -> Builder {
         return Builder()
     }

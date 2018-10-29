@@ -46,18 +46,18 @@ class SearchAutocompleteViewController: UIViewController {
         self.definesPresentationContext = true
         
         
-//        if let searchTextField = self.searchBar.value(forKey: "_searchField") as? UITextField, let clearButton = searchTextField.value(forKey: "_clearButton") as? UIButton, let placeholder = searchTextField.value(forKey: "placeholderLabel") as? UILabel {
-//            let templateImage = clearButton.imageView?.image?.withRenderingMode(.alwaysTemplate)
-//            clearButton.setImage(templateImage, for: .normal)
-//            clearButton.tintColor = .white
-//            placeholder.textColor = .white
-//        }
-        
-        let cache = Cache.sharedInstance
-        if let tmp = try? cache.checkCache(), tmp == true {
-            let result = try? cache.retrieveFromCache()
-            print(result)
+        if let searchTextField = self.searchBar.value(forKey: "_searchField") as? UITextField, let clearButton = searchTextField.value(forKey: "_clearButton") as? UIButton, let placeholder = searchTextField.value(forKey: "placeholderLabel") as? UILabel {
+            let templateImage = clearButton.imageView?.image?.withRenderingMode(.alwaysTemplate)
+            clearButton.setImage(templateImage, for: .normal)
+            clearButton.tintColor = .white
+            placeholder.textColor = .white
         }
+        
+//        let cache = Cache.sharedInstance
+//        if let tmp = try? cache.checkCache(), tmp == true {
+//            let result = try? cache.retrieveFromCache()
+//            print(result)
+//        }
     }
     
     @objc private func callAutocomplete(_ timer: Timer) {

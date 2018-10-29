@@ -72,11 +72,7 @@ extension TrainPlace {
             return trainPlaceObject
         }
     }
-    
-    static func from(trainPlaceObject: TrainPlace?) -> Builder {
-        return Builder(trainPlaceObject: trainPlaceObject)
-    }
-    
+
     static func create() -> Builder {
         return Builder()
     }

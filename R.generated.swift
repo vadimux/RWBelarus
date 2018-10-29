@@ -228,9 +228,14 @@ struct _R: Rswift.Validatable {
       typealias InitialController = UIKit.UINavigationController
       
       let bundle = R.hostingBundle
+      let fullRouteViewController = StoryboardViewControllerResource<FullRouteViewController>(identifier: "FullRouteViewController")
       let name = "RouteResult"
       let routeResultNavigationController = StoryboardViewControllerResource<UIKit.UINavigationController>(identifier: "RouteResultNavigationController")
       let routeResultViewController = StoryboardViewControllerResource<RouteResultViewController>(identifier: "RouteResultViewController")
+      
+      func fullRouteViewController(_: Void = ()) -> FullRouteViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: fullRouteViewController)
+      }
       
       func routeResultNavigationController(_: Void = ()) -> UIKit.UINavigationController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: routeResultNavigationController)
@@ -241,9 +246,9 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
-        if UIKit.UIImage(named: "bzhd_0") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'bzhd_0' is used in storyboard 'RouteResult', but couldn't be loaded.") }
         if _R.storyboard.routeResult().routeResultViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'routeResultViewController' could not be loaded from storyboard 'RouteResult' as 'RouteResultViewController'.") }
         if _R.storyboard.routeResult().routeResultNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'routeResultNavigationController' could not be loaded from storyboard 'RouteResult' as 'UIKit.UINavigationController'.") }
+        if _R.storyboard.routeResult().fullRouteViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'fullRouteViewController' could not be loaded from storyboard 'RouteResult' as 'FullRouteViewController'.") }
       }
       
       fileprivate init() {}

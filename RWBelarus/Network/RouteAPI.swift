@@ -11,6 +11,13 @@ import SwiftSoup
 
 class NetworkManager {
     
+    /**
+     * Запрос на получение списка станций удовлетворяющих введенному названию
+     *
+     * @param term символы, входящие в название станции или полное наименование станции
+     * @completion список станций Result<AutocompleteAPI?>, удовлетворяющих введенному названию
+     */
+    
     static func autocomplete(term: String, completion: @escaping (Result<AutocompleteAPI?>) -> Void) {
         Alamofire.request(APIRouter.autocomplete(term: term))
             .response { response in
@@ -33,7 +40,7 @@ class NetworkManager {
      * @param date    дата поездки
      * @param fromExp идентификатор станции отправления
      * @param toExp   идентификатор станции назначения
-     * @return возвращает {@link ResponseBody} для получения и парсинга html страницы
+     * @completion возвращает Result<[Route]?> как список соответствующих маршрутов
      */
     static func getRouteBetweenCities(from: String, to: String, date: String, fromExp: String, fromEsr: String, toExp: String, toEsr: String, completion: @escaping (Result<[Route]?>) -> Void) {
         
@@ -51,7 +58,6 @@ class NetworkManager {
         let TRAVEL_TIME = "span[class=train_time-total]"
         let DAYS = "td[class=train_item train_days regional_only hidden]"
         let STOPSEXCEPT = "td[class=train_item train_halts regional_only everyday_regional_only hidden]"
-        let AB = "td[class=train_item train_details non_regional_only]"
         
         let ELECTRONIC_REGISTRATION = "i[class=b-spec spec_reserved]"
         let FAVOURITE_TRAIN = "i[class=b-spec spec_comfort]"
@@ -109,20 +115,22 @@ class NetworkManager {
                             }
                         }
                         
-//                        let route = Route(trainId: trainId, travelTime: travelTime, startTime: startTime, finishTime: finishTime, routeName: routeName, days: days, trainType: trainType, exceptStops: exceptStops, place: placesList)
-                        
                         routeList.append(Route.create()
-                        .trainId(trainId)
-                        .travelTime(travelTime)
-                        .startTime(startTime)
-                        .finishTime(finishTime)
-                        .routeName(routeName)
-                        .days(days)
-                        .trainType(trainType)
-                        .exceptStops(exceptStops)
-                        .place(places)
-                        .build())
+                            .trainId(trainId)
+                            .travelTime(travelTime)
+                            .startTime(startTime)
+                            .finishTime(finishTime)
+                            .routeName(routeName)
+                            .fromExp(fromExp)
+                            .toExp(toExp)
+                            .days(days)
+                            .trainType(trainType)
+                            .date(date)
+                            .exceptStops(exceptStops)
+                            .place(places)
+                            .build())
                     }
+                    //FIXIT: remove this logic
                     routeList.remove(at: 0)
                     completion(.success(routeList))
                 } catch let error {
@@ -130,6 +138,63 @@ class NetworkManager {
                 }
         }
     }
+    
+    
+    /**
+     * Запрос на получение маршрута поезда
+     *
+     * @param trainNumber номер поезда
+     * @param date  дата для поиска
+     * @completion возвращает {@link ResponseBody} для получения и парсинга html страницы
+     */
 
+    static func getFullRoute(trainNumber: String, fromExp: String, toExp: String, date: String, completion: @escaping (Result<[Route]?>) -> Void) {
+        
+        let STATION = "a[class=train_name -map train_text]"
+        let ARRIVAL = "b[class=train_end-time]"
+        let DEPARTURE = "b[class=train_start-time]"
+        let TRAVEL_TIME = "span[class=train_time-total]"
+        let STAY = "b[class=train_stop-time]"
+        
+        Alamofire.request(APIRouter.searchFullRoute(trainNumber: trainNumber, fromExp: fromExp, toExp: toExp, date: date))
+            .responseString { response in
+                
+                if let error = response.error {
+                    completion(.failure(error))
+                    return
+                }
+                
+                guard let responseData = response.data, let html = String(data: responseData, encoding: .utf8) else {
+                    return
+                }
+                
+                do {
+                    
+                    let doc: Document = try SwiftSoup.parse(html)
+                    
+                    guard let table: Element = try doc.select("table").first() else {
+                        return
+                    }
+                    
+                    let trCollection: Elements = try table.select("tr")
+                    
+                    for element in trCollection {
+                        let station: String = try element.select(STATION).first()?.text() ?? ""
+                        let arrival: String = try element.select(ARRIVAL).first()?.text() ?? ""
+                        let departure: String = try element.select(DEPARTURE).first()?.text() ?? ""
+                        let travelTime: String = try element.select(TRAVEL_TIME).first()?.text() ?? ""
+                        let stay: String = try element.select(STAY).first()?.text() ?? ""
+                        
+                        print(station, arrival, departure, travelTime, stay)
+                    }
+                    
+                } catch let error {
+                    completion(.failure(error))
+                }
+        }
+    }
+    
+    
+    
 }
 

@@ -14,7 +14,7 @@ protocol RouteResultViewControllerInteractor: class {
 }
 
 protocol RouteResultViewControllerCoordinator: class {
-    
+    func showFullRoute(vc: UIViewController, for route: Route)
 }
 
 class RouteResultViewController: UIViewController {
@@ -67,7 +67,7 @@ extension RouteResultViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.searchResultCell, for: indexPath)!
         cell.configure(with: searchResult[indexPath.row - 1])
         cell.tapped = { model in
-            print(model)
+            self.coordinator?.showFullRoute(vc: self, for: model)
         }
         return cell
     }
