@@ -9,7 +9,7 @@
 import UIKit
 
 protocol FullRouteViewControllerInteractor: class {
-//    func prepareForTitle() -> String
+    var route: Route { get }
     func fetchFullRoute(completion: @escaping (_ stations: [RouteItem]?, _ error: String?) -> Void)
 }
 
@@ -24,10 +24,15 @@ class FullRouteViewController: UIViewController {
 
     private var fullRouteStations = [RouteItem]()
     @IBOutlet weak var fullRouteTableView: UITableView!
+    @IBOutlet weak var trainTypeImage: UIImageView!
+    @IBOutlet weak var trainNumberLabel: UILabel!
+    @IBOutlet weak var routeLabel: UILabel!
+    @IBOutlet weak var trainTypeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        prepareForShow()
         self.fullRouteTableView.makeToastActivity(.center)
         interactor.fetchFullRoute { result, error in
             if let _ = error {
@@ -38,6 +43,30 @@ class FullRouteViewController: UIViewController {
             self.fullRouteTableView.reloadData()
             self.fullRouteTableView.hideToastActivity()
         }
+    }
+    
+    func prepareForShow() {
+        self.trainNumberLabel.text = self.interactor.route.trainId
+        self.routeLabel.text = self.interactor.route.routeName
+        self.trainTypeLabel.text = self.interactor.route.trainType.rawValue
+        self.trainTypeImage.image = {
+            switch self.interactor.route.trainType {
+            case .internationalLines:
+                return R.image.international()
+            case .regionalEconomyLines:
+                return R.image.region()
+            case .regionalBusinessLines:
+                return R.image.regionBusiness()
+            case .interregionalEconomyLines:
+                return R.image.interregionalEconomy()
+            case .interregionalBusinessLines:
+                return R.image.interregionalBusiness()
+            case .cityLines:
+                return R.image.city()
+            default:
+                return nil
+            }
+        }()
     }
     
 }
@@ -52,9 +81,6 @@ extension FullRouteViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.fullRouteCell, for: indexPath)!
         cell.configure(with: fullRouteStations[indexPath.row])
-//        cell.tapped = { model in
-//            self.coordinator?.showFullRoute(vc: self, for: model)
-//        }
         return cell
     }
 }

@@ -11,7 +11,7 @@ import Alamofire
 
 class FullRouteViewInteractor: FullRouteViewControllerInteractor {
     
-    private var route: Route
+    var route: Route
     
     init(route: Route) {
         self.route = route
@@ -19,7 +19,7 @@ class FullRouteViewInteractor: FullRouteViewControllerInteractor {
     
     func fetchFullRoute(completion: @escaping (_ stations: [RouteItem]?, _ error: String?) -> Void) {
         
-        NetworkManager.getFullRoute(trainNumber: self.route.trainId, fromExp: self.route.fromExp, toExp: self.route.toExp, date: self.route.date) { result in
+        NetworkManager.getFullRoute(for: self.route) { result in
             switch result {
             case .success(let stations):
                 completion(stations, nil)
@@ -29,3 +29,5 @@ class FullRouteViewInteractor: FullRouteViewControllerInteractor {
         }
     }
 }
+
+//trainNumber: self.route.trainId, fromExp: self.route.fromExp, toExp: self.route.toExp, date: self.route.date

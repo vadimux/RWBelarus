@@ -9,11 +9,11 @@
 import Foundation
 
 class RouteItem {
-    var station: String = ""
-    var arrival: String = ""
-    var departure: String = ""
-    var travelTime: String = ""
-    var stay: String = ""
+    var station: String?
+    var arrival: String?
+    var departure: String?
+    var travelTime: String?
+    var stay: String?
 }
 
 extension RouteItem {
@@ -35,27 +35,27 @@ extension RouteItem {
             }
         }
         
-        func station(_ station: String) -> Builder {
+        func station(_ station: String?) -> Builder {
             self.station = station
             return self
         }
         
-        func arrival(_ arrival: String) -> Builder {
+        func arrival(_ arrival: String?) -> Builder {
             self.arrival = arrival
             return self
         }
         
-        func departure(_ departure: String) -> Builder {
+        func departure(_ departure: String?) -> Builder {
             self.departure = departure
             return self
         }
         
-        func travelTime(_ travelTime: String) -> Builder {
+        func travelTime(_ travelTime: String?) -> Builder {
             self.travelTime = travelTime
             return self
         }
         
-        func stay(_ stay: String) -> Builder {
+        func stay(_ stay: String?) -> Builder {
             self.stay = stay
             return self
         }

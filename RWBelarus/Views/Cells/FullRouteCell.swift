@@ -14,6 +14,7 @@ class FullRouteCell: UITableViewCell {
     @IBOutlet weak var departureTimeLabel: UILabel!
     @IBOutlet weak var stayTimeLabel: UILabel!
     @IBOutlet weak var stationNameLabel: UILabel!
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         
@@ -24,10 +25,15 @@ class FullRouteCell: UITableViewCell {
     }
     
     func configure(with station: RouteItem) {
-        arrivalTimeLabel.text = station.arrival
-        departureTimeLabel.text = station.departure
-        stayTimeLabel.text = station.stay
-        stationNameLabel.text = station.station
+        
+        arrivalTimeLabel.text = station.arrival == "" ? nil : station.arrival
+        departureTimeLabel.text = station.departure == "" ? nil : station.departure
+        stayTimeLabel.text = station.stay == "" ? nil : station.stay
+        stationNameLabel.text = station.station == "" ? nil : station.station
+        
+        print(stayTimeLabel.text)
+        print(departureTimeLabel.text)
+        print(arrivalTimeLabel.text)
     }
     
     
