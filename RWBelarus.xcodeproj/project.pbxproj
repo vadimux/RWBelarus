@@ -32,6 +32,7 @@
 		A7B40D6A217EF28D0005C914 /* SearchAutocompleteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B40D69217EF28D0005C914 /* SearchAutocompleteViewController.swift */; };
 		A7B40D6C217EF5150005C914 /* SearchAutocompleteViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B40D6B217EF5150005C914 /* SearchAutocompleteViewInteractor.swift */; };
 		A7B40D7A217F60EB0005C914 /* SearchAutocompleteViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B40D79217F60EB0005C914 /* SearchAutocompleteViewCoordinator.swift */; };
+		A7BDB213218821BC0070E543 /* FullRouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7BDB212218821BC0070E543 /* FullRouteCell.swift */; };
 		A7D1A3CB217DB14900B374DE /* UIView+Inspectable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1A3CA217DB14900B374DE /* UIView+Inspectable.swift */; };
 		A7D1A3CD217DB16300B374DE /* String+Localizable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1A3CC217DB16300B374DE /* String+Localizable.swift */; };
 		A7D1A3CF217DCC7B00B374DE /* TrainPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1A3CE217DCC7B00B374DE /* TrainPlace.swift */; };
@@ -84,6 +85,7 @@
 		A7B40D69217EF28D0005C914 /* SearchAutocompleteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAutocompleteViewController.swift; sourceTree = "<group>"; };
 		A7B40D6B217EF5150005C914 /* SearchAutocompleteViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAutocompleteViewInteractor.swift; sourceTree = "<group>"; };
 		A7B40D79217F60EB0005C914 /* SearchAutocompleteViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAutocompleteViewCoordinator.swift; sourceTree = "<group>"; };
+		A7BDB212218821BC0070E543 /* FullRouteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullRouteCell.swift; sourceTree = "<group>"; };
 		A7D1A3C6217DB0EB00B374DE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		A7D1A3C7217DB0EB00B374DE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		A7D1A3C8217DB0FA00B374DE /* be-BY */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "be-BY"; path = "be-BY.lproj/Main.strings"; sourceTree = "<group>"; };
@@ -328,6 +330,7 @@
 				A7EF0C5821770C4B00C075E0 /* SearchResultCell.swift */,
 				A7D1A3D0217DE12C00B374DE /* TicketInfoCell.swift */,
 				A75E13AB21831DF400CB7E47 /* RequestCell.swift */,
+				A7BDB212218821BC0070E543 /* FullRouteCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -524,6 +527,7 @@
 				A7B2E3922182ED4600CC7273 /* CalendarViewCoordinator.swift in Sources */,
 				A7F45DD12175E35A0099A9E1 /* Route.swift in Sources */,
 				A71DFCDE2186E47500874458 /* RouteItem.swift in Sources */,
+				A7BDB213218821BC0070E543 /* FullRouteCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

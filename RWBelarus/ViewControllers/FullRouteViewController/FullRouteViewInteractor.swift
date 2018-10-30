@@ -17,7 +17,7 @@ class FullRouteViewInteractor: FullRouteViewControllerInteractor {
         self.route = route
     }
     
-    func fetchFullRoute(completion: @escaping (_ stations: [Route]?, _ error: String?) -> Void) {
+    func fetchFullRoute(completion: @escaping (_ stations: [RouteItem]?, _ error: String?) -> Void) {
         
         NetworkManager.getFullRoute(trainNumber: self.route.trainId, fromExp: self.route.fromExp, toExp: self.route.toExp, date: self.route.date) { result in
             switch result {

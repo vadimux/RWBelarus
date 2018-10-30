@@ -148,7 +148,7 @@ class NetworkManager {
      * @completion возвращает {@link ResponseBody} для получения и парсинга html страницы
      */
 
-    static func getFullRoute(trainNumber: String, fromExp: String, toExp: String, date: String, completion: @escaping (Result<[Route]?>) -> Void) {
+    static func getFullRoute(trainNumber: String, fromExp: String, toExp: String, date: String, completion: @escaping (Result<[RouteItem]?>) -> Void) {
         
         let STATION = "a[class=train_name -map train_text]"
         let ARRIVAL = "b[class=train_end-time]"
@@ -177,6 +177,7 @@ class NetworkManager {
                     }
                     
                     let trCollection: Elements = try table.select("tr")
+                    var stations = [RouteItem]()
                     
                     for element in trCollection {
                         let station: String = try element.select(STATION).first()?.text() ?? ""
@@ -185,16 +186,19 @@ class NetworkManager {
                         let travelTime: String = try element.select(TRAVEL_TIME).first()?.text() ?? ""
                         let stay: String = try element.select(STAY).first()?.text() ?? ""
                         
-                        print(station, arrival, departure, travelTime, stay)
+                        stations.append(RouteItem.create()
+                            .station(station)
+                            .arrival(arrival)
+                            .departure(departure)
+                            .travelTime(travelTime)
+                            .stay(stay)
+                            .build())
                     }
-                    
+                    completion(.success(stations))
                 } catch let error {
                     completion(.failure(error))
                 }
         }
     }
-    
-    
-    
 }
 

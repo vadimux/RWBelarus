@@ -39,8 +39,13 @@ class RouteResultViewController: UIViewController {
         self.resultTableView.hideEmptyCells()
         
         interactor.prepareForShowResult() { result, error in
+            if let error = error {
+                self.resultTableView.hideToastActivity()
+                return
+            }
             self.searchResult = result ?? []
             guard let count = result?.count, count > 0 else {
+                self.resultTableView.hideToastActivity()
                 return
             }
             DispatchQueue.main.async {

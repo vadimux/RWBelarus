@@ -20,10 +20,10 @@ struct K {
         static let from = "from"
         static let to = "to"
         static let date = "date"
-        static let fromExp = "fromExp"
-        static let fromEsr = "fromEsr"
-        static let toExp = "toExp"
-        static let toEsr = "toEsr"
+        static let fromExp = "from_exp"
+        static let fromEsr = "from_esr"
+        static let toExp = "to_exp"
+        static let toEsr = "to_esr"
     }
 }
 
