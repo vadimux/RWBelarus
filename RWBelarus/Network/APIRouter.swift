@@ -13,7 +13,7 @@ enum APIRouter: URLRequestConvertible {
     
     case autocomplete(term: String)
     case search(from: String, to: String, date: String, fromExp: String, fromEsr: String, toExp: String, toEsr: String)
-    case searchFullRoute(trainNumber: String, fromExp: String, toExp: String, date: String)
+    case searchFullRoute(urlPath: String?)
     
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
@@ -30,8 +30,13 @@ enum APIRouter: URLRequestConvertible {
             return "ajax/autocomplete/search/"
         case .search:
             return "route/"
-        case .searchFullRoute:
-            return "train/"
+        case .searchFullRoute(let urlPath):
+            guard let urlPath = urlPath else {
+                return ""
+            }
+            //TODO: fix it with locale of device
+            let path = urlPath.replacingOccurrences(of: "/ru/", with: "")
+            return path
         }
     }
     
@@ -48,11 +53,8 @@ enum APIRouter: URLRequestConvertible {
             URLQueryItem(name: K.APIParameterKey.fromEsr, value: fromEsr),
             URLQueryItem(name: K.APIParameterKey.toExp, value: toExp),
             URLQueryItem(name: K.APIParameterKey.toEsr, value: toEsr)]
-        case .searchFullRoute(let trainNumber, let fromExp, let toExp, let date):
-            return [URLQueryItem(name: K.APIParameterKey.train, value: trainNumber),
-             URLQueryItem(name: K.APIParameterKey.fromExp, value: fromExp),
-             URLQueryItem(name: K.APIParameterKey.toExp, value: toExp),
-             URLQueryItem(name: K.APIParameterKey.date, value: date)]
+        case .searchFullRoute:
+            return nil
         }
     }
     

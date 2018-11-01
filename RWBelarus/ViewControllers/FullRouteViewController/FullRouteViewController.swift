@@ -80,7 +80,9 @@ extension FullRouteViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.fullRouteCell, for: indexPath)!
-        cell.configure(with: fullRouteStations[indexPath.row])
+        let isBottomLineHidden = indexPath.row == fullRouteStations.count - 1
+        let isTopLineViewHidden = indexPath.row == 0
+        cell.configure(with: fullRouteStations[indexPath.row], isBottomLineHidden: isBottomLineHidden, isTopLineViewHidden: isTopLineViewHidden)
         return cell
     }
 }

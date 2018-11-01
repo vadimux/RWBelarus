@@ -1,5 +1,5 @@
 //
-//  RouteAPI.swift
+//  RWAPI.swift
 //  RWBelarus
 //
 //  Created by Vadzim Mikalayeu on 10/19/18.
@@ -58,6 +58,8 @@ class NetworkManager {
         let TRAVEL_TIME = "span[class=train_time-total]"
         let DAYS = "td[class=train_item train_days regional_only hidden]"
         let STOPSEXCEPT = "td[class=train_item train_halts regional_only everyday_regional_only hidden]"
+        let URL = "div[class=train_name -map]"
+        let PLACE = "ul[class=train_details-group]"
         
         let ELECTRONIC_REGISTRATION = "i[class=b-spec spec_reserved]"
         let FAVOURITE_TRAIN = "i[class=b-spec spec_comfort]"
@@ -88,15 +90,17 @@ class NetworkManager {
                     let trCollection: Elements = try table.select("tr")
 
                     for element in trCollection {
-                        let trainId: String = try element.select(TRAIN_ID).first()?.text() ?? ""
-                        let travelTime: String = try element.select(TRAVEL_TIME).first()?.text() ?? ""
-                        let startTime: String = try element.select(TIME_START).first()?.text() ?? ""
-                        let finishTime: String = try element.select(TIME_END).first()?.text() ?? ""
-                        let routeName: String = try element.select(PATH).first()?.text() ?? ""
-                        let days: String = try element.select(DAYS).first()?.text() ?? ""
+                        let trainId: String? = try element.select(TRAIN_ID).first()?.text()
+                        let travelTime: String? = try element.select(TRAVEL_TIME).first()?.text()
+                        let startTime: String? = try element.select(TIME_START).first()?.text()
+                        let finishTime: String? = try element.select(TIME_END).first()?.text()
+                        let routeName: String? = try element.select(PATH).first()?.text()
+                        let days: String? = try element.select(DAYS).first()?.text()
                         let trainType: TrainType = TrainType(rawValue: try element.select(TRAIN_TYPE).first()?.text() ?? "") ?? .unknown
-                        let exceptStops: String = try element.select(STOPSEXCEPT).first()?.text()  ?? ""
-                        let elementPlace = try element.select("ul[class=train_details-group]")
+                        let exceptStops: String? = try element.select(STOPSEXCEPT).first()?.text()
+                        let urlPath: String? = try element.select(URL).first()?.select("a").first()?.attr("href")
+                        let elementPlace = try element.select(PLACE)
+                        
                         var places = [TrainPlace]()
                         
                         for i in 0..<elementPlace.array().count {
@@ -128,10 +132,11 @@ class NetworkManager {
                             .date(date)
                             .exceptStops(exceptStops)
                             .place(places)
+                            .urlPath(urlPath)
                             .build())
                     }
                     //FIXIT: remove this logic
-                    routeList.remove(at: 0)
+                    routeList.removeFirst()
                     completion(.success(routeList))
                 } catch let error {
                     completion(.failure(error))
@@ -156,7 +161,7 @@ class NetworkManager {
         let TRAVEL_TIME = "span[class=train_time-total]"
         let STAY = "b[class=train_stop-time]"
         
-        Alamofire.request(APIRouter.searchFullRoute(trainNumber: route.trainId, fromExp: route.fromExp, toExp: route.toExp, date: route.date))
+        Alamofire.request(APIRouter.searchFullRoute(urlPath: route.urlPath))
             .responseString { response in
                 
                 if let error = response.error {
@@ -178,7 +183,7 @@ class NetworkManager {
                     
                     let trCollection: Elements = try table.select("tr")
                     var stations = [RouteItem]()
-                    
+
                     for element in trCollection {
                         let station: String? = try element.select(STATION).first()?.text()
                         let arrival: String? = try element.select(ARRIVAL).first()?.text()
@@ -194,6 +199,7 @@ class NetworkManager {
                             .stay(stay)
                             .build())
                     }
+                    stations.removeFirst()
                     completion(.success(stations))
                 } catch let error {
                     completion(.failure(error))

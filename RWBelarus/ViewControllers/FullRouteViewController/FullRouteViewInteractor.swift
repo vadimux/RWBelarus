@@ -29,5 +29,3 @@ class FullRouteViewInteractor: FullRouteViewControllerInteractor {
         }
     }
 }
-
-//trainNumber: self.route.trainId, fromExp: self.route.fromExp, toExp: self.route.toExp, date: self.route.date

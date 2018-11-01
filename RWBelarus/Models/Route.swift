@@ -20,17 +20,18 @@ enum TrainType: String {
 
 class Route {
     
-    var trainId: String = ""
-    var travelTime: String = ""
-    var startTime: String = ""
-    var finishTime: String = ""
-    var routeName: String = ""
-    var days: String = ""
-    var fromExp: String = ""
-    var toExp: String = ""
-    var date: String = ""
+    var trainId: String?
+    var travelTime: String?
+    var startTime: String?
+    var finishTime: String?
+    var routeName: String?
+    var days: String?
+    var fromExp: String?
+    var toExp: String?
+    var date: String?
     var trainType: TrainType = .unknown
-    var exceptStops: String = ""
+    var exceptStops: String?
+    var urlPath: String?
     var place: [TrainPlace] = [TrainPlace]()
 }
 
@@ -48,6 +49,7 @@ extension Route {
         private var date: String?
         private var trainType: TrainType?
         private var exceptStops: String?
+        private var urlPath: String?
         private var place: [TrainPlace]?
         
         init(routeObject: Route? = nil) {
@@ -64,50 +66,51 @@ extension Route {
                 exceptStops = routeObject.exceptStops
                 place = routeObject.place
                 date = routeObject.date
+                urlPath = routeObject.urlPath
             }
         }
         
-        func trainId(_ trainId: String) -> Builder {
+        func trainId(_ trainId: String?) -> Builder {
             self.trainId = trainId
             return self
         }
         
-        func travelTime(_ travelTime: String) -> Builder {
+        func travelTime(_ travelTime: String?) -> Builder {
             self.travelTime = travelTime
             return self
         }
         
-        func startTime(_ startTime: String) -> Builder {
+        func startTime(_ startTime: String?) -> Builder {
             self.startTime = startTime
             return self
         }
         
-        func finishTime(_ finishTime: String) -> Builder {
+        func finishTime(_ finishTime: String?) -> Builder {
             self.finishTime = finishTime
             return self
         }
         
-        func date(_ date: String) -> Builder {
+        func date(_ date: String?) -> Builder {
             self.date = date
             return self
         }
         
-        func routeName(_ routeName: String) -> Builder {
+        func routeName(_ routeName: String?) -> Builder {
             self.routeName = routeName
             return self
         }
         
-        func fromExp(_ fromExp: String) -> Builder {
+        func fromExp(_ fromExp: String?) -> Builder {
             self.fromExp = fromExp
             return self
         }
         
-        func toExp(_ toExp: String) -> Builder {
+        func toExp(_ toExp: String?) -> Builder {
             self.toExp = toExp
             return self
         }
         
-        func days(_ days: String) -> Builder {
+        func days(_ days: String?) -> Builder {
             self.days = days
             return self
         }
@@ -117,13 +120,18 @@ extension Route {
             return self
         }
         
-        func exceptStops(_ exceptStops: String) -> Builder {
+        func exceptStops(_ exceptStops: String?) -> Builder {
             self.exceptStops = exceptStops
             return self
         }
         
         func place(_ place: [TrainPlace]) -> Builder {
             self.place = place
+            return self
+        }
+        
+        func urlPath(_ urlPath: String?) -> Builder {
+            self.urlPath = urlPath
             return self
         }
         
@@ -154,6 +162,10 @@ extension Route {
             
             if let date = date {
                 routeObject.date = date
+            }
+            
+            if let urlPath = urlPath {
+                routeObject.urlPath = urlPath
             }
             
             if let fromExp = fromExp {

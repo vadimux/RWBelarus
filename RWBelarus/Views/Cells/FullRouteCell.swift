@@ -14,6 +14,8 @@ class FullRouteCell: UITableViewCell {
     @IBOutlet weak var departureTimeLabel: UILabel!
     @IBOutlet weak var stayTimeLabel: UILabel!
     @IBOutlet weak var stationNameLabel: UILabel!
+    @IBOutlet weak var topLineView: UIView!
+    @IBOutlet weak var bottomLineView: UIView!
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -24,16 +26,14 @@ class FullRouteCell: UITableViewCell {
         stationNameLabel.text = nil
     }
     
-    func configure(with station: RouteItem) {
+    func configure(with station: RouteItem, isBottomLineHidden: Bool, isTopLineViewHidden: Bool) {
         
-        arrivalTimeLabel.text = station.arrival == "" ? nil : station.arrival
-        departureTimeLabel.text = station.departure == "" ? nil : station.departure
-        stayTimeLabel.text = station.stay == "" ? nil : station.stay
-        stationNameLabel.text = station.station == "" ? nil : station.station
-        
-        print(stayTimeLabel.text)
-        print(departureTimeLabel.text)
-        print(arrivalTimeLabel.text)
+        arrivalTimeLabel.text = station.arrival
+        departureTimeLabel.text = station.departure
+        stayTimeLabel.text = station.stay
+        stationNameLabel.text = station.station
+        topLineView.isHidden = isTopLineViewHidden
+        bottomLineView.isHidden = isBottomLineHidden
     }
     
     

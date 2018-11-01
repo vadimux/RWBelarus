@@ -41,22 +41,22 @@ extension RouteItem {
         }
         
         func arrival(_ arrival: String?) -> Builder {
-            self.arrival = arrival
+            self.arrival = arrival == "" ? nil : arrival
             return self
         }
         
         func departure(_ departure: String?) -> Builder {
-            self.departure = departure
+            self.departure = departure == "" ? nil : departure
             return self
         }
         
         func travelTime(_ travelTime: String?) -> Builder {
-            self.travelTime = travelTime
+            self.travelTime = travelTime == "" ? nil : travelTime
             return self
         }
         
         func stay(_ stay: String?) -> Builder {
-            self.stay = stay
+            self.stay = stay == "" ? nil : stay
             return self
         }
         
