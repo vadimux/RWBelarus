@@ -127,6 +127,8 @@ class NetworkManager {
                             .routeName(routeName)
                             .fromExp(fromExp)
                             .toExp(toExp)
+                            .fromStation(from)
+                            .toStation(to)
                             .days(days)
                             .trainType(trainType)
                             .date(date)
@@ -160,6 +162,7 @@ class NetworkManager {
         let DEPARTURE = "b[class=train_start-time]"
         let TRAVEL_TIME = "span[class=train_time-total]"
         let STAY = "b[class=train_stop-time]"
+        let URL = "div[class=train_inner]"
         
         Alamofire.request(APIRouter.searchFullRoute(urlPath: route.urlPath))
             .responseString { response in
@@ -190,6 +193,12 @@ class NetworkManager {
                         let departure: String? = try element.select(DEPARTURE).first()?.text()
                         let travelTime: String? = try element.select(TRAVEL_TIME).first()?.text()
                         let stay: String? = try element.select(STAY).first()?.text()
+                        let urlPath: String? = try element.select(URL).first()?.select("a").first()?.attr("href")
+                        var stationId: String?
+                        
+                        if let range = urlPath?.range(of: "exp=") {
+                            stationId = urlPath?[range.upperBound...].trimmingCharacters(in: .whitespaces)
+                        }
                         
                         stations.append(RouteItem.create()
                             .station(station)
@@ -197,6 +206,7 @@ class NetworkManager {
                             .departure(departure)
                             .travelTime(travelTime)
                             .stay(stay)
+                            .stationId(stationId)
                             .build())
                     }
                     stations.removeFirst()

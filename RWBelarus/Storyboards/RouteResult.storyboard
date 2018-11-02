@@ -24,15 +24,15 @@
                                 <color key="separatorColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="requestCell" rowHeight="220" id="BMq-MP-GSW" customClass="RequestCell" customModule="RWBelarus" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="requestCell" rowHeight="220" id="BMq-MP-GSW" customClass="RequestCell" customModule="RWBelarus" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="359" height="220"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="BMq-MP-GSW" id="3Mz-cs-aX5">
                                             <rect key="frame" x="0.0" y="0.0" width="359" height="219.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WF2-3I-yy4">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="232.5"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bzhd_0" translatesAutoresizingMaskIntoConstraints="NO" id="WF2-3I-yy4">
+                                                    <rect key="frame" x="0.0" y="0.0" width="359" height="201.5"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="WF2-3I-yy4" secondAttribute="height" multiplier="16:9" id="GXK-oJ-doi"/>
                                                     </constraints>
@@ -515,6 +515,7 @@
                                             <outlet property="arrivalTimeLabel" destination="nwX-Fu-0cG" id="O5h-3b-lPM"/>
                                             <outlet property="bottomLineView" destination="ZdU-ol-OJ7" id="tXc-QD-q86"/>
                                             <outlet property="departureTimeLabel" destination="9Q0-lO-KEY" id="IlA-gd-vij"/>
+                                            <outlet property="roundView" destination="dTY-qt-sQ9" id="mOJ-e5-kEl"/>
                                             <outlet property="stationNameLabel" destination="sQk-cY-bBS" id="eTD-iA-B67"/>
                                             <outlet property="stayTimeLabel" destination="aK4-cU-tBq" id="j1P-pn-jp7"/>
                                             <outlet property="topLineView" destination="Yiy-Cs-KMv" id="sdX-0S-GKJ"/>
@@ -574,5 +575,8 @@
             <point key="canvasLocation" x="109.59999999999999" y="162.3688155922039"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bzhd_0" width="1280" height="720"/>
+    </resources>
     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
 </document>

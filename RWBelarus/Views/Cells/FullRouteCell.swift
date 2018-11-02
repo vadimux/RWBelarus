@@ -16,6 +16,7 @@ class FullRouteCell: UITableViewCell {
     @IBOutlet weak var stationNameLabel: UILabel!
     @IBOutlet weak var topLineView: UIView!
     @IBOutlet weak var bottomLineView: UIView!
+    @IBOutlet weak var roundView: UIView!
     
     override func prepareForReuse() {
         super.prepareForReuse()
@@ -24,9 +25,12 @@ class FullRouteCell: UITableViewCell {
         departureTimeLabel.text = nil
         stayTimeLabel.text = nil
         stationNameLabel.text = nil
+        topLineView.backgroundColor = nil
+        bottomLineView.backgroundColor = nil
+        roundView.backgroundColor = nil
     }
     
-    func configure(with station: RouteItem, isBottomLineHidden: Bool, isTopLineViewHidden: Bool) {
+    func configure(with station: RouteItem, isBottomLineHidden: Bool, isTopLineViewHidden: Bool, route: Route) {
         
         arrivalTimeLabel.text = station.arrival
         departureTimeLabel.text = station.departure
@@ -34,7 +38,33 @@ class FullRouteCell: UITableViewCell {
         stationNameLabel.text = station.station
         topLineView.isHidden = isTopLineViewHidden
         bottomLineView.isHidden = isBottomLineHidden
+        
+        if route.trainType != .cityLines && route.trainType != .regionalEconomyLines {
+            if let station = station.station, let fromStation = route.fromStation, let toStation = route.toStation, !station.containsIgnoringCase(find: fromStation) && !station.containsIgnoringCase(find: toStation) {
+                topLineView.backgroundColor = .gray
+                bottomLineView.backgroundColor = .gray
+                roundView.backgroundColor = .gray
+            } else {
+                addColor()
+            }
+        } else {
+            addColor()
+        }
     }
     
+    private func addColor() {
+        topLineView.backgroundColor = UIColor(rgb: 0x025C91)
+        bottomLineView.backgroundColor = UIColor(rgb: 0x025C91)
+        roundView.backgroundColor = UIColor(rgb: 0x025C91)
+    }
     
+}
+
+extension String {
+    func contains(find: String) -> Bool {
+        return self.range(of: find) != nil
+    }
+    func containsIgnoringCase(find: String) -> Bool {
+        return self.range(of: find, options: .caseInsensitive) != nil
+    }
 }

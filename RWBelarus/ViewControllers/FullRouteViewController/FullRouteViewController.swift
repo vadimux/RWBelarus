@@ -82,7 +82,7 @@ extension FullRouteViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.fullRouteCell, for: indexPath)!
         let isBottomLineHidden = indexPath.row == fullRouteStations.count - 1
         let isTopLineViewHidden = indexPath.row == 0
-        cell.configure(with: fullRouteStations[indexPath.row], isBottomLineHidden: isBottomLineHidden, isTopLineViewHidden: isTopLineViewHidden)
+        cell.configure(with: fullRouteStations[indexPath.row], isBottomLineHidden: isBottomLineHidden, isTopLineViewHidden: isTopLineViewHidden, route: interactor.route)
         return cell
     }
 }

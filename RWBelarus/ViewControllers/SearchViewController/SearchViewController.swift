@@ -171,6 +171,7 @@ class SearchViewController: UIViewController {
 }
 
 extension SearchViewController: UINavigationControllerDelegate {
+    
     func navigationController(_ navigationController: UINavigationController, interactionControllerFor animationController: UIViewControllerAnimatedTransitioning)
         -> UIViewControllerInteractiveTransitioning? {
             return heroTransition.navigationController(navigationController, interactionControllerFor: animationController)

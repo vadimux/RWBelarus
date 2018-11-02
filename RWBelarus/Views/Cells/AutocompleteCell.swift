@@ -11,6 +11,7 @@ import UIKit
 class AutocompleteCell: UITableViewCell {
 
     @IBOutlet weak var autocompleteLabel: UILabel!
+    @IBOutlet weak var additionalInfoLabel: UILabel!
     
     private var tapRecognizer: UITapGestureRecognizer?
     var tapped: ((AutocompleteAPIElement) -> Void)?
@@ -20,14 +21,16 @@ class AutocompleteCell: UITableViewCell {
         super.prepareForReuse()
         
         autocompleteLabel.text = nil
+        additionalInfoLabel.text = nil
     }
     
     func configure(with element: AutocompleteAPIElement, searchElement: String?) {
         
-        if let element = element.label?.uppercased(), let searchElement = searchElement {
-            let string: NSMutableAttributedString = NSMutableAttributedString(string: (element))
+        if let value = element.value?.uppercased(), let additionalInfo = element.label, let searchElement = searchElement {
+            let string: NSMutableAttributedString = NSMutableAttributedString(string: (value))
             string.setColor(color: .red, forText: searchElement)
             autocompleteLabel.attributedText = string
+            additionalInfoLabel.text = additionalInfo
         }
         
         tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedInCell))

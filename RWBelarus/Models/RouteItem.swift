@@ -14,6 +14,7 @@ class RouteItem {
     var departure: String?
     var travelTime: String?
     var stay: String?
+    var stationId: String?
 }
 
 extension RouteItem {
@@ -24,6 +25,7 @@ extension RouteItem {
         private var departure: String?
         private var travelTime: String?
         private var stay: String?
+        var stationId: String?
         
         init(routeItemObject: RouteItem? = nil) {
             if let routeItemObject = routeItemObject {
@@ -32,11 +34,17 @@ extension RouteItem {
                 departure = routeItemObject.departure
                 travelTime = routeItemObject.travelTime
                 stay = routeItemObject.stay
+                stationId = routeItemObject.stationId
             }
         }
         
         func station(_ station: String?) -> Builder {
             self.station = station
+            return self
+        }
+        
+        func stationId(_ stationId: String?) -> Builder {
+            self.stationId = stationId
             return self
         }
         
@@ -76,11 +84,12 @@ extension RouteItem {
             if let travelTime = travelTime {
                 routeItemObject.travelTime = travelTime
             }
-            
             if let stay = stay {
                 routeItemObject.stay = stay
             }
-            
+            if let stationId = stationId {
+                routeItemObject.stationId = stationId
+            }
             return routeItemObject
         }
     }

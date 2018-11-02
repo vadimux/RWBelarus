@@ -25,6 +25,7 @@
 		A795F4E32179BE42003B942F /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E22179BE42003B942F /* APIConfiguration.swift */; };
 		A795F4E82179C080003B942F /* RWAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E72179C080003B942F /* RWAPI.swift */; };
 		A795F4EA2179D89B003B942F /* Locale+CurrentLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E92179D89B003B942F /* Locale+CurrentLocale.swift */; };
+		A79CADCF218C2177001DEF64 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79CADCE218C2177001DEF64 /* UIColor+RGB.swift */; };
 		A7B2E3902182E75F00CC7273 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B2E38F2182E75F00CC7273 /* CalendarViewController.swift */; };
 		A7B2E3922182ED4600CC7273 /* CalendarViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B2E3912182ED4600CC7273 /* CalendarViewCoordinator.swift */; };
 		A7B2E3942182EDD900CC7273 /* CalendarViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B2E3932182EDD900CC7273 /* CalendarViewInteractor.swift */; };
@@ -78,6 +79,7 @@
 		A795F4E22179BE42003B942F /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
 		A795F4E72179C080003B942F /* RWAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RWAPI.swift; sourceTree = "<group>"; };
 		A795F4E92179D89B003B942F /* Locale+CurrentLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+CurrentLocale.swift"; sourceTree = "<group>"; };
+		A79CADCE218C2177001DEF64 /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
 		A7B2E38F2182E75F00CC7273 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		A7B2E3912182ED4600CC7273 /* CalendarViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewCoordinator.swift; sourceTree = "<group>"; };
 		A7B2E3932182EDD900CC7273 /* CalendarViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewInteractor.swift; sourceTree = "<group>"; };
@@ -239,6 +241,7 @@
 				A7D1A3CC217DB16300B374DE /* String+Localizable.swift */,
 				A7D1A3D2217DEAC600B374DE /* UITableView+hideEmptyCells.swift */,
 				A75E13AD2183384000CB7E47 /* UIView+Designable.swift */,
+				A79CADCE218C2177001DEF64 /* UIColor+RGB.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -488,6 +491,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7F45DA12175B1A50099A9E1 /* Coordinator.swift in Sources */,
+				A79CADCF218C2177001DEF64 /* UIColor+RGB.swift in Sources */,
 				A75E13AC21831DF400CB7E47 /* RequestCell.swift in Sources */,
 				A7D1A3CB217DB14900B374DE /* UIView+Inspectable.swift in Sources */,
 				A7EF0C55217702EF00C075E0 /* RouteResultViewCoordinator.swift in Sources */,

@@ -28,6 +28,8 @@ class Route {
     var days: String?
     var fromExp: String?
     var toExp: String?
+    var fromStation: String?
+    var toStation: String?
     var date: String?
     var trainType: TrainType = .unknown
     var exceptStops: String?
@@ -46,6 +48,8 @@ extension Route {
         private var days: String?
         private var fromExp: String?
         private var toExp: String?
+        private var fromStation: String?
+        private var toStation: String?
         private var date: String?
         private var trainType: TrainType?
         private var exceptStops: String?
@@ -67,11 +71,23 @@ extension Route {
                 place = routeObject.place
                 date = routeObject.date
                 urlPath = routeObject.urlPath
+                fromStation = routeObject.fromStation
+                toStation = routeObject.toStation
             }
         }
         
         func trainId(_ trainId: String?) -> Builder {
             self.trainId = trainId
+            return self
+        }
+        
+        func fromStation(_ fromStation: String?) -> Builder {
+            self.fromStation = fromStation
+            return self
+        }
+        
+        func toStation(_ toStation: String?) -> Builder {
+            self.toStation = toStation
             return self
         }
         
@@ -151,41 +167,38 @@ extension Route {
             if let finishTime = finishTime {
                 routeObject.finishTime = finishTime
             }
-            
             if let routeName = routeName {
                 routeObject.routeName = routeName
             }
-            
             if let toExp = toExp {
                 routeObject.toExp = toExp
             }
-            
             if let date = date {
                 routeObject.date = date
             }
-            
             if let urlPath = urlPath {
                 routeObject.urlPath = urlPath
             }
-            
             if let fromExp = fromExp {
                 routeObject.fromExp = fromExp
             }
-            
             if let days = days {
                 routeObject.days = days
             }
-            
             if let trainType = trainType {
                 routeObject.trainType = trainType
             }
-            
             if let exceptStops = exceptStops {
                 routeObject.exceptStops = exceptStops
             }
-            
             if let place = place {
                 routeObject.place = place
+            }
+            if let fromStation = fromStation {
+                routeObject.fromStation = fromStation
+            }
+            if let toStation = toStation {
+                routeObject.toStation = toStation
             }
             
             return routeObject
