@@ -11,6 +11,7 @@ import UIKit
 protocol RouteResultViewControllerInteractor: class {
     func prepareForTitle() -> String
     func prepareForShowResult(completion: @escaping (_ route: [Route]?,_ error: String?) -> ())
+    func prepareForHeaderView() -> (String, String, String)
 }
 
 protocol RouteResultViewControllerCoordinator: class {
@@ -66,7 +67,9 @@ extension RouteResultViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.requestCell, for: indexPath)!
+            let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.headerResultCell, for: indexPath)!
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: UIScreen.main.bounds.width)
+            cell.configure(with: interactor.prepareForHeaderView())
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.searchResultCell, for: indexPath)!

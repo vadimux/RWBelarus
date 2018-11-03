@@ -8,6 +8,7 @@
 
 import Alamofire
 import SwiftSoup
+//import Cache
 
 class NetworkManager {
     
@@ -76,7 +77,13 @@ class NetworkManager {
                 guard let responseData = response.data, let html = String(data: responseData, encoding: .utf8) else {
                     return
                 }
-
+                
+//                do {
+//                    try Cache.sharedInstance.saveToCache(data: responseData, key: "\(from),\(to),\(date)")
+//                } catch {
+//                    print(error)
+//                }
+                
                 var routeList = [Route]()
                 
                 do {

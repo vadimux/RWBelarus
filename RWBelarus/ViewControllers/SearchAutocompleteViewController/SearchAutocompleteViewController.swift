@@ -112,8 +112,8 @@ extension SearchAutocompleteViewController: UITableViewDataSource, UITableViewDe
         }
         cell.configure(with: result[indexPath.row], searchElement: self.searchElement)
         cell.tapped = { model in
-            let cache = Cache.sharedInstance
-            try? cache.saveToCache(autocompleteElement: model)
+//            let cache = Cache.sharedInstance
+//            try? cache.saveToCache(autocompleteElement: model)
             self.coordinator?.dismiss(vc: self, withData: model)
         }
         return cell

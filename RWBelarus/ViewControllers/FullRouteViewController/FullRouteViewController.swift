@@ -11,6 +11,7 @@ import UIKit
 protocol FullRouteViewControllerInteractor: class {
     var route: Route { get }
     func fetchFullRoute(completion: @escaping (_ stations: [RouteItem]?, _ error: String?) -> Void)
+    func prepareForTitle() -> String 
 }
 
 protocol FullRouteViewControllerCoordinator: class {
@@ -19,20 +20,23 @@ protocol FullRouteViewControllerCoordinator: class {
 
 class FullRouteViewController: UIViewController {
     
-    var interactor: FullRouteViewControllerInteractor!
-    var coordinator: FullRouteViewControllerCoordinator?
-
-    private var fullRouteStations = [RouteItem]()
     @IBOutlet weak var fullRouteTableView: UITableView!
     @IBOutlet weak var trainTypeImage: UIImageView!
     @IBOutlet weak var trainNumberLabel: UILabel!
     @IBOutlet weak var routeLabel: UILabel!
     @IBOutlet weak var trainTypeLabel: UILabel!
     
+    var interactor: FullRouteViewControllerInteractor!
+    var coordinator: FullRouteViewControllerCoordinator?
+    
+    private var fullRouteStations = [RouteItem]()
+    private var selectedRouteStations = [RouteItem]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         prepareForShow()
+        self.title = interactor?.prepareForTitle()
         self.fullRouteTableView.makeToastActivity(.center)
         interactor.fetchFullRoute { result, error in
             if let _ = error {
@@ -40,6 +44,7 @@ class FullRouteViewController: UIViewController {
                 return
             }
             self.fullRouteStations = result ?? []
+            self.createSelectedRoute()
             self.fullRouteTableView.reloadData()
             self.fullRouteTableView.hideToastActivity()
         }
@@ -69,6 +74,19 @@ class FullRouteViewController: UIViewController {
         }()
     }
     
+    private func createSelectedRoute() {
+        guard let fromStation = interactor.route.fromStation, let toStation = interactor.route.toStation else { return }
+        
+        if let startIndex = fullRouteStations.index(where: { ($0.station?.contains(find: fromStation))! }),
+            let finishIndex = fullRouteStations.index(where: { ($0.station?.contains(find: toStation))! }) {
+            
+            let startDistance = fullRouteStations.distance(from: fullRouteStations.startIndex, to: startIndex)
+            let finishDistance = fullRouteStations.distance(from: fullRouteStations.startIndex, to: finishIndex)
+            
+            self.selectedRouteStations = Array(fullRouteStations[startDistance...finishDistance])
+        }
+        
+    }
 }
 
 
@@ -80,9 +98,7 @@ extension FullRouteViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.fullRouteCell, for: indexPath)!
-        let isBottomLineHidden = indexPath.row == fullRouteStations.count - 1
-        let isTopLineViewHidden = indexPath.row == 0
-        cell.configure(with: fullRouteStations[indexPath.row], isBottomLineHidden: isBottomLineHidden, isTopLineViewHidden: isTopLineViewHidden, route: interactor.route)
+        cell.configure(with: fullRouteStations, row: indexPath.row, route: interactor.route, selectedRoute: selectedRouteStations)
         return cell
     }
 }

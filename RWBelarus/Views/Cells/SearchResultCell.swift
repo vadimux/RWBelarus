@@ -20,6 +20,7 @@ class SearchResultCell: UITableViewCell {
     @IBOutlet weak var exceptStationLabel: UILabel!
     @IBOutlet weak var ticketTableView: UITableView!
     @IBOutlet weak var ticketTableConstraint: NSLayoutConstraint!
+    @IBOutlet weak var ticketStackView: UIStackView!
     
     var tapped: ((Route) -> Void)?
     var model: Route!
@@ -33,6 +34,7 @@ class SearchResultCell: UITableViewCell {
         
         ticketTableView.addObserver(self, forKeyPath: kObservedPropertyName, options: .new, context: nil)
         ticketTableView.hideEmptyCells()
+        ticketTableView.separatorColor = .clear
         
         tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedInCell))
         tapRecognizer?.numberOfTapsRequired = 1
@@ -58,6 +60,8 @@ class SearchResultCell: UITableViewCell {
         finishTime.text = nil
         daysLabel.text = nil
         typeTrainImage.image = nil
+        exceptStationLabel.text = nil
+        
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
@@ -78,7 +82,7 @@ class SearchResultCell: UITableViewCell {
         finishTime.text = element.finishTime
         daysLabel.text = element.days
         exceptStationLabel.text = element.exceptStops
-        trainRouteLabel.sizeToFit()
+
         typeTrainImage.image = {
             switch element.trainType {
             case .internationalLines:
@@ -97,6 +101,7 @@ class SearchResultCell: UITableViewCell {
                 return nil
             }
         }()
+        ticketStackView.isHidden = !(element.place.count > 0)
         
         if element.place.count > 0 {
             self.ticketInfo = element.place

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0DE3F6E5218DAD5700054E1E /* HeaderResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3F6E4218DAD5700054E1E /* HeaderResultCell.swift */; };
 		813434B83F4E2DE6301F856E /* Pods_RWBelarus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A75C502E252E6C5728935AB7 /* Pods_RWBelarus.framework */; };
 		A71DFCD82186D83100874458 /* FullRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71DFCD72186D83100874458 /* FullRouteViewController.swift */; };
 		A71DFCDA2186D84200874458 /* FullRouteViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71DFCD92186D84200874458 /* FullRouteViewInteractor.swift */; };
@@ -17,7 +18,6 @@
 		A739C7542174DB180080F151 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A739C7532174DB180080F151 /* Assets.xcassets */; };
 		A739C7572174DB180080F151 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A739C7552174DB180080F151 /* LaunchScreen.storyboard */; };
 		A739C7632174DC180080F151 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A739C7622174DC180080F151 /* SearchViewController.swift */; };
-		A75E13AC21831DF400CB7E47 /* RequestCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75E13AB21831DF400CB7E47 /* RequestCell.swift */; };
 		A75E13AE2183384000CB7E47 /* UIView+Designable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75E13AD2183384000CB7E47 /* UIView+Designable.swift */; };
 		A776C1682176240700859BB8 /* UIViewController+dismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A776C1672176240700859BB8 /* UIViewController+dismissKeyboard.swift */; };
 		A795F4DF2179BD74003B942F /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4DE2179BD74003B942F /* APIRouter.swift */; };
@@ -59,6 +59,7 @@
 
 /* Begin PBXFileReference section */
 		0165E49A68D0F07BEF232CAD /* Pods-RWBelarus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RWBelarus.release.xcconfig"; path = "Target Support Files/Pods-RWBelarus/Pods-RWBelarus.release.xcconfig"; sourceTree = "<group>"; };
+		0DE3F6E4218DAD5700054E1E /* HeaderResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderResultCell.swift; sourceTree = "<group>"; };
 		A71DFCD72186D83100874458 /* FullRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullRouteViewController.swift; sourceTree = "<group>"; };
 		A71DFCD92186D84200874458 /* FullRouteViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullRouteViewInteractor.swift; sourceTree = "<group>"; };
 		A71DFCDB2186D87E00874458 /* FullRouteViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullRouteViewCoordinator.swift; sourceTree = "<group>"; };
@@ -71,7 +72,6 @@
 		A739C7582174DB180080F151 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A739C7622174DC180080F151 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		A75C502E252E6C5728935AB7 /* Pods_RWBelarus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RWBelarus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A75E13AB21831DF400CB7E47 /* RequestCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestCell.swift; sourceTree = "<group>"; };
 		A75E13AD2183384000CB7E47 /* UIView+Designable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Designable.swift"; sourceTree = "<group>"; };
 		A776C1672176240700859BB8 /* UIViewController+dismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+dismissKeyboard.swift"; sourceTree = "<group>"; };
 		A795F4DE2179BD74003B942F /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
@@ -332,8 +332,8 @@
 				A7F45DDA2175FCDB0099A9E1 /* AutocompleteCell.swift */,
 				A7EF0C5821770C4B00C075E0 /* SearchResultCell.swift */,
 				A7D1A3D0217DE12C00B374DE /* TicketInfoCell.swift */,
-				A75E13AB21831DF400CB7E47 /* RequestCell.swift */,
 				A7BDB212218821BC0070E543 /* FullRouteCell.swift */,
+				0DE3F6E4218DAD5700054E1E /* HeaderResultCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -492,7 +492,6 @@
 			files = (
 				A7F45DA12175B1A50099A9E1 /* Coordinator.swift in Sources */,
 				A79CADCF218C2177001DEF64 /* UIColor+RGB.swift in Sources */,
-				A75E13AC21831DF400CB7E47 /* RequestCell.swift in Sources */,
 				A7D1A3CB217DB14900B374DE /* UIView+Inspectable.swift in Sources */,
 				A7EF0C55217702EF00C075E0 /* RouteResultViewCoordinator.swift in Sources */,
 				A7B40D6C217EF5150005C914 /* SearchAutocompleteViewInteractor.swift in Sources */,
@@ -530,6 +529,7 @@
 				A795F4E82179C080003B942F /* RWAPI.swift in Sources */,
 				A7B2E3922182ED4600CC7273 /* CalendarViewCoordinator.swift in Sources */,
 				A7F45DD12175E35A0099A9E1 /* Route.swift in Sources */,
+				0DE3F6E5218DAD5700054E1E /* HeaderResultCell.swift in Sources */,
 				A71DFCDE2186E47500874458 /* RouteItem.swift in Sources */,
 				A7BDB213218821BC0070E543 /* FullRouteCell.swift in Sources */,
 			);

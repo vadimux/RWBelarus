@@ -10,6 +10,23 @@ import UIKit
 import Toast_Swift
 import Hero
 
+enum RouteDate: String {
+    case today
+    case tomorrow
+    case everyday
+    
+    var value: String {
+        switch self {
+        case .today:
+            return "сегодня".localized
+        case .tomorrow:
+            return "завтра".localized
+        case .everyday:
+            return "на все дни".localized
+        }
+    }
+}
+
 protocol SearchViewControllerInteractor: class {
     var fromData: AutocompleteAPIElement? { get set }
     var toData: AutocompleteAPIElement? { get set }
@@ -154,18 +171,18 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func todayTapped(_ sender: Any) {
-        self.dateButton.setTitle("cегодня".localized, for: .normal)
-        self.date = "today"
+        self.dateButton.setTitle(RouteDate.today.value, for: .normal)
+        self.date = RouteDate.today.rawValue
     }
     
     @IBAction func tomorrowTapped(_ sender: Any) {
-        self.dateButton.setTitle("завтра".localized, for: .normal)
-        self.date = "tomorrow"
+        self.dateButton.setTitle(RouteDate.tomorrow.value, for: .normal)
+        self.date = RouteDate.tomorrow.rawValue
     }
     
     @IBAction func everydayTapped(_ sender: Any) {
-        self.dateButton.setTitle("на все дни".localized, for: .normal)
-        self.date = "everyday"
+        self.dateButton.setTitle(RouteDate.everyday.value, for: .normal)
+        self.date = RouteDate.everyday.rawValue
     }
 
 }

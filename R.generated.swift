@@ -106,8 +106,8 @@ struct R: Rswift.Validatable {
     static let autocompleteCell: Rswift.ReuseIdentifier<AutocompleteCell> = Rswift.ReuseIdentifier(identifier: "autocompleteCell")
     /// Reuse identifier `fullRouteCell`.
     static let fullRouteCell: Rswift.ReuseIdentifier<FullRouteCell> = Rswift.ReuseIdentifier(identifier: "fullRouteCell")
-    /// Reuse identifier `requestCell`.
-    static let requestCell: Rswift.ReuseIdentifier<RequestCell> = Rswift.ReuseIdentifier(identifier: "requestCell")
+    /// Reuse identifier `headerResultCell`.
+    static let headerResultCell: Rswift.ReuseIdentifier<HeaderResultCell> = Rswift.ReuseIdentifier(identifier: "headerResultCell")
     /// Reuse identifier `searchResultCell`.
     static let searchResultCell: Rswift.ReuseIdentifier<SearchResultCell> = Rswift.ReuseIdentifier(identifier: "searchResultCell")
     /// Reuse identifier `ticketInfoCell`.
