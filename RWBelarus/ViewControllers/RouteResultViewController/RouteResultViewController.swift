@@ -73,7 +73,7 @@ extension RouteResultViewController: UITableViewDataSource {
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.searchResultCell, for: indexPath)!
-        cell.configure(with: searchResult[indexPath.row - 1])
+        cell.configure(with: searchResult[indexPath.row - 1], rootViewController: self.navigationController)
         cell.tapped = { model in
             self.coordinator?.showFullRoute(vc: self, for: model)
         }

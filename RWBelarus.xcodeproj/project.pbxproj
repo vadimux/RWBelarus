@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		0DE3F6E5218DAD5700054E1E /* HeaderResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3F6E4218DAD5700054E1E /* HeaderResultCell.swift */; };
 		0DE3F6E7218E1B0900054E1E /* TrainPlacesAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3F6E6218E1B0900054E1E /* TrainPlacesAPIModel.swift */; };
+		0DE3F6EA218E435700054E1E /* СarriageSchemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3F6E9218E435700054E1E /* СarriageSchemeViewController.swift */; };
+		0DE3F6EC218E436500054E1E /* СarriageSchemeViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3F6EB218E436500054E1E /* СarriageSchemeViewInteractor.swift */; };
+		0DE3F6EE218E43E400054E1E /* СarriageSchemeViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3F6ED218E43E400054E1E /* СarriageSchemeViewCoordinator.swift */; };
 		813434B83F4E2DE6301F856E /* Pods_RWBelarus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A75C502E252E6C5728935AB7 /* Pods_RWBelarus.framework */; };
 		A71DFCD82186D83100874458 /* FullRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71DFCD72186D83100874458 /* FullRouteViewController.swift */; };
 		A71DFCDA2186D84200874458 /* FullRouteViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71DFCD92186D84200874458 /* FullRouteViewInteractor.swift */; };
@@ -62,6 +65,9 @@
 		0165E49A68D0F07BEF232CAD /* Pods-RWBelarus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RWBelarus.release.xcconfig"; path = "Target Support Files/Pods-RWBelarus/Pods-RWBelarus.release.xcconfig"; sourceTree = "<group>"; };
 		0DE3F6E4218DAD5700054E1E /* HeaderResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderResultCell.swift; sourceTree = "<group>"; };
 		0DE3F6E6218E1B0900054E1E /* TrainPlacesAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainPlacesAPIModel.swift; sourceTree = "<group>"; };
+		0DE3F6E9218E435700054E1E /* СarriageSchemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СarriageSchemeViewController.swift"; sourceTree = "<group>"; };
+		0DE3F6EB218E436500054E1E /* СarriageSchemeViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СarriageSchemeViewInteractor.swift"; sourceTree = "<group>"; };
+		0DE3F6ED218E43E400054E1E /* СarriageSchemeViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СarriageSchemeViewCoordinator.swift"; sourceTree = "<group>"; };
 		A71DFCD72186D83100874458 /* FullRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullRouteViewController.swift; sourceTree = "<group>"; };
 		A71DFCD92186D84200874458 /* FullRouteViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullRouteViewInteractor.swift; sourceTree = "<group>"; };
 		A71DFCDB2186D87E00874458 /* FullRouteViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullRouteViewCoordinator.swift; sourceTree = "<group>"; };
@@ -130,6 +136,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0DE3F6E8218E42F200054E1E /* СarriageSchemeViewController */ = {
+			isa = PBXGroup;
+			children = (
+				0DE3F6E9218E435700054E1E /* СarriageSchemeViewController.swift */,
+				0DE3F6EB218E436500054E1E /* СarriageSchemeViewInteractor.swift */,
+			);
+			path = "СarriageSchemeViewController";
+			sourceTree = "<group>";
+		};
 		9BE61F8CE32A3AA87292127A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -220,6 +235,7 @@
 				A7EF0C4F2177025500C075E0 /* RouteResultViewController */,
 				A71DFCD62186D81000874458 /* FullRouteViewController */,
 				A7B2E38E2182E68400CC7273 /* CalendarViewController */,
+				0DE3F6E8218E42F200054E1E /* СarriageSchemeViewController */,
 				A7B2E3952182EEE500CC7273 /* DialogViewController.swift */,
 			);
 			path = ViewControllers;
@@ -297,6 +313,7 @@
 				A7B40D79217F60EB0005C914 /* SearchAutocompleteViewCoordinator.swift */,
 				A71DFCDB2186D87E00874458 /* FullRouteViewCoordinator.swift */,
 				A7B2E3912182ED4600CC7273 /* CalendarViewCoordinator.swift */,
+				0DE3F6ED218E43E400054E1E /* СarriageSchemeViewCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -515,9 +532,11 @@
 				A7D1A3D3217DEAC600B374DE /* UITableView+hideEmptyCells.swift in Sources */,
 				A71DFCDA2186D84200874458 /* FullRouteViewInteractor.swift in Sources */,
 				A7EF0C5921770C4B00C075E0 /* SearchResultCell.swift in Sources */,
+				0DE3F6EE218E43E400054E1E /* СarriageSchemeViewCoordinator.swift in Sources */,
 				A71DFCD82186D83100874458 /* FullRouteViewController.swift in Sources */,
 				A7D1A3CF217DCC7B00B374DE /* TrainPlace.swift in Sources */,
 				A7B2E3942182EDD900CC7273 /* CalendarViewInteractor.swift in Sources */,
+				0DE3F6EC218E436500054E1E /* СarriageSchemeViewInteractor.swift in Sources */,
 				A7F45DAC2175B5AD0099A9E1 /* SearchViewCoordinator.swift in Sources */,
 				A7F45DD72175EA170099A9E1 /* AutocompleteAPIModel.swift in Sources */,
 				A7EF0C512177027F00C075E0 /* RouteResultViewController.swift in Sources */,
@@ -526,6 +545,7 @@
 				A7B2E3962182EEE500CC7273 /* DialogViewController.swift in Sources */,
 				A7F45DA52175B27B0099A9E1 /* TabsScreenCoordinator.swift in Sources */,
 				A75E13AE2183384000CB7E47 /* UIView+Designable.swift in Sources */,
+				0DE3F6EA218E435700054E1E /* СarriageSchemeViewController.swift in Sources */,
 				A739C74D2174DB160080F151 /* AppDelegate.swift in Sources */,
 				A776C1682176240700859BB8 /* UIViewController+dismissKeyboard.swift in Sources */,
 				A795F4E32179BE42003B942F /* APIConfiguration.swift in Sources */,

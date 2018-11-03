@@ -45,12 +45,6 @@ class NetworkManager {
      */
     static func getRouteBetweenCities(from: String, to: String, date: String, fromExp: String, fromEsr: String, toExp: String, toEsr: String, completion: @escaping (Result<[Route]?>) -> Void) {
         
-        //        let STATION = "a[class=train_name -map train_text]"
-        //        let ARRIVAL = "b[class=train_end-time]"
-        //        let ARRIVED = "b[class=train_start-time]"
-        //        let TRAVEL_TIME = "span[class=train_time-total]"
-        //        let STAY = "b[class=train_stop-time]"
-        
         let TRAIN_ID = "small[class=train_id]"
         let PATH = "a[class=train_text]"
         let TRAIN_TYPE = "div[class=train_description]"
@@ -118,7 +112,7 @@ class NetworkManager {
                                 let cost = try elementPlace.array()[i].getElementsByClass("train_price").text()
                                 let splitCost = cost.components(separatedBy: ". ")[j]
                                 let count = try countPlace.array()[j].text()
-                                let link = try countPlace.array()[i].attr("data-get")
+                                let link = try countPlace.array()[j].attr("data-get")
 
                                 places.append(TrainPlace.create()
                                     .name(name)
@@ -224,6 +218,20 @@ class NetworkManager {
                 } catch let error {
                     completion(.failure(error))
                 }
+        }
+    }
+    
+    static func getSchemePlaces(with urlPath: String, completion: @escaping (Result<TrainPlacesAPI?>) -> Void) {
+        Alamofire.request(APIRouter.getSchemePlaces(urlPath: urlPath))
+            .response { response in
+                if let error = response.error {
+                    completion(.failure(error))
+                    return
+                }
+                guard let responseData = response.data else { return }
+                
+                let autocompleteAPI = try? JSONDecoder().decode(TrainPlacesAPI.self, from: responseData)
+                completion(.success(autocompleteAPI))
         }
     }
 }

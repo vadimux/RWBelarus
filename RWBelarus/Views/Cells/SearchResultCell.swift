@@ -24,6 +24,7 @@ class SearchResultCell: UITableViewCell {
     
     var tapped: ((Route) -> Void)?
     var model: Route!
+    var rootViewController: UINavigationController?
     
     private var tapRecognizer: UITapGestureRecognizer?
     private var ticketInfo = [TrainPlace]()
@@ -71,7 +72,7 @@ class SearchResultCell: UITableViewCell {
         }
     }
     
-    func configure(with element: Route) {
+    func configure(with element: Route, rootViewController: UINavigationController?) {
         
         trainNumberLabel.text = element.trainId
         trainRouteLabel.text = element.routeName
@@ -106,6 +107,7 @@ class SearchResultCell: UITableViewCell {
             self.ticketTableView.reloadData()
         }
         model = element
+        self.rootViewController = rootViewController
     }
     
     @objc private func tappedInCell(recognizer: UITapGestureRecognizer?) {
@@ -124,7 +126,9 @@ extension SearchResultCell: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.ticketInfoCell, for: indexPath)!
         cell.configure(with: self.ticketInfo[indexPath.row])
         cell.tapped = { link in
-            print(link)
+            guard let rootVC = self.rootViewController else { return }
+            let coordinator = СarriageSchemeViewCoordinator.init(rootViewController: rootVC)
+            coordinator.start(with: nil)
         }
         return cell
     }

@@ -230,10 +230,15 @@ struct _R: Rswift.Validatable {
       typealias InitialController = UIKit.UINavigationController
       
       let bundle = R.hostingBundle
+      let carriageSchemeViewController = StoryboardViewControllerResource<CarriageSchemeViewController>(identifier: "CarriageSchemeViewController")
       let fullRouteViewController = StoryboardViewControllerResource<FullRouteViewController>(identifier: "FullRouteViewController")
       let name = "RouteResult"
       let routeResultNavigationController = StoryboardViewControllerResource<UIKit.UINavigationController>(identifier: "RouteResultNavigationController")
       let routeResultViewController = StoryboardViewControllerResource<RouteResultViewController>(identifier: "RouteResultViewController")
+      
+      func carriageSchemeViewController(_: Void = ()) -> CarriageSchemeViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: carriageSchemeViewController)
+      }
       
       func fullRouteViewController(_: Void = ()) -> FullRouteViewController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: fullRouteViewController)
@@ -252,6 +257,7 @@ struct _R: Rswift.Validatable {
         if _R.storyboard.routeResult().routeResultViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'routeResultViewController' could not be loaded from storyboard 'RouteResult' as 'RouteResultViewController'.") }
         if _R.storyboard.routeResult().routeResultNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'routeResultNavigationController' could not be loaded from storyboard 'RouteResult' as 'UIKit.UINavigationController'.") }
         if _R.storyboard.routeResult().fullRouteViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'fullRouteViewController' could not be loaded from storyboard 'RouteResult' as 'FullRouteViewController'.") }
+        if _R.storyboard.routeResult().carriageSchemeViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'carriageSchemeViewController' could not be loaded from storyboard 'RouteResult' as 'CarriageSchemeViewController'.") }
       }
       
       fileprivate init() {}
