@@ -51,14 +51,6 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var additionalFromLabel: UILabel!
     @IBOutlet weak var additionalToLabel: UILabel!
     @IBOutlet weak var fromLabel: UILabel!
-//        didSet {
-//            print("fromLabel")
-//            let countEmpty = routeElements.reduce(0) { $1 == nil ? $0 + 1 : $0 }
-//            print(countEmpty)
-//            guard let button = self.searchButton else { return }
-//            button.isEnabled = countEmpty == 0 ? true : false
-//        }
-//    }
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var searchButton: UIButton!
     

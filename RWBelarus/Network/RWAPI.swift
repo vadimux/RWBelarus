@@ -110,18 +110,16 @@ class NetworkManager {
                         
                         var places = [TrainPlace]()
                         
-                        print(elementPlace.array())
-                        
                         for i in 0..<elementPlace.array().count {
                             let countPlace = try elementPlace.array()[i].getElementsByClass("train_seats lnk")
-                            
                             let name = try elementPlace.array()[i].getElementsByClass("train_note").text()
                             
                             for j in 0..<countPlace.array().count {
                                 let cost = try elementPlace.array()[i].getElementsByClass("train_price").text()
                                 let splitCost = cost.components(separatedBy: ". ")[j]
                                 let count = try countPlace.array()[j].text()
-                                let link = try elementPlace.array()[i].attr("data-get")
+                                let link = try countPlace.array()[i].attr("data-get")
+
                                 places.append(TrainPlace.create()
                                     .name(name)
                                     .cost(splitCost)

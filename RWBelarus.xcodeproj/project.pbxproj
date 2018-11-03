@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0DE3F6E5218DAD5700054E1E /* HeaderResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3F6E4218DAD5700054E1E /* HeaderResultCell.swift */; };
+		0DE3F6E7218E1B0900054E1E /* TrainPlacesAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3F6E6218E1B0900054E1E /* TrainPlacesAPIModel.swift */; };
 		813434B83F4E2DE6301F856E /* Pods_RWBelarus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A75C502E252E6C5728935AB7 /* Pods_RWBelarus.framework */; };
 		A71DFCD82186D83100874458 /* FullRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71DFCD72186D83100874458 /* FullRouteViewController.swift */; };
 		A71DFCDA2186D84200874458 /* FullRouteViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71DFCD92186D84200874458 /* FullRouteViewInteractor.swift */; };
@@ -60,6 +61,7 @@
 /* Begin PBXFileReference section */
 		0165E49A68D0F07BEF232CAD /* Pods-RWBelarus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RWBelarus.release.xcconfig"; path = "Target Support Files/Pods-RWBelarus/Pods-RWBelarus.release.xcconfig"; sourceTree = "<group>"; };
 		0DE3F6E4218DAD5700054E1E /* HeaderResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderResultCell.swift; sourceTree = "<group>"; };
+		0DE3F6E6218E1B0900054E1E /* TrainPlacesAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainPlacesAPIModel.swift; sourceTree = "<group>"; };
 		A71DFCD72186D83100874458 /* FullRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullRouteViewController.swift; sourceTree = "<group>"; };
 		A71DFCD92186D84200874458 /* FullRouteViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullRouteViewInteractor.swift; sourceTree = "<group>"; };
 		A71DFCDB2186D87E00874458 /* FullRouteViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullRouteViewCoordinator.swift; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				A71DFCDD2186E47500874458 /* RouteItem.swift */,
 				A7D1A3CE217DCC7B00B374DE /* TrainPlace.swift */,
 				A7F45DD62175EA170099A9E1 /* AutocompleteAPIModel.swift */,
+				0DE3F6E6218E1B0900054E1E /* TrainPlacesAPIModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -532,6 +535,7 @@
 				0DE3F6E5218DAD5700054E1E /* HeaderResultCell.swift in Sources */,
 				A71DFCDE2186E47500874458 /* RouteItem.swift in Sources */,
 				A7BDB213218821BC0070E543 /* FullRouteCell.swift in Sources */,
+				0DE3F6E7218E1B0900054E1E /* TrainPlacesAPIModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

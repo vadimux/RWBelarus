@@ -49,7 +49,6 @@ class SearchResultCell: UITableViewCell {
         ticketTableView.removeObserver(self, forKeyPath: kObservedPropertyName)
     }
 
-        
     override func prepareForReuse() {
         super.prepareForReuse()
         
@@ -61,7 +60,6 @@ class SearchResultCell: UITableViewCell {
         daysLabel.text = nil
         typeTrainImage.image = nil
         exceptStationLabel.text = nil
-        
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
@@ -125,6 +123,9 @@ extension SearchResultCell: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.ticketInfoCell, for: indexPath)!
         cell.configure(with: self.ticketInfo[indexPath.row])
+        cell.tapped = { link in
+            print(link)
+        }
         return cell
     }
 }
