@@ -274,13 +274,13 @@
                                                                                             </label>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="248" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kOw-ba-UEO">
                                                                                                 <rect key="frame" x="114.5" y="0.0" width="110" height="43.5"/>
-                                                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                                                 <nil key="textColor"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
                                                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUT-8K-TlC">
                                                                                                 <rect key="frame" x="228.5" y="0.0" width="110.5" height="43.5"/>
-                                                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                                                                 <nil key="textColor"/>
                                                                                                 <nil key="highlightedColor"/>
                                                                                             </label>
