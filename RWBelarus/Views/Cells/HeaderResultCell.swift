@@ -27,6 +27,7 @@ class HeaderResultCell: UITableViewCell {
         self.toLabel.text = info.1
         self.dateLabel.text = info.2
     }
+    
     @IBAction func favoriteButtonTapped(_ sender: Any) {
     
     }

@@ -126,8 +126,8 @@ extension SearchResultCell: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.ticketInfoCell, for: indexPath)!
         cell.configure(with: self.ticketInfo[indexPath.row])
         cell.tapped = { link in
-            guard let rootVC = self.rootViewController else { return }
-            let coordinator = СarriageSchemeViewCoordinator.init(rootViewController: rootVC)
+            guard let rootVC = self.rootViewController, let link = link else { return }
+            let coordinator = СarriageSchemeViewCoordinator.init(rootViewController: rootVC, urlPath: link)
             coordinator.start(with: nil)
         }
         return cell

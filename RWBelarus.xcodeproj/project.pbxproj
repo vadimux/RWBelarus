@@ -12,6 +12,8 @@
 		0DE3F6EA218E435700054E1E /* СarriageSchemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3F6E9218E435700054E1E /* СarriageSchemeViewController.swift */; };
 		0DE3F6EC218E436500054E1E /* СarriageSchemeViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3F6EB218E436500054E1E /* СarriageSchemeViewInteractor.swift */; };
 		0DE3F6EE218E43E400054E1E /* СarriageSchemeViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3F6ED218E43E400054E1E /* СarriageSchemeViewCoordinator.swift */; };
+		0DE3F6F0218EC5D900054E1E /* CarriageSchemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3F6EF218EC5D900054E1E /* CarriageSchemeCell.swift */; };
+		0DE3F6F2218ED2F300054E1E /* CarriageFullInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3F6F1218ED2F300054E1E /* CarriageFullInfoCell.swift */; };
 		813434B83F4E2DE6301F856E /* Pods_RWBelarus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A75C502E252E6C5728935AB7 /* Pods_RWBelarus.framework */; };
 		A71DFCD82186D83100874458 /* FullRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71DFCD72186D83100874458 /* FullRouteViewController.swift */; };
 		A71DFCDA2186D84200874458 /* FullRouteViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71DFCD92186D84200874458 /* FullRouteViewInteractor.swift */; };
@@ -68,6 +70,8 @@
 		0DE3F6E9218E435700054E1E /* СarriageSchemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СarriageSchemeViewController.swift"; sourceTree = "<group>"; };
 		0DE3F6EB218E436500054E1E /* СarriageSchemeViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СarriageSchemeViewInteractor.swift"; sourceTree = "<group>"; };
 		0DE3F6ED218E43E400054E1E /* СarriageSchemeViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СarriageSchemeViewCoordinator.swift"; sourceTree = "<group>"; };
+		0DE3F6EF218EC5D900054E1E /* CarriageSchemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarriageSchemeCell.swift; sourceTree = "<group>"; };
+		0DE3F6F1218ED2F300054E1E /* CarriageFullInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarriageFullInfoCell.swift; sourceTree = "<group>"; };
 		A71DFCD72186D83100874458 /* FullRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullRouteViewController.swift; sourceTree = "<group>"; };
 		A71DFCD92186D84200874458 /* FullRouteViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullRouteViewInteractor.swift; sourceTree = "<group>"; };
 		A71DFCDB2186D87E00874458 /* FullRouteViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullRouteViewCoordinator.swift; sourceTree = "<group>"; };
@@ -354,6 +358,8 @@
 				A7D1A3D0217DE12C00B374DE /* TicketInfoCell.swift */,
 				A7BDB212218821BC0070E543 /* FullRouteCell.swift */,
 				0DE3F6E4218DAD5700054E1E /* HeaderResultCell.swift */,
+				0DE3F6EF218EC5D900054E1E /* CarriageSchemeCell.swift */,
+				0DE3F6F1218ED2F300054E1E /* CarriageFullInfoCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -443,6 +449,7 @@
 				"${BUILT_PRODUCTS_DIR}/Cache/Cache.framework",
 				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
@@ -455,6 +462,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cache.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
@@ -528,6 +536,7 @@
 				A7EF0C532177029100C075E0 /* RouteResultViewInteractor.swift in Sources */,
 				A7D1A3CD217DB16300B374DE /* String+Localizable.swift in Sources */,
 				A7B2E3902182E75F00CC7273 /* CalendarViewController.swift in Sources */,
+				0DE3F6F2218ED2F300054E1E /* CarriageFullInfoCell.swift in Sources */,
 				A739C7632174DC180080F151 /* SearchViewController.swift in Sources */,
 				A7D1A3D3217DEAC600B374DE /* UITableView+hideEmptyCells.swift in Sources */,
 				A71DFCDA2186D84200874458 /* FullRouteViewInteractor.swift in Sources */,
@@ -537,6 +546,7 @@
 				A7D1A3CF217DCC7B00B374DE /* TrainPlace.swift in Sources */,
 				A7B2E3942182EDD900CC7273 /* CalendarViewInteractor.swift in Sources */,
 				0DE3F6EC218E436500054E1E /* СarriageSchemeViewInteractor.swift in Sources */,
+				0DE3F6F0218EC5D900054E1E /* CarriageSchemeCell.swift in Sources */,
 				A7F45DAC2175B5AD0099A9E1 /* SearchViewCoordinator.swift in Sources */,
 				A7F45DD72175EA170099A9E1 /* AutocompleteAPIModel.swift in Sources */,
 				A7EF0C512177027F00C075E0 /* RouteResultViewController.swift in Sources */,

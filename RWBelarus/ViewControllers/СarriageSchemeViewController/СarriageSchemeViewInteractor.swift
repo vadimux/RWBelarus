@@ -10,4 +10,21 @@ import Foundation
 
 class СarriageSchemeViewInteractor: СarriageSchemeViewControllerInteractor {
     
+    private var urlPath: String
+    
+    init(urlPath: String) {
+        self.urlPath = urlPath
+    }
+    
+    func fetchСarriageScheme(completion: @escaping (_ information: TrainPlacesAPI?, _ error: String?) -> Void) {
+        
+        NetworkManager.getSchemePlaces(with: self.urlPath) { result in
+            switch result {
+            case .success(let information):
+                completion(information, nil)
+            case .failure(let error):
+                completion(nil, error.localizedDescription)
+            }
+        }
+    }
 }

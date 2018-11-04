@@ -14,6 +14,7 @@ target 'RWBelarus' do
     pod 'Toast-Swift'
     pod 'Alamofire'
     pod 'Hero'
+    pod 'Kingfisher'
     pod 'Cache'
     pod 'JTAppleCalendar'
     

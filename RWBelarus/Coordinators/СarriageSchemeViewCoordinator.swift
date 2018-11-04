@@ -11,12 +11,14 @@ import UIKit
 class СarriageSchemeViewCoordinator: NSObject, Coordinator, СarriageSchemeViewControllerCoordinator {
     
     var rootViewController: UINavigationController
-    private var dialogViewController: DialogViewController?
-    
     var childCoordinators: [Coordinator] = []
     
-    init(rootViewController: UINavigationController) {
+    private var dialogViewController: DialogViewController?
+    private var urlPath: String
+    
+    init(rootViewController: UINavigationController, urlPath: String) {
         self.rootViewController = rootViewController
+        self.urlPath = urlPath
         super.init()
     }
     
@@ -27,6 +29,7 @@ class СarriageSchemeViewCoordinator: NSObject, Coordinator, СarriageSchemeView
         }
         
         carriageSchemeViewController.coordinator = self
+        carriageSchemeViewController.interactor = СarriageSchemeViewInteractor(urlPath: urlPath)
         
         dialogViewController = DialogViewController.init(rootViewController: carriageSchemeViewController)
         rootViewController.present(dialogViewController!, animated: true) {
