@@ -30,28 +30,28 @@ class FullRouteCell: UITableViewCell {
         roundView.backgroundColor = nil
     }
     
-    func configure(with station: RouteItem, isBottomLineHidden: Bool, isTopLineViewHidden: Bool, route: Route) {
+    func configure(with stations: [RouteItem], row: Int, route: Route, selectedRoute: [RouteItem]) {
+        
+        let station = stations[row]
         
         arrivalTimeLabel.text = station.arrival
         departureTimeLabel.text = station.departure
         stayTimeLabel.text = station.stay
         stationNameLabel.text = station.station
-        topLineView.isHidden = isTopLineViewHidden
-        bottomLineView.isHidden = isBottomLineHidden
+        topLineView.isHidden = row == 0
+        bottomLineView.isHidden = row == stations.count - 1
         
-        if route.trainType != .cityLines && route.trainType != .regionalEconomyLines {
-            if let station = station.station, let fromStation = route.fromStation, let toStation = route.toStation, !station.containsIgnoringCase(find: fromStation) && !station.containsIgnoringCase(find: toStation) {
-                topLineView.backgroundColor = .gray
-                bottomLineView.backgroundColor = .gray
-                roundView.backgroundColor = .gray
-            } else {
-                addColor()
-            }
+        
+        
+        if let station = station.station, !selectedRoute.contains(where: { ($0.station?.containsIgnoringCase(find: station))! }) && !selectedRoute.contains(where: { ($0.station?.containsIgnoringCase(find: station))! }) {
+            topLineView.backgroundColor = .gray
+            bottomLineView.backgroundColor = .gray
+            roundView.backgroundColor = .gray
         } else {
             addColor()
         }
     }
-    
+
     private func addColor() {
         topLineView.backgroundColor = UIColor(rgb: 0x025C91)
         bottomLineView.backgroundColor = UIColor(rgb: 0x025C91)

@@ -28,4 +28,9 @@ class FullRouteViewInteractor: FullRouteViewControllerInteractor {
             }
         }
     }
+    
+    func prepareForTitle() -> String {
+        guard let from = route.fromStation?.uppercased(), let to = route.toStation?.uppercased() else { return ""}
+        return "\(from) - \(to)"
+    }
 }

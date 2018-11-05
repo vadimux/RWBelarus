@@ -8,6 +8,7 @@
 
 import Alamofire
 import SwiftSoup
+//import Cache
 
 class NetworkManager {
     
@@ -42,12 +43,6 @@ class NetworkManager {
      */
     static func getRouteBetweenCities(fromData: AutocompleteAPIElement, toData: AutocompleteAPIElement, date: String, completion: @escaping (Result<[Route]?>) -> Void) {
         
-        //        let STATION = "a[class=train_name -map train_text]"
-        //        let ARRIVAL = "b[class=train_end-time]"
-        //        let ARRIVED = "b[class=train_start-time]"
-        //        let TRAVEL_TIME = "span[class=train_time-total]"
-        //        let STAY = "b[class=train_stop-time]"
-        
         let TRAIN_ID = "small[class=train_id]"
         let PATH = "a[class=train_text]"
         let TRAIN_TYPE = "div[class=train_description]"
@@ -74,7 +69,13 @@ class NetworkManager {
                 guard let responseData = response.data, let html = String(data: responseData, encoding: .utf8) else {
                     return
                 }
-
+                
+//                do {
+//                    try Cache.sharedInstance.saveToCache(data: responseData, key: "\(from),\(to),\(date)")
+//                } catch {
+//                    print(error)
+//                }
+                
                 var routeList = [Route]()
                 
                 do {
@@ -104,13 +105,16 @@ class NetworkManager {
                         for i in 0..<elementPlace.array().count {
                             let countPlace = try elementPlace.array()[i].getElementsByClass("train_seats lnk")
                             let name = try elementPlace.array()[i].getElementsByClass("train_note").text()
+                            
                             for j in 0..<countPlace.array().count {
                                 let cost = try elementPlace.array()[i].getElementsByClass("train_price").text()
+                                let splitCost = cost.components(separatedBy: ". ")[j]
                                 let count = try countPlace.array()[j].text()
-                                let link = try elementPlace.array()[i].attr("data-get")
+                                let link = try countPlace.array()[j].attr("data-get")
+
                                 places.append(TrainPlace.create()
                                     .name(name)
-                                    .cost(cost)
+                                    .cost(splitCost)
                                     .link(link)
                                     .count(count)
                                     .build())
@@ -210,6 +214,20 @@ class NetworkManager {
                 } catch let error {
                     completion(.failure(error))
                 }
+        }
+    }
+    
+    static func getSchemePlaces(with urlPath: String, completion: @escaping (Result<TrainPlacesAPI?>) -> Void) {
+        Alamofire.request(APIRouter.getSchemePlaces(urlPath: urlPath))
+            .response { response in
+                if let error = response.error {
+                    completion(.failure(error))
+                    return
+                }
+                guard let responseData = response.data else { return }
+                
+                let autocompleteAPI = try? JSONDecoder().decode(TrainPlacesAPI.self, from: responseData)
+                completion(.success(autocompleteAPI))
         }
     }
 }

@@ -3,6 +3,7 @@ PODS:
   - Cache (5.2.0)
   - Hero (1.4.0)
   - JTAppleCalendar (7.1.6)
+  - Kingfisher (4.10.1)
   - R.swift (4.0.0):
     - R.swift.Library (~> 4.0.0)
   - R.swift.Library (4.0.0)
@@ -15,6 +16,7 @@ DEPENDENCIES:
   - Cache
   - Hero
   - JTAppleCalendar
+  - Kingfisher
   - R.swift
   - SwiftLint
   - SwiftSoup
@@ -26,6 +28,7 @@ SPEC REPOS:
     - Cache
     - Hero
     - JTAppleCalendar
+    - Kingfisher
     - R.swift
     - R.swift.Library
     - SwiftLint
@@ -37,12 +40,13 @@ SPEC CHECKSUMS:
   Cache: 807c5d86d01a177f06ede9865add3aea269bbfd4
   Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
   JTAppleCalendar: abb30678f42a4ef8a340a932b1dcb8c85a33dac2
+  Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
   R.swift: d6a5ec2f55a8441dc0ed9f1f8b37d7d11ae85c66
   R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
   SwiftLint: 3207c1faa2240bf8973b191820a116113cd11073
   SwiftSoup: 92f5b348c131aed8af04f4326db1579ab19fa08c
   Toast-Swift: 594b5c5e5129f15438e410207e43287f027b3c00
 
-PODFILE CHECKSUM: a87711910e139810f14c50acb3661dd6b4fd50b2
+PODFILE CHECKSUM: 7cd1978a97549e48d197b3d96571051e87992a26
 
 COCOAPODS: 1.6.0.beta.1

@@ -20,9 +20,11 @@ class SearchResultCell: UITableViewCell {
     @IBOutlet weak var exceptStationLabel: UILabel!
     @IBOutlet weak var ticketTableView: UITableView!
     @IBOutlet weak var ticketTableConstraint: NSLayoutConstraint!
+    @IBOutlet weak var ticketStackView: UIStackView!
     
     var tapped: ((Route) -> Void)?
     var model: Route!
+    var rootViewController: UINavigationController?
     
     private var tapRecognizer: UITapGestureRecognizer?
     private var ticketInfo = [TrainPlace]()
@@ -33,6 +35,7 @@ class SearchResultCell: UITableViewCell {
         
         ticketTableView.addObserver(self, forKeyPath: kObservedPropertyName, options: .new, context: nil)
         ticketTableView.hideEmptyCells()
+        ticketTableView.separatorColor = .clear
         
         tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedInCell))
         tapRecognizer?.numberOfTapsRequired = 1
@@ -47,7 +50,6 @@ class SearchResultCell: UITableViewCell {
         ticketTableView.removeObserver(self, forKeyPath: kObservedPropertyName)
     }
 
-        
     override func prepareForReuse() {
         super.prepareForReuse()
         
@@ -58,6 +60,7 @@ class SearchResultCell: UITableViewCell {
         finishTime.text = nil
         daysLabel.text = nil
         typeTrainImage.image = nil
+        exceptStationLabel.text = nil
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
@@ -69,7 +72,7 @@ class SearchResultCell: UITableViewCell {
         }
     }
     
-    func configure(with element: Route) {
+    func configure(with element: Route, rootViewController: UINavigationController?) {
         
         trainNumberLabel.text = element.trainId
         trainRouteLabel.text = element.routeName
@@ -78,7 +81,7 @@ class SearchResultCell: UITableViewCell {
         finishTime.text = element.finishTime
         daysLabel.text = element.days
         exceptStationLabel.text = element.exceptStops
-        trainRouteLabel.sizeToFit()
+
         typeTrainImage.image = {
             switch element.trainType {
             case .internationalLines:
@@ -97,12 +100,14 @@ class SearchResultCell: UITableViewCell {
                 return nil
             }
         }()
+        ticketStackView.isHidden = !(element.place.count > 0)
         
         if element.place.count > 0 {
             self.ticketInfo = element.place
             self.ticketTableView.reloadData()
         }
         model = element
+        self.rootViewController = rootViewController
     }
     
     @objc private func tappedInCell(recognizer: UITapGestureRecognizer?) {
@@ -120,6 +125,11 @@ extension SearchResultCell: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.ticketInfoCell, for: indexPath)!
         cell.configure(with: self.ticketInfo[indexPath.row])
+        cell.tapped = { link in
+            guard let rootVC = self.rootViewController, let link = link else { return }
+            let coordinator = СarriageSchemeViewCoordinator.init(rootViewController: rootVC, urlPath: link)
+            coordinator.start(with: nil)
+        }
         return cell
     }
 }

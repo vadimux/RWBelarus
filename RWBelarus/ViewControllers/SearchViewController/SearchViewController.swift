@@ -10,6 +10,23 @@ import UIKit
 import Toast_Swift
 import Hero
 
+enum RouteDate: String {
+    case today
+    case tomorrow
+    case everyday
+    
+    var value: String {
+        switch self {
+        case .today:
+            return "сегодня".localized
+        case .tomorrow:
+            return "завтра".localized
+        case .everyday:
+            return "на все дни".localized
+        }
+    }
+}
+
 protocol SearchViewControllerInteractor: class {
     var fromData: AutocompleteAPIElement? { get set }
     var toData: AutocompleteAPIElement? { get set }
@@ -34,14 +51,6 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var additionalFromLabel: UILabel!
     @IBOutlet weak var additionalToLabel: UILabel!
     @IBOutlet weak var fromLabel: UILabel!
-//        didSet {
-//            print("fromLabel")
-//            let countEmpty = routeElements.reduce(0) { $1 == nil ? $0 + 1 : $0 }
-//            print(countEmpty)
-//            guard let button = self.searchButton else { return }
-//            button.isEnabled = countEmpty == 0 ? true : false
-//        }
-//    }
     @IBOutlet weak var toLabel: UILabel!
     @IBOutlet weak var searchButton: UIButton!
     
@@ -154,18 +163,18 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func todayTapped(_ sender: Any) {
-        self.dateButton.setTitle("cегодня".localized, for: .normal)
-        self.date = "today"
+        self.dateButton.setTitle(RouteDate.today.value, for: .normal)
+        self.date = RouteDate.today.rawValue
     }
     
     @IBAction func tomorrowTapped(_ sender: Any) {
-        self.dateButton.setTitle("завтра".localized, for: .normal)
-        self.date = "tomorrow"
+        self.dateButton.setTitle(RouteDate.tomorrow.value, for: .normal)
+        self.date = RouteDate.tomorrow.rawValue
     }
     
     @IBAction func everydayTapped(_ sender: Any) {
-        self.dateButton.setTitle("на все дни".localized, for: .normal)
-        self.date = "everyday"
+        self.dateButton.setTitle(RouteDate.everyday.value, for: .normal)
+        self.date = RouteDate.everyday.rawValue
     }
 
 }
