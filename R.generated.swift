@@ -93,19 +93,25 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.nib` struct is generated, and contains static references to 0 nibs.
+  /// This `R.nib` struct is generated, and contains static references to 1 nibs.
   struct nib {
+    /// Nib `CarriageHeader`.
+    static let carriageHeader = _R.nib._CarriageHeader()
+    
+    /// `UINib(name: "CarriageHeader", in: bundle)`
+    static func carriageHeader(_: Void = ()) -> UIKit.UINib {
+      return UIKit.UINib(resource: R.nib.carriageHeader)
+    }
+    
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 8 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 7 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `CalendarCell`.
     static let calendarCell: Rswift.ReuseIdentifier<CalendarCell> = Rswift.ReuseIdentifier(identifier: "CalendarCell")
     /// Reuse identifier `autocompleteCell`.
     static let autocompleteCell: Rswift.ReuseIdentifier<AutocompleteCell> = Rswift.ReuseIdentifier(identifier: "autocompleteCell")
-    /// Reuse identifier `carriageFullInfoCell`.
-    static let carriageFullInfoCell: Rswift.ReuseIdentifier<CarriageFullInfoCell> = Rswift.ReuseIdentifier(identifier: "carriageFullInfoCell")
     /// Reuse identifier `carriageSchemeCell`.
     static let carriageSchemeCell: Rswift.ReuseIdentifier<CarriageSchemeCell> = Rswift.ReuseIdentifier(identifier: "carriageSchemeCell")
     /// Reuse identifier `fullRouteCell`.
@@ -193,6 +199,17 @@ struct _R: Rswift.Validatable {
   }
   
   struct nib {
+    struct _CarriageHeader: Rswift.NibResourceType {
+      let bundle = R.hostingBundle
+      let name = "CarriageHeader"
+      
+      func firstView(owner ownerOrNil: AnyObject?, options optionsOrNil: [NSObject : AnyObject]? = nil) -> CarriageHeader? {
+        return instantiate(withOwner: ownerOrNil, options: optionsOrNil)[0] as? CarriageHeader
+      }
+      
+      fileprivate init() {}
+    }
+    
     fileprivate init() {}
   }
   

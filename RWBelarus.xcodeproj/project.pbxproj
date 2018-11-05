@@ -13,7 +13,6 @@
 		0DE3F6EC218E436500054E1E /* СarriageSchemeViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3F6EB218E436500054E1E /* СarriageSchemeViewInteractor.swift */; };
 		0DE3F6EE218E43E400054E1E /* СarriageSchemeViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3F6ED218E43E400054E1E /* СarriageSchemeViewCoordinator.swift */; };
 		0DE3F6F0218EC5D900054E1E /* CarriageSchemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3F6EF218EC5D900054E1E /* CarriageSchemeCell.swift */; };
-		0DE3F6F2218ED2F300054E1E /* CarriageFullInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3F6F1218ED2F300054E1E /* CarriageFullInfoCell.swift */; };
 		813434B83F4E2DE6301F856E /* Pods_RWBelarus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A75C502E252E6C5728935AB7 /* Pods_RWBelarus.framework */; };
 		A71DFCD82186D83100874458 /* FullRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71DFCD72186D83100874458 /* FullRouteViewController.swift */; };
 		A71DFCDA2186D84200874458 /* FullRouteViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71DFCD92186D84200874458 /* FullRouteViewInteractor.swift */; };
@@ -26,6 +25,9 @@
 		A739C7632174DC180080F151 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A739C7622174DC180080F151 /* SearchViewController.swift */; };
 		A75E13AE2183384000CB7E47 /* UIView+Designable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75E13AD2183384000CB7E47 /* UIView+Designable.swift */; };
 		A776C1682176240700859BB8 /* UIViewController+dismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A776C1672176240700859BB8 /* UIViewController+dismissKeyboard.swift */; };
+		A780B62021900BC80096E3F0 /* CarriageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780B61F21900BC80096E3F0 /* CarriageHeader.swift */; };
+		A780B62221900BDF0096E3F0 /* CarriageHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = A780B62121900BDF0096E3F0 /* CarriageHeader.xib */; };
+		A780B624219011D70096E3F0 /* String+Contains.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780B623219011D70096E3F0 /* String+Contains.swift */; };
 		A795F4DF2179BD74003B942F /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4DE2179BD74003B942F /* APIRouter.swift */; };
 		A795F4E12179BE0E003B942F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E02179BE0E003B942F /* Constants.swift */; };
 		A795F4E32179BE42003B942F /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E22179BE42003B942F /* APIConfiguration.swift */; };
@@ -71,7 +73,6 @@
 		0DE3F6EB218E436500054E1E /* СarriageSchemeViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СarriageSchemeViewInteractor.swift"; sourceTree = "<group>"; };
 		0DE3F6ED218E43E400054E1E /* СarriageSchemeViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СarriageSchemeViewCoordinator.swift"; sourceTree = "<group>"; };
 		0DE3F6EF218EC5D900054E1E /* CarriageSchemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarriageSchemeCell.swift; sourceTree = "<group>"; };
-		0DE3F6F1218ED2F300054E1E /* CarriageFullInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarriageFullInfoCell.swift; sourceTree = "<group>"; };
 		A71DFCD72186D83100874458 /* FullRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullRouteViewController.swift; sourceTree = "<group>"; };
 		A71DFCD92186D84200874458 /* FullRouteViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullRouteViewInteractor.swift; sourceTree = "<group>"; };
 		A71DFCDB2186D87E00874458 /* FullRouteViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullRouteViewCoordinator.swift; sourceTree = "<group>"; };
@@ -86,6 +87,9 @@
 		A75C502E252E6C5728935AB7 /* Pods_RWBelarus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RWBelarus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A75E13AD2183384000CB7E47 /* UIView+Designable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Designable.swift"; sourceTree = "<group>"; };
 		A776C1672176240700859BB8 /* UIViewController+dismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+dismissKeyboard.swift"; sourceTree = "<group>"; };
+		A780B61F21900BC80096E3F0 /* CarriageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarriageHeader.swift; sourceTree = "<group>"; };
+		A780B62121900BDF0096E3F0 /* CarriageHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarriageHeader.xib; sourceTree = "<group>"; };
+		A780B623219011D70096E3F0 /* String+Contains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Contains.swift"; sourceTree = "<group>"; };
 		A795F4DE2179BD74003B942F /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		A795F4E02179BE0E003B942F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A795F4E22179BE42003B942F /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
@@ -264,8 +268,18 @@
 				A7D1A3D2217DEAC600B374DE /* UITableView+hideEmptyCells.swift */,
 				A75E13AD2183384000CB7E47 /* UIView+Designable.swift */,
 				A79CADCE218C2177001DEF64 /* UIColor+RGB.swift */,
+				A780B623219011D70096E3F0 /* String+Contains.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		A780B61E21900BA50096E3F0 /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				A780B61F21900BC80096E3F0 /* CarriageHeader.swift */,
+				A780B62121900BDF0096E3F0 /* CarriageHeader.xib */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 		A7B2E38E2182E68400CC7273 /* CalendarViewController */ = {
@@ -345,6 +359,7 @@
 		A7F45DD82175FCA80099A9E1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A780B61E21900BA50096E3F0 /* Other */,
 				A7F45DD92175FCAF0099A9E1 /* Cells */,
 			);
 			path = Views;
@@ -359,7 +374,6 @@
 				A7BDB212218821BC0070E543 /* FullRouteCell.swift */,
 				0DE3F6E4218DAD5700054E1E /* HeaderResultCell.swift */,
 				0DE3F6EF218EC5D900054E1E /* CarriageSchemeCell.swift */,
-				0DE3F6F1218ED2F300054E1E /* CarriageFullInfoCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -430,6 +444,7 @@
 				A739C7572174DB180080F151 /* LaunchScreen.storyboard in Resources */,
 				A739C7542174DB180080F151 /* Assets.xcassets in Resources */,
 				A7F45DAE2175B61F0099A9E1 /* Search.storyboard in Resources */,
+				A780B62221900BDF0096E3F0 /* CarriageHeader.xib in Resources */,
 				A739C7522174DB160080F151 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -555,7 +570,6 @@
 				A7EF0C532177029100C075E0 /* RouteResultViewInteractor.swift in Sources */,
 				A7D1A3CD217DB16300B374DE /* String+Localizable.swift in Sources */,
 				A7B2E3902182E75F00CC7273 /* CalendarViewController.swift in Sources */,
-				0DE3F6F2218ED2F300054E1E /* CarriageFullInfoCell.swift in Sources */,
 				A739C7632174DC180080F151 /* SearchViewController.swift in Sources */,
 				A7D1A3D3217DEAC600B374DE /* UITableView+hideEmptyCells.swift in Sources */,
 				A71DFCDA2186D84200874458 /* FullRouteViewInteractor.swift in Sources */,
@@ -571,11 +585,13 @@
 				A7EF0C512177027F00C075E0 /* RouteResultViewController.swift in Sources */,
 				A7F45DDB2175FCDB0099A9E1 /* AutocompleteCell.swift in Sources */,
 				A795F4E12179BE0E003B942F /* Constants.swift in Sources */,
+				A780B624219011D70096E3F0 /* String+Contains.swift in Sources */,
 				A7B2E3962182EEE500CC7273 /* DialogViewController.swift in Sources */,
 				A7F45DA52175B27B0099A9E1 /* TabsScreenCoordinator.swift in Sources */,
 				A75E13AE2183384000CB7E47 /* UIView+Designable.swift in Sources */,
 				0DE3F6EA218E435700054E1E /* СarriageSchemeViewController.swift in Sources */,
 				A739C74D2174DB160080F151 /* AppDelegate.swift in Sources */,
+				A780B62021900BC80096E3F0 /* CarriageHeader.swift in Sources */,
 				A776C1682176240700859BB8 /* UIViewController+dismissKeyboard.swift in Sources */,
 				A795F4E32179BE42003B942F /* APIConfiguration.swift in Sources */,
 				A795F4E82179C080003B942F /* RWAPI.swift in Sources */,

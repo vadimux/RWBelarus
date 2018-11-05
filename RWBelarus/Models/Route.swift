@@ -18,6 +18,16 @@ enum TrainType: String {
     case unknown = ""
 }
 
+enum TrainImageType: String {
+    case internationalLines = "international"
+    case regionalEconomyLines = "regional_economy"
+    case regionalBusinessLines = "regional_business"
+    case interregionalEconomyLines = "interregional_economy"
+    case interregionalBusinessLines = "interregional_business"
+    case cityLines = "city"
+    case unknown = ""
+}
+
 class Route {
     
     var trainId: String?

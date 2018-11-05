@@ -61,10 +61,6 @@ enum APIRouter: URLRequestConvertible {
             URLQueryItem(name: K.APIParameterKey.fromEsr, value: from.ecp),
             URLQueryItem(name: K.APIParameterKey.toExp, value: to.exp),
             URLQueryItem(name: K.APIParameterKey.toEsr, value: to.ecp)]
-            URLQueryItem(name: K.APIParameterKey.fromExp, value: fromExp),
-            URLQueryItem(name: K.APIParameterKey.fromEsr, value: fromEsr),
-            URLQueryItem(name: K.APIParameterKey.toExp, value: toExp),
-            URLQueryItem(name: K.APIParameterKey.toEsr, value: toEsr)]
         case .searchFullRoute, .getSchemePlaces:
             return nil
         }

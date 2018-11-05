@@ -41,30 +41,16 @@ class FullRouteCell: UITableViewCell {
         topLineView.isHidden = row == 0
         bottomLineView.isHidden = row == stations.count - 1
         
-        
-        
         if let station = station.station, !selectedRoute.contains(where: { ($0.station?.containsIgnoringCase(find: station))! }) && !selectedRoute.contains(where: { ($0.station?.containsIgnoringCase(find: station))! }) {
-            topLineView.backgroundColor = .gray
-            bottomLineView.backgroundColor = .gray
-            roundView.backgroundColor = .gray
+            addColor(isGrayColor: true)
         } else {
-            addColor()
+            addColor(isGrayColor: false)
         }
     }
 
-    private func addColor() {
-        topLineView.backgroundColor = UIColor(rgb: 0x025C91)
-        bottomLineView.backgroundColor = UIColor(rgb: 0x025C91)
-        roundView.backgroundColor = UIColor(rgb: 0x025C91)
-    }
-    
-}
-
-extension String {
-    func contains(find: String) -> Bool {
-        return self.range(of: find) != nil
-    }
-    func containsIgnoringCase(find: String) -> Bool {
-        return self.range(of: find, options: .caseInsensitive) != nil
+    private func addColor(isGrayColor: Bool) {
+        topLineView.backgroundColor = isGrayColor ? .gray: UIColor(rgb: 0x025C91)
+        bottomLineView.backgroundColor = isGrayColor ? .gray: UIColor(rgb: 0x025C91)
+        roundView.backgroundColor = isGrayColor ? .gray: UIColor(rgb: 0x025C91)
     }
 }

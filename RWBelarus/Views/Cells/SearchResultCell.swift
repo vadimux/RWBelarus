@@ -115,7 +115,6 @@ class SearchResultCell: UITableViewCell {
     }
 }
 
-
 extension SearchResultCell: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -126,7 +125,7 @@ extension SearchResultCell: UITableViewDataSource, UITableViewDelegate {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.ticketInfoCell, for: indexPath)!
         cell.configure(with: self.ticketInfo[indexPath.row])
         cell.tapped = { link in
-            guard let rootVC = self.rootViewController, let link = link else { return }
+            guard let rootVC = self.rootViewController, let link = link, self.model.trainType != .regionalEconomyLines, self.model.trainType != .cityLines else { return }
             let coordinator = СarriageSchemeViewCoordinator.init(rootViewController: rootVC, urlPath: link)
             coordinator.start(with: nil)
         }

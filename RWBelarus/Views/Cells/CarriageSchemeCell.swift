@@ -7,57 +7,37 @@
 //
 
 import UIKit
+import Kingfisher
 
 class CarriageSchemeCell: UITableViewCell {
-
-    @IBOutlet weak var typeLabel: UILabel!
-    @IBOutlet weak var tariffLabel: UILabel!
-    @IBOutlet weak var carrierLabel: UILabel!
-    @IBOutlet weak var ownerLabel: UILabel!
-    @IBOutlet weak var infoTableView: UITableView!
-    @IBOutlet weak var infoTableViewConstraint: NSLayoutConstraint!
     
-    private var placeInfo = [Car]()
-    private let kObservedPropertyName = "contentSize"
-    
-    deinit {
-        infoTableView.removeObserver(self, forKeyPath: kObservedPropertyName)
-    }
+    @IBOutlet weak var carriageImageView: UIImageView!
+    @IBOutlet weak var carriageNumberLabel: UILabel!
+    @IBOutlet weak var countEmptyPlacesLabel: UILabel!
+    @IBOutlet weak var emptyPlacesLabel: UILabel!
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        typeLabel.text = nil
-        tariffLabel.text = nil
-        carrierLabel.text = nil
-        ownerLabel.text = nil
+        carriageNumberLabel.text = nil
+        countEmptyPlacesLabel.text = nil
+        emptyPlacesLabel.text = nil
+        carriageImageView.image = nil
     }
     
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == kObservedPropertyName {
-            if let newvalue = change?[.newKey] {
-                guard let newsize  = newvalue as? CGSize else { return }
-                self.infoTableViewConstraint.constant = newsize.height
-            }
+    func configure(with info: Car) {
+        carriageNumberLabel.text = "Номер вагона: ".localized + info.number
+        countEmptyPlacesLabel.text = "Свободных мест: ".localized + String(info.totalPlaces)
+        emptyPlacesLabel.text = "Номера свободных мест: ".localized  + info.emptyPlaces.joined(separator: ", ")
+        
+        let localURL = info.imgSrc
+        if localURL != "" {
+            //FIXIT: change 'ru' to '..'
+            let baseURL = K.RWServer.baseURL.replacingOccurrences(of: "ru/", with: "")
+            let url = URL(string: "\(baseURL)\(localURL)")
+            carriageImageView.kf.setImage(with: url)
+        } else {
+            carriageImageView.isHidden = true
         }
-    }
-    
-    func configure(with info: Tariff?) {
-        typeLabel.text = "Тип: ".localized + (info?.type ?? "")
-        tariffLabel.text = "Тариф: ".localized + (info?.priceByn ?? "")
-        placeInfo = info?.cars ?? []
-    }
-}
-
-extension CarriageSchemeCell: UITableViewDataSource, UITableViewDelegate {
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return placeInfo.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.carriageFullInfoCell, for: indexPath)!
-        cell.configure(with: self.placeInfo[indexPath.row])
-        return cell
     }
 }
