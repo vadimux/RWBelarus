@@ -10,7 +10,7 @@ import UIKit
 
 protocol RouteResultViewControllerInteractor: class {
     func prepareForTitle() -> String
-    func prepareForShowResult(completion: @escaping (_ route: [Route]?,_ error: String?) -> ())
+    func prepareForShowResult(completion: @escaping (_ route: [Route]?, _ error: String?) -> Void)
 }
 
 protocol RouteResultViewControllerCoordinator: class {

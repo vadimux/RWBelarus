@@ -12,7 +12,7 @@ import Alamofire
 enum APIRouter: URLRequestConvertible {
     
     case autocomplete(term: String)
-    case search(from: String, to: String, date: String, fromExp: String, fromEsr: String, toExp: String, toEsr: String)
+    case search(fromData: AutocompleteAPIElement, toData: AutocompleteAPIElement, date: String)
     case searchFullRoute(urlPath: String?)
     
     // MARK: - HTTPMethod
@@ -45,14 +45,14 @@ enum APIRouter: URLRequestConvertible {
         switch self {
         case .autocomplete(let term):
             return [URLQueryItem(name: K.APIParameterKey.term, value: term)]
-        case .search(let from, let to, let date, let fromExp, let fromEsr, let toExp, let toEsr):
-            return [URLQueryItem(name: K.APIParameterKey.from, value: from),
-            URLQueryItem(name: K.APIParameterKey.to, value: to),
+        case .search(let from, let to, let date):
+            return [URLQueryItem(name: K.APIParameterKey.from, value: from.value),
+            URLQueryItem(name: K.APIParameterKey.to, value: to.value),
             URLQueryItem(name: K.APIParameterKey.date, value: date),
-            URLQueryItem(name: K.APIParameterKey.fromExp, value: fromExp),
-            URLQueryItem(name: K.APIParameterKey.fromEsr, value: fromEsr),
-            URLQueryItem(name: K.APIParameterKey.toExp, value: toExp),
-            URLQueryItem(name: K.APIParameterKey.toEsr, value: toEsr)]
+            URLQueryItem(name: K.APIParameterKey.fromExp, value: from.exp),
+            URLQueryItem(name: K.APIParameterKey.fromEsr, value: from.ecp),
+            URLQueryItem(name: K.APIParameterKey.toExp, value: to.exp),
+            URLQueryItem(name: K.APIParameterKey.toEsr, value: to.ecp)]
         case .searchFullRoute:
             return nil
         }

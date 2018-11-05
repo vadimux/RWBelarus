@@ -11,7 +11,6 @@ import UIKit
 protocol TabsScreenCoordinatorDelegate: class {
 }
 
-
 class TabsScreenCoordinator: NSObject, Coordinator {
     
     var rootViewController: UINavigationController

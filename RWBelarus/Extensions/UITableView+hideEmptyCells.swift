@@ -13,4 +13,3 @@ extension UITableView {
         self.tableFooterView = UIView(frame: .zero)
     }
 }
-

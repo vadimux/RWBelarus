@@ -16,5 +16,6 @@ target 'RWBelarus' do
     pod 'Hero'
     pod 'Cache'
     pod 'JTAppleCalendar'
+    pod 'SwiftLint'
     
 end

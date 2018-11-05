@@ -38,11 +38,9 @@ class NetworkManager {
      * @param from    станция отправления
      * @param to      станция назначения
      * @param date    дата поездки
-     * @param fromExp идентификатор станции отправления
-     * @param toExp   идентификатор станции назначения
      * @completion возвращает Result<[Route]?> как список соответствующих маршрутов
      */
-    static func getRouteBetweenCities(from: String, to: String, date: String, fromExp: String, fromEsr: String, toExp: String, toEsr: String, completion: @escaping (Result<[Route]?>) -> Void) {
+    static func getRouteBetweenCities(fromData: AutocompleteAPIElement, toData: AutocompleteAPIElement, date: String, completion: @escaping (Result<[Route]?>) -> Void) {
         
         //        let STATION = "a[class=train_name -map train_text]"
         //        let ARRIVAL = "b[class=train_end-time]"
@@ -65,7 +63,7 @@ class NetworkManager {
         let FAVOURITE_TRAIN = "i[class=b-spec spec_comfort]"
         let FAST_TRAIN = "i[class=b-spec spec_speed]"
         
-        Alamofire.request(APIRouter.search(from: from, to: to, date: date, fromExp: fromExp, fromEsr: fromEsr, toExp: toExp, toEsr: toEsr))
+        Alamofire.request(APIRouter.search(fromData: fromData, toData: toData, date: date))
             .responseString { response in
                 
                 if let error = response.error {
@@ -125,10 +123,10 @@ class NetworkManager {
                             .startTime(startTime)
                             .finishTime(finishTime)
                             .routeName(routeName)
-                            .fromExp(fromExp)
-                            .toExp(toExp)
-                            .fromStation(from)
-                            .toStation(to)
+                            .fromExp(fromData.exp)
+                            .toExp(toData.exp)
+                            .fromStation(fromData.value)
+                            .toStation(toData.value)
                             .days(days)
                             .trainType(trainType)
                             .date(date)
@@ -145,7 +143,6 @@ class NetworkManager {
                 }
         }
     }
-    
     
     /**
      * Запрос на получение маршрута поезда
@@ -180,9 +177,7 @@ class NetworkManager {
                     
                     let doc: Document = try SwiftSoup.parse(html)
                     
-                    guard let table: Element = try doc.select("table").first() else {
-                        return
-                    }
+                    guard let table: Element = try doc.select("table").first() else { return }
                     
                     let trCollection: Elements = try table.select("tr")
                     var stations = [RouteItem]()
@@ -196,6 +191,7 @@ class NetworkManager {
                         let urlPath: String? = try element.select(URL).first()?.select("a").first()?.attr("href")
                         var stationId: String?
                         
+                        //TODO: check if need to add exp
                         if let range = urlPath?.range(of: "exp=") {
                             stationId = urlPath?[range.upperBound...].trimmingCharacters(in: .whitespaces)
                         }
@@ -217,4 +213,3 @@ class NetworkManager {
         }
     }
 }
-

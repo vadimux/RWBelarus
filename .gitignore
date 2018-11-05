@@ -1,0 +1,5 @@
+
+RWBelarus.xcodeproj/xcuserdata/*
+RWBelarus.xcworkspace/xcuserdata/*
+Pods/Pods.xcodeproj/xcuserdata/*
+*.generated.swift

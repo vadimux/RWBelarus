@@ -40,4 +40,3 @@ class FullRouteViewCoordinator: Coordinator, FullRouteViewControllerCoordinator 
         vc.dismiss(animated: true)
     }
 }
-
