@@ -52,7 +52,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.93725490196078431" green="0.92156862745098034" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="PS9-hT-s6a" firstAttribute="centerY" secondItem="Uh4-di-HCa" secondAttribute="centerY" id="DVg-we-DDt"/>
                                             <constraint firstAttribute="trailing" secondItem="1iY-TG-F2Q" secondAttribute="trailing" constant="8" id="JA9-dP-XdN"/>
@@ -91,7 +91,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.93725490196078431" green="0.92156862745098034" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                         <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="DtK-hm-pwO" secondAttribute="trailing" constant="8" id="0or-a3-0v7"/>
@@ -117,19 +117,34 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="Когда"/>
                                                 </userDefinedRuntimeAttributes>
                                             </label>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IWV-PB-GUF">
-                                                <rect key="frame" x="296" y="23" width="31" height="34"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                <state key="normal" title="____"/>
+                                            <button opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="wordWrap" translatesAutoresizingMaskIntoConstraints="NO" id="IWV-PB-GUF">
+                                                <rect key="frame" x="191" y="18" width="140" height="44"/>
+                                                <color key="backgroundColor" red="0.0078431372550000003" green="0.36078431370000003" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="2k8-bH-Yyo"/>
+                                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="140" id="Sk4-cy-bTl"/>
+                                                    <constraint firstAttribute="width" constant="140" id="g9o-5z-JVr"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                <color key="tintColor" red="0.0078431372550000003" green="0.36078431370000003" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <state key="normal" title="НАЙТИ ПОЕЗДА">
+                                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="string" keyPath="localizedTitle" value="НАЙТИ ПОЕЗДА"/>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="searchButtonTapped:" destination="kkp-aO-mmZ" eventType="touchUpInside" id="1Pk-ao-MsX"/>
                                                 </connections>
                                             </button>
                                             <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Kwp-3N-dGE">
-                                                <rect key="frame" x="0.0" y="53" width="161" height="27"/>
+                                                <rect key="frame" x="0.0" y="67" width="161" height="13"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xhK-Wm-sbW">
-                                                        <rect key="frame" x="0.0" y="0.0" width="48" height="27"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="48" height="13"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <state key="normal" title="сегодня">
                                                             <color key="titleColor" red="0.1647058824" green="0.29803921570000003" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -142,7 +157,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gkl-ok-xTP">
-                                                        <rect key="frame" x="53" y="0.0" width="40" height="27"/>
+                                                        <rect key="frame" x="53" y="0.0" width="40" height="13"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <state key="normal" title="завтра">
                                                             <color key="titleColor" red="0.1647058824" green="0.29803921570000003" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -155,7 +170,7 @@
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pam-Od-79W">
-                                                        <rect key="frame" x="98" y="0.0" width="63" height="27"/>
+                                                        <rect key="frame" x="98" y="0.0" width="63" height="13"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                         <state key="normal" title="на все дни">
                                                             <color key="titleColor" red="0.1647058824" green="0.29803921570000003" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -169,48 +184,60 @@
                                                     </button>
                                                 </subviews>
                                             </stackView>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYb-0R-vby">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aYb-0R-vby">
                                                 <rect key="frame" x="0.0" y="23" width="221" height="34"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                <color key="tintColor" red="0.0078431372550000003" green="0.36078431370000003" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <state key="normal" title="ButtonButtonButton Button"/>
                                                 <connections>
                                                     <action selector="calendarTapped:" destination="kkp-aO-mmZ" eventType="touchUpInside" id="APD-pL-u0l"/>
                                                 </connections>
                                             </button>
                                         </subviews>
-                                        <color key="backgroundColor" red="0.84705882349999995" green="0.84705882349999995" blue="0.84705882349999995" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" red="0.93725490196078431" green="0.92156862745098034" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="aYb-0R-vby" firstAttribute="centerY" secondItem="gkM-Hr-moa" secondAttribute="centerY" id="1UE-6p-RQn"/>
+                                            <constraint firstItem="Kwp-3N-dGE" firstAttribute="top" secondItem="IWV-PB-GUF" secondAttribute="bottom" constant="5" id="4jC-om-e1J"/>
                                             <constraint firstItem="IWV-PB-GUF" firstAttribute="centerY" secondItem="gkM-Hr-moa" secondAttribute="centerY" id="EPp-A0-Ar9"/>
                                             <constraint firstAttribute="height" constant="80" id="KC4-mc-7Zu"/>
                                             <constraint firstAttribute="bottom" secondItem="Kwp-3N-dGE" secondAttribute="bottom" id="SG6-ms-CDU"/>
+                                            <constraint firstItem="IWV-PB-GUF" firstAttribute="leading" secondItem="pam-Od-79W" secondAttribute="trailing" priority="250" constant="30" id="bJ6-2L-w0r"/>
                                             <constraint firstItem="Kwp-3N-dGE" firstAttribute="leading" secondItem="gkM-Hr-moa" secondAttribute="leading" id="bj0-Pc-yFy"/>
                                             <constraint firstItem="X5i-av-O9g" firstAttribute="leading" secondItem="gkM-Hr-moa" secondAttribute="leading" id="iSD-qr-ASM"/>
-                                            <constraint firstAttribute="trailing" secondItem="IWV-PB-GUF" secondAttribute="trailing" constant="8" id="ifR-9l-zZw"/>
                                             <constraint firstItem="X5i-av-O9g" firstAttribute="top" secondItem="gkM-Hr-moa" secondAttribute="top" constant="8" id="mPn-zL-FQY"/>
                                             <constraint firstItem="aYb-0R-vby" firstAttribute="leading" secondItem="gkM-Hr-moa" secondAttribute="leading" id="syE-yU-Zd2"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="siz-n8-47c">
-                                <rect key="frame" x="5" y="41" width="30" height="30"/>
-                                <state key="normal" title="||"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="siz-n8-47c">
+                                <rect key="frame" x="11" y="44" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="4IQ-Od-ler"/>
+                                    <constraint firstAttribute="width" constant="24" id="mMD-dK-gAW"/>
+                                </constraints>
+                                <color key="tintColor" red="0.0078431372550000003" green="0.36078431370000003" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="upDownArrow"/>
                                 <connections>
                                     <action selector="changeDirectionTapped:" destination="kkp-aO-mmZ" eventType="touchUpInside" id="5h5-wH-jRk"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1j-EW-HHy">
-                                <rect key="frame" x="5" y="132" width="30" height="30"/>
-                                <state key="normal" title="+"/>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o1j-EW-HHy">
+                                <rect key="frame" x="11" y="135" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="vs7-DP-hDL"/>
+                                    <constraint firstAttribute="height" constant="24" id="w7h-uD-8Vg"/>
+                                </constraints>
+                                <color key="tintColor" red="0.0078431372550000003" green="0.36078431370000003" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="basicCalendar"/>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.92156862745098034" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="RIa-hh-dbA" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="IWV-PB-GUF" secondAttribute="trailing" constant="4" id="1Gg-0V-6CK"/>
                             <constraint firstItem="zcf-IV-LaE" firstAttribute="top" secondItem="RIa-hh-dbA" secondAttribute="top" constant="10" id="7OG-Rh-HE9"/>
                             <constraint firstItem="zcf-IV-LaE" firstAttribute="leading" secondItem="RIa-hh-dbA" secondAttribute="leading" constant="40" id="Y3e-cl-tlC"/>
                             <constraint firstItem="zcf-IV-LaE" firstAttribute="leading" secondItem="o1j-EW-HHy" secondAttribute="trailing" constant="5" id="YaU-ge-uF3"/>
-                            <constraint firstItem="siz-n8-47c" firstAttribute="leading" secondItem="RIa-hh-dbA" secondAttribute="leading" constant="5" id="lB2-RQ-ZeO"/>
                             <constraint firstItem="siz-n8-47c" firstAttribute="centerY" secondItem="1iY-TG-F2Q" secondAttribute="centerY" id="m7q-Vw-OQR"/>
                             <constraint firstItem="zcf-IV-LaE" firstAttribute="leading" secondItem="siz-n8-47c" secondAttribute="trailing" constant="5" id="sDc-ui-MNE"/>
                             <constraint firstItem="o1j-EW-HHy" firstAttribute="centerY" secondItem="gkM-Hr-moa" secondAttribute="centerY" id="urp-ob-C0l"/>
@@ -326,8 +353,9 @@
                                 </constraints>
                             </stackView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="QKk-OA-DOZ" customClass="JTAppleCalendarView" customModule="JTAppleCalendar">
-                                <rect key="frame" x="0.0" y="189" width="375" height="434"/>
+                                <rect key="frame" x="0.0" y="189" width="375" height="418"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="tintColor" red="0.0078431372550000003" green="0.36078431370000003" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="W4O-XQ-V2D">
                                     <size key="itemSize" width="100" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -345,15 +373,18 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J9c-Dy-ysh">
                                                     <rect key="frame" x="-1" y="-1" width="102" height="102"/>
                                                     <color key="backgroundColor" red="0.1647058824" green="0.29803921570000003" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="tintColor" red="0.0078431372550000003" green="0.36078431370000003" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vbz-Bf-kHY">
                                                     <rect key="frame" x="29" y="39.5" width="42" height="21"/>
+                                                    <color key="tintColor" red="0.0078431372550000003" green="0.36078431370000003" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                         </view>
+                                        <color key="tintColor" red="0.0078431372550000003" green="0.36078431370000003" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="J9c-Dy-ysh" firstAttribute="leading" secondItem="RtV-6f-YZk" secondAttribute="leading" constant="-1" id="Ih7-w3-mYH"/>
                                             <constraint firstItem="J9c-Dy-ysh" firstAttribute="top" secondItem="RtV-6f-YZk" secondAttribute="top" constant="-1" id="ItU-TZ-qic"/>
@@ -370,10 +401,10 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOw-fV-Bh7">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="607" width="375" height="60"/>
                                 <color key="backgroundColor" red="0.1647058824" green="0.29803921570000003" blue="0.46666666670000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="WdS-Ld-BCZ"/>
+                                    <constraint firstAttribute="height" constant="60" id="WdS-Ld-BCZ"/>
                                 </constraints>
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Продолжить">
@@ -393,7 +424,7 @@
                                     <constraint firstAttribute="width" secondItem="6lO-Xq-cwU" secondAttribute="height" multiplier="46:39" id="wDs-jc-IC4"/>
                                 </constraints>
                                 <color key="tintColor" red="0.0078431372550000003" green="0.36078431370000003" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="arrowLeftBlue"/>
+                                <state key="normal" image="leftArrow"/>
                                 <connections>
                                     <action selector="prevMonthActionWithSender:" destination="ynu-wf-Rfi" eventType="touchUpInside" id="lGl-4A-7i2"/>
                                 </connections>
@@ -407,13 +438,14 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="viD-Ps-gQf">
                                 <rect key="frame" x="311" y="84.5" width="64" height="54.5"/>
                                 <color key="tintColor" red="0.0078431372550000003" green="0.36078431370000003" blue="0.56862745100000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" image="arrowRight"/>
+                                <state key="normal" image="rightArrow"/>
                                 <connections>
                                     <action selector="nextMonthActionWithSender:" destination="ynu-wf-Rfi" eventType="touchUpInside" id="d1H-bM-oPM"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.0078431372550000003" green="0.36078431370000003" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="gcs-gV-94R" firstAttribute="trailing" secondItem="3lL-u6-gXn" secondAttribute="trailing" id="7Vh-Gb-LiJ"/>
                             <constraint firstItem="hTq-32-lxx" firstAttribute="centerY" secondItem="6lO-Xq-cwU" secondAttribute="centerY" id="BqG-ff-cSk"/>
@@ -549,7 +581,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.93725490196078431" green="0.92156862745098034" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="VHZ-vH-vVC" firstAttribute="top" secondItem="D0e-Dx-1KH" secondAttribute="bottom" id="3Xm-6V-Tuv"/>
                             <constraint firstItem="D0e-Dx-1KH" firstAttribute="trailing" secondItem="47g-o7-s33" secondAttribute="trailing" id="BEg-yR-0UF"/>
@@ -636,7 +668,10 @@
         </scene>
     </scenes>
     <resources>
-        <image name="arrowLeftBlue" width="16" height="16"/>
-        <image name="arrowRight" width="16" height="16"/>
+        <image name="basicCalendar" width="75" height="75"/>
+        <image name="leftArrow" width="75" height="75"/>
+        <image name="rightArrow" width="75" height="75"/>
+        <image name="upDownArrow" width="75" height="75"/>
     </resources>
+    <color key="tintColor" red="0.0078431372550000003" green="0.36078431370000003" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
 </document>

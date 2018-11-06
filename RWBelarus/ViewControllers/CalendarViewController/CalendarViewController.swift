@@ -204,8 +204,8 @@ class CalendarViewController: UIViewController {
         backButton.isEnabled = previousAvailable
         nextButton.isEnabled = nextAvailable
         
-        backButton.tintColor = previousAvailable ? UIColor.blue : UIColor.gray
-        nextButton.tintColor = nextAvailable ? UIColor.blue : UIColor.gray
+        backButton.tintColor = previousAvailable ? UIColor(rgb: 0x025C91) : UIColor.gray
+        nextButton.tintColor = nextAvailable ? UIColor(rgb: 0x025C91) : UIColor.gray
     }
     
     private func handleConfiguration(cell: JTAppleCell?, cellState: CellState) {
@@ -259,7 +259,7 @@ class CalendarViewController: UIViewController {
             case .none:
                 if calendar.isDateInToday(cellState.date) {
                     cell.contentView.layer.cornerRadius = kCornerRadius
-                    cell.contentView.layer.borderColor = UIColor.blue.cgColor
+                    cell.contentView.layer.borderColor = UIColor(rgb: 0x025C91).cgColor
                     cell.contentView.layer.borderWidth = 3
                 }
             }
@@ -279,7 +279,7 @@ class CalendarViewController: UIViewController {
             case .none:
                 if calendar.isDateInToday(cellState.date) {
                     cell.contentView.layer.cornerRadius = kCornerRadius
-                    cell.contentView.layer.borderColor = UIColor.blue.cgColor
+                    cell.contentView.layer.borderColor = UIColor(rgb: 0x025C91).cgColor
                     cell.contentView.layer.borderWidth = 3
                 }
             }

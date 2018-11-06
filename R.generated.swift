@@ -31,8 +31,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 8 images.
+  /// This `R.image` struct is generated, and contains static references to 12 images.
   struct image {
+    /// Image `basicCalendar`.
+    static let basicCalendar = Rswift.ImageResource(bundle: R.hostingBundle, name: "basicCalendar")
     /// Image `bzhd_0`.
     static let bzhd_0 = Rswift.ImageResource(bundle: R.hostingBundle, name: "bzhd_0")
     /// Image `city`.
@@ -45,10 +47,21 @@ struct R: Rswift.Validatable {
     static let interregionalBusiness = Rswift.ImageResource(bundle: R.hostingBundle, name: "interregionalBusiness")
     /// Image `interregionalEconomy`.
     static let interregionalEconomy = Rswift.ImageResource(bundle: R.hostingBundle, name: "interregionalEconomy")
+    /// Image `leftArrow`.
+    static let leftArrow = Rswift.ImageResource(bundle: R.hostingBundle, name: "leftArrow")
     /// Image `regionBusiness`.
     static let regionBusiness = Rswift.ImageResource(bundle: R.hostingBundle, name: "regionBusiness")
     /// Image `region`.
     static let region = Rswift.ImageResource(bundle: R.hostingBundle, name: "region")
+    /// Image `rightArrow`.
+    static let rightArrow = Rswift.ImageResource(bundle: R.hostingBundle, name: "rightArrow")
+    /// Image `upDownArrow`.
+    static let upDownArrow = Rswift.ImageResource(bundle: R.hostingBundle, name: "upDownArrow")
+    
+    /// `UIImage(named: "basicCalendar", bundle: ..., traitCollection: ...)`
+    static func basicCalendar(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.basicCalendar, compatibleWith: traitCollection)
+    }
     
     /// `UIImage(named: "bzhd_0", bundle: ..., traitCollection: ...)`
     static func bzhd_0(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
@@ -80,6 +93,11 @@ struct R: Rswift.Validatable {
       return UIKit.UIImage(resource: R.image.interregionalEconomy, compatibleWith: traitCollection)
     }
     
+    /// `UIImage(named: "leftArrow", bundle: ..., traitCollection: ...)`
+    static func leftArrow(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.leftArrow, compatibleWith: traitCollection)
+    }
+    
     /// `UIImage(named: "region", bundle: ..., traitCollection: ...)`
     static func region(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.region, compatibleWith: traitCollection)
@@ -88,6 +106,16 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "regionBusiness", bundle: ..., traitCollection: ...)`
     static func regionBusiness(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.regionBusiness, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "rightArrow", bundle: ..., traitCollection: ...)`
+    static func rightArrow(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.rightArrow, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "upDownArrow", bundle: ..., traitCollection: ...)`
+    static func upDownArrow(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.upDownArrow, compatibleWith: traitCollection)
     }
     
     fileprivate init() {}
@@ -311,8 +339,10 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
-        if UIKit.UIImage(named: "arrowRight") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'arrowRight' is used in storyboard 'Search', but couldn't be loaded.") }
-        if UIKit.UIImage(named: "arrowLeftBlue") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'arrowLeftBlue' is used in storyboard 'Search', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "rightArrow") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'rightArrow' is used in storyboard 'Search', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "upDownArrow") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'upDownArrow' is used in storyboard 'Search', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "basicCalendar") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'basicCalendar' is used in storyboard 'Search', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "leftArrow") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'leftArrow' is used in storyboard 'Search', but couldn't be loaded.") }
         if _R.storyboard.search().searchAutocompleteViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'searchAutocompleteViewController' could not be loaded from storyboard 'Search' as 'SearchAutocompleteViewController'.") }
         if _R.storyboard.search().searchViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'searchViewController' could not be loaded from storyboard 'Search' as 'SearchViewController'.") }
         if _R.storyboard.search().calendarViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'calendarViewController' could not be loaded from storyboard 'Search' as 'CalendarViewController'.") }
