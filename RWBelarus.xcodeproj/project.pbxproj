@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0D614932219326E3003FE767 /* Station.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D614931219326E3003FE767 /* Station.storyboard */; };
+		0D61493421932743003FE767 /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D61493321932743003FE767 /* Favorite.storyboard */; };
+		0D61493621932757003FE767 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D61493521932757003FE767 /* Setting.storyboard */; };
 		0DE3F6E5218DAD5700054E1E /* HeaderResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3F6E4218DAD5700054E1E /* HeaderResultCell.swift */; };
 		0DE3F6E7218E1B0900054E1E /* TrainPlacesAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3F6E6218E1B0900054E1E /* TrainPlacesAPIModel.swift */; };
 		0DE3F6EA218E435700054E1E /* СarriageSchemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3F6E9218E435700054E1E /* СarriageSchemeViewController.swift */; };
@@ -67,6 +70,9 @@
 
 /* Begin PBXFileReference section */
 		0165E49A68D0F07BEF232CAD /* Pods-RWBelarus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RWBelarus.release.xcconfig"; path = "Target Support Files/Pods-RWBelarus/Pods-RWBelarus.release.xcconfig"; sourceTree = "<group>"; };
+		0D614931219326E3003FE767 /* Station.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Station.storyboard; sourceTree = "<group>"; };
+		0D61493321932743003FE767 /* Favorite.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
+		0D61493521932757003FE767 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
 		0DE3F6E4218DAD5700054E1E /* HeaderResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderResultCell.swift; sourceTree = "<group>"; };
 		0DE3F6E6218E1B0900054E1E /* TrainPlacesAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainPlacesAPIModel.swift; sourceTree = "<group>"; };
 		0DE3F6E9218E435700054E1E /* СarriageSchemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СarriageSchemeViewController.swift"; sourceTree = "<group>"; };
@@ -230,6 +236,9 @@
 				A739C7552174DB180080F151 /* LaunchScreen.storyboard */,
 				A7F45DAD2175B61F0099A9E1 /* Search.storyboard */,
 				A7EF0C562177035000C075E0 /* RouteResult.storyboard */,
+				0D614931219326E3003FE767 /* Station.storyboard */,
+				0D61493321932743003FE767 /* Favorite.storyboard */,
+				0D61493521932757003FE767 /* Setting.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -442,9 +451,12 @@
 			files = (
 				A7EF0C572177035000C075E0 /* RouteResult.storyboard in Resources */,
 				A739C7572174DB180080F151 /* LaunchScreen.storyboard in Resources */,
+				0D61493421932743003FE767 /* Favorite.storyboard in Resources */,
 				A739C7542174DB180080F151 /* Assets.xcassets in Resources */,
 				A7F45DAE2175B61F0099A9E1 /* Search.storyboard in Resources */,
+				0D61493621932757003FE767 /* Setting.storyboard in Resources */,
 				A780B62221900BDF0096E3F0 /* CarriageHeader.xib in Resources */,
+				0D614932219326E3003FE767 /* Station.storyboard in Resources */,
 				A739C7522174DB160080F151 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
