@@ -49,8 +49,8 @@ class FullRouteCell: UITableViewCell {
     }
 
     private func addColor(isGrayColor: Bool) {
-        topLineView.backgroundColor = isGrayColor ? .gray: UIColor(rgb: 0x025C91)
-        bottomLineView.backgroundColor = isGrayColor ? .gray: UIColor(rgb: 0x025C91)
-        roundView.backgroundColor = isGrayColor ? .gray: UIColor(rgb: 0x025C91)
+        topLineView.backgroundColor = isGrayColor ? .gray: UIColor(rgb: 0x036608A)
+        bottomLineView.backgroundColor = isGrayColor ? .gray: UIColor(rgb: 0x36608A)
+        roundView.backgroundColor = isGrayColor ? .gray: UIColor(rgb: 0x36608A)
     }
 }

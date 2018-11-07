@@ -31,7 +31,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 12 images.
+  /// This `R.image` struct is generated, and contains static references to 13 images.
   struct image {
     /// Image `basicCalendar`.
     static let basicCalendar = Rswift.ImageResource(bundle: R.hostingBundle, name: "basicCalendar")
@@ -49,6 +49,8 @@ struct R: Rswift.Validatable {
     static let interregionalEconomy = Rswift.ImageResource(bundle: R.hostingBundle, name: "interregionalEconomy")
     /// Image `leftArrow`.
     static let leftArrow = Rswift.ImageResource(bundle: R.hostingBundle, name: "leftArrow")
+    /// Image `logo`.
+    static let logo = Rswift.ImageResource(bundle: R.hostingBundle, name: "logo")
     /// Image `regionBusiness`.
     static let regionBusiness = Rswift.ImageResource(bundle: R.hostingBundle, name: "regionBusiness")
     /// Image `region`.
@@ -96,6 +98,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "leftArrow", bundle: ..., traitCollection: ...)`
     static func leftArrow(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.leftArrow, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "logo", bundle: ..., traitCollection: ...)`
+    static func logo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.logo, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "region", bundle: ..., traitCollection: ...)`
@@ -267,6 +274,7 @@ struct _R: Rswift.Validatable {
       try routeResult.validate()
       try main.validate()
       try search.validate()
+      try launchScreen.validate()
     }
     
     struct favorite: Rswift.StoryboardResourceType {
@@ -276,11 +284,15 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
     
-    struct launchScreen: Rswift.StoryboardResourceWithInitialControllerType {
+    struct launchScreen: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
       typealias InitialController = UIKit.UIViewController
       
       let bundle = R.hostingBundle
       let name = "LaunchScreen"
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "logo") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'logo' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
+      }
       
       fileprivate init() {}
     }

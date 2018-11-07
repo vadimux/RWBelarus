@@ -17,7 +17,20 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="Yfl-Mf-jLp">
+                                <rect key="frame" x="20" y="166" width="335" height="335"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Yfl-Mf-jLp" secondAttribute="height" multiplier="1:1" id="1e8-aT-Quu"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" red="0.21176470589999999" green="0.37647058820000001" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Yfl-Mf-jLp" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="G90-XW-XGb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Yfl-Mf-jLp" secondAttribute="trailing" constant="20" id="hwB-uf-XwB"/>
+                            <constraint firstItem="Yfl-Mf-jLp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="rl5-DW-7GQ"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
@@ -26,4 +39,7 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="logo" width="1024" height="1024"/>
+    </resources>
 </document>
