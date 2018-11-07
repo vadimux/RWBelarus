@@ -15,11 +15,12 @@ enum APIRouter: URLRequestConvertible {
     case search(fromData: AutocompleteAPIElement, toData: AutocompleteAPIElement, date: String)
     case searchFullRoute(urlPath: String?)
     case getSchemePlaces(urlPath: String?)
+    case getScheduleByStation(station: String?, date: String?)
     
     // MARK: - HTTPMethod
     private var method: HTTPMethod {
         switch self {
-        case .autocomplete, .search, .searchFullRoute, .getSchemePlaces:
+        case .autocomplete, .search, .searchFullRoute, .getSchemePlaces, .getScheduleByStation:
             return .get
         }
     }
@@ -45,6 +46,8 @@ enum APIRouter: URLRequestConvertible {
             //TODO: fix it with locale of device
             let path = urlPath.replacingOccurrences(of: "/ru/", with: "")
             return path
+        case .getScheduleByStation:
+            return "station/"
         }
     }
     
@@ -63,6 +66,9 @@ enum APIRouter: URLRequestConvertible {
             URLQueryItem(name: K.APIParameterKey.toEsr, value: to.ecp)]
         case .searchFullRoute, .getSchemePlaces:
             return nil
+        case .getScheduleByStation(let station, let date):
+            return [URLQueryItem(name: K.APIParameterKey.station, value: station),
+            URLQueryItem(name: K.APIParameterKey.date, value: date)]
         }
     }
     

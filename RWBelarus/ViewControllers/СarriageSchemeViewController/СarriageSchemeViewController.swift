@@ -10,7 +10,7 @@ import UIKit
 
 protocol СarriageSchemeViewControllerInteractor: class {
 
-    func fetchСarriageScheme(completion: @escaping (_ information: TrainPlacesAPI?, _ error: String?) -> Void)
+    func fetchСarriageScheme(completion: @escaping (_ information: SchemeCarAPIModel?, _ error: String?) -> Void)
 }
 
 protocol СarriageSchemeViewControllerCoordinator: class {
@@ -30,7 +30,7 @@ class CarriageSchemeViewController: UIViewController {
     var interactor: СarriageSchemeViewControllerInteractor!
     var coordinator: СarriageSchemeViewControllerCoordinator?
     
-    private var information: TrainPlacesAPI?
+    private var information: SchemeCarAPIModel?
     
     override func viewDidLoad() {
         super.viewDidLoad()

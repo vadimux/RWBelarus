@@ -15,7 +15,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Search View Controller-->
+        <!--RWBelarus-->
         <scene sceneID="awp-5y-cb4">
             <objects>
                 <viewController storyboardIdentifier="SearchViewController" id="kkp-aO-mmZ" customClass="SearchViewController" customModule="RWBelarus" customModuleProvider="target" sceneMemberID="viewController">
@@ -245,7 +245,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RIa-hh-dbA"/>
                     </view>
-                    <navigationItem key="navigationItem" id="5DX-gE-Sh9"/>
+                    <navigationItem key="navigationItem" title="RWBelarus" id="5DX-gE-Sh9">
+                        <barButtonItem key="backBarButtonItem" title=" " id="kv4-cO-c4d"/>
+                    </navigationItem>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
                     </userDefinedRuntimeAttributes>
@@ -622,20 +624,18 @@
             </objects>
             <point key="canvasLocation" x="2968.8000000000002" y="114.69265367316342"/>
         </scene>
-        <!--Поезда-->
+        <!--Navigation Controller-->
         <scene sceneID="NDg-bT-YhW">
             <objects>
                 <navigationController storyboardIdentifier="SearchNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="R1e-kM-sTy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Поезда" id="H9l-8D-JyI">
+                    <tabBarItem key="tabBarItem" title="" id="H9l-8D-JyI">
                         <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="string" keyPath="localizedTitle" value="Поезда"/>
-                        </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="ytp-6V-cJ9">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.16470588235294117" green="0.29803921568627451" blue="0.46666666666666667" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

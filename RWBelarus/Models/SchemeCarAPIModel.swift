@@ -1,5 +1,5 @@
 //
-//  TrainPlacesAPIModel.swift
+//  SchemeCarAPIModel.swift
 //  RWBelarus
 //
 //  Created by Vadzim Mikalayeu on 11/3/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class TrainPlacesAPI: Codable {
+class SchemeCarAPIModel: Codable {
     let isSimplePopup: Bool
     let carType, trainNumber, trainType: String
     let isFastTrain: Bool

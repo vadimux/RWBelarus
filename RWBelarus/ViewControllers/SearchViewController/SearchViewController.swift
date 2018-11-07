@@ -193,4 +193,3 @@ extension SearchViewController: UINavigationControllerDelegate {
         return heroTransition.navigationController(navigationController, animationControllerFor: operation, from: fromVC, to: toVC)
     }
 }
-

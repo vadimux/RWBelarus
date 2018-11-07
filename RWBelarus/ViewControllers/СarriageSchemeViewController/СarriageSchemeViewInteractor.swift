@@ -16,7 +16,7 @@ class СarriageSchemeViewInteractor: СarriageSchemeViewControllerInteractor {
         self.urlPath = urlPath
     }
     
-    func fetchСarriageScheme(completion: @escaping (_ information: TrainPlacesAPI?, _ error: String?) -> Void) {
+    func fetchСarriageScheme(completion: @escaping (_ information: SchemeCarAPIModel?, _ error: String?) -> Void) {
         
         NetworkManager.getSchemePlaces(with: self.urlPath) { result in
             switch result {

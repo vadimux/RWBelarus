@@ -159,8 +159,10 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.storyboard` struct is generated, and contains static references to 4 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 7 storyboards.
   struct storyboard {
+    /// Storyboard `Favorite`.
+    static let favorite = _R.storyboard.favorite()
     /// Storyboard `LaunchScreen`.
     static let launchScreen = _R.storyboard.launchScreen()
     /// Storyboard `Main`.
@@ -169,6 +171,15 @@ struct R: Rswift.Validatable {
     static let routeResult = _R.storyboard.routeResult()
     /// Storyboard `Search`.
     static let search = _R.storyboard.search()
+    /// Storyboard `Setting`.
+    static let setting = _R.storyboard.setting()
+    /// Storyboard `Station`.
+    static let station = _R.storyboard.station()
+    
+    /// `UIStoryboard(name: "Favorite", bundle: ...)`
+    static func favorite(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.favorite)
+    }
     
     /// `UIStoryboard(name: "LaunchScreen", bundle: ...)`
     static func launchScreen(_: Void = ()) -> UIKit.UIStoryboard {
@@ -188,6 +199,16 @@ struct R: Rswift.Validatable {
     /// `UIStoryboard(name: "Search", bundle: ...)`
     static func search(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.search)
+    }
+    
+    /// `UIStoryboard(name: "Setting", bundle: ...)`
+    static func setting(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.setting)
+    }
+    
+    /// `UIStoryboard(name: "Station", bundle: ...)`
+    static func station(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.station)
     }
     
     fileprivate init() {}
@@ -246,6 +267,13 @@ struct _R: Rswift.Validatable {
       try routeResult.validate()
       try main.validate()
       try search.validate()
+    }
+    
+    struct favorite: Rswift.StoryboardResourceType {
+      let bundle = R.hostingBundle
+      let name = "Favorite"
+      
+      fileprivate init() {}
     }
     
     struct launchScreen: Rswift.StoryboardResourceWithInitialControllerType {
@@ -348,6 +376,22 @@ struct _R: Rswift.Validatable {
         if _R.storyboard.search().calendarViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'calendarViewController' could not be loaded from storyboard 'Search' as 'CalendarViewController'.") }
         if _R.storyboard.search().searchNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'searchNavigationController' could not be loaded from storyboard 'Search' as 'UIKit.UINavigationController'.") }
       }
+      
+      fileprivate init() {}
+    }
+    
+    struct setting: Rswift.StoryboardResourceType {
+      let bundle = R.hostingBundle
+      let name = "Setting"
+      
+      fileprivate init() {}
+    }
+    
+    struct station: Rswift.StoryboardResourceWithInitialControllerType {
+      typealias InitialController = UIKit.UITabBarController
+      
+      let bundle = R.hostingBundle
+      let name = "Station"
       
       fileprivate init() {}
     }
