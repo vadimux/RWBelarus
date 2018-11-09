@@ -31,7 +31,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 13 images.
+  /// This `R.image` struct is generated, and contains static references to 16 images.
   struct image {
     /// Image `basicCalendar`.
     static let basicCalendar = Rswift.ImageResource(bundle: R.hostingBundle, name: "basicCalendar")
@@ -57,6 +57,12 @@ struct R: Rswift.Validatable {
     static let region = Rswift.ImageResource(bundle: R.hostingBundle, name: "region")
     /// Image `rightArrow`.
     static let rightArrow = Rswift.ImageResource(bundle: R.hostingBundle, name: "rightArrow")
+    /// Image `setting`.
+    static let setting = Rswift.ImageResource(bundle: R.hostingBundle, name: "setting")
+    /// Image `station`.
+    static let station = Rswift.ImageResource(bundle: R.hostingBundle, name: "station")
+    /// Image `train`.
+    static let train = Rswift.ImageResource(bundle: R.hostingBundle, name: "train")
     /// Image `upDownArrow`.
     static let upDownArrow = Rswift.ImageResource(bundle: R.hostingBundle, name: "upDownArrow")
     
@@ -120,6 +126,21 @@ struct R: Rswift.Validatable {
       return UIKit.UIImage(resource: R.image.rightArrow, compatibleWith: traitCollection)
     }
     
+    /// `UIImage(named: "setting", bundle: ..., traitCollection: ...)`
+    static func setting(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.setting, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "station", bundle: ..., traitCollection: ...)`
+    static func station(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.station, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "train", bundle: ..., traitCollection: ...)`
+    static func train(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.train, compatibleWith: traitCollection)
+    }
+    
     /// `UIImage(named: "upDownArrow", bundle: ..., traitCollection: ...)`
     static func upDownArrow(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.upDownArrow, compatibleWith: traitCollection)
@@ -141,7 +162,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 7 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 8 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `CalendarCell`.
     static let calendarCell: Rswift.ReuseIdentifier<CalendarCell> = Rswift.ReuseIdentifier(identifier: "CalendarCell")
@@ -155,6 +176,8 @@ struct R: Rswift.Validatable {
     static let headerResultCell: Rswift.ReuseIdentifier<HeaderResultCell> = Rswift.ReuseIdentifier(identifier: "headerResultCell")
     /// Reuse identifier `searchResultCell`.
     static let searchResultCell: Rswift.ReuseIdentifier<SearchResultCell> = Rswift.ReuseIdentifier(identifier: "searchResultCell")
+    /// Reuse identifier `stationScheduleCell`.
+    static let stationScheduleCell: Rswift.ReuseIdentifier<StationScheduleCell> = Rswift.ReuseIdentifier(identifier: "stationScheduleCell")
     /// Reuse identifier `ticketInfoCell`.
     static let ticketInfoCell: Rswift.ReuseIdentifier<TicketInfoCell> = Rswift.ReuseIdentifier(identifier: "ticketInfoCell")
     
@@ -274,6 +297,7 @@ struct _R: Rswift.Validatable {
       try routeResult.validate()
       try main.validate()
       try search.validate()
+      try station.validate()
       try launchScreen.validate()
     }
     
@@ -380,6 +404,7 @@ struct _R: Rswift.Validatable {
       
       static func validate() throws {
         if UIKit.UIImage(named: "rightArrow") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'rightArrow' is used in storyboard 'Search', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "train") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'train' is used in storyboard 'Search', but couldn't be loaded.") }
         if UIKit.UIImage(named: "upDownArrow") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'upDownArrow' is used in storyboard 'Search', but couldn't be loaded.") }
         if UIKit.UIImage(named: "basicCalendar") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'basicCalendar' is used in storyboard 'Search', but couldn't be loaded.") }
         if UIKit.UIImage(named: "leftArrow") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'leftArrow' is used in storyboard 'Search', but couldn't be loaded.") }
@@ -399,11 +424,27 @@ struct _R: Rswift.Validatable {
       fileprivate init() {}
     }
     
-    struct station: Rswift.StoryboardResourceWithInitialControllerType {
+    struct station: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
       typealias InitialController = UIKit.UITabBarController
       
       let bundle = R.hostingBundle
       let name = "Station"
+      let scheduleStationNavigationController = StoryboardViewControllerResource<UIKit.UINavigationController>(identifier: "ScheduleStationNavigationController")
+      let scheduleStationViewController = StoryboardViewControllerResource<ScheduleStationViewController>(identifier: "ScheduleStationViewController")
+      
+      func scheduleStationNavigationController(_: Void = ()) -> UIKit.UINavigationController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: scheduleStationNavigationController)
+      }
+      
+      func scheduleStationViewController(_: Void = ()) -> ScheduleStationViewController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: scheduleStationViewController)
+      }
+      
+      static func validate() throws {
+        if UIKit.UIImage(named: "station") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'station' is used in storyboard 'Station', but couldn't be loaded.") }
+        if _R.storyboard.station().scheduleStationNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'scheduleStationNavigationController' could not be loaded from storyboard 'Station' as 'UIKit.UINavigationController'.") }
+        if _R.storyboard.station().scheduleStationViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'scheduleStationViewController' could not be loaded from storyboard 'Station' as 'ScheduleStationViewController'.") }
+      }
       
       fileprivate init() {}
     }

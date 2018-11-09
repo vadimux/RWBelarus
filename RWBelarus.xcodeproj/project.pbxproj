@@ -37,6 +37,10 @@
 		A795F4E82179C080003B942F /* RWAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E72179C080003B942F /* RWAPI.swift */; };
 		A795F4EA2179D89B003B942F /* Locale+CurrentLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E92179D89B003B942F /* Locale+CurrentLocale.swift */; };
 		A79CADCF218C2177001DEF64 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79CADCE218C2177001DEF64 /* UIColor+RGB.swift */; };
+		A7AE72702193FE8D00CBB255 /* ScheduleStationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE726F2193FE8D00CBB255 /* ScheduleStationViewController.swift */; };
+		A7AE72722193FF2700CBB255 /* ScheduleStationViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE72712193FF2700CBB255 /* ScheduleStationViewCoordinator.swift */; };
+		A7AE72742193FFAD00CBB255 /* ScheduleStationViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE72732193FFAD00CBB255 /* ScheduleStationViewInteractor.swift */; };
+		A7AE7276219402ED00CBB255 /* StationScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE7275219402ED00CBB255 /* StationScheduleCell.swift */; };
 		A7B2E3902182E75F00CC7273 /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B2E38F2182E75F00CC7273 /* CalendarViewController.swift */; };
 		A7B2E3922182ED4600CC7273 /* CalendarViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B2E3912182ED4600CC7273 /* CalendarViewCoordinator.swift */; };
 		A7B2E3942182EDD900CC7273 /* CalendarViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7B2E3932182EDD900CC7273 /* CalendarViewInteractor.swift */; };
@@ -50,6 +54,7 @@
 		A7D1A3CF217DCC7B00B374DE /* TrainPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1A3CE217DCC7B00B374DE /* TrainPlace.swift */; };
 		A7D1A3D1217DE12C00B374DE /* TicketInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1A3D0217DE12C00B374DE /* TicketInfoCell.swift */; };
 		A7D1A3D3217DEAC600B374DE /* UITableView+hideEmptyCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7D1A3D2217DEAC600B374DE /* UITableView+hideEmptyCells.swift */; };
+		A7E8EA33219548CD0013D77A /* Date+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7E8EA32219548CD0013D77A /* Date+Utils.swift */; };
 		A7EF0C512177027F00C075E0 /* RouteResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EF0C502177027F00C075E0 /* RouteResultViewController.swift */; };
 		A7EF0C532177029100C075E0 /* RouteResultViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EF0C522177029100C075E0 /* RouteResultViewInteractor.swift */; };
 		A7EF0C55217702EF00C075E0 /* RouteResultViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EF0C54217702EF00C075E0 /* RouteResultViewCoordinator.swift */; };
@@ -102,6 +107,10 @@
 		A795F4E72179C080003B942F /* RWAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RWAPI.swift; sourceTree = "<group>"; };
 		A795F4E92179D89B003B942F /* Locale+CurrentLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+CurrentLocale.swift"; sourceTree = "<group>"; };
 		A79CADCE218C2177001DEF64 /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
+		A7AE726F2193FE8D00CBB255 /* ScheduleStationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStationViewController.swift; sourceTree = "<group>"; };
+		A7AE72712193FF2700CBB255 /* ScheduleStationViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStationViewCoordinator.swift; sourceTree = "<group>"; };
+		A7AE72732193FFAD00CBB255 /* ScheduleStationViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStationViewInteractor.swift; sourceTree = "<group>"; };
+		A7AE7275219402ED00CBB255 /* StationScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationScheduleCell.swift; sourceTree = "<group>"; };
 		A7B2E38F2182E75F00CC7273 /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		A7B2E3912182ED4600CC7273 /* CalendarViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewCoordinator.swift; sourceTree = "<group>"; };
 		A7B2E3932182EDD900CC7273 /* CalendarViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewInteractor.swift; sourceTree = "<group>"; };
@@ -119,6 +128,7 @@
 		A7D1A3CE217DCC7B00B374DE /* TrainPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainPlace.swift; sourceTree = "<group>"; };
 		A7D1A3D0217DE12C00B374DE /* TicketInfoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketInfoCell.swift; sourceTree = "<group>"; };
 		A7D1A3D2217DEAC600B374DE /* UITableView+hideEmptyCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+hideEmptyCells.swift"; sourceTree = "<group>"; };
+		A7E8EA32219548CD0013D77A /* Date+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Utils.swift"; sourceTree = "<group>"; };
 		A7EF0C502177027F00C075E0 /* RouteResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultViewController.swift; sourceTree = "<group>"; };
 		A7EF0C522177029100C075E0 /* RouteResultViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultViewInteractor.swift; sourceTree = "<group>"; };
 		A7EF0C54217702EF00C075E0 /* RouteResultViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultViewCoordinator.swift; sourceTree = "<group>"; };
@@ -253,6 +263,7 @@
 				A71DFCD62186D81000874458 /* FullRouteViewController */,
 				A7B2E38E2182E68400CC7273 /* CalendarViewController */,
 				0DE3F6E8218E42F200054E1E /* СarriageSchemeViewController */,
+				A7AE726E2193FE6D00CBB255 /* ScheduleStationViewController */,
 				A7B2E3952182EEE500CC7273 /* DialogViewController.swift */,
 			);
 			path = ViewControllers;
@@ -278,6 +289,7 @@
 				A75E13AD2183384000CB7E47 /* UIView+Designable.swift */,
 				A79CADCE218C2177001DEF64 /* UIColor+RGB.swift */,
 				A780B623219011D70096E3F0 /* String+Contains.swift */,
+				A7E8EA32219548CD0013D77A /* Date+Utils.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -289,6 +301,15 @@
 				A780B62121900BDF0096E3F0 /* CarriageHeader.xib */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		A7AE726E2193FE6D00CBB255 /* ScheduleStationViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A7AE726F2193FE8D00CBB255 /* ScheduleStationViewController.swift */,
+				A7AE72732193FFAD00CBB255 /* ScheduleStationViewInteractor.swift */,
+			);
+			path = ScheduleStationViewController;
 			sourceTree = "<group>";
 		};
 		A7B2E38E2182E68400CC7273 /* CalendarViewController */ = {
@@ -341,6 +362,7 @@
 				A71DFCDB2186D87E00874458 /* FullRouteViewCoordinator.swift */,
 				A7B2E3912182ED4600CC7273 /* CalendarViewCoordinator.swift */,
 				0DE3F6ED218E43E400054E1E /* СarriageSchemeViewCoordinator.swift */,
+				A7AE72712193FF2700CBB255 /* ScheduleStationViewCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -383,6 +405,7 @@
 				A7BDB212218821BC0070E543 /* FullRouteCell.swift */,
 				0DE3F6E4218DAD5700054E1E /* HeaderResultCell.swift */,
 				0DE3F6EF218EC5D900054E1E /* CarriageSchemeCell.swift */,
+				A7AE7275219402ED00CBB255 /* StationScheduleCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -580,8 +603,10 @@
 				A795F4EA2179D89B003B942F /* Locale+CurrentLocale.swift in Sources */,
 				A7F45DA32175B25E0099A9E1 /* R.generated.swift in Sources */,
 				A7EF0C532177029100C075E0 /* RouteResultViewInteractor.swift in Sources */,
+				A7AE72702193FE8D00CBB255 /* ScheduleStationViewController.swift in Sources */,
 				A7D1A3CD217DB16300B374DE /* String+Localizable.swift in Sources */,
 				A7B2E3902182E75F00CC7273 /* CalendarViewController.swift in Sources */,
+				A7E8EA33219548CD0013D77A /* Date+Utils.swift in Sources */,
 				A739C7632174DC180080F151 /* SearchViewController.swift in Sources */,
 				A7D1A3D3217DEAC600B374DE /* UITableView+hideEmptyCells.swift in Sources */,
 				A71DFCDA2186D84200874458 /* FullRouteViewInteractor.swift in Sources */,
@@ -591,9 +616,11 @@
 				A7D1A3CF217DCC7B00B374DE /* TrainPlace.swift in Sources */,
 				A7B2E3942182EDD900CC7273 /* CalendarViewInteractor.swift in Sources */,
 				0DE3F6EC218E436500054E1E /* СarriageSchemeViewInteractor.swift in Sources */,
+				A7AE7276219402ED00CBB255 /* StationScheduleCell.swift in Sources */,
 				0DE3F6F0218EC5D900054E1E /* CarriageSchemeCell.swift in Sources */,
 				A7F45DAC2175B5AD0099A9E1 /* SearchViewCoordinator.swift in Sources */,
 				A7F45DD72175EA170099A9E1 /* AutocompleteAPIModel.swift in Sources */,
+				A7AE72742193FFAD00CBB255 /* ScheduleStationViewInteractor.swift in Sources */,
 				A7EF0C512177027F00C075E0 /* RouteResultViewController.swift in Sources */,
 				A7F45DDB2175FCDB0099A9E1 /* AutocompleteCell.swift in Sources */,
 				A795F4E12179BE0E003B942F /* Constants.swift in Sources */,
@@ -601,6 +628,7 @@
 				A7B2E3962182EEE500CC7273 /* DialogViewController.swift in Sources */,
 				A7F45DA52175B27B0099A9E1 /* TabsScreenCoordinator.swift in Sources */,
 				A75E13AE2183384000CB7E47 /* UIView+Designable.swift in Sources */,
+				A7AE72722193FF2700CBB255 /* ScheduleStationViewCoordinator.swift in Sources */,
 				0DE3F6EA218E435700054E1E /* СarriageSchemeViewController.swift in Sources */,
 				A739C74D2174DB160080F151 /* AppDelegate.swift in Sources */,
 				A780B62021900BC80096E3F0 /* CarriageHeader.swift in Sources */,

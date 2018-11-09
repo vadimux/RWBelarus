@@ -32,24 +32,6 @@ class RouteResultViewController: UIViewController {
 
         self.title = interactor?.prepareForTitle()
         prepareResultForTableView()
-        
-        NetworkManager.getScheduleByStation(station: "Лида", date: "tomorrow") { result in
-            switch result {
-            case .success(let routes):
-                print(routes?.count)
-                for route in routes! {
-                    print(route.trainType)
-                    print(route.trainId)
-                    print(route.routeName)
-                    print(route.finishTime)
-                    print(route.startTime)
-                    print(route.days)
-                    print(route.exceptStops)
-                }
-            case .failure(let error):
-                print(error.localizedDescription)
-            }
-        }
     }
     
     private func prepareResultForTableView() {

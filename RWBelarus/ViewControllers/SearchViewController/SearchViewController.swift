@@ -30,8 +30,6 @@ enum RouteDate: String {
 protocol SearchViewControllerInteractor: class {
     var fromData: AutocompleteAPIElement? { get set }
     var toData: AutocompleteAPIElement? { get set }
-    func convertLabelDate(date: Date) -> String
-    func convertSearchFormatDate(date: Date) -> String
 }
 
 protocol SearchViewControllerCoordinator: class {
@@ -155,8 +153,8 @@ class SearchViewController: UIViewController {
     
     @IBAction func calendarTapped(_ sender: Any) {
         coordinator?.showCalendar(currentDate: Date()) { (date) in
-            let newDate = self.interactor.convertLabelDate(date: date)
-            let searchDate = self.interactor.convertSearchFormatDate(date: date)
+            let newDate = Date.convertLabelDate(date: date)
+            let searchDate = Date.convertSearchFormatDate(date: date)
             self.dateButton.setTitle(newDate, for: .normal)
             self.date = searchDate
         }

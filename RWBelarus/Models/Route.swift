@@ -107,12 +107,12 @@ extension Route {
         }
         
         func startTime(_ startTime: String?) -> Builder {
-            self.startTime = startTime
+            self.startTime = startTime == "" ? nil : startTime
             return self
         }
         
         func finishTime(_ finishTime: String?) -> Builder {
-            self.finishTime = finishTime
+            self.finishTime = finishTime == "" ? nil : finishTime
             return self
         }
         
@@ -137,7 +137,7 @@ extension Route {
         }
         
         func days(_ days: String?) -> Builder {
-            self.days = days
+            self.days = days == "" ? nil : days
             return self
         }
         
@@ -147,7 +147,7 @@ extension Route {
         }
         
         func exceptStops(_ exceptStops: String?) -> Builder {
-            self.exceptStops = exceptStops
+            self.exceptStops = exceptStops == "" ? nil : exceptStops
             return self
         }
         

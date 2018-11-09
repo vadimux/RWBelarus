@@ -238,7 +238,7 @@ class NetworkManager {
                         let days: String? = try element.select(K.APIParseConstant.DAYS_VERSION_2).first()?.text()
                         let trainType: TrainType = TrainType(rawValue: try element.select(K.APIParseConstant.TRAIN_TYPE).first()?.text() ?? "") ?? .unknown
                         let exceptStops: String? = try element.select(K.APIParseConstant.STOPS_EXCEPT_VERSION_2).first()?.text()
-                        let urlPath: String? = try element.select(K.APIParseConstant.URL).first()?.select("a").first()?.attr("href")
+                        let urlPath: String? = try element.select(K.APIParseConstant.URL_VERSION_2).first()?.select("a").first()?.attr("href")
                         
                         routeList.append(Route.create()
                             .trainId(trainId)

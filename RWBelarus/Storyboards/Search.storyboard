@@ -20,7 +20,7 @@
             <objects>
                 <viewController storyboardIdentifier="SearchViewController" id="kkp-aO-mmZ" customClass="SearchViewController" customModule="RWBelarus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fx5-JF-R6M">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="554"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="zcf-IV-LaE">
@@ -618,6 +618,7 @@
                     <connections>
                         <outlet property="autocompleteTableView" destination="VHZ-vH-vVC" id="XRI-Mr-HlS"/>
                         <outlet property="searchBar" destination="zS0-8v-5d1" id="lqu-BI-sOe"/>
+                        <outlet property="searchTypeSegmentControl" destination="AXK-dJ-Ocu" id="hQh-OF-vyH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M2R-NU-tlm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -628,7 +629,7 @@
         <scene sceneID="NDg-bT-YhW">
             <objects>
                 <navigationController storyboardIdentifier="SearchNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="R1e-kM-sTy" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" id="H9l-8D-JyI">
+                    <tabBarItem key="tabBarItem" title="" image="train" id="H9l-8D-JyI">
                         <inset key="imageInsets" minX="0.0" minY="6" maxX="0.0" maxY="-6"/>
                     </tabBarItem>
                     <toolbarItems/>
@@ -655,10 +656,11 @@
             <objects>
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="p4q-7l-aU6" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8mQ-4t-CXy">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="8mQ-4t-CXy">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="selectedImageTintColor" red="0.21176470588235294" green="0.37647058823529411" blue="0.54117647058823526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isHeroEnabled" value="YES"/>
@@ -676,6 +678,7 @@
         <image name="basicCalendar" width="75" height="75"/>
         <image name="leftArrow" width="75" height="75"/>
         <image name="rightArrow" width="75" height="75"/>
+        <image name="train" width="45" height="45"/>
         <image name="upDownArrow" width="75" height="75"/>
     </resources>
     <color key="tintColor" red="0.0078431372550000003" green="0.36078431370000003" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

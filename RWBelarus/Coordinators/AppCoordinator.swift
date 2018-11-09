@@ -50,7 +50,7 @@ class AppCoordinator: Coordinator {
         UIBarButtonItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.clear], for: .normal)
         UIBarButtonItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.clear], for: .highlighted)
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = .white
-        UITabBar.appearance().tintColor = .blue
+        UITabBar.appearance().tintColor = UIColor(rgb: 0x36608A)
         UITabBar.appearance().backgroundColor = .white
         
         rootViewController.hero.isEnabled = true

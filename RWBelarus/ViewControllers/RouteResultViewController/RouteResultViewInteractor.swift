@@ -55,18 +55,11 @@ class RouteResultViewInteractor: RouteResultViewControllerInteractor {
                     return ""
                 }
 
-                let outputDate = convertLabelDate(date: date)
+                let outputDate = Date.convertLabelDate(date: date)
                 return outputDate
             }
         }()
         
         return (from, to, date)
-    }
-    
-    private func convertLabelDate(date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "E, d MMM"
-        let newDate = dateFormatter.string(from: date)
-        return newDate
     }
 }

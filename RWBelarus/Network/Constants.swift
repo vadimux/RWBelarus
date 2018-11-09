@@ -39,6 +39,7 @@ struct K {
         static let STOPS_EXCEPT_VERSION_2 = "td[class=train_item train_days]"
         static let STOPSEXCEPT = "td[class=train_item train_halts regional_only everyday_regional_only hidden]"
         static let URL = "div[class=train_name -map]"
+        static let URL_VERSION_2 = "div[class=train_name]"
         static let PLACE = "ul[class=train_details-group]"
         static let ELECTRONIC_REGISTRATION = "i[class=b-spec spec_reserved]"
         static let FAVOURITE_TRAIN = "i[class=b-spec spec_comfort]"

@@ -29,7 +29,7 @@ class TabsScreenCoordinator: NSObject, Coordinator {
             preconditionFailure("Main Storyboard should contain TabsViewController")
         }
         
-        viewController.viewControllers = [searchViewController()]
+        viewController.viewControllers = [searchViewController(), scheduleStationViewController()]
         viewController.coordinator = self
         
         tabBarController = viewController
@@ -49,6 +49,18 @@ class TabsScreenCoordinator: NSObject, Coordinator {
         navViewController.delegate = self
         viewController.interactor = SearchViewInteractor()
         viewController.coordinator = SearchViewCoordinator(rootViewController: rootViewController)
+        
+        return navViewController
+    }
+    
+    private func scheduleStationViewController() -> UINavigationController {
+        
+        guard let navViewController = R.storyboard.station.scheduleStationNavigationController(), let viewController = navViewController.topViewController as? ScheduleStationViewController else {
+            preconditionFailure("Station Storyboard should contain ScheduleStationNavigationController and ScheduleStationViewController")
+        }
+        navViewController.delegate = self
+        viewController.interactor = ScheduleStationViewInteractor()
+        viewController.coordinator = ScheduleStationViewCoordinator(rootViewController: rootViewController)
         
         return navViewController
     }

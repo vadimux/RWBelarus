@@ -1,15 +1,15 @@
 //
-//  SearchViewCoordinator.swift
+//  ScheduleStationViewCoordinator.swift
 //  RWBelarus
 //
-//  Created by Vadzim Mikalayeu on 10/16/18.
+//  Created by Vadzim Mikalayeu on 11/8/18.
 //  Copyright © 2018 mikalayeu. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-class SearchViewCoordinator: Coordinator, SearchViewControllerCoordinator {
+class ScheduleStationViewCoordinator: Coordinator, ScheduleStationViewControllerCoordinator {
     
     var rootViewController: UINavigationController
     var childCoordinators: [Coordinator] = []
@@ -19,17 +19,11 @@ class SearchViewCoordinator: Coordinator, SearchViewControllerCoordinator {
     }
     
     func start(with completion: CoordinatorCallback?) {
-
+        
     }
     
     func stop(with completion: CoordinatorCallback?) {
-    
-    }
-    
-    func showResult(vc: UIViewController, from: AutocompleteAPIElement, to: AutocompleteAPIElement, date: String) {
-        guard let navVC = vc.navigationController else { return }
-        let routeResultViewCoordinator = RouteResultViewCoordinator(rootViewController: navVC, fromData: from, toData: to, date: date)
-        routeResultViewCoordinator.start(with: nil)
+        
     }
     
     func showStationsList(vc: UIViewController, for tagView: Int?) {
@@ -45,5 +39,11 @@ class SearchViewCoordinator: Coordinator, SearchViewControllerCoordinator {
             completion(beginDate ?? Date())
         }
         coordinator.start(with: nil)
+    }
+    
+    func showFullRoute(vc: UIViewController, for route: Route) {
+        guard let navVC = vc.navigationController else { return }
+        let fullRouteViewCoordinator = FullRouteViewCoordinator(rootViewController: navVC, route: route)
+        fullRouteViewCoordinator.start(with: nil)
     }
 }

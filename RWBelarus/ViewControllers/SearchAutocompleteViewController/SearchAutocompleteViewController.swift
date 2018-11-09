@@ -19,11 +19,11 @@ protocol SearchAutocompleteViewControllerCoordinator: class {
     func dismiss(vc: UIViewController, withData: AutocompleteAPIElement)
 }
 
-
 class SearchAutocompleteViewController: UIViewController {
     
     @IBOutlet weak var autocompleteTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchTypeSegmentControl: UISegmentedControl!
     
     var interactor: SearchAutocompleteViewControllerInteractor!
     var coordinator: SearchAutocompleteViewControllerCoordinator?
@@ -37,12 +37,21 @@ class SearchAutocompleteViewController: UIViewController {
         
         configureUI()
         searchBar.becomeFirstResponder()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
     }
     
     private func configureUI() {
+        
         autocompleteTableView.isHidden = true
         autocompleteTableView.tableFooterView = UIView()
-        self.navigationItem.setHidesBackButton(true, animated:true)
+        
+        self.navigationItem.setHidesBackButton(true, animated: true)
         self.definesPresentationContext = true
         
         if let searchTextField = self.searchBar.value(forKey: "_searchField") as? UITextField, let clearButton = searchTextField.value(forKey: "_clearButton") as? UIButton, let placeholder = searchTextField.value(forKey: "placeholderLabel") as? UILabel {
@@ -50,6 +59,19 @@ class SearchAutocompleteViewController: UIViewController {
             clearButton.setImage(templateImage, for: .normal)
             clearButton.tintColor = .white
             placeholder.textColor = .white
+        }
+    }
+    
+    @objc func keyboardWillShow(_ notification: Notification) {
+        
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
+            autocompleteTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+        }
+    }
+    @objc func keyboardWillHide(_ notification: Notification) {
+        
+        if ((notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
+            autocompleteTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         }
     }
     
@@ -105,8 +127,6 @@ extension SearchAutocompleteViewController: UITableViewDataSource, UITableViewDe
         }
         cell.configure(with: result[indexPath.row], searchElement: self.searchElement)
         cell.tapped = { model in
-//            let cache = Cache.sharedInstance
-//            try? cache.saveToCache(autocompleteElement: model)
             self.coordinator?.dismiss(vc: self, withData: model)
         }
         return cell

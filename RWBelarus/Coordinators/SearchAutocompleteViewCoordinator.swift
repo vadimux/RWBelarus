@@ -29,6 +29,7 @@ class SearchAutocompleteViewCoordinator: Coordinator, SearchAutocompleteViewCont
         
         viewController.coordinator = self
         viewController.interactor = SearchAutocompleteViewInteractor()
+        viewController.searchTypeSegmentControl.isHidden = rootViewController.viewControllers.first is ScheduleStationViewController
         rootViewController.show(viewController, sender: self)
     }
     
@@ -42,6 +43,10 @@ class SearchAutocompleteViewCoordinator: Coordinator, SearchAutocompleteViewCont
             } else {
                 rootVC.interactor.toData = withData
             }
+        }
+        //FIXIT: remove this logic
+        if let rootVC = rootViewController.viewControllers.first as? ScheduleStationViewController {
+            rootVC.interactor.fromData = withData
         }
         _ = vc.navigationController?.popViewController(animated: false)
         vc.dismiss(animated: true)

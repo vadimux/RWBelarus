@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "high-speed-train_1-2.png",
+      "filename" : "icons8-stop-train-100.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "high-speed-train_1-1.png",
+      "filename" : "icons8-stop-train-101.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "high-speed-train_1.png",
+      "filename" : "icons8-stop-train-102.png",
       "scale" : "3x"
     }
   ],
@@ -21,6 +21,6 @@
     "author" : "xcode"
   },
   "properties" : {
-    "template-rendering-intent" : "original"
+    "template-rendering-intent" : "template"
   }
 }

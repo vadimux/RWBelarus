@@ -42,7 +42,6 @@ class CarriageSchemeViewController: UIViewController {
             if let information = information {
                 self.information = information
                 self.prepareForShow()
-                
                 self.carriageTableView.reloadData()
             }
         }
