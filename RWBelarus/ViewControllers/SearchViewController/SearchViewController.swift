@@ -132,7 +132,7 @@ class SearchViewController: UIViewController {
         
         isChangeDirectionTapped = !isChangeDirectionTapped
         let countEmpty = routeElements.reduce(0) { $1 == nil ? $0 + 1 : $0 }
-        
+
         switch countEmpty {
         case 0:
             if isChangeDirectionTapped {
@@ -146,6 +146,33 @@ class SearchViewController: UIViewController {
                 interactor.fromData = routeElements[0]
                 interactor.toData = routeElements[1]
             }
+        case 1:
+            if routeElements[0]?.value != nil {
+                interactor.toData = routeElements[0]
+                interactor.fromData = nil
+                
+                additionalFromLabel.isHidden = true
+                fromLabel.text = "Откуда".localized
+                additionalToLabel.isHidden = false
+                toLabel.isHidden = false
+                
+                toLabel.text = routeElements[0]?.value?.uppercased()
+                routeElements[1] = routeElements[0]
+                routeElements[0] = nil
+            } else {
+                interactor.fromData = routeElements[1]
+                interactor.toData = nil
+                
+                additionalFromLabel.isHidden = false
+                fromLabel.isHidden = false
+                additionalToLabel.isHidden = true
+                toLabel.text = "Куда".localized
+                
+                fromLabel.text = routeElements[1]?.value?.uppercased()
+                routeElements[0] = routeElements[1]
+                routeElements[1] = nil
+            }
+            isChangeDirectionTapped = false
         default:
             return
         }

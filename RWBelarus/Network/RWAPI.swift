@@ -206,7 +206,6 @@ class NetworkManager {
                     completion(.failure(error))
                     return
                 }
-                
                 let autocompleteAPI = try? JSONDecoder().decode(SchemeCarAPIModel.self, from: responseData)
                 completion(.success(autocompleteAPI))
         }

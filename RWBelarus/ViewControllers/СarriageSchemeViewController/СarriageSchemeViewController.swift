@@ -82,21 +82,21 @@ class CarriageSchemeViewController: UIViewController {
 extension CarriageSchemeViewController: UITableViewDataSource, UITableViewDelegate {
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return information?.tariffs.count ?? 0
+        return information?.tariffs?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return information?.tariffs[section].cars.count ?? 0
+        return information?.tariffs?[section].cars?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         guard let headerView = CarriageHeader.instanceFromNib() as? CarriageHeader else {
             return nil
         }
-        headerView.typeLabel.text = "Тип: ".localized + (information?.tariffs[section].type ?? "")
-        headerView.tariffLabel.text = "Тариф: ".localized + (information?.tariffs[section].priceByn ?? "")
-        headerView.carrierLabel.text = "Перевозчик: ".localized + (information?.tariffs[section].cars.first?.carrier ?? "")
-        headerView.ownerLabel.text = "Принадлежность вагона: ".localized + (information?.tariffs[section].cars.first?.owner ?? "")
+        headerView.typeLabel.text = "Тип: ".localized + (information?.tariffs?[section].type ?? "")
+        headerView.tariffLabel.text = "Тариф: ".localized + (information?.tariffs?[section].priceByn ?? "")
+        headerView.carrierLabel.text = "Перевозчик: ".localized + (information?.tariffs?[section].cars?.first?.carrier ?? "")
+        headerView.ownerLabel.text = "Принадлежность вагона: ".localized + (information?.tariffs?[section].cars?.first?.owner ?? "")
         return headerView
     }
     
@@ -106,7 +106,7 @@ extension CarriageSchemeViewController: UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.carriageSchemeCell, for: indexPath)!
-        guard let car = information?.tariffs[indexPath.section].cars[indexPath.row] else { return UITableViewCell() }
+        guard let car = information?.tariffs?[indexPath.section].cars?[indexPath.row] else { return UITableViewCell() }
         cell.configure(with: car)
         return cell
     }

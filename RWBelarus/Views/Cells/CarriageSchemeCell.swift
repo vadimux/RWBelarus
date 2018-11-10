@@ -26,9 +26,11 @@ class CarriageSchemeCell: UITableViewCell {
     }
     
     func configure(with info: Car) {
-        carriageNumberLabel.text = "Номер вагона: ".localized + info.number
-        countEmptyPlacesLabel.text = "Свободных мест: ".localized + String(info.totalPlaces)
-        emptyPlacesLabel.text = "Номера свободных мест: ".localized  + info.emptyPlaces.joined(separator: ", ")
+        carriageNumberLabel.text = "Номер вагона: ".localized + (info.number ?? "")
+        if let totalPlaces = info.totalPlaces {
+            countEmptyPlacesLabel.text = "Свободных мест: ".localized + String(totalPlaces)
+        }
+        emptyPlacesLabel.text = "Номера свободных мест: ".localized  + (info.emptyPlaces?.joined(separator: ", ") ?? "")
         
         let localURL = info.imgSrc
         if localURL != "" {
