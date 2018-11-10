@@ -38,7 +38,11 @@ class CarriageSchemeViewController: UIViewController {
         carriageTableView.hideEmptyCells()
         routeInfoView.isHidden = true
         interactor.fetchСarriageScheme { information, error in
-            //TODO: add error for information = nil
+            if error != nil {
+                self.carriageTableView.hideToastActivity()
+                self.view.makeToast(error, duration: 3.0, position: .center)
+                return
+            }
             if let information = information {
                 self.information = information
                 self.prepareForShow()

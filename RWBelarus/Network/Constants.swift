@@ -48,6 +48,8 @@ struct K {
         static let ARRIVAL = "b[class=train_end-time]"
         static let DEPARTURE = "b[class=train_start-time]"
         static let STAY = "b[class=train_stop-time]"
+        static let ERROR = "div[class=error_content]"
+        static let ERROR_TITLE = "div[class=error_title]"
     }
 }
 

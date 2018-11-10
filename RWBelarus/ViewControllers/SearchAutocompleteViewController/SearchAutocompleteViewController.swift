@@ -8,7 +8,6 @@
 
 import UIKit
 import Toast_Swift
-import Cache
 
 protocol SearchAutocompleteViewControllerInteractor: class {
     func callAutocomplete(for station: String, completion: @escaping (_ route: AutocompleteAPI?, _ error: String?) -> ())
@@ -88,9 +87,9 @@ class SearchAutocompleteViewController: UIViewController {
         
         interactor.callAutocomplete(for: station) { result, error in
             self.autocompleteResult = result
-            if let error = error {
-                self.view.makeToast(error)
-                self.view.hideToastActivity()
+            if error != nil {
+                self.autocompleteTableView.hideToastActivity()
+                self.view.makeToast(error, duration: 3.0, position: .center)
                 return
             }
             guard let count = result?.count, count > 0 else {

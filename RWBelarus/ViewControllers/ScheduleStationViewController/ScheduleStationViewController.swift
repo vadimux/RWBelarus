@@ -127,6 +127,7 @@ class ScheduleStationViewController: UIViewController {
         interactor.getSchedule(for: station, date: self.date) { result, error in
             if error != nil {
                 self.scheduleTableView.hideToastActivity()
+                self.view.makeToast(error, duration: 3.0, position: .center)
                 return
             }
             self.trainList = result ?? []

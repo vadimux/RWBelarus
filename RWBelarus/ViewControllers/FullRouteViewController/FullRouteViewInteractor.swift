@@ -24,6 +24,10 @@ class FullRouteViewInteractor: FullRouteViewControllerInteractor {
             case .success(let stations):
                 completion(stations, nil)
             case .failure(let error):
+                if let error = error as? APIError {
+                    completion(nil, error.errorText)
+                    return
+                }
                 completion(nil, error.localizedDescription)
             }
         }

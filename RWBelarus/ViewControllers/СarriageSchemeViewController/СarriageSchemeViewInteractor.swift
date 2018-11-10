@@ -23,6 +23,10 @@ class СarriageSchemeViewInteractor: СarriageSchemeViewControllerInteractor {
             case .success(let information):
                 completion(information, nil)
             case .failure(let error):
+                if let error = error as? APIError {
+                    completion(nil, error.errorText)
+                    return
+                }
                 completion(nil, error.localizedDescription)
             }
         }

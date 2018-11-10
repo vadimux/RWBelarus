@@ -39,9 +39,10 @@ class RouteResultViewController: UIViewController {
         self.resultTableView.makeToastActivity(.center)
         self.resultTableView.hideEmptyCells()
         
-        interactor.prepareForShowResult() { result, error in
-            if let error = error {
+        interactor.prepareForShowResult { result, error in
+            if error != nil {
                 self.resultTableView.hideToastActivity()
+                self.view.makeToast(error, duration: 3.0, position: .center)
                 return
             }
             self.searchResult = result ?? []

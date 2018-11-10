@@ -27,6 +27,10 @@ class RouteResultViewInteractor: RouteResultViewControllerInteractor {
             case .success(let autocomplete):
                 completion(autocomplete, nil)
             case .failure(let error):
+                if let error = error as? APIError {
+                    completion(nil, error.errorText)
+                    return
+                }
                 completion(nil, error.localizedDescription)
             }
         }

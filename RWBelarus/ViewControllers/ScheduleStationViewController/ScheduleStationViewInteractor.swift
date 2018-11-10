@@ -18,6 +18,10 @@ class ScheduleStationViewInteractor: ScheduleStationViewControllerInteractor {
             case .success(let routes):
                 completion(routes, nil)
             case .failure(let error):
+                if let error = error as? APIError {
+                    completion(nil, error.errorText)
+                    return
+                }
                 completion(nil, error.localizedDescription)
             }
         }

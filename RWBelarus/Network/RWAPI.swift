@@ -8,17 +8,14 @@
 
 import Alamofire
 import SwiftSoup
-//import Cache
+
+struct APIError: Error {
+    var errorText: String?
+}
 
 class NetworkManager {
     
-    /**
-     * Запрос на получение списка станций удовлетворяющих введенному названию
-     *
-     * @param term символы, входящие в название станции или полное наименование станции
-     * @completion список станций Result<AutocompleteAPI?>, удовлетворяющих введенному названию
-     */
-    
+    // Request for receiving the list of stations satisfying the entered name
     static func autocomplete(term: String, completion: @escaping (Result<AutocompleteAPI?>) -> Void) {
         Alamofire.request(APIRouter.autocomplete(term: term))
             .response { response in
@@ -26,23 +23,20 @@ class NetworkManager {
                     completion(.failure(error))
                     return
                 }
-                guard let responseData = response.data else { return }
+                guard let responseData = response.data else {
+                    let error = APIError(errorText: "Полученную информацию не удается преобразовать".localized)
+                    completion(.failure(error))
+                    return
+                }
                 
                 let autocompleteAPI = try? JSONDecoder().decode(AutocompleteAPI.self, from: responseData)
                 completion(.success(autocompleteAPI))
         }
     }
-
-    /**
-     * Запрос на получение поездов по заданному маршруту
-     *
-     * @param from    станция отправления
-     * @param to      станция назначения
-     * @param date    дата поездки
-     * @completion возвращает Result<[Route]?> как список соответствующих маршрутов
-     */
+    
+    // Request to receive trains for a given route
     static func getRouteBetweenCities(fromData: AutocompleteAPIElement, toData: AutocompleteAPIElement, date: String, completion: @escaping (Result<[Route]?>) -> Void) {
-        
+
         Alamofire.request(APIRouter.search(fromData: fromData, toData: toData, date: date))
             .responseString { response in
                 
@@ -52,6 +46,8 @@ class NetworkManager {
                 }
                 
                 guard let responseData = response.data, let html = String(data: responseData, encoding: .utf8) else {
+                    let error = APIError(errorText: "Полученную информацию не удается преобразовать".localized)
+                    completion(.failure(error))
                     return
                 }
 
@@ -62,6 +58,10 @@ class NetworkManager {
                     let doc: Document = try SwiftSoup.parse(html)
                     
                     guard let table: Element = try doc.select("table").first() else {
+                        let errorTitle: String? = try doc.select(K.APIParseConstant.ERROR_TITLE).first()?.text()
+                        let errorText: String? = try doc.select(K.APIParseConstant.ERROR).first()?.text()
+                        let error = APIError(errorText: (errorTitle ?? "") + (errorText ?? "" ))
+                        completion(.failure(error))
                         return
                     }
                     
@@ -127,14 +127,7 @@ class NetworkManager {
         }
     }
     
-    /**
-     * Запрос на получение маршрута поезда
-     *
-     * @param trainNumber номер поезда
-     * @param date  дата для поиска
-     * @completion возвращает {@link ResponseBody} для получения и парсинга html страницы
-     */
-
+    // Request for getting the train route
     static func getFullRoute(for route: Route, completion: @escaping (Result<[RouteItem]?>) -> Void) {
         
         //FIXIT: move to Constant
@@ -149,6 +142,8 @@ class NetworkManager {
                 }
                 
                 guard let responseData = response.data, let html = String(data: responseData, encoding: .utf8) else {
+                    let error = APIError(errorText: "Полученную информацию не удается преобразовать".localized)
+                    completion(.failure(error))
                     return
                 }
                 
@@ -156,7 +151,13 @@ class NetworkManager {
                     
                     let doc: Document = try SwiftSoup.parse(html)
                     
-                    guard let table: Element = try doc.select("table").first() else { return }
+                    guard let table: Element = try doc.select("table").first() else {
+                        let errorTitle: String? = try doc.select(K.APIParseConstant.ERROR_TITLE).first()?.text()
+                        let errorText: String? = try doc.select(K.APIParseConstant.ERROR).first()?.text()
+                        let error = APIError(errorText: (errorTitle ?? "") + (errorText ?? "" ))
+                        completion(.failure(error))
+                        return
+                    }
                     
                     let trCollection: Elements = try table.select("tr")
                     var stations = [RouteItem]()
@@ -192,6 +193,7 @@ class NetworkManager {
         }
     }
     
+    // Request for getting of the scheme of the car and info about places
     static func getSchemePlaces(with urlPath: String, completion: @escaping (Result<SchemeCarAPIModel?>) -> Void) {
         Alamofire.request(APIRouter.getSchemePlaces(urlPath: urlPath))
             .response { response in
@@ -199,13 +201,18 @@ class NetworkManager {
                     completion(.failure(error))
                     return
                 }
-                guard let responseData = response.data else { return }
+                guard let responseData = response.data else {
+                    let error = APIError(errorText: "Полученную информацию не удается преобразовать".localized)
+                    completion(.failure(error))
+                    return
+                }
                 
                 let autocompleteAPI = try? JSONDecoder().decode(SchemeCarAPIModel.self, from: responseData)
                 completion(.success(autocompleteAPI))
         }
     }
     
+    // Request for receiving the schedule for the selected station
     static func getScheduleByStation(station: String?, date: String?, completion: @escaping (Result<[Route]?>) -> Void) {
         Alamofire.request(APIRouter.getScheduleByStation(station: station, date: date))
             .response { response in
@@ -215,6 +222,8 @@ class NetworkManager {
                 }
                 
                 guard let responseData = response.data, let html = String(data: responseData, encoding: .utf8) else {
+                    let error = APIError(errorText: "Полученную информацию не удается преобразовать".localized)
+                    completion(.failure(error))
                     return
                 }
                 
@@ -225,6 +234,10 @@ class NetworkManager {
                     let doc: Document = try SwiftSoup.parse(html)
                     
                     guard let table: Element = try doc.select("table").first() else {
+                        let errorTitle: String? = try doc.select(K.APIParseConstant.ERROR_TITLE).first()?.text()
+                        let errorText: String? = try doc.select(K.APIParseConstant.ERROR).first()?.text()
+                        let error = APIError(errorText: (errorTitle ?? "") + (errorText ?? "" ))
+                        completion(.failure(error))
                         return
                     }
                     

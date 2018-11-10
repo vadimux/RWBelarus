@@ -39,8 +39,9 @@ class FullRouteViewController: UIViewController {
         self.title = interactor?.prepareForTitle()
         self.fullRouteTableView.makeToastActivity(.center)
         interactor.fetchFullRoute { result, error in
-            if let _ = error {
+            if error != nil {
                 self.fullRouteTableView.hideToastActivity()
+                self.view.makeToast(error, duration: 3.0, position: .center)
                 return
             }
             self.fullRouteStations = result ?? []
