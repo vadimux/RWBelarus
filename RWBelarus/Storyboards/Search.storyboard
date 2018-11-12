@@ -617,11 +617,44 @@
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="autocompleteTableView" destination="VHZ-vH-vVC" id="XRI-Mr-HlS"/>
+                        <outlet property="emptyView" destination="P9l-MD-nWT" id="TDl-nX-MZh"/>
                         <outlet property="searchBar" destination="zS0-8v-5d1" id="lqu-BI-sOe"/>
                         <outlet property="searchTypeSegmentControl" destination="AXK-dJ-Ocu" id="hQh-OF-vyH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="M2R-NU-tlm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="P9l-MD-nWT">
+                    <rect key="frame" x="0.0" y="0.0" width="325" height="197"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rails" translatesAutoresizingMaskIntoConstraints="NO" id="3Cz-9b-Jaa">
+                            <rect key="frame" x="122.5" y="83" width="80" height="80"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="80" id="aQb-dN-xmt"/>
+                                <constraint firstAttribute="width" constant="80" id="f12-fB-tA2"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Станции с таким названием не найдено" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GZN-rA-Jas">
+                            <rect key="frame" x="10" y="20" width="305" height="48"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="Станции с таким названием не найдено"/>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.93725490196078431" green="0.92156862745098034" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="GZN-rA-Jas" firstAttribute="centerX" secondItem="P9l-MD-nWT" secondAttribute="centerX" id="6Jh-Qv-PtV"/>
+                        <constraint firstItem="3Cz-9b-Jaa" firstAttribute="centerX" secondItem="P9l-MD-nWT" secondAttribute="centerX" id="Xz9-qX-l2r"/>
+                        <constraint firstItem="GZN-rA-Jas" firstAttribute="leading" secondItem="nyk-IR-sJE" secondAttribute="leading" constant="10" id="cgl-Ma-1RL"/>
+                        <constraint firstItem="3Cz-9b-Jaa" firstAttribute="top" secondItem="GZN-rA-Jas" secondAttribute="bottom" constant="15" id="jhG-Gl-F3e"/>
+                        <constraint firstItem="nyk-IR-sJE" firstAttribute="trailing" secondItem="GZN-rA-Jas" secondAttribute="trailing" constant="10" id="pgW-Se-vfZ"/>
+                        <constraint firstItem="GZN-rA-Jas" firstAttribute="top" secondItem="nyk-IR-sJE" secondAttribute="top" constant="20" id="rvz-JO-hV4"/>
+                    </constraints>
+                    <viewLayoutGuide key="safeArea" id="nyk-IR-sJE"/>
+                </view>
             </objects>
             <point key="canvasLocation" x="2968.8000000000002" y="114.69265367316342"/>
         </scene>
@@ -677,6 +710,7 @@
     <resources>
         <image name="basicCalendar" width="75" height="75"/>
         <image name="leftArrow" width="75" height="75"/>
+        <image name="rails" width="75" height="75"/>
         <image name="rightArrow" width="75" height="75"/>
         <image name="train" width="45" height="45"/>
         <image name="upDownArrow" width="75" height="75"/>

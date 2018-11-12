@@ -23,6 +23,7 @@ class SearchAutocompleteViewController: UIViewController {
     @IBOutlet weak var autocompleteTableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchTypeSegmentControl: UISegmentedControl!
+    @IBOutlet var emptyView: UIView!
     
     var interactor: SearchAutocompleteViewControllerInteractor!
     var coordinator: SearchAutocompleteViewControllerCoordinator?
@@ -49,6 +50,7 @@ class SearchAutocompleteViewController: UIViewController {
         
         autocompleteTableView.isHidden = true
         autocompleteTableView.tableFooterView = UIView()
+        autocompleteTableView.backgroundView = emptyView
         
         self.navigationItem.setHidesBackButton(true, animated: true)
         self.definesPresentationContext = true
@@ -77,10 +79,13 @@ class SearchAutocompleteViewController: UIViewController {
     @objc private func callAutocomplete(_ timer: Timer) {
         
         self.view.makeToastActivity(.center)
+        autocompleteTableView.backgroundView?.isHidden = true
+        self.autocompleteTableView.isHidden = false
         
         guard let station = timer.userInfo as? String, station.count > 0 else {
             self.autocompleteResult = nil
             self.autocompleteTableView.reloadData()
+            self.autocompleteTableView.backgroundView?.isHidden = false
             self.view.hideToastActivity()
             return
         }
@@ -90,16 +95,16 @@ class SearchAutocompleteViewController: UIViewController {
             if error != nil {
                 self.autocompleteTableView.hideToastActivity()
                 self.view.makeToast(error, duration: 3.0, position: .center)
+                self.autocompleteTableView.backgroundView?.isHidden = false
                 return
             }
             guard let count = result?.count, count > 0 else {
                 self.autocompleteResult = nil
                 self.autocompleteTableView.reloadData()
+                self.autocompleteTableView.backgroundView?.isHidden = false
                 self.view.hideToastActivity()
                 return
             }
-
-            self.autocompleteTableView.isHidden = false
             self.searchElement = station
             self.autocompleteTableView.reloadData()
             self.view.hideToastActivity()

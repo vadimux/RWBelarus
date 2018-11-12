@@ -31,7 +31,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 16 images.
+  /// This `R.image` struct is generated, and contains static references to 17 images.
   struct image {
     /// Image `basicCalendar`.
     static let basicCalendar = Rswift.ImageResource(bundle: R.hostingBundle, name: "basicCalendar")
@@ -51,6 +51,8 @@ struct R: Rswift.Validatable {
     static let leftArrow = Rswift.ImageResource(bundle: R.hostingBundle, name: "leftArrow")
     /// Image `logo`.
     static let logo = Rswift.ImageResource(bundle: R.hostingBundle, name: "logo")
+    /// Image `rails`.
+    static let rails = Rswift.ImageResource(bundle: R.hostingBundle, name: "rails")
     /// Image `regionBusiness`.
     static let regionBusiness = Rswift.ImageResource(bundle: R.hostingBundle, name: "regionBusiness")
     /// Image `region`.
@@ -109,6 +111,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "logo", bundle: ..., traitCollection: ...)`
     static func logo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.logo, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "rails", bundle: ..., traitCollection: ...)`
+    static func rails(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.rails, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "region", bundle: ..., traitCollection: ...)`
@@ -407,6 +414,7 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "train") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'train' is used in storyboard 'Search', but couldn't be loaded.") }
         if UIKit.UIImage(named: "upDownArrow") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'upDownArrow' is used in storyboard 'Search', but couldn't be loaded.") }
         if UIKit.UIImage(named: "basicCalendar") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'basicCalendar' is used in storyboard 'Search', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "rails") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'rails' is used in storyboard 'Search', but couldn't be loaded.") }
         if UIKit.UIImage(named: "leftArrow") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'leftArrow' is used in storyboard 'Search', but couldn't be loaded.") }
         if _R.storyboard.search().searchAutocompleteViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'searchAutocompleteViewController' could not be loaded from storyboard 'Search' as 'SearchAutocompleteViewController'.") }
         if _R.storyboard.search().searchViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'searchViewController' could not be loaded from storyboard 'Search' as 'SearchViewController'.") }
