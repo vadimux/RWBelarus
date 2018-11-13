@@ -80,7 +80,7 @@ class SearchAutocompleteViewController: UIViewController {
         
         self.view.makeToastActivity(.center)
         autocompleteTableView.backgroundView?.isHidden = true
-        self.autocompleteTableView.isHidden = false
+        autocompleteTableView.isHidden = false
         
         guard let station = timer.userInfo as? String, station.count > 0 else {
             self.autocompleteResult = nil
@@ -90,24 +90,24 @@ class SearchAutocompleteViewController: UIViewController {
             return
         }
         
-        interactor.callAutocomplete(for: station) { result, error in
-            self.autocompleteResult = result
+        interactor.callAutocomplete(for: station) { [weak self] result, error in
+            self?.autocompleteResult = result
             if error != nil {
-                self.autocompleteTableView.hideToastActivity()
-                self.view.makeToast(error, duration: 3.0, position: .center)
-                self.autocompleteTableView.backgroundView?.isHidden = false
+                self?.autocompleteTableView.hideToastActivity()
+                self?.view.makeToast(error, duration: 3.0, position: .center)
+                self?.autocompleteTableView.backgroundView?.isHidden = false
                 return
             }
             guard let count = result?.count, count > 0 else {
-                self.autocompleteResult = nil
-                self.autocompleteTableView.reloadData()
-                self.autocompleteTableView.backgroundView?.isHidden = false
-                self.view.hideToastActivity()
+                self?.autocompleteResult = nil
+                self?.autocompleteTableView.reloadData()
+                self?.autocompleteTableView.backgroundView?.isHidden = false
+                self?.view.hideToastActivity()
                 return
             }
-            self.searchElement = station
-            self.autocompleteTableView.reloadData()
-            self.view.hideToastActivity()
+            self?.searchElement = station
+            self?.autocompleteTableView.reloadData()
+            self?.view.hideToastActivity()
         }
     }
     

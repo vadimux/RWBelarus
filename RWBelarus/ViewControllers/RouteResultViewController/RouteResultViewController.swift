@@ -24,6 +24,7 @@ class RouteResultViewController: UIViewController {
     var coordinator: RouteResultViewControllerCoordinator?
 
     @IBOutlet weak var resultTableView: UITableView!
+    @IBOutlet var emptyView: UIView!
     
     private var searchResult = [Route]()
     
@@ -36,23 +37,28 @@ class RouteResultViewController: UIViewController {
     
     private func prepareResultForTableView() {
         
-        self.resultTableView.makeToastActivity(.center)
-        self.resultTableView.hideEmptyCells()
+        resultTableView.makeToastActivity(.center)
+        resultTableView.hideEmptyCells()
+
+        resultTableView.backgroundView = emptyView
+        resultTableView.backgroundView?.isHidden = true
         
-        interactor.prepareForShowResult { result, error in
+        interactor.prepareForShowResult { [weak self] result, error in
             if error != nil {
-                self.resultTableView.hideToastActivity()
-                self.view.makeToast(error, duration: 3.0, position: .center)
+                self?.resultTableView.hideToastActivity()
+                self?.view.makeToast(error, duration: 3.0, position: .center)
+                self?.resultTableView.backgroundView?.isHidden = false
                 return
             }
-            self.searchResult = result ?? []
+            self?.searchResult = result ?? []
             guard let count = result?.count, count > 0 else {
-                self.resultTableView.hideToastActivity()
+                self?.resultTableView.hideToastActivity()
+                self?.resultTableView.backgroundView?.isHidden = false
                 return
             }
             DispatchQueue.main.async {
-                self.resultTableView.hideToastActivity()
-                self.resultTableView.reloadData()
+                self?.resultTableView.hideToastActivity()
+                self?.resultTableView.reloadData()
             }
         }
     }

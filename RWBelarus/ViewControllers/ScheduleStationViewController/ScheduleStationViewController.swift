@@ -124,20 +124,20 @@ class ScheduleStationViewController: UIViewController {
         self.scheduleTableView.makeToastActivity(.center)
         self.scheduleTableView.hideEmptyCells()
         
-        interactor.getSchedule(for: station, date: self.date) { result, error in
+        interactor.getSchedule(for: station, date: self.date) { [weak self] result, error in
             if error != nil {
-                self.scheduleTableView.hideToastActivity()
-                self.view.makeToast(error, duration: 3.0, position: .center)
+                self?.scheduleTableView.hideToastActivity()
+                self?.view.makeToast(error, duration: 3.0, position: .center)
                 return
             }
-            self.trainList = result ?? []
+            self?.trainList = result ?? []
             guard let count = result?.count, count > 0 else {
-                self.scheduleTableView.hideToastActivity()
+                self?.scheduleTableView.hideToastActivity()
                 return
             }
             DispatchQueue.main.async {
-                self.scheduleTableView.hideToastActivity()
-                self.scheduleTableView.reloadData()
+                self?.scheduleTableView.hideToastActivity()
+                self?.scheduleTableView.reloadData()
             }
         }
     }

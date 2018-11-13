@@ -506,7 +506,7 @@
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" contentInsetAdjustmentBehavior="never" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHZ-vH-vVC">
                                 <rect key="frame" x="8" y="120" width="359" height="547"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="autocompleteCell" rowHeight="80" id="y08-zu-x7O" customClass="AutocompleteCell" customModule="RWBelarus" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="359" height="80"/>
@@ -644,7 +644,7 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.93725490196078431" green="0.92156862745098034" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="GZN-rA-Jas" firstAttribute="centerX" secondItem="P9l-MD-nWT" secondAttribute="centerX" id="6Jh-Qv-PtV"/>
                         <constraint firstItem="3Cz-9b-Jaa" firstAttribute="centerX" secondItem="P9l-MD-nWT" secondAttribute="centerX" id="Xz9-qX-l2r"/>

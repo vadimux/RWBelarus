@@ -32,8 +32,7 @@ class CarriageSchemeCell: UITableViewCell {
         }
         emptyPlacesLabel.text = "Номера свободных мест: ".localized  + (info.emptyPlaces?.joined(separator: ", ") ?? "")
         
-        let localURL = info.imgSrc
-        if localURL != "" {
+        if let localURL = info.imgSrc, localURL != "" {
             //FIXIT: change 'ru' to '..'
             let baseURL = K.RWServer.baseURL.replacingOccurrences(of: "ru/", with: "")
             let url = URL(string: "\(baseURL)\(localURL)")

@@ -25,6 +25,7 @@ class FullRouteViewController: UIViewController {
     @IBOutlet weak var trainNumberLabel: UILabel!
     @IBOutlet weak var routeLabel: UILabel!
     @IBOutlet weak var trainTypeLabel: UILabel!
+    @IBOutlet var emptyView: UIView!
     
     var interactor: FullRouteViewControllerInteractor!
     var coordinator: FullRouteViewControllerCoordinator?
@@ -38,20 +39,31 @@ class FullRouteViewController: UIViewController {
         prepareForShow()
         self.title = interactor?.prepareForTitle()
         self.fullRouteTableView.makeToastActivity(.center)
-        interactor.fetchFullRoute { result, error in
+        interactor.fetchFullRoute { [weak self] result, error in
             if error != nil {
-                self.fullRouteTableView.hideToastActivity()
-                self.view.makeToast(error, duration: 3.0, position: .center)
+                self?.fullRouteTableView.hideToastActivity()
+                self?.view.makeToast(error, duration: 3.0, position: .center)
+                self?.fullRouteTableView.backgroundView?.isHidden = false
                 return
             }
-            self.fullRouteStations = result ?? []
-            self.createSelectedRoute()
-            self.fullRouteTableView.reloadData()
-            self.fullRouteTableView.hideToastActivity()
+            if result?.isEmpty == true {
+                self?.fullRouteTableView.reloadData()
+                self?.fullRouteTableView.backgroundView?.isHidden = false
+                self?.fullRouteTableView.hideToastActivity()
+                return
+            }
+            self?.fullRouteStations = result ?? []
+            self?.createSelectedRoute()
+            self?.fullRouteTableView.reloadData()
+            self?.fullRouteTableView.hideToastActivity()
         }
     }
     
     func prepareForShow() {
+        
+        fullRouteTableView.backgroundView = emptyView
+        fullRouteTableView.backgroundView?.isHidden = true
+        
         self.trainNumberLabel.text = self.interactor.route.trainId
         self.routeLabel.text = self.interactor.route.routeName
         self.trainTypeLabel.text = self.interactor.route.trainType.rawValue
@@ -76,6 +88,7 @@ class FullRouteViewController: UIViewController {
     }
     
     private func createSelectedRoute() {
+        
         guard let fromStation = interactor.route.fromStation, let toStation = interactor.route.toStation else { return }
         
         if let startIndex = fullRouteStations.index(where: { ($0.station?.contains(find: fromStation))! }),

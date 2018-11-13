@@ -20,12 +20,12 @@ protocol СarriageSchemeViewControllerCoordinator: class {
 class CarriageSchemeViewController: UIViewController {
     
     @IBOutlet weak var carriageTableView: UITableView!
-    
     @IBOutlet weak var routeInfoView: UIView!
     @IBOutlet weak var trainTypeImage: UIImageView!
     @IBOutlet weak var trainNumberLabel: UILabel!
     @IBOutlet weak var routeLabel: UILabel!
     @IBOutlet weak var trainTypeLabel: UILabel!
+    @IBOutlet var emptyView: UIView!
     
     var interactor: СarriageSchemeViewControllerInteractor!
     var coordinator: СarriageSchemeViewControllerCoordinator?
@@ -37,16 +37,23 @@ class CarriageSchemeViewController: UIViewController {
         
         carriageTableView.hideEmptyCells()
         routeInfoView.isHidden = true
-        interactor.fetchСarriageScheme { information, error in
+        
+        carriageTableView.backgroundView = emptyView
+        carriageTableView.backgroundView?.isHidden = true
+        
+        interactor.fetchСarriageScheme { [weak self] information, error in
             if error != nil {
-                self.carriageTableView.hideToastActivity()
-                self.view.makeToast(error, duration: 3.0, position: .center)
+                self?.carriageTableView.hideToastActivity()
+                self?.view.makeToast(error, duration: 3.0, position: .center)
+                self?.carriageTableView.backgroundView?.isHidden = false
                 return
             }
             if let information = information {
-                self.information = information
-                self.prepareForShow()
-                self.carriageTableView.reloadData()
+                self?.information = information
+                self?.prepareForShow()
+                self?.carriageTableView.reloadData()
+            } else {
+                self?.carriageTableView.backgroundView?.isHidden = false
             }
         }
     }
