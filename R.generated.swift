@@ -13,6 +13,7 @@ struct R: Rswift.Validatable {
   fileprivate static let hostingBundle = Bundle(for: R.Class.self)
   
   static func validate() throws {
+    try font.validate()
     try intern.validate()
   }
   
@@ -21,13 +22,66 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.file` struct is generated, and contains static references to 0 files.
+  /// This `R.file` struct is generated, and contains static references to 3 files.
   struct file {
+    /// Resource file `Roboto-Light.ttf`.
+    static let robotoLightTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Roboto-Light", pathExtension: "ttf")
+    /// Resource file `Roboto-Medium.ttf`.
+    static let robotoMediumTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Roboto-Medium", pathExtension: "ttf")
+    /// Resource file `Roboto-Regular.ttf`.
+    static let robotoRegularTtf = Rswift.FileResource(bundle: R.hostingBundle, name: "Roboto-Regular", pathExtension: "ttf")
+    
+    /// `bundle.url(forResource: "Roboto-Light", withExtension: "ttf")`
+    static func robotoLightTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.robotoLightTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "Roboto-Medium", withExtension: "ttf")`
+    static func robotoMediumTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.robotoMediumTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
+    /// `bundle.url(forResource: "Roboto-Regular", withExtension: "ttf")`
+    static func robotoRegularTtf(_: Void = ()) -> Foundation.URL? {
+      let fileResource = R.file.robotoRegularTtf
+      return fileResource.bundle.url(forResource: fileResource)
+    }
+    
     fileprivate init() {}
   }
   
-  /// This `R.font` struct is generated, and contains static references to 0 fonts.
-  struct font {
+  /// This `R.font` struct is generated, and contains static references to 3 fonts.
+  struct font: Rswift.Validatable {
+    /// Font `Roboto-Light`.
+    static let robotoLight = Rswift.FontResource(fontName: "Roboto-Light")
+    /// Font `Roboto-Medium`.
+    static let robotoMedium = Rswift.FontResource(fontName: "Roboto-Medium")
+    /// Font `Roboto-Regular`.
+    static let robotoRegular = Rswift.FontResource(fontName: "Roboto-Regular")
+    
+    /// `UIFont(name: "Roboto-Light", size: ...)`
+    static func robotoLight(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: robotoLight, size: size)
+    }
+    
+    /// `UIFont(name: "Roboto-Medium", size: ...)`
+    static func robotoMedium(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: robotoMedium, size: size)
+    }
+    
+    /// `UIFont(name: "Roboto-Regular", size: ...)`
+    static func robotoRegular(size: CGFloat) -> UIKit.UIFont? {
+      return UIKit.UIFont(resource: robotoRegular, size: size)
+    }
+    
+    static func validate() throws {
+      if R.font.robotoMedium(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Roboto-Medium' could not be loaded, is 'Roboto-Medium.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.robotoRegular(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Roboto-Regular' could not be loaded, is 'Roboto-Regular.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+      if R.font.robotoLight(size: 42) == nil { throw Rswift.ValidationError(description:"[R.swift] Font 'Roboto-Light' could not be loaded, is 'Roboto-Light.ttf' added to the UIAppFonts array in this targets Info.plist?") }
+    }
+    
     fileprivate init() {}
   }
   
@@ -373,7 +427,6 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
-        if UIKit.UIImage(named: "rails") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'rails' is used in storyboard 'RouteResult', but couldn't be loaded.") }
         if UIKit.UIImage(named: "bzhd_0") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'bzhd_0' is used in storyboard 'RouteResult', but couldn't be loaded.") }
         if _R.storyboard.routeResult().routeResultViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'routeResultViewController' could not be loaded from storyboard 'RouteResult' as 'RouteResultViewController'.") }
         if _R.storyboard.routeResult().routeResultNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'routeResultNavigationController' could not be loaded from storyboard 'RouteResult' as 'UIKit.UINavigationController'.") }
