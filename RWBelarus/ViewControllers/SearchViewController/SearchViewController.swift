@@ -46,17 +46,32 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var fromView: UIView!
     @IBOutlet weak var toView: UIView!
-    @IBOutlet weak var additionalFromLabel: UILabel!
+    @IBOutlet weak var additionalFromLabel: UILabel! {
+        didSet {
+            additionalFromLabel.isHidden = true
+        }
+    }
     @IBOutlet weak var additionalToLabel: UILabel!
+        {
+        didSet {
+            additionalToLabel.isHidden = true
+        }
+    }
     @IBOutlet weak var fromLabel: UILabel!
     @IBOutlet weak var toLabel: UILabel!
-    @IBOutlet weak var searchButton: UIButton!
+    @IBOutlet weak var searchButton: UIButton! {
+        didSet {
+            searchButton.isEnabled = false
+        }
+    }
     
     private let heroTransition = HeroTransition()
     private var isChangeDirectionTapped = false
     private var routeElements = [AutocompleteAPIElement?](repeating: nil, count: 2) //[from, to]
     private var date: String!
-    private let kObservedPropertyName = "text"
+//    private let kObservedPropertyName = "text"
+    private var observerFromLabel: NSKeyValueObservation?
+    private var observerToLabel: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,13 +80,31 @@ class SearchViewController: UIViewController {
         self.hideKeyboardWhenTappedAround()
         self.navigationController?.delegate = self
         self.navigationController?.hero.navigationAnimationType = .fade
+        
+        observerFromLabel = fromLabel.observe(\.text, options: [.new]) { (_, change) in
+            if change.newValue != nil {
+                let countEmpty = self.routeElements.reduce(0) { $1 == nil ? $0 + 1 : $0 }
+                self.searchButton.isEnabled = countEmpty == 1 || countEmpty == 0 ? true : false
+            }
+        }
+        observerToLabel = toLabel.observe(\.text, options: [.new]) { (_, change) in
+            if change.newValue != nil {
+                let countEmpty = self.routeElements.reduce(0) { $1 == nil ? $0 + 1 : $0 }
+                self.searchButton.isEnabled = countEmpty == 1 || countEmpty == 0 ? true : false
+            }
+        }
+    }
+    
+    deinit {
+        observerFromLabel?.invalidate()
+        observerToLabel?.invalidate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        fromLabel.addObserver(self, forKeyPath: kObservedPropertyName, options: .new, context: nil)
-        toLabel.addObserver(self, forKeyPath: kObservedPropertyName, options: .new, context: nil)
+//        fromLabel.addObserver(self, forKeyPath: kObservedPropertyName, options: .new, context: nil)
+//        toLabel.addObserver(self, forKeyPath: kObservedPropertyName, options: .new, context: nil)
         
         if let fromData = interactor.fromData {
             additionalFromLabel.isHidden = false
@@ -85,18 +118,18 @@ class SearchViewController: UIViewController {
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        fromLabel.removeObserver(self, forKeyPath: kObservedPropertyName)
-        toLabel.removeObserver(self, forKeyPath: kObservedPropertyName)
-    }
+//    override func viewWillDisappear(_ animated: Bool) {
+//        super.viewWillDisappear(animated)
+//
+//        fromLabel.removeObserver(self, forKeyPath: kObservedPropertyName)
+//        toLabel.removeObserver(self, forKeyPath: kObservedPropertyName)
+//    }
     
     private func configureUI() {
-        fromLabel.text = "Откуда".localized
-        toLabel.text = "Куда".localized
-        additionalFromLabel.isHidden = true
-        additionalToLabel.isHidden = true
+//        fromLabel.text = "Откуда".localized
+//        toLabel.text = "Куда".localized
+//        additionalFromLabel.isHidden = true
+//        additionalToLabel.isHidden = true
         self.hero.isEnabled = true
         
         //by default
@@ -105,14 +138,14 @@ class SearchViewController: UIViewController {
         self.searchButton.isEnabled = false
     }
 
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == kObservedPropertyName {
-            if let _ = change?[.newKey] {
-                let countEmpty = routeElements.reduce(0) { $1 == nil ? $0 + 1 : $0 }
-                self.searchButton.isEnabled = countEmpty == 1 || countEmpty == 0 ? true : false
-            }
-        }
-    }
+//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
+//        if keyPath == kObservedPropertyName {
+//            if let _ = change?[.newKey] {
+//                let countEmpty = routeElements.reduce(0) { $1 == nil ? $0 + 1 : $0 }
+//                self.searchButton.isEnabled = countEmpty == 1 || countEmpty == 0 ? true : false
+//            }
+//        }
+//    }
     
     @IBAction func searchButtonTapped(_ sender: Any) {
         guard let fromAddress = self.interactor.fromData, let toAddress = self.interactor.toData else {

@@ -28,7 +28,11 @@ class ScheduleStationViewController: UIViewController {
     
     @IBOutlet weak var scheduleTableView: UITableView!
     @IBOutlet weak var dateButton: UIButton!
-    @IBOutlet weak var scheduleButton: UIButton!
+    @IBOutlet weak var scheduleButton: UIButton! {
+        didSet {
+            scheduleButton.isEnabled = false
+        }
+    }
     @IBOutlet weak var stationLabel: UILabel!
     
     var interactor: ScheduleStationViewControllerInteractor!
@@ -36,9 +40,9 @@ class ScheduleStationViewController: UIViewController {
     
     var trainList = [Route]()
     private var date: String!
-    private let kObservedPropertyName = "text"
     private var selectedStation: String?
     private let heroTransition = HeroTransition()
+    private var observer: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,13 +50,17 @@ class ScheduleStationViewController: UIViewController {
         self.navigationController?.delegate = self
         self.navigationController?.hero.navigationAnimationType = .fade
         
+        observer = stationLabel.observe(\.text, options: [.new]) { (_, change) in
+            if change.newValue != nil {
+                self.scheduleButton.isEnabled = true
+            }
+        }
+        
         configureUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        stationLabel.addObserver(self, forKeyPath: kObservedPropertyName, options: .new, context: nil)
         
         if let fromData = interactor.fromData {
             stationLabel.text = fromData.value?.uppercased()
@@ -60,28 +68,17 @@ class ScheduleStationViewController: UIViewController {
         }
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        stationLabel.removeObserver(self, forKeyPath: kObservedPropertyName)
+    deinit {
+        observer?.invalidate()
     }
     
     private func configureUI() {
         
-        stationLabel.text = "Cтанция".localized
+        //stationLabel.text = "Cтанция".localized
         
         //by default
         self.dateButton.setTitle("на все дни".localized, for: .normal)
         self.date = "everyday"
-        self.scheduleButton.isEnabled = false
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == kObservedPropertyName {
-            if let _ = change?[.newKey] {
-                self.scheduleButton.isEnabled = stationLabel.text != nil
-            }
-        }
     }
     
     @IBAction func scheduleButtonTapped(_ sender: Any) {

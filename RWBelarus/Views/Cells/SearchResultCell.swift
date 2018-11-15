@@ -28,12 +28,16 @@ class SearchResultCell: UITableViewCell {
     
     private var tapRecognizer: UITapGestureRecognizer?
     private var ticketInfo = [TrainPlace]()
-    private let kObservedPropertyName = "contentSize"
+    private var observer: NSKeyValueObservation?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        ticketTableView.addObserver(self, forKeyPath: kObservedPropertyName, options: .new, context: nil)
+        observer = ticketTableView.observe(\.contentSize, options: [.new]) { (_, change) in
+            if let newValue = change.newValue {
+                self.ticketTableConstraint.constant = newValue.height
+            }
+        }
         ticketTableView.hideEmptyCells()
         ticketTableView.separatorColor = .clear
         
@@ -47,7 +51,7 @@ class SearchResultCell: UITableViewCell {
     }
     
     deinit {
-        ticketTableView.removeObserver(self, forKeyPath: kObservedPropertyName)
+        observer?.invalidate()
     }
 
     override func prepareForReuse() {
@@ -61,15 +65,6 @@ class SearchResultCell: UITableViewCell {
         daysLabel.text = nil
         typeTrainImage.image = nil
         exceptStationLabel.text = nil
-    }
-    
-    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-        if keyPath == kObservedPropertyName {
-            if let newvalue = change?[.newKey] {
-                guard let newsize  = newvalue as? CGSize else { return }
-                self.ticketTableConstraint.constant = newsize.height
-            }
-        }
     }
     
     func configure(with element: Route, rootViewController: UINavigationController?) {
