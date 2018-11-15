@@ -119,6 +119,7 @@ class SearchViewController: UIViewController {
             self.view.makeToast("error")
             return
         }
+        CoreDataManager.shared().saveRouteWith(from: fromAddress, to: toAddress)
         coordinator?.showResult(vc: self, from: fromAddress, to: toAddress, date: self.date)
     }
     

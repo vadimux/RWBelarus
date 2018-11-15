@@ -25,4 +25,8 @@ class SearchAutocompleteViewInteractor: SearchAutocompleteViewControllerInteract
             }
         }
     }
+    
+    func checkSavedRoutes() -> Bool {
+        return CoreDataManager.shared().loadRoute().count > 0
+    }
 }

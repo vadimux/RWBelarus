@@ -547,15 +547,37 @@
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <connections>
-                                            <outlet property="additionalInfoLabel" destination="hPh-UT-TmE" id="RAg-LV-b1M"/>
-                                            <outlet property="autocompleteLabel" destination="E3D-6D-si6" id="TVV-xm-Ctj"/>
+                                            <outlet property="additionalInfoLabel" destination="hPh-UT-TmE" id="4I7-Pl-1HF"/>
+                                            <outlet property="autocompleteLabel" destination="E3D-6D-si6" id="vek-P9-cAT"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="autocompleteRouteCell" rowHeight="80" id="tI0-m7-evK" customClass="AutocompleteRouteCell" customModule="RWBelarus" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="108" width="359" height="80"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="tI0-m7-evK" id="5xS-wi-VRF">
+                                            <rect key="frame" x="0.0" y="0.0" width="359" height="79.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jAN-FM-IWC">
+                                                    <rect key="frame" x="5" y="10" width="344" height="59.5"/>
+                                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="jAN-FM-IWC" secondAttribute="bottom" constant="10" id="1VT-e1-dTY"/>
+                                                <constraint firstAttribute="trailing" secondItem="jAN-FM-IWC" secondAttribute="trailing" constant="10" id="Nbl-ds-bIt"/>
+                                                <constraint firstItem="jAN-FM-IWC" firstAttribute="top" secondItem="5xS-wi-VRF" secondAttribute="top" constant="10" id="UcM-E1-Rwp"/>
+                                                <constraint firstItem="jAN-FM-IWC" firstAttribute="leading" secondItem="5xS-wi-VRF" secondAttribute="leading" constant="5" id="v6Z-Q6-MS8"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <connections>
+                                            <outlet property="routeNameLabel" destination="jAN-FM-IWC" id="Kbv-ZX-0e1"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="GcY-U4-fQq" id="WSw-Qs-grI"/>
-                                    <outlet property="delegate" destination="GcY-U4-fQq" id="7s6-YA-03K"/>
-                                </connections>
                             </tableView>
                             <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Поиск станции или маршрута" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zS0-8v-5d1">
                                 <rect key="frame" x="0.0" y="64" width="305" height="56"/>
@@ -616,6 +638,9 @@
                                 <segment title="Маршруты"/>
                             </segments>
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <action selector="sectionTapped:" destination="GcY-U4-fQq" eventType="valueChanged" id="ePQ-nX-OZ4"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>

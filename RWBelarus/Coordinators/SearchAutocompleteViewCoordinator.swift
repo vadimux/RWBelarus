@@ -52,6 +52,15 @@ class SearchAutocompleteViewCoordinator: Coordinator, SearchAutocompleteViewCont
         vc.dismiss(animated: true)
     }
     
+    func dismiss(vc: UIViewController, fromData: AutocompleteAPIElement, toData: AutocompleteAPIElement) {
+        if let rootVC = rootViewController.viewControllers.first as? SearchViewController {
+            rootVC.interactor.fromData = fromData
+            rootVC.interactor.toData = toData
+        }
+        _ = vc.navigationController?.popViewController(animated: false)
+        vc.dismiss(animated: true)
+    }
+    
     func dismiss(vc: UIViewController) {
         _ = vc.navigationController?.popViewController(animated: false)
         vc.dismiss(animated: true)

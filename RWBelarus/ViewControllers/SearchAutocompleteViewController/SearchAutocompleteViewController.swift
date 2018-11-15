@@ -10,12 +10,13 @@ import UIKit
 import Toast_Swift
 
 protocol SearchAutocompleteViewControllerInteractor: class {
-    func callAutocomplete(for station: String, completion: @escaping (_ route: AutocompleteAPI?, _ error: String?) -> ())
+    func callAutocomplete(for station: String, completion: @escaping (_ route: AutocompleteAPI?, _ error: String?) -> Void)
 }
 
 protocol SearchAutocompleteViewControllerCoordinator: class {
     func dismiss(vc: UIViewController)
     func dismiss(vc: UIViewController, withData: AutocompleteAPIElement)
+    func dismiss(vc: UIViewController, fromData: AutocompleteAPIElement, toData: AutocompleteAPIElement)
 }
 
 class SearchAutocompleteViewController: UIViewController {
@@ -29,8 +30,7 @@ class SearchAutocompleteViewController: UIViewController {
     var coordinator: SearchAutocompleteViewControllerCoordinator?
     
     private var textTimer: Timer?
-    private var autocompleteResult: AutocompleteAPI?
-    private var searchElement: String?
+    private var dataSource: AutocompleteDataSource?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +40,8 @@ class SearchAutocompleteViewController: UIViewController {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
+        self.dataSource = AutocompleteDataSource(with: autocompleteTableView, delegate: self, emptyView: self.emptyView)
     }
     
     deinit {
@@ -83,30 +85,27 @@ class SearchAutocompleteViewController: UIViewController {
         autocompleteTableView.isHidden = false
         
         guard let station = timer.userInfo as? String, station.count > 0 else {
-            self.autocompleteResult = nil
-            self.autocompleteTableView.reloadData()
+            self.dataSource?.reload(autocompleteResult: nil)
             self.autocompleteTableView.backgroundView?.isHidden = false
             self.view.hideToastActivity()
             return
         }
         
         interactor.callAutocomplete(for: station) { [weak self] result, error in
-            self?.autocompleteResult = result
             if error != nil {
+                self?.dataSource?.reload(autocompleteResult: nil)
                 self?.autocompleteTableView.hideToastActivity()
                 self?.view.makeToast(error, duration: 3.0, position: .center)
                 self?.autocompleteTableView.backgroundView?.isHidden = false
                 return
             }
             guard let count = result?.count, count > 0 else {
-                self?.autocompleteResult = nil
-                self?.autocompleteTableView.reloadData()
+                self?.dataSource?.reload(autocompleteResult: nil)
                 self?.autocompleteTableView.backgroundView?.isHidden = false
                 self?.view.hideToastActivity()
                 return
             }
-            self?.searchElement = station
-            self?.autocompleteTableView.reloadData()
+            self?.dataSource?.reload(autocompleteResult: result, station)
             self?.view.hideToastActivity()
         }
     }
@@ -115,25 +114,29 @@ class SearchAutocompleteViewController: UIViewController {
         self.coordinator?.dismiss(vc: self)
     }
     
+    @IBAction func sectionTapped(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 1 {
+            if CoreDataManager.shared().loadRoute().isEmpty {
+               self.view.makeToast("Не доступно".localized, duration: 3.0, position: .center)
+            } else {
+                autocompleteTableView.backgroundView?.isHidden = true
+                autocompleteTableView.isHidden = false
+                searchBar.isHidden = true
+                self.dataSource?.reload()
+            }
+        }
+        
+    }
 }
 
-extension SearchAutocompleteViewController: UITableViewDataSource, UITableViewDelegate {
+extension SearchAutocompleteViewController: AutocompleteDelegate {
     
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return autocompleteResult?.count ?? 0
+    func onAutocompleteTapped(model: AutocompleteAPIElement) {
+        self.coordinator?.dismiss(vc: self, withData: model)
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.autocompleteCell, for: indexPath)!
-        guard let result = autocompleteResult else {
-            return UITableViewCell()
-        }
-        cell.configure(with: result[indexPath.row], searchElement: self.searchElement)
-        cell.tapped = { model in
-            self.coordinator?.dismiss(vc: self, withData: model)
-        }
-        return cell
+    func onRouteTapped(fromData: AutocompleteAPIElement, toData: AutocompleteAPIElement) {
+        self.coordinator?.dismiss(vc: self, fromData: fromData, toData: toData)
     }
 }
 

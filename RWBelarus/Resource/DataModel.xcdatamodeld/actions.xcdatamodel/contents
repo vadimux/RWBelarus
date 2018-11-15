@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14460.32" systemVersion="18A391" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="RouteCoreData" representedClassName="RouteCoreData" syncable="YES" codeGenerationType="class">
+        <attribute name="fromExp" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="fromTo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="labelFrom" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="labelTo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="toExp" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="valueFrom" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="valueTo" optional="YES" attributeType="String" syncable="YES"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="fromTo"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <elements>
+        <element name="RouteCoreData" positionX="-63" positionY="-18" width="128" height="150"/>
+    </elements>
+</model>
