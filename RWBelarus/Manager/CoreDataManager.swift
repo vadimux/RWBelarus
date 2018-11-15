@@ -81,11 +81,12 @@ extension CoreDataManager {
         route.labelFrom = from.label
         
         route.labelTo = to.label
-        route.toExp = to.label
-        route.valueTo = to.label
+        route.toExp = to.exp
+        route.valueTo = to.value
         
-        if let from = route.labelFrom, let to = route.labelTo {
+        if let from = route.labelFrom, let to = route.labelTo, let fromValue = route.valueFrom, let toValue = route.valueTo {
             route.fromTo = "\(from),\(to)"
+            route.routeName = "\(fromValue) - \(toValue)"
         }
         
         self.save(managedContext: managedContext)

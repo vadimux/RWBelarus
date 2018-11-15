@@ -5,6 +5,7 @@
         <attribute name="fromTo" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="labelFrom" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="labelTo" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="routeName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="toExp" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="valueFrom" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="valueTo" optional="YES" attributeType="String" syncable="YES"/>
@@ -15,6 +16,6 @@
         </uniquenessConstraints>
     </entity>
     <elements>
-        <element name="RouteCoreData" positionX="-63" positionY="-18" width="128" height="150"/>
+        <element name="RouteCoreData" positionX="-63" positionY="-18" width="128" height="165"/>
     </elements>
 </model>

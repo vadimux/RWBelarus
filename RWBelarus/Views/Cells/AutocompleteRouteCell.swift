@@ -24,7 +24,7 @@ class AutocompleteRouteCell: UITableViewCell {
     
     func configure(with route: RouteCoreData) {
         
-        self.routeNameLabel.text = route.fromTo
+        self.routeNameLabel.text = route.routeName
         
         tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedInCell))
         tapRecognizer?.numberOfTapsRequired = 1

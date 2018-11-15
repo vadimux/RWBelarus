@@ -51,8 +51,7 @@ class SearchViewController: UIViewController {
             additionalFromLabel.isHidden = true
         }
     }
-    @IBOutlet weak var additionalToLabel: UILabel!
-        {
+    @IBOutlet weak var additionalToLabel: UILabel! {
         didSet {
             additionalToLabel.isHidden = true
         }
@@ -69,7 +68,6 @@ class SearchViewController: UIViewController {
     private var isChangeDirectionTapped = false
     private var routeElements = [AutocompleteAPIElement?](repeating: nil, count: 2) //[from, to]
     private var date: String!
-//    private let kObservedPropertyName = "text"
     private var observerFromLabel: NSKeyValueObservation?
     private var observerToLabel: NSKeyValueObservation?
     
@@ -102,10 +100,7 @@ class SearchViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-//        fromLabel.addObserver(self, forKeyPath: kObservedPropertyName, options: .new, context: nil)
-//        toLabel.addObserver(self, forKeyPath: kObservedPropertyName, options: .new, context: nil)
-        
+
         if let fromData = interactor.fromData {
             additionalFromLabel.isHidden = false
             fromLabel.text = fromData.value?.uppercased()
@@ -118,34 +113,12 @@ class SearchViewController: UIViewController {
         }
     }
     
-//    override func viewWillDisappear(_ animated: Bool) {
-//        super.viewWillDisappear(animated)
-//
-//        fromLabel.removeObserver(self, forKeyPath: kObservedPropertyName)
-//        toLabel.removeObserver(self, forKeyPath: kObservedPropertyName)
-//    }
-    
     private func configureUI() {
-//        fromLabel.text = "Откуда".localized
-//        toLabel.text = "Куда".localized
-//        additionalFromLabel.isHidden = true
-//        additionalToLabel.isHidden = true
-        self.hero.isEnabled = true
         
         //by default
-        self.dateButton.setTitle("на все дни".localized, for: .normal)
+        self.hero.isEnabled = true
         self.date = "everyday"
-        self.searchButton.isEnabled = false
     }
-
-//    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey: Any]?, context: UnsafeMutableRawPointer?) {
-//        if keyPath == kObservedPropertyName {
-//            if let _ = change?[.newKey] {
-//                let countEmpty = routeElements.reduce(0) { $1 == nil ? $0 + 1 : $0 }
-//                self.searchButton.isEnabled = countEmpty == 1 || countEmpty == 0 ? true : false
-//            }
-//        }
-//    }
     
     @IBAction func searchButtonTapped(_ sender: Any) {
         guard let fromAddress = self.interactor.fromData, let toAddress = self.interactor.toData else {

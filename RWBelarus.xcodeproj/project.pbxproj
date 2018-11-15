@@ -436,13 +436,13 @@
 			isa = PBXGroup;
 			children = (
 				A7F45DDA2175FCDB0099A9E1 /* AutocompleteCell.swift */,
+				A74FDA8B219D7D67001713B6 /* AutocompleteRouteCell.swift */,
 				A7EF0C5821770C4B00C075E0 /* SearchResultCell.swift */,
 				A7D1A3D0217DE12C00B374DE /* TicketInfoCell.swift */,
 				A7BDB212218821BC0070E543 /* FullRouteCell.swift */,
 				0DE3F6E4218DAD5700054E1E /* HeaderResultCell.swift */,
 				0DE3F6EF218EC5D900054E1E /* CarriageSchemeCell.swift */,
 				A7AE7275219402ED00CBB255 /* StationScheduleCell.swift */,
-				A74FDA8B219D7D67001713B6 /* AutocompleteRouteCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";

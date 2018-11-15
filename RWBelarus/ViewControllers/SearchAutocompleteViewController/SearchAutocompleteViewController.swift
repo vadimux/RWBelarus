@@ -117,15 +117,19 @@ class SearchAutocompleteViewController: UIViewController {
     @IBAction func sectionTapped(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 1 {
             if CoreDataManager.shared().loadRoute().isEmpty {
-               self.view.makeToast("Не доступно".localized, duration: 3.0, position: .center)
+               self.view.makeToast("Не доступно до первого поиска по маршруту".localized, duration: 3.0, position: .center)
             } else {
                 autocompleteTableView.backgroundView?.isHidden = true
                 autocompleteTableView.isHidden = false
                 searchBar.isHidden = true
                 self.dataSource?.reload()
             }
+            return
         }
-        
+        autocompleteTableView.backgroundView?.isHidden = true
+        autocompleteTableView.isHidden = false
+        searchBar.isHidden = false
+        self.dataSource?.reload(autocompleteResult: nil, nil)
     }
 }
 
