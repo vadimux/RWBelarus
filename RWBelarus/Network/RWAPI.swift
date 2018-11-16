@@ -269,4 +269,127 @@ class NetworkManager {
                 }
         }
     }
+    
+    static func login(with login: String, password: String, completion: @escaping (Result<String?>) -> Void) {
+        //
+        Alamofire.request(APIRouter.getLoginCredentials())
+            .response { response in
+                if let error = response.error {
+                    completion(.failure(error))
+                    return
+                }
+                guard let responseData = response.data, let html = String(data: responseData, encoding: .utf8) else {
+                    let error = APIError(errorText: "Полученную информацию не удается преобразовать".localized)
+                    completion(.failure(error))
+                    return
+                }
+                
+                do {
+                    let doc: Document = try SwiftSoup.parse(html)
+                    guard let table: Elements = try? doc.select("table") else {
+                        let error = APIError(errorText: "Полученную информацию не удается преобразовать".localized)
+                        completion(.failure(error))
+                        return
+                    }
+                    let url: String? = try table.array()[1].select("td[class=status]").first()?.select("a").first()?.attr("onclick")
+                    guard let urlPath = url else { return }
+                    var urlPath1 = urlPath.replacingOccurrences(of: "window.location.href=baseUrlThSsl+\"", with: K.RWServer.baseRWURL)
+                    urlPath1 = urlPath1.replacingOccurrences(of: "\"", with: "")
+                    
+                    //
+                    Alamofire.request(APIRouter.getAuthCredentials(url: urlPath1))
+                        .response { response in
+                            if let error = response.error {
+                                print(error)
+                                return
+                            }
+                            guard let responseData = response.data, let html = String(data: responseData, encoding: .utf8) else {
+                                let error = APIError(errorText: "Полученную информацию не удается преобразовать".localized)
+                                completion(.failure(error))
+                                return
+                            }
+                            
+                            do {
+                                let doc: Document = try SwiftSoup.parse(html)
+                                guard let table: Elements = try? doc.select("table") else {
+                                    let error = APIError(errorText: "Полученную информацию не удается преобразовать".localized)
+                                    completion(.failure(error))
+                                    return
+                                }
+                                let url: String? = try table.array()[1].select("td[class=status]").first()?.select("a").first()?.attr("onclick")
+                                guard let urlPath = url else { return }
+                                var urlPath1 = urlPath.replacingOccurrences(of: "window.location.href=baseUrlThSsl+\"", with: K.RWServer.baseRWURL)
+                                urlPath1 = urlPath1.replacingOccurrences(of: "\"", with: "")
+                                let addUrl: String? = try table.array()[2].select("form").array().first?.select("form").first()?.attr("action")
+                                let fullPath = urlPath1 + (addUrl ?? "")
+                                
+                                //
+                                Alamofire.request(APIRouter.login(login: login, password: password, url: fullPath))
+                                    .response { response in
+                                        if let error = response.error {
+                                            print(error)
+                                            return
+                                        }
+                                        guard let responseData = response.data, let html = String(data: responseData, encoding: .utf8) else {
+                                            let error = APIError(errorText: "Полученную информацию не удается преобразовать".localized)
+                                            completion(.failure(error))
+                                            return
+                                        }
+                                        do {
+                                            
+                                            //
+                                            Alamofire.request(APIRouter.orders())
+                                                .response { response in
+                                                    if let error = response.error {
+                                                        print(error)
+                                                        return
+                                                    }
+                                                    guard let responseData = response.data, let html = String(data: responseData, encoding: .utf8) else {
+                                                        let error = APIError(errorText: "Полученную информацию не удается преобразовать".localized)
+                                                        completion(.failure(error))
+                                                        return
+                                                    }
+                                                    do {
+                                                        let doc: Document = try SwiftSoup.parse(html)
+                                                        
+                                                        guard let table: Elements = try? doc.select("table") else {
+                                                            let error = APIError(errorText: "Полученную информацию не удается преобразовать".localized)
+                                                            completion(.failure(error))
+                                                            return
+                                                        }
+                                                        
+                                                        //FIXIT
+
+                                                        print(try table.array()[2].select("<!--"))
+                                                        
+                                                        
+                                                        if table.array().count > 0 {
+                                                            completion(.success(try table.array()[1].select("nobr").first()?.text()))
+                                                        } else {
+                                                            let error1 = try doc.select("title").text()
+                                                            if error1.contains(find: "403") {
+                                                                let error = APIError(errorText: "Неверный логин или пароль".localized)
+                                                                completion(.failure(error))
+                                                            }
+                                                        }
+                                                    } catch let error {
+                                                        print(error)
+                                                    }
+                                            }
+                                        } catch let error {
+                                            let error = APIError(errorText: error.localizedDescription)
+                                            completion(.failure(error))
+                                        }
+                                }
+                            } catch let error {
+                                let error = APIError(errorText: error.localizedDescription)
+                                completion(.failure(error))
+                            }
+                    }
+                } catch let error {
+                    let error = APIError(errorText: error.localizedDescription)
+                    completion(.failure(error))
+                }
+        }
+    }
 }

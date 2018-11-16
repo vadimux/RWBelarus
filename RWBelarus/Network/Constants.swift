@@ -11,7 +11,9 @@ import Foundation
 struct K {
     struct RWServer {
         static let baseURL = "https://rasp.rw.by/ru/"
+        static let baseRWURL = "https://poezd.rw.by"
 //        static let baseURL = "https://rasp.rw.by/\(Locale.current.currentLanguageCode)/"
+        static let basePastOrdersURL = "https://poezd.rw.by/wps/myportal/home/rp/private/by.iba.rw.orders/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziLT1czDzcLQz83H39LQwcnbws_QJcDI0M_I31w8EKDFCAo4FTkJGTsYGBu7-RfhTp-pFNIk4_HgVR-I0P14_Cb4URugIDX29XoALjoDBvpxCgJ2EK8IUBIVdEAn1hjssN7u4m-sH6kc76kU75Blm56foFuaGhEQaZnrqJgYoAe27yTw!!/p0/IZ7_9HD6HG80NGMO80ABJ9NPD12GG4=CZ6_9HD6HG80NGMO80ABJ9NPD120O3=LAzCK9oHUWkp_KUh5GgQFBp40EpBMxQDKwLrRHD9jIhlA4FRS8tvRMQFB=Ejavax.servlet.include.path_info!QCPrwCabinetView.xhtml==/"
     }
     
     struct APIParameterKey {
@@ -63,4 +65,5 @@ enum HTTPHeaderField: String {
 
 enum ContentType: String {
     case json = "application/json;charset=UTF-8"
+    case url = "application/x-www-form-urlencoded"
 }

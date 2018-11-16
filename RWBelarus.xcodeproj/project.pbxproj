@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0D614932219326E3003FE767 /* Station.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D614931219326E3003FE767 /* Station.storyboard */; };
 		0D61493421932743003FE767 /* Favorite.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D61493321932743003FE767 /* Favorite.storyboard */; };
-		0D61493621932757003FE767 /* Setting.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D61493521932757003FE767 /* Setting.storyboard */; };
+		0D61493621932757003FE767 /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0D61493521932757003FE767 /* Settings.storyboard */; };
 		0DE3F6E5218DAD5700054E1E /* HeaderResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3F6E4218DAD5700054E1E /* HeaderResultCell.swift */; };
 		0DE3F6E7218E1B0900054E1E /* SchemeCarAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3F6E6218E1B0900054E1E /* SchemeCarAPIModel.swift */; };
 		0DE3F6EA218E435700054E1E /* СarriageSchemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3F6E9218E435700054E1E /* СarriageSchemeViewController.swift */; };
@@ -38,6 +38,9 @@
 		A780B62021900BC80096E3F0 /* CarriageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780B61F21900BC80096E3F0 /* CarriageHeader.swift */; };
 		A780B62221900BDF0096E3F0 /* CarriageHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = A780B62121900BDF0096E3F0 /* CarriageHeader.xib */; };
 		A780B624219011D70096E3F0 /* String+Contains.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780B623219011D70096E3F0 /* String+Contains.swift */; };
+		A7891824219EAC1F00BF3289 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7891823219EAC1F00BF3289 /* LoginViewController.swift */; };
+		A7891826219EAC6300BF3289 /* LoginViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7891825219EAC6300BF3289 /* LoginViewInteractor.swift */; };
+		A7891828219EAC7900BF3289 /* LoginViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7891827219EAC7900BF3289 /* LoginViewCoordinator.swift */; };
 		A795F4DF2179BD74003B942F /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4DE2179BD74003B942F /* APIRouter.swift */; };
 		A795F4E12179BE0E003B942F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E02179BE0E003B942F /* Constants.swift */; };
 		A795F4E32179BE42003B942F /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E22179BE42003B942F /* APIConfiguration.swift */; };
@@ -84,7 +87,7 @@
 		0165E49A68D0F07BEF232CAD /* Pods-RWBelarus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RWBelarus.release.xcconfig"; path = "Target Support Files/Pods-RWBelarus/Pods-RWBelarus.release.xcconfig"; sourceTree = "<group>"; };
 		0D614931219326E3003FE767 /* Station.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Station.storyboard; sourceTree = "<group>"; };
 		0D61493321932743003FE767 /* Favorite.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Favorite.storyboard; sourceTree = "<group>"; };
-		0D61493521932757003FE767 /* Setting.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Setting.storyboard; sourceTree = "<group>"; };
+		0D61493521932757003FE767 /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
 		0DE3F6E4218DAD5700054E1E /* HeaderResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderResultCell.swift; sourceTree = "<group>"; };
 		0DE3F6E6218E1B0900054E1E /* SchemeCarAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchemeCarAPIModel.swift; sourceTree = "<group>"; };
 		0DE3F6E9218E435700054E1E /* СarriageSchemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СarriageSchemeViewController.swift"; sourceTree = "<group>"; };
@@ -115,6 +118,9 @@
 		A780B61F21900BC80096E3F0 /* CarriageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarriageHeader.swift; sourceTree = "<group>"; };
 		A780B62121900BDF0096E3F0 /* CarriageHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarriageHeader.xib; sourceTree = "<group>"; };
 		A780B623219011D70096E3F0 /* String+Contains.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Contains.swift"; sourceTree = "<group>"; };
+		A7891823219EAC1F00BF3289 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		A7891825219EAC6300BF3289 /* LoginViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewInteractor.swift; sourceTree = "<group>"; };
+		A7891827219EAC7900BF3289 /* LoginViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewCoordinator.swift; sourceTree = "<group>"; };
 		A795F4DE2179BD74003B942F /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
 		A795F4E02179BE0E003B942F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		A795F4E22179BE42003B942F /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
@@ -265,7 +271,7 @@
 				A7EF0C562177035000C075E0 /* RouteResult.storyboard */,
 				0D614931219326E3003FE767 /* Station.storyboard */,
 				0D61493321932743003FE767 /* Favorite.storyboard */,
-				0D61493521932757003FE767 /* Setting.storyboard */,
+				0D61493521932757003FE767 /* Settings.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -281,6 +287,7 @@
 				A7B2E38E2182E68400CC7273 /* CalendarViewController */,
 				0DE3F6E8218E42F200054E1E /* СarriageSchemeViewController */,
 				A7AE726E2193FE6D00CBB255 /* ScheduleStationViewController */,
+				A7891822219EAC0300BF3289 /* LoginViewController */,
 				A7B2E3952182EEE500CC7273 /* DialogViewController.swift */,
 			);
 			path = ViewControllers;
@@ -336,6 +343,15 @@
 				A780B62121900BDF0096E3F0 /* CarriageHeader.xib */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		A7891822219EAC0300BF3289 /* LoginViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A7891823219EAC1F00BF3289 /* LoginViewController.swift */,
+				A7891825219EAC6300BF3289 /* LoginViewInteractor.swift */,
+			);
+			path = LoginViewController;
 			sourceTree = "<group>";
 		};
 		A7AE726E2193FE6D00CBB255 /* ScheduleStationViewController */ = {
@@ -399,6 +415,7 @@
 				A7B2E3912182ED4600CC7273 /* CalendarViewCoordinator.swift */,
 				0DE3F6ED218E43E400054E1E /* СarriageSchemeViewCoordinator.swift */,
 				A7AE72712193FF2700CBB255 /* ScheduleStationViewCoordinator.swift */,
+				A7891827219EAC7900BF3289 /* LoginViewCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -517,7 +534,7 @@
 				0D61493421932743003FE767 /* Favorite.storyboard in Resources */,
 				A739C7542174DB180080F151 /* Assets.xcassets in Resources */,
 				A7F45DAE2175B61F0099A9E1 /* Search.storyboard in Resources */,
-				0D61493621932757003FE767 /* Setting.storyboard in Resources */,
+				0D61493621932757003FE767 /* Settings.storyboard in Resources */,
 				A780B62221900BDF0096E3F0 /* CarriageHeader.xib in Resources */,
 				0D614932219326E3003FE767 /* Station.storyboard in Resources */,
 				A739C7522174DB160080F151 /* Main.storyboard in Resources */,
@@ -626,6 +643,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A7F45DA12175B1A50099A9E1 /* Coordinator.swift in Sources */,
+				A7891828219EAC7900BF3289 /* LoginViewCoordinator.swift in Sources */,
 				A79CADCF218C2177001DEF64 /* UIColor+RGB.swift in Sources */,
 				A7D1A3CB217DB14900B374DE /* UIView+Inspectable.swift in Sources */,
 				A7EF0C55217702EF00C075E0 /* RouteResultViewCoordinator.swift in Sources */,
@@ -648,6 +666,7 @@
 				A7E8EA33219548CD0013D77A /* Date+Utils.swift in Sources */,
 				A74FDA78219D5ABA001713B6 /* DataModel.xcdatamodeld in Sources */,
 				A739C7632174DC180080F151 /* SearchViewController.swift in Sources */,
+				A7891824219EAC1F00BF3289 /* LoginViewController.swift in Sources */,
 				A7D1A3D3217DEAC600B374DE /* UITableView+hideEmptyCells.swift in Sources */,
 				A71DFCDA2186D84200874458 /* FullRouteViewInteractor.swift in Sources */,
 				A7EF0C5921770C4B00C075E0 /* SearchResultCell.swift in Sources */,
@@ -655,6 +674,7 @@
 				A71DFCD82186D83100874458 /* FullRouteViewController.swift in Sources */,
 				A7D1A3CF217DCC7B00B374DE /* TrainPlace.swift in Sources */,
 				A7B2E3942182EDD900CC7273 /* CalendarViewInteractor.swift in Sources */,
+				A7891826219EAC6300BF3289 /* LoginViewInteractor.swift in Sources */,
 				0DE3F6EC218E436500054E1E /* СarriageSchemeViewInteractor.swift in Sources */,
 				A7AE7276219402ED00CBB255 /* StationScheduleCell.swift in Sources */,
 				0DE3F6F0218EC5D900054E1E /* CarriageSchemeCell.swift in Sources */,
