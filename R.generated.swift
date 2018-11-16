@@ -429,6 +429,7 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
+        if UIKit.UIImage(named: "rails") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'rails' is used in storyboard 'RouteResult', but couldn't be loaded.") }
         if UIKit.UIImage(named: "bzhd_0") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'bzhd_0' is used in storyboard 'RouteResult', but couldn't be loaded.") }
         if _R.storyboard.routeResult().routeResultViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'routeResultViewController' could not be loaded from storyboard 'RouteResult' as 'RouteResultViewController'.") }
         if _R.storyboard.routeResult().routeResultNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'routeResultNavigationController' could not be loaded from storyboard 'RouteResult' as 'UIKit.UINavigationController'.") }

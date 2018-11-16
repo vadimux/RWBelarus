@@ -17,20 +17,18 @@ protocol AutocompleteDelegate: class {
 class AutocompleteDataSource: NSObject, UITableViewDataSource, UITableViewDelegate {
     
     private weak var tableView: UITableView?
-    private var emptyView: UIView?
     private var autocompleteResult: AutocompleteAPI?
     private var searchElement: String?
     private weak var delegate: AutocompleteDelegate?
     private var isAutocompleteRouteShown: Bool = false
     private var routeData = [RouteCoreData]()
     
-    required init(with tableView: UITableView, delegate: AutocompleteDelegate, emptyView: UIView) {
+    required init(with tableView: UITableView, delegate: AutocompleteDelegate) {
         super.init()
 
         self.tableView = tableView
         self.tableView?.dataSource = self
         self.tableView?.delegate = self
-        self.emptyView = emptyView
         self.delegate = delegate
     }
     
@@ -69,6 +67,20 @@ class AutocompleteDataSource: NSObject, UITableViewDataSource, UITableViewDelega
             self.delegate?.onAutocompleteTapped(model: model)
         }
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return isAutocompleteRouteShown ? true : false
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            CoreDataManager.shared().deleteRouteWith(routeData[indexPath.row].fromTo)
+            routeData.remove(at: indexPath.row)
+            tableView.beginUpdates()
+            tableView.deleteRows(at: [indexPath], with: .middle)
+            tableView.endUpdates()
+        }
     }
     
 }

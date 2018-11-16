@@ -25,8 +25,10 @@ class RouteResultViewController: UIViewController {
 
     @IBOutlet weak var resultTableView: UITableView!
     @IBOutlet var emptyView: UIView!
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
     
     private var searchResult = [Route]()
+    private var imageHeight: CGFloat?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,12 +50,18 @@ class RouteResultViewController: UIViewController {
                 self?.resultTableView.hideToastActivity()
                 self?.view.makeToast(error, duration: 3.0, position: .center)
                 self?.resultTableView.backgroundView?.isHidden = false
+                if let imageHeight = self?.imageHeight {
+                   self?.topConstraint.constant = imageHeight + 44
+                }
                 return
             }
             self?.searchResult = result ?? []
             guard let count = result?.count, count > 0 else {
                 self?.resultTableView.hideToastActivity()
                 self?.resultTableView.backgroundView?.isHidden = false
+                if let imageHeight = self?.imageHeight {
+                    self?.topConstraint.constant = imageHeight + 44
+                }
                 return
             }
             DispatchQueue.main.async {
@@ -76,6 +84,7 @@ extension RouteResultViewController: UITableViewDataSource {
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.headerResultCell, for: indexPath)!
             cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: UIScreen.main.bounds.width)
             cell.configure(with: interactor.prepareForHeaderView())
+            imageHeight = cell.bounds.height
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.searchResultCell, for: indexPath)!

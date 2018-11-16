@@ -37,6 +37,7 @@ class CalendarViewInteractor: NSObject, CalendarViewControllerInteractor {
     private class var defaultPastDate: Date {
         get {
             let currentYear = Calendar.current.dateComponents([.year], from: Date())
+            //FIXIT: only next days
             return dateFormatter.date(from: "01.01.\((currentYear.year ?? 2018) - 1)") ?? Date()
         }
     }

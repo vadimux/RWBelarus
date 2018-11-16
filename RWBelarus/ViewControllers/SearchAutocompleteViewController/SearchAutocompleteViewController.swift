@@ -25,6 +25,7 @@ class SearchAutocompleteViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchTypeSegmentControl: UISegmentedControl!
     @IBOutlet var emptyView: UIView!
+    @IBOutlet weak var searchStackView: UIStackView!
     
     var interactor: SearchAutocompleteViewControllerInteractor!
     var coordinator: SearchAutocompleteViewControllerCoordinator?
@@ -41,7 +42,7 @@ class SearchAutocompleteViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         
-        self.dataSource = AutocompleteDataSource(with: autocompleteTableView, delegate: self, emptyView: self.emptyView)
+        self.dataSource = AutocompleteDataSource(with: autocompleteTableView, delegate: self)
     }
     
     deinit {
@@ -121,14 +122,14 @@ class SearchAutocompleteViewController: UIViewController {
             } else {
                 autocompleteTableView.backgroundView?.isHidden = true
                 autocompleteTableView.isHidden = false
-                searchBar.isHidden = true
+                searchStackView.isHidden = true
                 self.dataSource?.reload()
             }
             return
         }
         autocompleteTableView.backgroundView?.isHidden = true
         autocompleteTableView.isHidden = false
-        searchBar.isHidden = false
+        searchStackView.isHidden = false
         self.dataSource?.reload(autocompleteResult: nil, nil)
     }
 }

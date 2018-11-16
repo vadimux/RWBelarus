@@ -26,6 +26,8 @@ class FullRouteViewController: UIViewController {
     @IBOutlet weak var routeLabel: UILabel!
     @IBOutlet weak var trainTypeLabel: UILabel!
     @IBOutlet var emptyView: UIView!
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
     
     var interactor: FullRouteViewControllerInteractor!
     var coordinator: FullRouteViewControllerCoordinator?
@@ -38,17 +40,24 @@ class FullRouteViewController: UIViewController {
         
         prepareForShow()
         self.title = interactor?.prepareForTitle()
+        
         self.fullRouteTableView.makeToastActivity(.center)
         interactor.fetchFullRoute { [weak self] result, error in
             if error != nil {
                 self?.fullRouteTableView.hideToastActivity()
                 self?.view.makeToast(error, duration: 3.0, position: .center)
                 self?.fullRouteTableView.backgroundView?.isHidden = false
+                if let topViewHeight = self?.topViewHeightConstraint.constant {
+                    self?.topConstraint.constant = topViewHeight + 44
+                }
                 return
             }
-            if result?.isEmpty == true {
+            if result?.isEmpty == true || result == nil {
                 self?.fullRouteTableView.reloadData()
                 self?.fullRouteTableView.backgroundView?.isHidden = false
+                if let topViewHeight = self?.topViewHeightConstraint.constant {
+                    self?.topConstraint.constant = topViewHeight + 44
+                }
                 self?.fullRouteTableView.hideToastActivity()
                 return
             }

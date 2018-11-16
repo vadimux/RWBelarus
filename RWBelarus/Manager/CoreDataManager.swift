@@ -103,4 +103,20 @@ extension CoreDataManager {
         }
         return fetchResult
     }
+    
+    func deleteRouteWith(_ primaryKey: String?) {
+        let managedContext = CoreDataManager.shared().managedObjectContext
+        let fetchRequest = NSFetchRequest<RouteCoreData>(entityName: "RouteCoreData")
+        fetchRequest.returnsObjectsAsFaults = false
+        var fetchResults = [RouteCoreData]()
+        do {
+            fetchResults = try managedContext.fetch(fetchRequest)
+            for result in fetchResults where result.fromTo == primaryKey {
+                let managedObjectData: NSManagedObject = result
+                managedContext.delete(managedObjectData)
+            }
+        } catch let error as NSError {
+            print("Delete route by primaryKey in RouteCoreData error: \(error)")
+        }
+    }
 }

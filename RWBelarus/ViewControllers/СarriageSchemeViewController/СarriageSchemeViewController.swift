@@ -26,6 +26,8 @@ class CarriageSchemeViewController: UIViewController {
     @IBOutlet weak var routeLabel: UILabel!
     @IBOutlet weak var trainTypeLabel: UILabel!
     @IBOutlet var emptyView: UIView!
+    @IBOutlet weak var topConstraint: NSLayoutConstraint!
+    @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
     
     var interactor: СarriageSchemeViewControllerInteractor!
     var coordinator: СarriageSchemeViewControllerCoordinator?
@@ -46,6 +48,9 @@ class CarriageSchemeViewController: UIViewController {
                 self?.carriageTableView.hideToastActivity()
                 self?.view.makeToast(error, duration: 3.0, position: .center)
                 self?.carriageTableView.backgroundView?.isHidden = false
+                if let topViewHeight = self?.topViewHeightConstraint.constant {
+                    self?.topConstraint.constant = topViewHeight + 44
+                }
                 return
             }
             if let information = information {
@@ -54,6 +59,9 @@ class CarriageSchemeViewController: UIViewController {
                 self?.carriageTableView.reloadData()
             } else {
                 self?.carriageTableView.backgroundView?.isHidden = false
+                if let topViewHeight = self?.topViewHeightConstraint.constant {
+                    self?.topConstraint.constant = topViewHeight + 44
+                }
             }
         }
     }

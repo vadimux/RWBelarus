@@ -129,10 +129,7 @@ class NetworkManager {
     
     // Request for getting the train route
     static func getFullRoute(for route: Route, completion: @escaping (Result<[RouteItem]?>) -> Void) {
-        
-        //FIXIT: move to Constant
-        let URL = "div[class=train_inner]"
-        
+
         Alamofire.request(APIRouter.searchFullRoute(urlPath: route.urlPath))
             .responseString { response in
                 
@@ -168,7 +165,7 @@ class NetworkManager {
                         let departure: String? = try element.select(K.APIParseConstant.DEPARTURE).first()?.text()
                         let travelTime: String? = try element.select(K.APIParseConstant.TRAVEL_TIME).first()?.text()
                         let stay: String? = try element.select(K.APIParseConstant.STAY).first()?.text()
-                        let urlPath: String? = try element.select(URL).first()?.select("a").first()?.attr("href")
+                        let urlPath: String? = try element.select(K.APIParseConstant.URL_VERSION_3).first()?.select("a").first()?.attr("href")
                         var stationId: String?
                         
                         //TODO: check if need to add exp
