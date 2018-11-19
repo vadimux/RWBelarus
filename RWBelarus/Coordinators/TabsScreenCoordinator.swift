@@ -29,7 +29,7 @@ class TabsScreenCoordinator: NSObject, Coordinator {
             preconditionFailure("Main Storyboard should contain TabsViewController")
         }
         
-        viewController.viewControllers = [searchViewController(), scheduleStationViewController(), loginViewController()]
+        viewController.viewControllers = [searchViewController(), scheduleStationViewController(), settingsViewController()]
         viewController.coordinator = self
         
         tabBarController = viewController
@@ -61,6 +61,18 @@ class TabsScreenCoordinator: NSObject, Coordinator {
         navViewController.delegate = self
         viewController.interactor = ScheduleStationViewInteractor()
         viewController.coordinator = ScheduleStationViewCoordinator(rootViewController: rootViewController)
+        
+        return navViewController
+    }
+    
+    private func settingsViewController() -> UINavigationController {
+        
+        guard let navViewController = R.storyboard.settings.settingsNavigationController(), let viewController = navViewController.topViewController as? SettingsViewController else {
+            preconditionFailure("Settings Storyboard should contain LoginNavigationController and LoginViewController")
+        }
+        navViewController.delegate = self
+        viewController.interactor = SettingsViewInteractor()
+        viewController.coordinator = SettingsViewCoordinator(rootViewController: rootViewController)
         
         return navViewController
     }

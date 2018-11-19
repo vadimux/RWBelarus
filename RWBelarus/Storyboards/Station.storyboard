@@ -216,44 +216,44 @@
                                                                             <rect key="frame" x="32" y="2" width="319" height="208"/>
                                                                             <subviews>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UCL-Wc-T1c">
-                                                                                    <rect key="frame" x="0.0" y="0.0" width="319" height="18"/>
-                                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                                    <rect key="frame" x="0.0" y="0.0" width="319" height="16.5"/>
+                                                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="14"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OOv-cr-vbd">
-                                                                                    <rect key="frame" x="0.0" y="30" width="319" height="14.5"/>
-                                                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                                                    <rect key="frame" x="0.0" y="31" width="319" height="13"/>
+                                                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="11"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dXG-Ri-KDp">
-                                                                                    <rect key="frame" x="0.0" y="57" width="319" height="20.5"/>
-                                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                    <rect key="frame" x="0.0" y="58.5" width="319" height="19"/>
+                                                                                    <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="16"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6W-hd-Obw">
-                                                                                    <rect key="frame" x="0.0" y="89.5" width="319" height="20.5"/>
-                                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                    <rect key="frame" x="0.0" y="92.5" width="319" height="18"/>
+                                                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HsA-1Y-5iw">
-                                                                                    <rect key="frame" x="0.0" y="122" width="319" height="20.5"/>
-                                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                    <rect key="frame" x="0.0" y="125" width="319" height="18"/>
+                                                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1B-7l-gD0">
-                                                                                    <rect key="frame" x="0.0" y="155" width="319" height="20.5"/>
-                                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                    <rect key="frame" x="0.0" y="157.5" width="319" height="18"/>
+                                                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
                                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label1" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Mq-gk-CY9">
-                                                                                    <rect key="frame" x="0.0" y="187.5" width="319" height="20.5"/>
-                                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                                    <rect key="frame" x="0.0" y="190" width="319" height="18"/>
+                                                                                    <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="15"/>
                                                                                     <nil key="textColor"/>
                                                                                     <nil key="highlightedColor"/>
                                                                                 </label>
@@ -318,6 +318,24 @@
                                     <outlet property="delegate" destination="rEO-Xb-igy" id="DjH-zp-Jyv"/>
                                 </connections>
                             </tableView>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xQw-Qg-XXA">
+                                <rect key="frame" x="11" y="110.5" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="aK4-1a-Ghx"/>
+                                    <constraint firstAttribute="width" constant="24" id="kNX-CY-g3m"/>
+                                </constraints>
+                                <color key="tintColor" red="0.21176470589999999" green="0.37647058820000001" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="basicCalendar"/>
+                            </button>
+                            <button opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zDw-aV-Ocg">
+                                <rect key="frame" x="11" y="34.5" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="24" id="9Zn-g3-0dH"/>
+                                    <constraint firstAttribute="height" constant="24" id="YZ0-i3-GaB"/>
+                                </constraints>
+                                <color key="tintColor" red="0.21176470589999999" green="0.37647058820000001" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" image="pin"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490199999995" green="0.92156862750000001" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -328,7 +346,11 @@
                             <constraint firstItem="N7p-OV-2bU" firstAttribute="leading" secondItem="c79-Jq-EKY" secondAttribute="leading" constant="40" id="IcW-jE-k6O"/>
                             <constraint firstItem="Xyl-CQ-7Gf" firstAttribute="leading" secondItem="c79-Jq-EKY" secondAttribute="leading" constant="40" id="OWH-0Y-lCm"/>
                             <constraint firstItem="c79-Jq-EKY" firstAttribute="trailing" secondItem="Bri-yl-qJx" secondAttribute="trailing" constant="8" id="aBg-vY-T8b"/>
+                            <constraint firstItem="xQw-Qg-XXA" firstAttribute="centerY" secondItem="nVJ-RX-bpz" secondAttribute="centerY" id="fYj-FF-RpV"/>
                             <constraint firstItem="Bri-yl-qJx" firstAttribute="top" secondItem="N7p-OV-2bU" secondAttribute="bottom" constant="10" id="gGk-hZ-0ta"/>
+                            <constraint firstItem="knN-3o-XCc" firstAttribute="leading" secondItem="zDw-aV-Ocg" secondAttribute="trailing" constant="5" id="gkU-Gn-kPn"/>
+                            <constraint firstItem="zDw-aV-Ocg" firstAttribute="centerY" secondItem="knN-3o-XCc" secondAttribute="centerY" id="kXG-lv-fir"/>
+                            <constraint firstItem="nVJ-RX-bpz" firstAttribute="leading" secondItem="xQw-Qg-XXA" secondAttribute="trailing" constant="5" id="kuu-nK-FrV"/>
                             <constraint firstItem="Bri-yl-qJx" firstAttribute="leading" secondItem="c79-Jq-EKY" secondAttribute="leading" constant="8" id="tRz-q4-aoJ"/>
                             <constraint firstItem="c79-Jq-EKY" firstAttribute="trailing" secondItem="Xyl-CQ-7Gf" secondAttribute="trailing" constant="8" id="z4k-Bl-hCj"/>
                         </constraints>
@@ -394,6 +416,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="basicCalendar" width="75" height="75"/>
+        <image name="pin" width="72" height="72"/>
         <image name="station" width="45" height="45"/>
     </resources>
 </document>

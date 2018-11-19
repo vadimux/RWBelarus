@@ -34,6 +34,10 @@
 		A74FDA8A219D6EC0001713B6 /* AutocompleteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74FDA89219D6EC0001713B6 /* AutocompleteDataSource.swift */; };
 		A74FDA8C219D7D67001713B6 /* AutocompleteRouteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A74FDA8B219D7D67001713B6 /* AutocompleteRouteCell.swift */; };
 		A75E13AE2183384000CB7E47 /* UIView+Designable.swift in Sources */ = {isa = PBXBuildFile; fileRef = A75E13AD2183384000CB7E47 /* UIView+Designable.swift */; };
+		A765CB1321A283EC00111482 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A765CB1221A283EC00111482 /* SettingsViewController.swift */; };
+		A765CB1521A2840000111482 /* SettingsViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A765CB1421A2840000111482 /* SettingsViewInteractor.swift */; };
+		A765CB1721A2841400111482 /* SettingsViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A765CB1621A2841400111482 /* SettingsViewCoordinator.swift */; };
+		A765CB1921A288F200111482 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A765CB1821A288F200111482 /* SettingsCell.swift */; };
 		A776C1682176240700859BB8 /* UIViewController+dismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A776C1672176240700859BB8 /* UIViewController+dismissKeyboard.swift */; };
 		A780B62021900BC80096E3F0 /* CarriageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780B61F21900BC80096E3F0 /* CarriageHeader.swift */; };
 		A780B62221900BDF0096E3F0 /* CarriageHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = A780B62121900BDF0096E3F0 /* CarriageHeader.xib */; };
@@ -114,6 +118,10 @@
 		A74FDA8B219D7D67001713B6 /* AutocompleteRouteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteRouteCell.swift; sourceTree = "<group>"; };
 		A75C502E252E6C5728935AB7 /* Pods_RWBelarus.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RWBelarus.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A75E13AD2183384000CB7E47 /* UIView+Designable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Designable.swift"; sourceTree = "<group>"; };
+		A765CB1221A283EC00111482 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		A765CB1421A2840000111482 /* SettingsViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewInteractor.swift; sourceTree = "<group>"; };
+		A765CB1621A2841400111482 /* SettingsViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCoordinator.swift; sourceTree = "<group>"; };
+		A765CB1821A288F200111482 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
 		A776C1672176240700859BB8 /* UIViewController+dismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+dismissKeyboard.swift"; sourceTree = "<group>"; };
 		A780B61F21900BC80096E3F0 /* CarriageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarriageHeader.swift; sourceTree = "<group>"; };
 		A780B62121900BDF0096E3F0 /* CarriageHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarriageHeader.xib; sourceTree = "<group>"; };
@@ -287,6 +295,7 @@
 				A7B2E38E2182E68400CC7273 /* CalendarViewController */,
 				0DE3F6E8218E42F200054E1E /* СarriageSchemeViewController */,
 				A7AE726E2193FE6D00CBB255 /* ScheduleStationViewController */,
+				A765CB1121A283D000111482 /* SettingsViewController */,
 				A7891822219EAC0300BF3289 /* LoginViewController */,
 				A7B2E3952182EEE500CC7273 /* DialogViewController.swift */,
 			);
@@ -318,6 +327,15 @@
 				A74FDA83219D605C001713B6 /* CoreDataManager.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		A765CB1121A283D000111482 /* SettingsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				A765CB1221A283EC00111482 /* SettingsViewController.swift */,
+				A765CB1421A2840000111482 /* SettingsViewInteractor.swift */,
+			);
+			path = SettingsViewController;
 			sourceTree = "<group>";
 		};
 		A776C166217623E300859BB8 /* Extensions */ = {
@@ -416,6 +434,7 @@
 				0DE3F6ED218E43E400054E1E /* СarriageSchemeViewCoordinator.swift */,
 				A7AE72712193FF2700CBB255 /* ScheduleStationViewCoordinator.swift */,
 				A7891827219EAC7900BF3289 /* LoginViewCoordinator.swift */,
+				A765CB1621A2841400111482 /* SettingsViewCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -460,6 +479,7 @@
 				0DE3F6E4218DAD5700054E1E /* HeaderResultCell.swift */,
 				0DE3F6EF218EC5D900054E1E /* CarriageSchemeCell.swift */,
 				A7AE7275219402ED00CBB255 /* StationScheduleCell.swift */,
+				A765CB1821A288F200111482 /* SettingsCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -646,6 +666,7 @@
 				A7891828219EAC7900BF3289 /* LoginViewCoordinator.swift in Sources */,
 				A79CADCF218C2177001DEF64 /* UIColor+RGB.swift in Sources */,
 				A7D1A3CB217DB14900B374DE /* UIView+Inspectable.swift in Sources */,
+				A765CB1921A288F200111482 /* SettingsCell.swift in Sources */,
 				A7EF0C55217702EF00C075E0 /* RouteResultViewCoordinator.swift in Sources */,
 				A7B40D6C217EF5150005C914 /* SearchAutocompleteViewInteractor.swift in Sources */,
 				A7B40D6A217EF28D0005C914 /* SearchAutocompleteViewController.swift in Sources */,
@@ -681,6 +702,8 @@
 				A7F45DAC2175B5AD0099A9E1 /* SearchViewCoordinator.swift in Sources */,
 				A7F45DD72175EA170099A9E1 /* AutocompleteAPIModel.swift in Sources */,
 				A7AE72742193FFAD00CBB255 /* ScheduleStationViewInteractor.swift in Sources */,
+				A765CB1521A2840000111482 /* SettingsViewInteractor.swift in Sources */,
+				A765CB1721A2841400111482 /* SettingsViewCoordinator.swift in Sources */,
 				A7EF0C512177027F00C075E0 /* RouteResultViewController.swift in Sources */,
 				A7F45DDB2175FCDB0099A9E1 /* AutocompleteCell.swift in Sources */,
 				A795F4E12179BE0E003B942F /* Constants.swift in Sources */,
@@ -693,6 +716,7 @@
 				A739C74D2174DB160080F151 /* AppDelegate.swift in Sources */,
 				A780B62021900BC80096E3F0 /* CarriageHeader.swift in Sources */,
 				A776C1682176240700859BB8 /* UIViewController+dismissKeyboard.swift in Sources */,
+				A765CB1321A283EC00111482 /* SettingsViewController.swift in Sources */,
 				A795F4E32179BE42003B942F /* APIConfiguration.swift in Sources */,
 				A795F4E82179C080003B942F /* RWAPI.swift in Sources */,
 				A74FDA8A219D6EC0001713B6 /* AutocompleteDataSource.swift in Sources */,

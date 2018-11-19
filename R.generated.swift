@@ -85,7 +85,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.image` struct is generated, and contains static references to 17 images.
+  /// This `R.image` struct is generated, and contains static references to 21 images.
   struct image {
     /// Image `basicCalendar`.
     static let basicCalendar = Rswift.ImageResource(bundle: R.hostingBundle, name: "basicCalendar")
@@ -95,6 +95,10 @@ struct R: Rswift.Validatable {
     static let city = Rswift.ImageResource(bundle: R.hostingBundle, name: "city")
     /// Image `crossIcon`.
     static let crossIcon = Rswift.ImageResource(bundle: R.hostingBundle, name: "crossIcon")
+    /// Image `fbLogo`.
+    static let fbLogo = Rswift.ImageResource(bundle: R.hostingBundle, name: "fbLogo")
+    /// Image `instaLogo`.
+    static let instaLogo = Rswift.ImageResource(bundle: R.hostingBundle, name: "instaLogo")
     /// Image `international`.
     static let international = Rswift.ImageResource(bundle: R.hostingBundle, name: "international")
     /// Image `interregionalBusiness`.
@@ -105,6 +109,8 @@ struct R: Rswift.Validatable {
     static let leftArrow = Rswift.ImageResource(bundle: R.hostingBundle, name: "leftArrow")
     /// Image `logo`.
     static let logo = Rswift.ImageResource(bundle: R.hostingBundle, name: "logo")
+    /// Image `pin`.
+    static let pin = Rswift.ImageResource(bundle: R.hostingBundle, name: "pin")
     /// Image `rails`.
     static let rails = Rswift.ImageResource(bundle: R.hostingBundle, name: "rails")
     /// Image `regionBusiness`.
@@ -121,6 +127,8 @@ struct R: Rswift.Validatable {
     static let train = Rswift.ImageResource(bundle: R.hostingBundle, name: "train")
     /// Image `upDownArrow`.
     static let upDownArrow = Rswift.ImageResource(bundle: R.hostingBundle, name: "upDownArrow")
+    /// Image `vkLogo`.
+    static let vkLogo = Rswift.ImageResource(bundle: R.hostingBundle, name: "vkLogo")
     
     /// `UIImage(named: "basicCalendar", bundle: ..., traitCollection: ...)`
     static func basicCalendar(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
@@ -140,6 +148,16 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "crossIcon", bundle: ..., traitCollection: ...)`
     static func crossIcon(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.crossIcon, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "fbLogo", bundle: ..., traitCollection: ...)`
+    static func fbLogo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.fbLogo, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "instaLogo", bundle: ..., traitCollection: ...)`
+    static func instaLogo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.instaLogo, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "international", bundle: ..., traitCollection: ...)`
@@ -165,6 +183,11 @@ struct R: Rswift.Validatable {
     /// `UIImage(named: "logo", bundle: ..., traitCollection: ...)`
     static func logo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
       return UIKit.UIImage(resource: R.image.logo, compatibleWith: traitCollection)
+    }
+    
+    /// `UIImage(named: "pin", bundle: ..., traitCollection: ...)`
+    static func pin(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.pin, compatibleWith: traitCollection)
     }
     
     /// `UIImage(named: "rails", bundle: ..., traitCollection: ...)`
@@ -207,6 +230,11 @@ struct R: Rswift.Validatable {
       return UIKit.UIImage(resource: R.image.upDownArrow, compatibleWith: traitCollection)
     }
     
+    /// `UIImage(named: "vkLogo", bundle: ..., traitCollection: ...)`
+    static func vkLogo(compatibleWith traitCollection: UIKit.UITraitCollection? = nil) -> UIKit.UIImage? {
+      return UIKit.UIImage(resource: R.image.vkLogo, compatibleWith: traitCollection)
+    }
+    
     fileprivate init() {}
   }
   
@@ -223,7 +251,7 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.reuseIdentifier` struct is generated, and contains static references to 9 reuse identifiers.
+  /// This `R.reuseIdentifier` struct is generated, and contains static references to 10 reuse identifiers.
   struct reuseIdentifier {
     /// Reuse identifier `CalendarCell`.
     static let calendarCell: Rswift.ReuseIdentifier<CalendarCell> = Rswift.ReuseIdentifier(identifier: "CalendarCell")
@@ -239,6 +267,8 @@ struct R: Rswift.Validatable {
     static let headerResultCell: Rswift.ReuseIdentifier<HeaderResultCell> = Rswift.ReuseIdentifier(identifier: "headerResultCell")
     /// Reuse identifier `searchResultCell`.
     static let searchResultCell: Rswift.ReuseIdentifier<SearchResultCell> = Rswift.ReuseIdentifier(identifier: "searchResultCell")
+    /// Reuse identifier `settingCell`.
+    static let settingCell: Rswift.ReuseIdentifier<SettingsCell> = Rswift.ReuseIdentifier(identifier: "settingCell")
     /// Reuse identifier `stationScheduleCell`.
     static let stationScheduleCell: Rswift.ReuseIdentifier<StationScheduleCell> = Rswift.ReuseIdentifier(identifier: "stationScheduleCell")
     /// Reuse identifier `ticketInfoCell`.
@@ -489,12 +519,22 @@ struct _R: Rswift.Validatable {
       let bundle = R.hostingBundle
       let loginNavigationController = StoryboardViewControllerResource<UIKit.UINavigationController>(identifier: "LoginNavigationController")
       let name = "Settings"
+      let settingsNavigationController = StoryboardViewControllerResource<UIKit.UINavigationController>(identifier: "SettingsNavigationController")
       
       func loginNavigationController(_: Void = ()) -> UIKit.UINavigationController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: loginNavigationController)
       }
       
+      func settingsNavigationController(_: Void = ()) -> UIKit.UINavigationController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: settingsNavigationController)
+      }
+      
       static func validate() throws {
+        if UIKit.UIImage(named: "setting") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'setting' is used in storyboard 'Settings', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "fbLogo") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'fbLogo' is used in storyboard 'Settings', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "instaLogo") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'instaLogo' is used in storyboard 'Settings', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "vkLogo") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'vkLogo' is used in storyboard 'Settings', but couldn't be loaded.") }
+        if _R.storyboard.settings().settingsNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'settingsNavigationController' could not be loaded from storyboard 'Settings' as 'UIKit.UINavigationController'.") }
         if _R.storyboard.settings().loginNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'loginNavigationController' could not be loaded from storyboard 'Settings' as 'UIKit.UINavigationController'.") }
       }
       
@@ -518,7 +558,9 @@ struct _R: Rswift.Validatable {
       }
       
       static func validate() throws {
+        if UIKit.UIImage(named: "basicCalendar") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'basicCalendar' is used in storyboard 'Station', but couldn't be loaded.") }
         if UIKit.UIImage(named: "station") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'station' is used in storyboard 'Station', but couldn't be loaded.") }
+        if UIKit.UIImage(named: "pin") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'pin' is used in storyboard 'Station', but couldn't be loaded.") }
         if _R.storyboard.station().scheduleStationNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'scheduleStationNavigationController' could not be loaded from storyboard 'Station' as 'UIKit.UINavigationController'.") }
         if _R.storyboard.station().scheduleStationViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'scheduleStationViewController' could not be loaded from storyboard 'Station' as 'ScheduleStationViewController'.") }
       }

@@ -33,7 +33,7 @@ class LoginViewController: UIViewController {
     @IBAction func loginButtonTapped(_ sender: Any) {
 //        "vadimux", password: "1427nm1w"
 //        guard let login = loginTextField.text, let password = passwordTextField.text else { return }
-        interactor.loginWith("vadimux", password: "1427nm1w") { result, error in
+        interactor.loginWith("", password: "") { result, error in
             print(result, error)
             self.infoLabel.text = error != nil ? error : result
         }

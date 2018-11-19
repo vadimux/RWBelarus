@@ -358,10 +358,6 @@ class NetworkManager {
                                                             return
                                                         }
                                                         
-                                                        //FIXIT
-
-                                                        print(try table.array()[2].select("<!--"))
-                                                        
                                                         
                                                         if table.array().count > 0 {
                                                             completion(.success(try table.array()[1].select("nobr").first()?.text()))
