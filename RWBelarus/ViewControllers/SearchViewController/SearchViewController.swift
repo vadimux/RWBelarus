@@ -91,6 +91,10 @@ class SearchViewController: UIViewController {
                 self.searchButton.isEnabled = countEmpty == 1 || countEmpty == 0 ? true : false
             }
         }
+        
+        if #available(iOS 10.3, *) {
+            RateManager.showRatesController()
+        }
     }
     
     deinit {

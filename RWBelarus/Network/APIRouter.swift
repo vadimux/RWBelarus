@@ -59,7 +59,7 @@ enum APIRouter: URLRequestConvertible {
             return "wps/portal/home/rp"
         case .orders:
             return "wps/myportal/home/rp/private/"
-        case .getAuthCredentials, .login,.pastOrders:
+        case .getAuthCredentials, .login, .pastOrders:
             return ""
 
         }

@@ -72,6 +72,10 @@ class AppCoordinator: Coordinator {
         tabsScreenCoordinator.delegate = self
         hideSplashScreen()
         tabsScreenCoordinator.start(with: nil)
+        
+        if #available(iOS 10.3, *) {
+            RateManager.incrementCount()
+        }
     }
     
     func presentSplashScreen() {

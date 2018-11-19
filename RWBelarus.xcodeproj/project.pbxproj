@@ -38,6 +38,7 @@
 		A765CB1521A2840000111482 /* SettingsViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A765CB1421A2840000111482 /* SettingsViewInteractor.swift */; };
 		A765CB1721A2841400111482 /* SettingsViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A765CB1621A2841400111482 /* SettingsViewCoordinator.swift */; };
 		A765CB1921A288F200111482 /* SettingsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A765CB1821A288F200111482 /* SettingsCell.swift */; };
+		A765CB1B21A293C500111482 /* RateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A765CB1A21A293C500111482 /* RateManager.swift */; };
 		A776C1682176240700859BB8 /* UIViewController+dismissKeyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = A776C1672176240700859BB8 /* UIViewController+dismissKeyboard.swift */; };
 		A780B62021900BC80096E3F0 /* CarriageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = A780B61F21900BC80096E3F0 /* CarriageHeader.swift */; };
 		A780B62221900BDF0096E3F0 /* CarriageHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = A780B62121900BDF0096E3F0 /* CarriageHeader.xib */; };
@@ -122,6 +123,7 @@
 		A765CB1421A2840000111482 /* SettingsViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewInteractor.swift; sourceTree = "<group>"; };
 		A765CB1621A2841400111482 /* SettingsViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewCoordinator.swift; sourceTree = "<group>"; };
 		A765CB1821A288F200111482 /* SettingsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsCell.swift; sourceTree = "<group>"; };
+		A765CB1A21A293C500111482 /* RateManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RateManager.swift; sourceTree = "<group>"; };
 		A776C1672176240700859BB8 /* UIViewController+dismissKeyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+dismissKeyboard.swift"; sourceTree = "<group>"; };
 		A780B61F21900BC80096E3F0 /* CarriageHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarriageHeader.swift; sourceTree = "<group>"; };
 		A780B62121900BDF0096E3F0 /* CarriageHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CarriageHeader.xib; sourceTree = "<group>"; };
@@ -325,6 +327,7 @@
 			isa = PBXGroup;
 			children = (
 				A74FDA83219D605C001713B6 /* CoreDataManager.swift */,
+				A765CB1A21A293C500111482 /* RateManager.swift */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -723,6 +726,7 @@
 				A7B2E3922182ED4600CC7273 /* CalendarViewCoordinator.swift in Sources */,
 				A7F45DD12175E35A0099A9E1 /* Route.swift in Sources */,
 				0DE3F6E5218DAD5700054E1E /* HeaderResultCell.swift in Sources */,
+				A765CB1B21A293C500111482 /* RateManager.swift in Sources */,
 				A71DFCDE2186E47500874458 /* RouteItem.swift in Sources */,
 				A7BDB213218821BC0070E543 /* FullRouteCell.swift in Sources */,
 				A74FDA84219D605C001713B6 /* CoreDataManager.swift in Sources */,
