@@ -282,12 +282,14 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.storyboard` struct is generated, and contains static references to 7 storyboards.
+  /// This `R.storyboard` struct is generated, and contains static references to 8 storyboards.
   struct storyboard {
     /// Storyboard `Favorite`.
     static let favorite = _R.storyboard.favorite()
     /// Storyboard `LaunchScreen`.
     static let launchScreen = _R.storyboard.launchScreen()
+    /// Storyboard `Login`.
+    static let login = _R.storyboard.login()
     /// Storyboard `Main`.
     static let main = _R.storyboard.main()
     /// Storyboard `RouteResult`.
@@ -307,6 +309,11 @@ struct R: Rswift.Validatable {
     /// `UIStoryboard(name: "LaunchScreen", bundle: ...)`
     static func launchScreen(_: Void = ()) -> UIKit.UIStoryboard {
       return UIKit.UIStoryboard(resource: R.storyboard.launchScreen)
+    }
+    
+    /// `UIStoryboard(name: "Login", bundle: ...)`
+    static func login(_: Void = ()) -> UIKit.UIStoryboard {
+      return UIKit.UIStoryboard(resource: R.storyboard.login)
     }
     
     /// `UIStoryboard(name: "Main", bundle: ...)`
@@ -388,6 +395,7 @@ struct _R: Rswift.Validatable {
   struct storyboard: Rswift.Validatable {
     static func validate() throws {
       try routeResult.validate()
+      try login.validate()
       try main.validate()
       try search.validate()
       try settings.validate()
@@ -410,6 +418,24 @@ struct _R: Rswift.Validatable {
       
       static func validate() throws {
         if UIKit.UIImage(named: "logo") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'logo' is used in storyboard 'LaunchScreen', but couldn't be loaded.") }
+      }
+      
+      fileprivate init() {}
+    }
+    
+    struct login: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
+      typealias InitialController = UIKit.UITabBarController
+      
+      let bundle = R.hostingBundle
+      let loginNavigationController = StoryboardViewControllerResource<UIKit.UINavigationController>(identifier: "LoginNavigationController")
+      let name = "Login"
+      
+      func loginNavigationController(_: Void = ()) -> UIKit.UINavigationController? {
+        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: loginNavigationController)
+      }
+      
+      static func validate() throws {
+        if _R.storyboard.login().loginNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'loginNavigationController' could not be loaded from storyboard 'Login' as 'UIKit.UINavigationController'.") }
       }
       
       fileprivate init() {}
@@ -517,13 +543,8 @@ struct _R: Rswift.Validatable {
       typealias InitialController = UIKit.UITabBarController
       
       let bundle = R.hostingBundle
-      let loginNavigationController = StoryboardViewControllerResource<UIKit.UINavigationController>(identifier: "LoginNavigationController")
       let name = "Settings"
       let settingsNavigationController = StoryboardViewControllerResource<UIKit.UINavigationController>(identifier: "SettingsNavigationController")
-      
-      func loginNavigationController(_: Void = ()) -> UIKit.UINavigationController? {
-        return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: loginNavigationController)
-      }
       
       func settingsNavigationController(_: Void = ()) -> UIKit.UINavigationController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: settingsNavigationController)
@@ -535,7 +556,6 @@ struct _R: Rswift.Validatable {
         if UIKit.UIImage(named: "instaLogo") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'instaLogo' is used in storyboard 'Settings', but couldn't be loaded.") }
         if UIKit.UIImage(named: "vkLogo") == nil { throw Rswift.ValidationError(description: "[R.swift] Image named 'vkLogo' is used in storyboard 'Settings', but couldn't be loaded.") }
         if _R.storyboard.settings().settingsNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'settingsNavigationController' could not be loaded from storyboard 'Settings' as 'UIKit.UINavigationController'.") }
-        if _R.storyboard.settings().loginNavigationController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'loginNavigationController' could not be loaded from storyboard 'Settings' as 'UIKit.UINavigationController'.") }
       }
       
       fileprivate init() {}

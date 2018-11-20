@@ -22,26 +22,30 @@ protocol SearchAutocompleteViewControllerCoordinator: class {
 class SearchAutocompleteViewController: UIViewController {
     
     @IBOutlet weak var autocompleteTableView: UITableView!
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var searchTypeSegmentControl: UISegmentedControl!
     @IBOutlet var emptyView: UIView!
-    @IBOutlet weak var searchStackView: UIStackView!
     
     var interactor: SearchAutocompleteViewControllerInteractor!
     var coordinator: SearchAutocompleteViewControllerCoordinator?
     
     private var textTimer: Timer?
     private var dataSource: AutocompleteDataSource?
+    private lazy var searchBar = UISearchBar(frame: .zero)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         configureUI()
-        searchBar.becomeFirstResponder()
+        configureSearchBar()
+        configureCancelBarButton()
+        
+        if #available(iOS 11.0, *) {
+            self.additionalSafeAreaInsets.top = 11
+        }
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
+
         self.dataSource = AutocompleteDataSource(with: autocompleteTableView, delegate: self)
     }
     
@@ -49,21 +53,33 @@ class SearchAutocompleteViewController: UIViewController {
         NotificationCenter.default.removeObserver(self)
     }
     
+    private func configureSearchBar() {
+        searchBar.placeholder = "Поиск по станции или маршруту".localized
+        navigationItem.titleView = searchBar
+        searchBar.delegate = self
+        searchBar.showsCancelButton = false
+        searchBar.becomeFirstResponder()
+    }
+    
+    func configureCancelBarButton() {
+        let font: UIFont? = R.font.robotoRegular(size: 16)
+        let attributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: font]
+        let cancelButton = UIBarButtonItem()
+        cancelButton.title = "Отмена".localized
+        cancelButton.setTitleTextAttributes(attributes, for: .normal)
+        cancelButton.action = #selector(cancelTapped)
+        cancelButton.target = self
+        self.navigationItem.setRightBarButton(cancelButton, animated: true)
+    }
+    
     private func configureUI() {
         
         autocompleteTableView.isHidden = true
         autocompleteTableView.tableFooterView = UIView()
         autocompleteTableView.backgroundView = emptyView
-        
+        searchTypeSegmentControl.isHidden = self.navigationController?.viewControllers.first is ScheduleStationViewController
         self.navigationItem.setHidesBackButton(true, animated: true)
         self.definesPresentationContext = true
-        
-        if let searchTextField = self.searchBar.value(forKey: "_searchField") as? UITextField, let clearButton = searchTextField.value(forKey: "_clearButton") as? UIButton, let placeholder = searchTextField.value(forKey: "placeholderLabel") as? UILabel {
-            let templateImage = clearButton.imageView?.image?.withRenderingMode(.alwaysTemplate)
-            clearButton.setImage(templateImage, for: .normal)
-            clearButton.tintColor = .white
-            placeholder.textColor = .white
-        }
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
@@ -111,25 +127,23 @@ class SearchAutocompleteViewController: UIViewController {
         }
     }
     
-    @IBAction func cancelTapped(_ sender: Any) {
+    @objc func cancelTapped() {
         self.coordinator?.dismiss(vc: self)
     }
     
     @IBAction func sectionTapped(_ sender: UISegmentedControl) {
         if sender.selectedSegmentIndex == 1 {
             if CoreDataManager.shared().loadRoute().isEmpty {
-               self.view.makeToast("Не доступно до первого поиска по маршруту".localized, duration: 3.0, position: .center)
+               self.view.makeToast("Недоступно до первого поиска по маршруту".localized, duration: 3.0, position: .center)
             } else {
                 autocompleteTableView.backgroundView?.isHidden = true
                 autocompleteTableView.isHidden = false
-                searchStackView.isHidden = true
                 self.dataSource?.reload()
             }
             return
         }
         autocompleteTableView.backgroundView?.isHidden = true
         autocompleteTableView.isHidden = false
-        searchStackView.isHidden = false
         self.dataSource?.reload(autocompleteResult: nil, nil)
     }
 }

@@ -79,8 +79,8 @@ class TabsScreenCoordinator: NSObject, Coordinator {
     
     private func loginViewController() -> UINavigationController {
         
-        guard let navViewController = R.storyboard.settings.loginNavigationController(), let viewController = navViewController.topViewController as? LoginViewController else {
-            preconditionFailure("Settings Storyboard should contain LoginNavigationController and LoginViewController")
+        guard let navViewController = R.storyboard.login.loginNavigationController(), let viewController = navViewController.topViewController as? LoginViewController else {
+            preconditionFailure("Login Storyboard should contain LoginNavigationController and LoginViewController")
         }
         navViewController.delegate = self
         viewController.interactor = LoginViewInteractor()

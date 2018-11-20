@@ -17,6 +17,7 @@
 		0DE3F6EE218E43E400054E1E /* СarriageSchemeViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3F6ED218E43E400054E1E /* СarriageSchemeViewCoordinator.swift */; };
 		0DE3F6F0218EC5D900054E1E /* CarriageSchemeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DE3F6EF218EC5D900054E1E /* CarriageSchemeCell.swift */; };
 		813434B83F4E2DE6301F856E /* Pods_RWBelarus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A75C502E252E6C5728935AB7 /* Pods_RWBelarus.framework */; };
+		A703176321A67630007CBADF /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A703176221A67630007CBADF /* Login.storyboard */; };
 		A71DFCD82186D83100874458 /* FullRouteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71DFCD72186D83100874458 /* FullRouteViewController.swift */; };
 		A71DFCDA2186D84200874458 /* FullRouteViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71DFCD92186D84200874458 /* FullRouteViewInteractor.swift */; };
 		A71DFCDC2186D87E00874458 /* FullRouteViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A71DFCDB2186D87E00874458 /* FullRouteViewCoordinator.swift */; };
@@ -99,6 +100,7 @@
 		0DE3F6EB218E436500054E1E /* СarriageSchemeViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СarriageSchemeViewInteractor.swift"; sourceTree = "<group>"; };
 		0DE3F6ED218E43E400054E1E /* СarriageSchemeViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "СarriageSchemeViewCoordinator.swift"; sourceTree = "<group>"; };
 		0DE3F6EF218EC5D900054E1E /* CarriageSchemeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarriageSchemeCell.swift; sourceTree = "<group>"; };
+		A703176221A67630007CBADF /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		A71DFCD72186D83100874458 /* FullRouteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullRouteViewController.swift; sourceTree = "<group>"; };
 		A71DFCD92186D84200874458 /* FullRouteViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullRouteViewInteractor.swift; sourceTree = "<group>"; };
 		A71DFCDB2186D87E00874458 /* FullRouteViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullRouteViewCoordinator.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 				0D614931219326E3003FE767 /* Station.storyboard */,
 				0D61493321932743003FE767 /* Favorite.storyboard */,
 				0D61493521932757003FE767 /* Settings.storyboard */,
+				A703176221A67630007CBADF /* Login.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -561,6 +564,7 @@
 				A780B62221900BDF0096E3F0 /* CarriageHeader.xib in Resources */,
 				0D614932219326E3003FE767 /* Station.storyboard in Resources */,
 				A739C7522174DB160080F151 /* Main.storyboard in Resources */,
+				A703176321A67630007CBADF /* Login.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

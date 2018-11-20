@@ -29,11 +29,12 @@ class SearchAutocompleteViewCoordinator: Coordinator, SearchAutocompleteViewCont
         
         viewController.coordinator = self
         viewController.interactor = SearchAutocompleteViewInteractor()
-        viewController.searchTypeSegmentControl.isHidden = rootViewController.viewControllers.first is ScheduleStationViewController
+
         rootViewController.show(viewController, sender: self)
     }
     
     func stop(with completion: CoordinatorCallback?) {
+    
     }
     
     func dismiss(vc: UIViewController, withData: AutocompleteAPIElement) {

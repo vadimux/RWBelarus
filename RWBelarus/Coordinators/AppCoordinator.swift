@@ -47,9 +47,9 @@ class AppCoordinator: Coordinator {
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
         
-        UIBarButtonItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.clear], for: .normal)
+        UIBarButtonItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.white], for: .normal)
         UIBarButtonItem.appearance().setTitleTextAttributes([.foregroundColor: UIColor.clear], for: .highlighted)
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = .white
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = UIColor(rgb: 0x36608A)
         UITabBar.appearance().tintColor = UIColor(rgb: 0x36608A)
         UITabBar.appearance().backgroundColor = .white
         

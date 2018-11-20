@@ -18,7 +18,7 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Schedule Station View Controller-->
+        <!--RWBelarus-->
         <scene sceneID="RLP-ny-10C">
             <objects>
                 <viewController storyboardIdentifier="ScheduleStationViewController" id="rEO-Xb-igy" customClass="ScheduleStationViewController" customModule="RWBelarus" customModuleProvider="target" sceneMemberID="viewController">
@@ -356,7 +356,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="c79-Jq-EKY"/>
                     </view>
-                    <navigationItem key="navigationItem" id="6Pv-a9-P52"/>
+                    <navigationItem key="navigationItem" title="RWBelarus" id="6Pv-a9-P52"/>
                     <connections>
                         <outlet property="dateButton" destination="nVJ-RX-bpz" id="ajr-Lq-s8k"/>
                         <outlet property="scheduleButton" destination="OS5-9n-Asf" id="t50-yG-QMl"/>
@@ -385,6 +385,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="O3p-iB-11o">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="barTintColor" red="0.21176470589999999" green="0.37647058820000001" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
