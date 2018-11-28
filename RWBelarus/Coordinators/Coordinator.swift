@@ -8,51 +8,46 @@
 
 import UIKit
 
-public typealias CoordinatorCallback = (Coordinator) -> Void
+/// A callback function used by coordinators to signal events.
+typealias CoordinatorCallback = (Coordinator) -> Void
 
-/// The Coordinator protocol
-public protocol Coordinator: class {
+protocol Coordinator: class {
     
     var rootViewController: UINavigationController { get }
     var childCoordinators: [Coordinator] { get set }
     
-    func start(with completion: CoordinatorCallback?)   // starts this concrete coordinator
-    func stop(with completion: CoordinatorCallback?)    // stops this concrete coordinator
-    func startChild(coordinator: Coordinator, completion: CoordinatorCallback?) //starts child from this coordinator
-    func stopChild(coordinator: Coordinator, completion: CoordinatorCallback?)  //stops child in this coordinator
+    /// Tells the coordinator to create its
+    /// initial view controller and take over the user flow.
+    func start(withCallback completion: CoordinatorCallback?)
     
-}
-
-public extension Coordinator {
+    /// Tells the coordinator that it is done and that it should
+    /// rewind the view controller state to where it was before `start` was called.
+    func stop(withCallback completion: CoordinatorCallback?)
     
-    func startChild(coordinator: Coordinator, completion: CoordinatorCallback?) {
-        childCoordinators.append(coordinator)
-        coordinator.start(with: completion)
-    }
-    
-    func stopChild(coordinator: Coordinator, completion: CoordinatorCallback?) {
-        let index = childCoordinators.index { $0 === coordinator }
-        guard let childIndex = index else { return }
-        
-        coordinator.stop { (coordinator) in
-            self.childCoordinators.remove(at: childIndex)
-            completion?(coordinator)
-        }
-    }
 }
 
 extension Coordinator {
-    
-    static func appCoordinator() -> AppCoordinator? {
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-            return appDelegate.coordinator
-        } else {
-            return nil
-        }
+    /// Add a child coordinator to the parent
+    public func add(childCoordinator: Coordinator) {
+        self.childCoordinators.append(childCoordinator)
     }
     
-    func appCoordinator() -> AppCoordinator? {
-        return Self.appCoordinator()
+    /// Remove a child coordinator from the parent
+    public func remove(childCoordinator: Coordinator) {
+        self.childCoordinators = self.childCoordinators.filter { $0 !== childCoordinator }
     }
     
+    /// Add a child coordinator to the parent
+    /// and then start the flow.
+    public func add(childCoordinator: Coordinator, andStart completion: CoordinatorCallback?) {
+        self.add(childCoordinator: childCoordinator)
+        childCoordinator.start(withCallback: completion)
+    }
+    
+    /// Remove a child coordinator from the parent
+    /// and the end the flow.
+    public func remove(childCoordinator: Coordinator, andStop completion: CoordinatorCallback?) {
+        self.remove(childCoordinator: childCoordinator)
+        childCoordinator.stop(withCallback: completion)
+    }
 }

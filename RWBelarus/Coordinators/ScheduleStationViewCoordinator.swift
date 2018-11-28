@@ -11,39 +11,49 @@ import UIKit
 
 class ScheduleStationViewCoordinator: Coordinator, ScheduleStationViewControllerCoordinator {
     
-    var rootViewController: UINavigationController
     var childCoordinators: [Coordinator] = []
+    var rootViewController: UINavigationController
     
     init(rootViewController: UINavigationController) {
         self.rootViewController = rootViewController
     }
     
-    func start(with completion: CoordinatorCallback?) {
-        
+    func start(withCallback completion: CoordinatorCallback?) {}
+    
+    func stop(withCallback completion: CoordinatorCallback?) {
+        self.rootViewController.dismiss(animated: true) {
+            completion?(self)
+        }
     }
     
-    func stop(with completion: CoordinatorCallback?) {
-        
-    }
-    
-    func showStationsList(vc: UIViewController, for tagView: Int?) {
-        guard let tagView = tagView, let navVC = vc.navigationController else { return }
-        let searchAutocompleteViewCoordinator = SearchAutocompleteViewCoordinator(rootViewController: navVC, tagView: tagView)
-        searchAutocompleteViewCoordinator.start(with: nil)
+    func showStationsList(vc: UIViewController, for typeView: DirectionViewType?) {
+        guard let typeView = typeView, let navVC = vc.navigationController else { return }
+        let searchAutocompleteViewCoordinator = SearchAutocompleteViewCoordinator(rootViewController: navVC, typeView: typeView)
+        searchAutocompleteViewCoordinator.delegate = self
+        self.add(childCoordinator: searchAutocompleteViewCoordinator, andStart: nil)
     }
     
     func showCalendar(currentDate: Date, completion: @escaping (Date) -> Void) {
         let config = CalendarConfig.init(title: "Выберите день".localized, multiSelectionAvailable: false, begin: currentDate)
-        let coordinator = CalendarViewCoordinator.init(rootViewController: self.rootViewController, config: config)
-        coordinator.periodSelectionActionHandler = { beginDate, endDate in
+        let calendarViewCoordinator = CalendarViewCoordinator.init(rootViewController: self.rootViewController, config: config)
+        calendarViewCoordinator.periodSelectionActionHandler = { beginDate, endDate in
             completion(beginDate ?? Date())
         }
-        coordinator.start(with: nil)
+        calendarViewCoordinator.delegate = self
+        self.add(childCoordinator: calendarViewCoordinator, andStart: nil)
     }
     
     func showFullRoute(vc: UIViewController, for route: Route) {
         guard let navVC = vc.navigationController else { return }
         let fullRouteViewCoordinator = FullRouteViewCoordinator(rootViewController: navVC, route: route)
-        fullRouteViewCoordinator.start(with: nil)
+        fullRouteViewCoordinator.delegate = self
+        self.add(childCoordinator: fullRouteViewCoordinator, andStart: nil)
+    }
+}
+
+extension ScheduleStationViewCoordinator: FinishCoordinatorDelegate {
+    
+    func finishedFlow(coordinator: Coordinator) {
+        self.remove(childCoordinator: coordinator, andStop: nil)
     }
 }

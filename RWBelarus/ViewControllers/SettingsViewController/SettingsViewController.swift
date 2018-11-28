@@ -48,7 +48,8 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.settingCell, for: indexPath)!
         cell.configureWith(text: interactor.showInfoCells(indexPath: indexPath), index: indexPath.row)
-        cell.tapped = { idx in
+        cell.tapped = { [weak self] idx in
+            guard let `self` = self else { return }
             self.coordinator?.showActivitity(for: idx)
         }
         return cell

@@ -78,22 +78,7 @@ class StationScheduleCell: UITableViewCell {
         }
         
         trainTypeImage.image = {
-            switch route.trainType {
-            case .internationalLines:
-                return R.image.international()
-            case .regionalEconomyLines:
-                return R.image.region()
-            case .regionalBusinessLines:
-                return R.image.regionBusiness()
-            case .interregionalEconomyLines:
-                return R.image.interregionalEconomy()
-            case .interregionalBusinessLines:
-                return R.image.interregionalBusiness()
-            case .cityLines:
-                return R.image.city()
-            default:
-                return nil
-            }
+            UIImage.configureImage(for: route.trainType)
         }()
         
         model = route

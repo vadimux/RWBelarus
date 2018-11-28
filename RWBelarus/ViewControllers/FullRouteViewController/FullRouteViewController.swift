@@ -15,7 +15,7 @@ protocol FullRouteViewControllerInteractor: class {
 }
 
 protocol FullRouteViewControllerCoordinator: class {
-    
+    func dismiss()
 }
 
 class FullRouteViewController: UIViewController {
@@ -30,7 +30,7 @@ class FullRouteViewController: UIViewController {
     @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
     
     var interactor: FullRouteViewControllerInteractor!
-    var coordinator: FullRouteViewControllerCoordinator?
+    weak var coordinator: FullRouteViewControllerCoordinator?
     
     private var fullRouteStations = [RouteItem]()
     private var selectedRouteStations = [RouteItem]()
@@ -43,28 +43,33 @@ class FullRouteViewController: UIViewController {
         
         self.fullRouteTableView.makeToastActivity(.center)
         interactor.fetchFullRoute { [weak self] result, error in
+            guard let `self` = self else { return }
             if error != nil {
-                self?.fullRouteTableView.hideToastActivity()
-                self?.view.makeToast(error, duration: 3.0, position: .center)
-                self?.fullRouteTableView.backgroundView?.isHidden = false
-                if let topViewHeight = self?.topViewHeightConstraint.constant {
-                    self?.topConstraint.constant = topViewHeight + 44
-                }
+                self.fullRouteTableView.hideToastActivity()
+                self.view.makeToast(error, duration: 3.0, position: .center)
+                self.fullRouteTableView.backgroundView?.isHidden = false
+                self.topConstraint.constant = self.topViewHeightConstraint.constant + 44
                 return
             }
             if result?.isEmpty == true || result == nil {
-                self?.fullRouteTableView.reloadData()
-                self?.fullRouteTableView.backgroundView?.isHidden = false
-                if let topViewHeight = self?.topViewHeightConstraint.constant {
-                    self?.topConstraint.constant = topViewHeight + 44
-                }
-                self?.fullRouteTableView.hideToastActivity()
+                self.fullRouteTableView.reloadData()
+                self.fullRouteTableView.backgroundView?.isHidden = false
+                self.topConstraint.constant = self.topViewHeightConstraint.constant + 44
+                self.fullRouteTableView.hideToastActivity()
                 return
             }
-            self?.fullRouteStations = result ?? []
-            self?.createSelectedRoute()
-            self?.fullRouteTableView.reloadData()
-            self?.fullRouteTableView.hideToastActivity()
+            self.fullRouteStations = result ?? []
+            self.createSelectedRoute()
+            self.fullRouteTableView.reloadData()
+            self.fullRouteTableView.hideToastActivity()
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if self.isMovingFromParent {
+            self.coordinator?.dismiss()
         }
     }
     
@@ -77,22 +82,7 @@ class FullRouteViewController: UIViewController {
         self.routeLabel.text = self.interactor.route.routeName
         self.trainTypeLabel.text = self.interactor.route.trainType.rawValue
         self.trainTypeImage.image = {
-            switch self.interactor.route.trainType {
-            case .internationalLines:
-                return R.image.international()
-            case .regionalEconomyLines:
-                return R.image.region()
-            case .regionalBusinessLines:
-                return R.image.regionBusiness()
-            case .interregionalEconomyLines:
-                return R.image.interregionalEconomy()
-            case .interregionalBusinessLines:
-                return R.image.interregionalBusiness()
-            case .cityLines:
-                return R.image.city()
-            default:
-                return nil
-            }
+            UIImage.configureImage(for: self.interactor.route.trainType)
         }()
     }
     

@@ -14,6 +14,8 @@ class FullRouteViewCoordinator: Coordinator, FullRouteViewControllerCoordinator 
     
     var rootViewController: UINavigationController
     var childCoordinators: [Coordinator] = []
+    lazy var presentingViewController: UIViewController = self.createFullRouteViewController()
+    weak var delegate: FinishCoordinatorDelegate?
     var route: Route
     
     init(rootViewController: UINavigationController, route: Route) {
@@ -21,22 +23,32 @@ class FullRouteViewCoordinator: Coordinator, FullRouteViewControllerCoordinator 
         self.route = route
     }
     
-    func start(with completion: CoordinatorCallback?) {
-        
+    func start(withCallback completion: CoordinatorCallback?) {
+        self.rootViewController.show(presentingViewController, sender: self)
+        completion?(self)
+    }
+    
+    func stop(withCallback completion: CoordinatorCallback?) {
+        self.rootViewController.popViewController(animated: false)
+        self.presentingViewController.dismiss(animated: true, completion: nil)
+        completion?(self)
+    }
+    
+    func dismiss() {
+        self.delegate?.finishedFlow(coordinator: self)
+    }
+}
+
+extension FullRouteViewCoordinator {
+    
+    func createFullRouteViewController() -> FullRouteViewController {
         guard let viewController = R.storyboard.routeResult.fullRouteViewController() else {
             preconditionFailure("RouteResult Storyboard should contain FullRouteViewController")
         }
         
         viewController.coordinator = self
         viewController.interactor = FullRouteViewInteractor(route: route)
-        rootViewController.show(viewController, sender: self)
-    }
-    
-    func stop(with completion: CoordinatorCallback?) {
-    }
-    
-    func dismiss(vc: UIViewController) {
-        _ = vc.navigationController?.popViewController(animated: false)
-        vc.dismiss(animated: true)
+        
+        return viewController
     }
 }

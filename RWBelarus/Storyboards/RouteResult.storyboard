@@ -263,7 +263,7 @@
                                                                                 <userDefinedRuntimeAttribute type="string" keyPath="localizedText" value="Билеты"/>
                                                                             </userDefinedRuntimeAttributes>
                                                                         </label>
-                                                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Bm-yh-dBa">
+                                                                        <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="9Bm-yh-dBa">
                                                                             <rect key="frame" x="0.0" y="16.5" width="351" height="80"/>
                                                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                             <constraints>
@@ -274,7 +274,7 @@
                                                                                     <rect key="frame" x="0.0" y="28" width="351" height="44"/>
                                                                                     <autoresizingMask key="autoresizingMask"/>
                                                                                     <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="lRS-dM-GP8" id="ADH-6q-5Ga">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="351" height="43.5"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="351" height="44"/>
                                                                                         <autoresizingMask key="autoresizingMask"/>
                                                                                         <subviews>
                                                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="lzH-uE-RdS">

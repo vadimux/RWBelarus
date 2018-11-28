@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 import JTAppleCalendar
 
-protocol CalendarViewControllerCoordinator {
+protocol CalendarViewControllerCoordinator: class {
     func title() -> String?
     func applyPeriodFromDate( _ beginDate: Date?, endDate: Date?)
 }
@@ -58,7 +58,7 @@ class CalendarViewController: UIViewController {
         }
     }
     
-    var coordinator: CalendarViewControllerCoordinator?
+    weak var coordinator: CalendarViewControllerCoordinator?
     var interactor: CalendarViewControllerInteractor? {
         willSet {
             interactor?.unsubscribe(observer: self)

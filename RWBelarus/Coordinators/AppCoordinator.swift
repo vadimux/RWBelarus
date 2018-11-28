@@ -8,38 +8,28 @@
 
 import UIKit
 
-// The AppCoordinator is first coordinator
-/// The AppCoordinator as a rootViewController
 class AppCoordinator: Coordinator {
     
-    // MARK: - Properties
-    
     var childCoordinators: [Coordinator] = []
-    
+    var window: UIWindow?
     lazy var rootViewController: UINavigationController = {
         return UINavigationController(rootViewController: UIViewController())
     }()
     
-    private var splashScreen: UIViewController?
-    private(set) lazy var launchScreen: UIViewController = {
-        return R.storyboard.launchScreen.instantiateInitialViewController()!
-    }()
-    
-    /// Window to manage
-    let window: UIWindow
-    
-    // MARK: - Init
-    
-    public init(window: UIWindow) {
+    init(window: UIWindow?) {
         self.window = window
-        self.window.backgroundColor = .white
-        self.window.rootViewController = self.rootViewController
-        self.window.makeKeyAndVisible()
-        
-        setupAppearance()
     }
     
-    // MARK: - Functions
+    func start(withCallback completion: CoordinatorCallback?) {
+        self.window?.rootViewController = self.rootViewController
+        self.window?.makeKeyAndVisible()
+        self.startTabsScreenCoordinator(withCallback: completion)
+    }
+    
+    func stop(withCallback completion: CoordinatorCallback?) {
+        self.window?.rootViewController = nil
+        self.window?.makeKeyAndVisible()
+    }
     
     func setupAppearance() {
         UINavigationBar.appearance().tintColor = .white
@@ -52,57 +42,10 @@ class AppCoordinator: Coordinator {
         UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = UIColor(rgb: 0x36608A)
         UITabBar.appearance().tintColor = UIColor(rgb: 0x36608A)
         UITabBar.appearance().backgroundColor = .white
-        
-        rootViewController.hero.isEnabled = true
-        rootViewController.navigationBar.barTintColor = .white
-        rootViewController.setNavigationBarHidden(true, animated: false)
     }
     
-    func start(with completion: CoordinatorCallback?) {
-        presentSplashScreen()
-        self.startMainScreenCoordinator()
+    func startTabsScreenCoordinator(withCallback completion: CoordinatorCallback?) {
+        let tabsScreenCoordinator = TabsScreenCoordinator(rootViewController: self.rootViewController)
+        tabsScreenCoordinator.start(withCallback: completion)
     }
-    
-    func stop(with completion: CoordinatorCallback?) {
-        print("Can't stop root coordinator")
-    }
-    
-    private func startMainScreenCoordinator() {
-        let tabsScreenCoordinator = TabsScreenCoordinator(rootViewController: rootViewController)
-        tabsScreenCoordinator.delegate = self
-        hideSplashScreen()
-        tabsScreenCoordinator.start(with: nil)
-        
-        if #available(iOS 10.3, *) {
-            RateManager.incrementCount()
-        }
-    }
-    
-    func presentSplashScreen() {
-        guard splashScreen == nil, let controller = R.storyboard.launchScreen.instantiateInitialViewController() else { return }
-        controller.modalPresentationStyle = .overFullScreen
-        self.splashScreen = controller
-        rootViewController.present(controller, animated: false) {
-        }
-    }
-    
-    func hideSplashScreen() {
-        guard splashScreen != nil else { return }
-        splashScreen?.dismiss(animated: false, completion: {
-            self.splashScreen = nil
-        })
-    }
-}
-
-extension TabsScreenCoordinator {
-    
-}
-
-extension TabsScreenCoordinator: TabsViewControllerDelegate {
-    func willShowViewController(viewController: UIViewController) {
-    }
-}
-
-extension AppCoordinator: TabsScreenCoordinatorDelegate {
-    
 }

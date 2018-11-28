@@ -30,14 +30,15 @@ struct CalendarConfig {
 
 class CalendarViewCoordinator: NSObject, Coordinator, CalendarViewControllerCoordinator {
     
+    var childCoordinators: [Coordinator] = []
     var rootViewController: UINavigationController
     private var dialogViewController: DialogViewController?
     
     var periodSelectionActionHandler : ((_ beginDate: Date?, _ endDate: Date?) -> Void)?
-    
     private let config: CalendarConfig
+    lazy var presentingViewController: UIViewController = self.createCalendarViewController()
     
-    var childCoordinators: [Coordinator] = []
+    weak var delegate: FinishCoordinatorDelegate?
     
     init(rootViewController: UINavigationController, config: CalendarConfig?) {
         self.rootViewController = rootViewController
@@ -45,22 +46,14 @@ class CalendarViewCoordinator: NSObject, Coordinator, CalendarViewControllerCoor
         super.init()
     }
     
-    func start(with completion: CoordinatorCallback?) {
-        
-        guard let calendarViewController = R.storyboard.search.calendarViewController() else {
-            preconditionFailure("Search Storyboard should contain CalendarViewController")
-        }
-        
-        calendarViewController.coordinator = self
-        calendarViewController.interactor = CalendarViewInteractor.init(config: config)
-        
-        dialogViewController = DialogViewController.init(rootViewController: calendarViewController)
+    func start(withCallback completion: CoordinatorCallback?) {
+        dialogViewController = DialogViewController.init(rootViewController: presentingViewController)
         rootViewController.present(dialogViewController!, animated: true) {
             completion?(self)
         }
     }
     
-    func stop(with completion: CoordinatorCallback?) {
+    func stop(withCallback completion: CoordinatorCallback?) {
         dialogViewController?.dismiss(animated: true, completion: {
             completion?(self)
         })
@@ -72,6 +65,20 @@ class CalendarViewCoordinator: NSObject, Coordinator, CalendarViewControllerCoor
     
     func applyPeriodFromDate(_ beginDate: Date?, endDate: Date?) {
         periodSelectionActionHandler?(beginDate, endDate)
+        self.delegate?.finishedFlow(coordinator: self)
     }
     
+}
+
+extension CalendarViewCoordinator {
+    
+    func createCalendarViewController() -> CalendarViewController {
+        guard let viewController = R.storyboard.search.calendarViewController() else {
+            preconditionFailure("Search Storyboard should contain CalendarViewController")
+        }
+        viewController.coordinator = self
+        viewController.interactor = CalendarViewInteractor.init(config: config)
+        
+        return viewController
+    }
 }

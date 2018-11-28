@@ -14,9 +14,9 @@ protocol SearchAutocompleteViewControllerInteractor: class {
 }
 
 protocol SearchAutocompleteViewControllerCoordinator: class {
-    func dismiss(vc: UIViewController)
-    func dismiss(vc: UIViewController, withData: AutocompleteAPIElement)
-    func dismiss(vc: UIViewController, fromData: AutocompleteAPIElement, toData: AutocompleteAPIElement)
+    func dismiss()
+    func dismiss(withData: AutocompleteAPIElement)
+    func dismiss(fromData: AutocompleteAPIElement, toData: AutocompleteAPIElement)
 }
 
 class SearchAutocompleteViewController: UIViewController {
@@ -26,7 +26,7 @@ class SearchAutocompleteViewController: UIViewController {
     @IBOutlet var emptyView: UIView!
     
     var interactor: SearchAutocompleteViewControllerInteractor!
-    var coordinator: SearchAutocompleteViewControllerCoordinator?
+    weak var coordinator: SearchAutocompleteViewControllerCoordinator?
     
     private var textTimer: Timer?
     private var dataSource: AutocompleteDataSource?
@@ -128,7 +128,7 @@ class SearchAutocompleteViewController: UIViewController {
     }
     
     @objc func cancelTapped() {
-        self.coordinator?.dismiss(vc: self)
+        self.coordinator?.dismiss()
     }
     
     @IBAction func sectionTapped(_ sender: UISegmentedControl) {
@@ -151,11 +151,11 @@ class SearchAutocompleteViewController: UIViewController {
 extension SearchAutocompleteViewController: AutocompleteDelegate {
     
     func onAutocompleteTapped(model: AutocompleteAPIElement) {
-        self.coordinator?.dismiss(vc: self, withData: model)
+        self.coordinator?.dismiss(withData: model)
     }
     
     func onRouteTapped(fromData: AutocompleteAPIElement, toData: AutocompleteAPIElement) {
-        self.coordinator?.dismiss(vc: self, fromData: fromData, toData: toData)
+        self.coordinator?.dismiss(fromData: fromData, toData: toData)
     }
 }
 

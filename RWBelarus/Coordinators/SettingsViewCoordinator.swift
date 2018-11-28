@@ -12,21 +12,23 @@ import MessageUI
 
 class SettingsViewCoordinator: NSObject, Coordinator, SettingsViewControllerCoordinator {
     
-    var rootViewController: UINavigationController
     var childCoordinators: [Coordinator] = []
+    var rootViewController: UINavigationController
     
     init(rootViewController: UINavigationController) {
         self.rootViewController = rootViewController
     }
     
-    func start(with completion: CoordinatorCallback?) {
-        
+    func start(withCallback completion: CoordinatorCallback?) {
+        completion?(self)
     }
     
-    func stop(with completion: CoordinatorCallback?) {
-        
+    func stop(withCallback completion: CoordinatorCallback?) {
+        self.rootViewController.dismiss(animated: true) {
+            completion?(self)
+        }
     }
-    
+
     // Select social network
     func callSocial(tag: Int) {
         
@@ -65,7 +67,7 @@ class SettingsViewCoordinator: NSObject, Coordinator, SettingsViewControllerCoor
 //        case 2:
 //            let message = "Неофициальное iOS приложение расписания поездов Белорусской железной дороги".localized
 //            guard let link = NSURL(string: "https://www.zippybus.com/") else { return }
-//            
+//
 //            let objectsToShare = [message, link] as [Any]
 //            let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
 //            activityVC.excludedActivityTypes = [.airDrop, .addToReadingList]

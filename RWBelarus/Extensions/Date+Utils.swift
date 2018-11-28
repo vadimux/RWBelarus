@@ -9,18 +9,15 @@
 import Foundation
 
 extension Date {
-
-    static func convertLabelDate(date: Date) -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "E, d MMM"
-        let newDate = dateFormatter.string(from: date)
-        return newDate
-    }
     
-    static func convertSearchFormatDate(date: Date) -> String {
+    static let LABEL_DATE_FORMAT = "E, d MMM"
+    static let COMMON_DATE_FORMAT = "yyyy-MM-dd"
+    
+    static func format(date: Date, dateFormat: String) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-MM-dd"
-        let newDate = dateFormatter.string(from: date)
-        return newDate
+        dateFormatter.dateFormat = dateFormat
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        
+        return dateFormatter.string(from: date)
     }
 }

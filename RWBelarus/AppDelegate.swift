@@ -13,7 +13,7 @@ import CoreData
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var coordinator: AppCoordinator!
+    var appCoordinator: AppCoordinator!
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
@@ -22,8 +22,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             return true
         }
         
-        coordinator = AppCoordinator(window: window)
-        self.coordinator.start(with: nil)
+        appCoordinator = AppCoordinator(window: window)
+        appCoordinator.start(withCallback: nil)
         
         return true
     }

@@ -19,7 +19,7 @@ protocol ScheduleStationViewControllerInteractor: class {
 
 protocol ScheduleStationViewControllerCoordinator: class {
     
-    func showStationsList(vc: UIViewController, for tagView: Int?)
+    func showStationsList(vc: UIViewController, for typeView: DirectionViewType?)
     func showCalendar(currentDate: Date, completion: @escaping (_ selectedDate: Date) -> Void)
     func showFullRoute(vc: UIViewController, for route: Route)
 }
@@ -39,7 +39,7 @@ class ScheduleStationViewController: UIViewController {
     var coordinator: ScheduleStationViewControllerCoordinator?
     
     var trainList = [Route]()
-    private var date: String!
+    private var date: String = "everyday"
     private var selectedStation: String?
     private let heroTransition = HeroTransition()
     private var observer: NSKeyValueObservation?
@@ -55,8 +55,6 @@ class ScheduleStationViewController: UIViewController {
                 self.scheduleButton.isEnabled = true
             }
         }
-        
-        configureUI()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -72,48 +70,30 @@ class ScheduleStationViewController: UIViewController {
         observer?.invalidate()
     }
     
-    private func configureUI() {
-        
-        //stationLabel.text = "Cтанция".localized
-        
-        //by default
-        self.dateButton.setTitle("на все дни".localized, for: .normal)
-        self.date = "everyday"
-    }
-    
     @IBAction func scheduleButtonTapped(_ sender: Any) {
         guard let selectedStation = selectedStation else { return }
         prepareResultForTableView(station: selectedStation)
     }
     
     @IBAction func tappedOnView(_ sender: Any) {
-        if let info = sender as? UITapGestureRecognizer {
-            coordinator?.showStationsList(vc: self, for: info.view?.tag)
-        }
-    }
-    
-    @IBAction func calendarTapped(_ sender: Any) {
-        coordinator?.showCalendar(currentDate: Date()) { date in
-            let newDate = Date.convertLabelDate(date: date)
-            let searchDate = Date.convertSearchFormatDate(date: date)
-            self.dateButton.setTitle(newDate, for: .normal)
-            self.date = searchDate
-        }
+        coordinator?.showStationsList(vc: self, for: .fromView)
     }
     
     @IBAction func todayTapped(_ sender: Any) {
-        self.dateButton.setTitle(RouteDate.today.value, for: .normal)
-        self.date = RouteDate.today.rawValue
+        configureDateButton(with: RouteDate.today)
     }
     
     @IBAction func tomorrowTapped(_ sender: Any) {
-        self.dateButton.setTitle(RouteDate.tomorrow.value, for: .normal)
-        self.date = RouteDate.tomorrow.rawValue
+        configureDateButton(with: RouteDate.tomorrow)
     }
     
     @IBAction func everydayTapped(_ sender: Any) {
-        self.dateButton.setTitle(RouteDate.everyday.value, for: .normal)
-        self.date = RouteDate.everyday.rawValue
+        configureDateButton(with: RouteDate.everyday)
+    }
+    
+    private func configureDateButton(with date: RouteDate) {
+        self.dateButton.setTitle(date.value, for: .normal)
+        self.date = date.rawValue
     }
     
     private func prepareResultForTableView(station: String) {
@@ -150,7 +130,8 @@ extension ScheduleStationViewController: UITableViewDataSource, UITableViewDeleg
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.stationScheduleCell, for: indexPath)!
         let route = trainList[indexPath.row]
         cell.configure(with: route)
-        cell.tapped = { model in
+        cell.tapped = { [weak self] model in
+            guard let `self` = self else { return }
             self.coordinator?.showFullRoute(vc: self, for: model)
         }
         return cell

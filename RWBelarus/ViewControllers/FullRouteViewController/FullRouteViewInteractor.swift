@@ -19,7 +19,8 @@ class FullRouteViewInteractor: FullRouteViewControllerInteractor {
     
     func fetchFullRoute(completion: @escaping (_ stations: [RouteItem]?, _ error: String?) -> Void) {
         
-        NetworkManager.getFullRoute(for: self.route) { result in
+        NetworkManager.getFullRoute(for: self.route) { [weak self] result in
+            guard let _ = self else { return }
             switch result {
             case .success(let stations):
                 completion(stations, nil)

@@ -10,36 +10,37 @@ import Foundation
 import UIKit
 import Hero
 
+protocol FinishCoordinatorDelegate: class {
+    func finishedFlow(coordinator: Coordinator)
+}
+
 class SearchAutocompleteViewCoordinator: Coordinator, SearchAutocompleteViewControllerCoordinator {
     
-    var rootViewController: UINavigationController
     var childCoordinators: [Coordinator] = []
-    var tagView: Int
+    var rootViewController: UINavigationController
+    lazy var presentingViewController: UIViewController = self.createSearchAutocompleteViewController()
+    var typeView: DirectionViewType
     
-    init(rootViewController: UINavigationController, tagView: Int) {
+    weak var delegate: FinishCoordinatorDelegate?
+    
+    init(rootViewController: UINavigationController, typeView: DirectionViewType) {
         self.rootViewController = rootViewController
-        self.tagView = tagView
+        self.typeView = typeView
     }
     
-    func start(with completion: CoordinatorCallback?) {
-        
-        guard let viewController = R.storyboard.search.searchAutocompleteViewController() else {
-            preconditionFailure("RouteResult Storyboard should contain SearchAutocompleteViewController")
-        }
-        
-        viewController.coordinator = self
-        viewController.interactor = SearchAutocompleteViewInteractor()
-
-        rootViewController.show(viewController, sender: self)
+    func start(withCallback completion: CoordinatorCallback?) {
+        self.rootViewController.show(presentingViewController, sender: self)
+        completion?(self)
     }
     
-    func stop(with completion: CoordinatorCallback?) {
-    
+    func stop(withCallback completion: CoordinatorCallback?) {
+        self.rootViewController.popViewController(animated: false)
+        completion?(self)
     }
     
-    func dismiss(vc: UIViewController, withData: AutocompleteAPIElement) {
+    func dismiss(withData: AutocompleteAPIElement) {
         if let rootVC = rootViewController.viewControllers.first as? SearchViewController {
-            if self.tagView == 0 {
+            if self.typeView == .fromView {
                 rootVC.interactor.fromData = withData
             } else {
                 rootVC.interactor.toData = withData
@@ -49,21 +50,31 @@ class SearchAutocompleteViewCoordinator: Coordinator, SearchAutocompleteViewCont
         if let rootVC = rootViewController.viewControllers.first as? ScheduleStationViewController {
             rootVC.interactor.fromData = withData
         }
-        _ = vc.navigationController?.popViewController(animated: false)
-        vc.dismiss(animated: true)
+        self.delegate?.finishedFlow(coordinator: self)
     }
     
-    func dismiss(vc: UIViewController, fromData: AutocompleteAPIElement, toData: AutocompleteAPIElement) {
+    func dismiss(fromData: AutocompleteAPIElement, toData: AutocompleteAPIElement) {
         if let rootVC = rootViewController.viewControllers.first as? SearchViewController {
             rootVC.interactor.fromData = fromData
             rootVC.interactor.toData = toData
         }
-        _ = vc.navigationController?.popViewController(animated: false)
-        vc.dismiss(animated: true)
+        self.delegate?.finishedFlow(coordinator: self)
     }
     
-    func dismiss(vc: UIViewController) {
-        _ = vc.navigationController?.popViewController(animated: false)
-        vc.dismiss(animated: true)
+    func dismiss() {
+        self.delegate?.finishedFlow(coordinator: self)
+    }
+}
+
+extension SearchAutocompleteViewCoordinator {
+    
+    func createSearchAutocompleteViewController() -> SearchAutocompleteViewController {
+        guard let viewController = R.storyboard.search.searchAutocompleteViewController() else {
+            preconditionFailure("RouteResult Storyboard should contain SearchAutocompleteViewController")
+        }
+        viewController.interactor = SearchAutocompleteViewInteractor()
+        viewController.coordinator = self
+        
+        return viewController
     }
 }

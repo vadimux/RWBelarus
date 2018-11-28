@@ -442,18 +442,18 @@ struct _R: Rswift.Validatable {
     }
     
     struct main: Rswift.StoryboardResourceWithInitialControllerType, Rswift.Validatable {
-      typealias InitialController = TabsViewController
+      typealias InitialController = UIKit.UITabBarController
       
       let bundle = R.hostingBundle
       let name = "Main"
-      let tabsViewController = StoryboardViewControllerResource<TabsViewController>(identifier: "TabsViewController")
+      let tabsViewController = StoryboardViewControllerResource<UIKit.UITabBarController>(identifier: "TabsViewController")
       
-      func tabsViewController(_: Void = ()) -> TabsViewController? {
+      func tabsViewController(_: Void = ()) -> UIKit.UITabBarController? {
         return UIKit.UIStoryboard(resource: self).instantiateViewController(withResource: tabsViewController)
       }
       
       static func validate() throws {
-        if _R.storyboard.main().tabsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'tabsViewController' could not be loaded from storyboard 'Main' as 'TabsViewController'.") }
+        if _R.storyboard.main().tabsViewController() == nil { throw Rswift.ValidationError(description:"[R.swift] ViewController with identifier 'tabsViewController' could not be loaded from storyboard 'Main' as 'UIKit.UITabBarController'.") }
       }
       
       fileprivate init() {}

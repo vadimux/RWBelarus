@@ -15,13 +15,14 @@ protocol RouteResultViewControllerInteractor: class {
 }
 
 protocol RouteResultViewControllerCoordinator: class {
-    func showFullRoute(vc: UIViewController, for route: Route)
+    func showFullRoute(for route: Route)
+    func dismiss()
 }
 
 class RouteResultViewController: UIViewController {
     
     var interactor: RouteResultViewControllerInteractor!
-    var coordinator: RouteResultViewControllerCoordinator?
+    weak var coordinator: RouteResultViewControllerCoordinator?
 
     @IBOutlet weak var resultTableView: UITableView!
     @IBOutlet var emptyView: UIView!
@@ -37,6 +38,14 @@ class RouteResultViewController: UIViewController {
         prepareResultForTableView()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if self.isMovingFromParent {
+            self.coordinator?.dismiss()
+        }
+    }
+
     private func prepareResultForTableView() {
         
         resultTableView.makeToastActivity(.center)
@@ -46,27 +55,28 @@ class RouteResultViewController: UIViewController {
         resultTableView.backgroundView?.isHidden = true
         
         interactor.prepareForShowResult { [weak self] result, error in
+            guard let `self` = self else { return }
             if error != nil {
-                self?.resultTableView.hideToastActivity()
-                self?.view.makeToast(error, duration: 3.0, position: .center)
-                self?.resultTableView.backgroundView?.isHidden = false
-                if let imageHeight = self?.imageHeight {
-                   self?.topConstraint.constant = imageHeight + 44
+                self.resultTableView.hideToastActivity()
+                self.view.makeToast(error, duration: 3.0, position: .center)
+                self.resultTableView.backgroundView?.isHidden = false
+                if let imageHeight = self.imageHeight {
+                   self.topConstraint.constant = imageHeight + 44
                 }
                 return
             }
-            self?.searchResult = result ?? []
+            self.searchResult = result ?? []
             guard let count = result?.count, count > 0 else {
-                self?.resultTableView.hideToastActivity()
-                self?.resultTableView.backgroundView?.isHidden = false
-                if let imageHeight = self?.imageHeight {
-                    self?.topConstraint.constant = imageHeight + 44
+                self.resultTableView.hideToastActivity()
+                self.resultTableView.backgroundView?.isHidden = false
+                if let imageHeight = self.imageHeight {
+                    self.topConstraint.constant = imageHeight + 44
                 }
                 return
             }
             DispatchQueue.main.async {
-                self?.resultTableView.hideToastActivity()
-                self?.resultTableView.reloadData()
+                self.resultTableView.hideToastActivity()
+                self.resultTableView.reloadData()
             }
         }
     }
@@ -82,15 +92,15 @@ extension RouteResultViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.headerResultCell, for: indexPath)!
-            cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: UIScreen.main.bounds.width)
             cell.configure(with: interactor.prepareForHeaderView())
             imageHeight = cell.bounds.height
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.searchResultCell, for: indexPath)!
-        cell.configure(with: searchResult[indexPath.row - 1], rootViewController: self.navigationController)
-        cell.tapped = { model in
-            self.coordinator?.showFullRoute(vc: self, for: model)
+        cell.configure(with: searchResult[indexPath.row - 1])
+        cell.tapped = { [weak self] route in
+            guard let `self` = self else { return }
+            self.coordinator?.showFullRoute(for: route)
         }
         return cell
     }

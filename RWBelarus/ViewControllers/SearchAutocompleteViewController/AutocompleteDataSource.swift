@@ -53,8 +53,8 @@ class AutocompleteDataSource: NSObject, UITableViewDataSource, UITableViewDelega
         if isAutocompleteRouteShown {
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.autocompleteRouteCell, for: indexPath)!
             cell.configure(with: routeData[indexPath.row])
-            cell.tapped = { fromData, toData in
-                self.delegate?.onRouteTapped(fromData: fromData, toData: toData)
+            cell.tapped = { [weak self] fromData, toData in
+                self?.delegate?.onRouteTapped(fromData: fromData, toData: toData)
             }
             return cell
         }
@@ -63,8 +63,8 @@ class AutocompleteDataSource: NSObject, UITableViewDataSource, UITableViewDelega
             return UITableViewCell()
         }
         cell.configure(with: result[indexPath.row], searchElement: self.searchElement)
-        cell.tapped = { model in
-            self.delegate?.onAutocompleteTapped(model: model)
+        cell.tapped = { [weak self] model in
+            self?.delegate?.onAutocompleteTapped(model: model)
         }
         return cell
     }

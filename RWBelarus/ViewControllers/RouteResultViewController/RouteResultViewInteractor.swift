@@ -22,7 +22,8 @@ class RouteResultViewInteractor: RouteResultViewControllerInteractor {
     
     func prepareForShowResult(completion: @escaping (_ route: [Route]?, _ error: String?) -> Void) {
         
-        NetworkManager.getRouteBetweenCities(fromData: fromData, toData: toData, date: self.date) { result in
+        NetworkManager.getRouteBetweenCities(fromData: fromData, toData: toData, date: self.date) { [weak self] result in
+            guard self != nil else { return }
             switch result {
             case .success(let autocomplete):
                 completion(autocomplete, nil)
@@ -54,12 +55,12 @@ class RouteResultViewInteractor: RouteResultViewControllerInteractor {
                 return RouteDate.everyday.value
             default:
                 let inputDateFormatter = DateFormatter()
-                inputDateFormatter.dateFormat = "yyyy-MM-dd"
+                inputDateFormatter.dateFormat = Date.COMMON_DATE_FORMAT
                 guard let date = inputDateFormatter.date(from: self.date) else {
                     return ""
                 }
 
-                let outputDate = Date.convertLabelDate(date: date)
+                let outputDate = Date.format(date: date, dateFormat: Date.LABEL_DATE_FORMAT)
                 return outputDate
             }
         }()

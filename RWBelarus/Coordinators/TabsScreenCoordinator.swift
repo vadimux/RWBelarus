@@ -8,37 +8,26 @@
 
 import UIKit
 
-protocol TabsScreenCoordinatorDelegate: class {
-}
-
 class TabsScreenCoordinator: NSObject, Coordinator {
     
-    var rootViewController: UINavigationController
     var childCoordinators: [Coordinator] = []
-    weak var delegate: TabsScreenCoordinatorDelegate?
-    weak var tabBarController: UITabBarController?
+    var rootViewController: UINavigationController
+    
+    lazy var tabBarViewController: UITabBarController = self.createTabsViewController()
     
     init(rootViewController: UINavigationController) {
         self.rootViewController = rootViewController
-        super.init()
     }
     
-    func start(with completion: CoordinatorCallback?) {
-        
-        guard let viewController = R.storyboard.main.tabsViewController() else {
-            preconditionFailure("Main Storyboard should contain TabsViewController")
-        }
-        
-        viewController.viewControllers = [searchViewController(), scheduleStationViewController(), settingsViewController()]
-        viewController.coordinator = self
-        
-        tabBarController = viewController
-        
-        rootViewController.setViewControllers([viewController], animated: false)
+    func start(withCallback completion: CoordinatorCallback?) {
+        rootViewController.setViewControllers([tabBarViewController], animated: false)
         rootViewController.setNavigationBarHidden(true, animated: false)
     }
     
-    func stop(with completion: CoordinatorCallback?) {
+    func stop(withCallback completion: CoordinatorCallback?) {
+        self.rootViewController.dismiss(animated: true) {
+            completion?(self)
+        }
     }
     
     private func searchViewController() -> UINavigationController {
@@ -46,57 +35,51 @@ class TabsScreenCoordinator: NSObject, Coordinator {
         guard let navViewController = R.storyboard.search.searchNavigationController(), let viewController = navViewController.topViewController as? SearchViewController else {
             preconditionFailure("Search Storyboard should contain SearchNavigationController and SearchViewController")
         }
-        navViewController.delegate = self
+        
         viewController.interactor = SearchViewInteractor()
-        viewController.coordinator = SearchViewCoordinator(rootViewController: rootViewController)
+        let searchViewCoordinator = SearchViewCoordinator(rootViewController: rootViewController)
+        viewController.coordinator = searchViewCoordinator
+        self.add(childCoordinator: searchViewCoordinator)
         
         return navViewController
     }
     
     private func scheduleStationViewController() -> UINavigationController {
-        
+
         guard let navViewController = R.storyboard.station.scheduleStationNavigationController(), let viewController = navViewController.topViewController as? ScheduleStationViewController else {
             preconditionFailure("Station Storyboard should contain ScheduleStationNavigationController and ScheduleStationViewController")
         }
-        navViewController.delegate = self
+
         viewController.interactor = ScheduleStationViewInteractor()
-        viewController.coordinator = ScheduleStationViewCoordinator(rootViewController: rootViewController)
-        
+        let scheduleStationViewCoordinator = ScheduleStationViewCoordinator(rootViewController: rootViewController)
+        viewController.coordinator = scheduleStationViewCoordinator
+        self.add(childCoordinator: scheduleStationViewCoordinator)
+
         return navViewController
     }
     
     private func settingsViewController() -> UINavigationController {
-        
+
         guard let navViewController = R.storyboard.settings.settingsNavigationController(), let viewController = navViewController.topViewController as? SettingsViewController else {
             preconditionFailure("Settings Storyboard should contain LoginNavigationController and LoginViewController")
         }
-        navViewController.delegate = self
+        
         viewController.interactor = SettingsViewInteractor()
-        viewController.coordinator = SettingsViewCoordinator(rootViewController: rootViewController)
+        let settingsViewCoordinator = SettingsViewCoordinator(rootViewController: rootViewController)
+        viewController.coordinator = settingsViewCoordinator
+        self.add(childCoordinator: settingsViewCoordinator)
         
         return navViewController
     }
+}
+
+extension TabsScreenCoordinator {
     
-    private func loginViewController() -> UINavigationController {
-        
-        guard let navViewController = R.storyboard.login.loginNavigationController(), let viewController = navViewController.topViewController as? LoginViewController else {
-            preconditionFailure("Login Storyboard should contain LoginNavigationController and LoginViewController")
+    func createTabsViewController() -> UITabBarController {
+        guard let viewController = R.storyboard.main.tabsViewController() else {
+            preconditionFailure("Main Storyboard should contain TabsViewController")
         }
-        navViewController.delegate = self
-        viewController.interactor = LoginViewInteractor()
-        viewController.coordinator = LoginViewCoordinator(rootViewController: rootViewController)
-        
-        return navViewController
+        viewController.viewControllers = [searchViewController(), scheduleStationViewController(), settingsViewController()]
+        return viewController
     }
-}
-
-extension TabsScreenCoordinator: UINavigationControllerDelegate {
-    
-    func navigationController(_ navigationController: UINavigationController, willShow viewController: UIViewController, animated: Bool) {
-        
-    }
-}
-
-extension TabsScreenCoordinator: TabsViewControllerNavigation {
-    
 }

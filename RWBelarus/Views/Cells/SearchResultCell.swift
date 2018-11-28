@@ -24,11 +24,10 @@ class SearchResultCell: UITableViewCell {
     
     var tapped: ((Route) -> Void)?
     var model: Route!
-    var rootViewController: UINavigationController?
     
     private var tapRecognizer: UITapGestureRecognizer?
     private var ticketInfo = [TrainPlace]()
-    private var observer: NSKeyValueObservation?
+    private weak var observer: NSKeyValueObservation?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -39,7 +38,6 @@ class SearchResultCell: UITableViewCell {
             }
         }
         ticketTableView.hideEmptyCells()
-        ticketTableView.separatorColor = .clear
         
         tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(tappedInCell))
         tapRecognizer?.numberOfTapsRequired = 1
@@ -67,7 +65,7 @@ class SearchResultCell: UITableViewCell {
         exceptStationLabel.text = nil
     }
     
-    func configure(with element: Route, rootViewController: UINavigationController?) {
+    func configure(with element: Route) {
         
         trainNumberLabel.text = element.trainId
         trainRouteLabel.text = element.routeName
@@ -76,25 +74,10 @@ class SearchResultCell: UITableViewCell {
         finishTime.text = element.finishTime
         daysLabel.text = element.days
         exceptStationLabel.text = element.exceptStops
-
         typeTrainImage.image = {
-            switch element.trainType {
-            case .internationalLines:
-                return R.image.international()
-            case .regionalEconomyLines:
-                return R.image.region()
-            case .regionalBusinessLines:
-                return R.image.regionBusiness()
-            case .interregionalEconomyLines:
-                return R.image.interregionalEconomy()
-            case .interregionalBusinessLines:
-                return R.image.interregionalBusiness()
-            case .cityLines:
-                return R.image.city()
-            default:
-                return nil
-            }
+            UIImage.configureImage(for: element.trainType)
         }()
+        
         ticketStackView.isHidden = !(element.place.count > 0)
         
         if element.place.count > 0 {
@@ -102,7 +85,6 @@ class SearchResultCell: UITableViewCell {
             self.ticketTableView.reloadData()
         }
         model = element
-        self.rootViewController = rootViewController
     }
     
     @objc private func tappedInCell(recognizer: UITapGestureRecognizer?) {
@@ -119,10 +101,10 @@ extension SearchResultCell: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.ticketInfoCell, for: indexPath)!
         cell.configure(with: self.ticketInfo[indexPath.row])
-        cell.tapped = { link in
-            guard let rootVC = self.rootViewController, let link = link, self.model.trainType != .regionalEconomyLines, self.model.trainType != .cityLines else { return }
+        cell.tapped = { [weak self] link in
+            guard let `self` = self, let rootVC = (UIApplication.shared.keyWindow?.rootViewController as? UINavigationController), let link = link, self.model.trainType != .regionalEconomyLines, self.model.trainType != .cityLines else { return }
             let coordinator = СarriageSchemeViewCoordinator.init(rootViewController: rootVC, urlPath: link)
-            coordinator.start(with: nil)
+            coordinator.start(withCallback: nil)
         }
         return cell
     }

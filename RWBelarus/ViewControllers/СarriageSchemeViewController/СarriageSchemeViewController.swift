@@ -14,7 +14,7 @@ protocol СarriageSchemeViewControllerInteractor: class {
 }
 
 protocol СarriageSchemeViewControllerCoordinator: class {
-    
+    func dismiss()
 }
 
 class CarriageSchemeViewController: UIViewController {
@@ -30,7 +30,7 @@ class CarriageSchemeViewController: UIViewController {
     @IBOutlet weak var topViewHeightConstraint: NSLayoutConstraint!
     
     var interactor: СarriageSchemeViewControllerInteractor!
-    var coordinator: СarriageSchemeViewControllerCoordinator?
+    weak var coordinator: СarriageSchemeViewControllerCoordinator?
     
     private var information: SchemeCarAPIModel?
     
@@ -63,6 +63,14 @@ class CarriageSchemeViewController: UIViewController {
                     self?.topConstraint.constant = topViewHeight + 44
                 }
             }
+        }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        if self.isMovingFromParent {
+            self.coordinator?.dismiss()
         }
     }
     

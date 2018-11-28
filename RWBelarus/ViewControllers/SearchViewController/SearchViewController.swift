@@ -27,6 +27,11 @@ enum RouteDate: String {
     }
 }
 
+enum DirectionViewType {
+    case toView
+    case fromView
+}
+
 protocol SearchViewControllerInteractor: class {
     var fromData: AutocompleteAPIElement? { get set }
     var toData: AutocompleteAPIElement? { get set }
@@ -34,7 +39,7 @@ protocol SearchViewControllerInteractor: class {
 
 protocol SearchViewControllerCoordinator: class {
     func showResult(vc: UIViewController, from: AutocompleteAPIElement, to: AutocompleteAPIElement, date: String)
-    func showStationsList(vc: UIViewController, for tagView: Int?)
+    func showStationsList(vc: UIViewController, for typeView: DirectionViewType?)
     func showCalendar(currentDate: Date, completion: @escaping (_ selectedDate: Date) -> Void)
 }
 
@@ -64,17 +69,19 @@ class SearchViewController: UIViewController {
         }
     }
     
+    var directionView: DirectionViewType?
+    
     private let heroTransition = HeroTransition()
     private var isChangeDirectionTapped = false
     private var routeElements = [AutocompleteAPIElement?](repeating: nil, count: 2) //[from, to]
-    private var date: String!
+    private var date: String = "everyday"
     private var observerFromLabel: NSKeyValueObservation?
     private var observerToLabel: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        configureUI()
+        self.hero.isEnabled = true
         self.hideKeyboardWhenTappedAround()
         self.navigationController?.delegate = self
         self.navigationController?.hero.navigationAnimationType = .fade
@@ -117,13 +124,6 @@ class SearchViewController: UIViewController {
         }
     }
     
-    private func configureUI() {
-        
-        //by default
-        self.hero.isEnabled = true
-        self.date = "everyday"
-    }
-    
     @IBAction func searchButtonTapped(_ sender: Any) {
         guard let fromAddress = self.interactor.fromData, let toAddress = self.interactor.toData else {
             self.view.makeToast("error")
@@ -135,7 +135,8 @@ class SearchViewController: UIViewController {
     
     @IBAction func tapOnView(_ sender: Any) {
         if let info = sender as? UITapGestureRecognizer {
-            coordinator?.showStationsList(vc: self, for: info.view?.tag)
+            directionView = info.view == fromView ? .fromView : .toView
+            coordinator?.showStationsList(vc: self, for: directionView)
         }
     }
 
@@ -190,27 +191,30 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func calendarTapped(_ sender: Any) {
-        coordinator?.showCalendar(currentDate: Date()) { (date) in
-            let newDate = Date.convertLabelDate(date: date)
-            let searchDate = Date.convertSearchFormatDate(date: date)
+        coordinator?.showCalendar(currentDate: Date()) { [weak self] date in
+            guard let `self` = self else { return }
+            let newDate = Date.format(date: date, dateFormat: Date.LABEL_DATE_FORMAT)
+            let searchDate = Date.format(date: date, dateFormat: Date.COMMON_DATE_FORMAT)
             self.dateButton.setTitle(newDate, for: .normal)
             self.date = searchDate
         }
     }
     
     @IBAction func todayTapped(_ sender: Any) {
-        self.dateButton.setTitle(RouteDate.today.value, for: .normal)
-        self.date = RouteDate.today.rawValue
+        configureDateButton(with: RouteDate.today)
     }
     
     @IBAction func tomorrowTapped(_ sender: Any) {
-        self.dateButton.setTitle(RouteDate.tomorrow.value, for: .normal)
-        self.date = RouteDate.tomorrow.rawValue
+        configureDateButton(with: RouteDate.tomorrow)
     }
     
     @IBAction func everydayTapped(_ sender: Any) {
-        self.dateButton.setTitle(RouteDate.everyday.value, for: .normal)
-        self.date = RouteDate.everyday.rawValue
+        configureDateButton(with: RouteDate.everyday)
+    }
+    
+    private func configureDateButton(with date: RouteDate) {
+        self.dateButton.setTitle(date.value, for: .normal)
+        self.date = date.rawValue
     }
 
 }

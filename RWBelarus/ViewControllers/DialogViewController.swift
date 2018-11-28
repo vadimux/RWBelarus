@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-public class DialogViewController: UINavigationController {
+class DialogViewController: UINavigationController {
     
     public override init(rootViewController: UIViewController) {
         super.init(rootViewController: rootViewController)
@@ -45,8 +45,20 @@ public class DialogViewController: UINavigationController {
     }
     
     @objc private func cancelActionHandler() {
-        self.dismiss(animated: true) {
-            
+        guard let rootViewController = self.viewControllers.first else { return }
+        switch rootViewController {
+        case is CalendarViewController:
+            (rootViewController as? CalendarViewController)?.coordinator?.applyPeriodFromDate(nil, endDate: nil)
+            self.dismiss(animated: true) {
+                
+            }
+        case is CarriageSchemeViewController:
+            (rootViewController as? CarriageSchemeViewController)?.coordinator?.dismiss()
+            self.dismiss(animated: true) {
+                
+            }
+        default:
+            return
         }
     }
     
