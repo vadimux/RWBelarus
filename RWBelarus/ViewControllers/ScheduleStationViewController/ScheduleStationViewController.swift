@@ -72,7 +72,20 @@ class ScheduleStationViewController: UIViewController {
     
     @IBAction func scheduleButtonTapped(_ sender: Any) {
         guard let selectedStation = selectedStation else { return }
-        prepareResultForTableView(station: selectedStation)
+        self.scheduleButton.isEnabled = false
+        prepareResultForTableView(station: selectedStation) {
+            self.scheduleButton.isEnabled = true
+        }
+    }
+    
+    @IBAction func calendarTapped(_ sender: Any) {
+        coordinator?.showCalendar(currentDate: Date()) { [weak self] date in
+            guard let `self` = self else { return }
+            let newDate = Date.format(date: date, dateFormat: Date.LABEL_DATE_FORMAT)
+            let searchDate = Date.format(date: date, dateFormat: Date.COMMON_DATE_FORMAT)
+            self.dateButton.setTitle(newDate, for: .normal)
+            self.date = searchDate
+        }
     }
     
     @IBAction func tappedOnView(_ sender: Any) {
@@ -96,7 +109,7 @@ class ScheduleStationViewController: UIViewController {
         self.date = date.rawValue
     }
     
-    private func prepareResultForTableView(station: String) {
+    private func prepareResultForTableView(station: String, completion: @escaping () -> Void) {
         
         self.scheduleTableView.makeToastActivity(.center)
         self.scheduleTableView.hideEmptyCells()
@@ -105,16 +118,19 @@ class ScheduleStationViewController: UIViewController {
             if error != nil {
                 self?.scheduleTableView.hideToastActivity()
                 self?.view.makeToast(error, duration: 3.0, position: .center)
+                completion()
                 return
             }
             self?.trainList = result ?? []
             guard let count = result?.count, count > 0 else {
                 self?.scheduleTableView.hideToastActivity()
+                completion()
                 return
             }
             DispatchQueue.main.async {
                 self?.scheduleTableView.hideToastActivity()
                 self?.scheduleTableView.reloadData()
+                completion()
             }
         }
     }

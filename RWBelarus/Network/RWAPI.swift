@@ -67,7 +67,7 @@ class NetworkManager {
                     
                     let trCollection: Elements = try table.select("tr")
 
-                    for element in trCollection {
+                    for element in trCollection where try element.select(K.APIParseConstant.PATH).first()?.text() != nil {
                         let trainId: String? = try element.select(K.APIParseConstant.TRAIN_ID).first()?.text()
                         let travelTime: String? = try element.select(K.APIParseConstant.TRAVEL_TIME).first()?.text()
                         let startTime: String? = try element.select(K.APIParseConstant.TIME_START).first()?.text()
@@ -118,8 +118,6 @@ class NetworkManager {
                             .urlPath(urlPath)
                             .build())
                     }
-                    //FIXIT: remove this logic
-                    routeList.removeFirst()
                     completion(.success(routeList))
                 } catch let error {
                     completion(.failure(error))
@@ -159,7 +157,7 @@ class NetworkManager {
                     let trCollection: Elements = try table.select("tr")
                     var stations = [RouteItem]()
 
-                    for element in trCollection {
+                    for element in trCollection where try element.select(K.APIParseConstant.STATION).first()?.text() != nil {
                         let station: String? = try element.select(K.APIParseConstant.STATION).first()?.text()
                         let arrival: String? = try element.select(K.APIParseConstant.ARRIVAL).first()?.text()
                         let departure: String? = try element.select(K.APIParseConstant.DEPARTURE).first()?.text()
@@ -182,7 +180,6 @@ class NetworkManager {
                             .stationId(stationId)
                             .build())
                     }
-                    stations.removeFirst()
                     completion(.success(stations))
                 } catch let error {
                     completion(.failure(error))
@@ -239,7 +236,7 @@ class NetworkManager {
                     
                     let trCollection: Elements = try table.select("tr")
                     
-                    for element in trCollection {
+                    for element in trCollection where try element.select(K.APIParseConstant.PATH).first()?.text() != nil {
                         let trainId: String? = try element.select(K.APIParseConstant.TRAIN_ID).first()?.text()
                         let startTime: String? = try element.select(K.APIParseConstant.TIME_START).first()?.text()
                         let finishTime: String? = try element.select(K.APIParseConstant.TIME_END).first()?.text()
@@ -261,8 +258,6 @@ class NetworkManager {
                             .urlPath(urlPath)
                             .build())
                     }
-                    //FIXIT: remove this logic
-                    routeList.removeFirst()
                     completion(.success(routeList))
                 } catch let error {
                     completion(.failure(error))

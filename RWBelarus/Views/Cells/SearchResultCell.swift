@@ -27,14 +27,14 @@ class SearchResultCell: UITableViewCell {
     
     private var tapRecognizer: UITapGestureRecognizer?
     private var ticketInfo = [TrainPlace]()
-    private weak var observer: NSKeyValueObservation?
+    private var observer: NSKeyValueObservation?
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        observer = ticketTableView.observe(\.contentSize, options: [.new]) { (_, change) in
+        observer = ticketTableView.observe(\.contentSize, options: [.new]) { [weak self] (_, change) in
             if let newValue = change.newValue {
-                self.ticketTableConstraint.constant = newValue.height
+                self?.ticketTableConstraint.constant = newValue.height
             }
         }
         ticketTableView.hideEmptyCells()
