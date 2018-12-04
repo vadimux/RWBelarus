@@ -83,17 +83,17 @@ class CarriageSchemeViewController: UIViewController {
         (self.trainTypeLabel.text, self.trainTypeImage.image) = {
             switch TrainImageType(rawValue: self.information?.trainType ?? "") {
             case .internationalLines?:
-                return (TrainType.internationalLines.rawValue, R.image.international())
+                return (TrainType.internationalLines.localizedString(), R.image.international())
             case .regionalEconomyLines?:
-                return (TrainType.regionalEconomyLines.rawValue, R.image.region())
+                return (TrainType.regionalEconomyLines.localizedString(), R.image.region())
             case .regionalBusinessLines?:
-                return (TrainType.regionalBusinessLines.rawValue, R.image.regionBusiness())
+                return (TrainType.regionalBusinessLines.localizedString(), R.image.regionBusiness())
             case .interregionalEconomyLines?:
-                return (TrainType.interregionalEconomyLines.rawValue, R.image.interregionalEconomy())
+                return (TrainType.interregionalEconomyLines.localizedString(), R.image.interregionalEconomy())
             case .interregionalBusinessLines?:
-                return (TrainType.interregionalBusinessLines.rawValue, R.image.interregionalBusiness())
+                return (TrainType.interregionalBusinessLines.localizedString(), R.image.interregionalBusiness())
             case .cityLines?:
-                return (TrainType.cityLines.rawValue, R.image.city())
+                return (TrainType.cityLines.localizedString(), R.image.city())
             default:
                 return (nil, nil)
             }

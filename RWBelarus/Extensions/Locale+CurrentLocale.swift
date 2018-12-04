@@ -11,7 +11,7 @@ import Foundation
 extension Locale {
     
     var currentLanguageCode: String {
-        return Locale.current.languageCode != "ru" && Locale.current.languageCode != "by" ? "en" : Locale.current.languageCode ?? "ru"
+        return Locale.current.languageCode != "ru" && Locale.current.languageCode != "be" ? "en" : Locale.current.languageCode ?? "ru"
     }
     
 }

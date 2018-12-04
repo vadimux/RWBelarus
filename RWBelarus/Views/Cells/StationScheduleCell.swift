@@ -52,7 +52,7 @@ class StationScheduleCell: UITableViewCell {
     func configure(with route: Route) {
         
         trainNumberLabel.text = route.trainId
-        trainTypeLabel.text = route.trainType.rawValue
+        trainTypeLabel.text = route.trainType.localizedString()
         trainRouteLabel.text = route.routeName
         
         if let finishTime = route.finishTime {

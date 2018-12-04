@@ -33,8 +33,7 @@ class CarriageSchemeCell: UITableViewCell {
         emptyPlacesLabel.text = "Номера свободных мест: ".localized  + (info.emptyPlaces?.joined(separator: ", ") ?? "")
         
         if let localURL = info.imgSrc, localURL != "" {
-            //FIXIT: change 'ru' to '..'
-            let baseURL = K.RWServer.baseURL.replacingOccurrences(of: "ru/", with: "")
+            let baseURL = K.RWServer.baseURL.replacingOccurrences(of: "\(Locale.current.currentLanguageCode)", with: "")
             let url = URL(string: "\(baseURL)\(localURL)")
             carriageImageView.kf.setImage(with: url)
         } else {

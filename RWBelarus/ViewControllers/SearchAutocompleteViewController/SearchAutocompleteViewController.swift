@@ -80,6 +80,8 @@ class SearchAutocompleteViewController: UIViewController {
         searchTypeSegmentControl.isHidden = self.navigationController?.viewControllers.first is ScheduleStationViewController
         self.navigationItem.setHidesBackButton(true, animated: true)
         self.definesPresentationContext = true
+        searchTypeSegmentControl?.setTitle("Города и станции".localized, forSegmentAt: 0)
+        searchTypeSegmentControl?.setTitle("Маршруты".localized, forSegmentAt: 1)
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {

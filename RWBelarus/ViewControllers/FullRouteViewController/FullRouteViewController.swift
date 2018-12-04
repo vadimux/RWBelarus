@@ -80,7 +80,7 @@ class FullRouteViewController: UIViewController {
         
         self.trainNumberLabel.text = self.interactor.route.trainId
         self.routeLabel.text = self.interactor.route.routeName
-        self.trainTypeLabel.text = self.interactor.route.trainType.rawValue
+        self.trainTypeLabel.text = self.interactor.route.trainType.localizedString()
         self.trainTypeImage.image = {
             UIImage.configureImage(for: self.interactor.route.trainType)
         }()

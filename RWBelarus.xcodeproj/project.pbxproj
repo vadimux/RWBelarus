@@ -53,7 +53,9 @@
 		A795F4E32179BE42003B942F /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E22179BE42003B942F /* APIConfiguration.swift */; };
 		A795F4E82179C080003B942F /* RWAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E72179C080003B942F /* RWAPI.swift */; };
 		A795F4EA2179D89B003B942F /* Locale+CurrentLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E92179D89B003B942F /* Locale+CurrentLocale.swift */; };
+		A79769F121B7922E006E5275 /* String+Attributed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79769F021B7922E006E5275 /* String+Attributed.swift */; };
 		A79CADCF218C2177001DEF64 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79CADCE218C2177001DEF64 /* UIColor+RGB.swift */; };
+		A7A9A41E21B6584A00A8EC77 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A7A9A41C21B6584A00A8EC77 /* Localizable.strings */; };
 		A7AE72702193FE8D00CBB255 /* ScheduleStationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE726F2193FE8D00CBB255 /* ScheduleStationViewController.swift */; };
 		A7AE72722193FF2700CBB255 /* ScheduleStationViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE72712193FF2700CBB255 /* ScheduleStationViewCoordinator.swift */; };
 		A7AE72742193FFAD00CBB255 /* ScheduleStationViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE72732193FFAD00CBB255 /* ScheduleStationViewInteractor.swift */; };
@@ -139,7 +141,16 @@
 		A795F4E22179BE42003B942F /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
 		A795F4E72179C080003B942F /* RWAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RWAPI.swift; sourceTree = "<group>"; };
 		A795F4E92179D89B003B942F /* Locale+CurrentLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+CurrentLocale.swift"; sourceTree = "<group>"; };
+		A79769F021B7922E006E5275 /* String+Attributed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Attributed.swift"; sourceTree = "<group>"; };
 		A79CADCE218C2177001DEF64 /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
+		A7A9A41B21B6582800A8EC77 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
+		A7A9A41D21B6584A00A8EC77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = RWBelarus/Base.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A7A9A42221B6588E00A8EC77 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		A7A9A42321B6588F00A8EC77 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		A7A9A42421B6588F00A8EC77 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = RWBelarus/ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		A7A9A42521B6589F00A8EC77 /* be-BY */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "be-BY"; path = "be-BY.lproj/Main.strings"; sourceTree = "<group>"; };
+		A7A9A42621B6589F00A8EC77 /* be-BY */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "be-BY"; path = "be-BY.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
+		A7A9A42721B658A000A8EC77 /* be-BY */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "be-BY"; path = "RWBelarus/be-BY.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		A7AE726F2193FE8D00CBB255 /* ScheduleStationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStationViewController.swift; sourceTree = "<group>"; };
 		A7AE72712193FF2700CBB255 /* ScheduleStationViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStationViewCoordinator.swift; sourceTree = "<group>"; };
 		A7AE72732193FFAD00CBB255 /* ScheduleStationViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleStationViewInteractor.swift; sourceTree = "<group>"; };
@@ -152,10 +163,6 @@
 		A7B40D6B217EF5150005C914 /* SearchAutocompleteViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAutocompleteViewInteractor.swift; sourceTree = "<group>"; };
 		A7B40D79217F60EB0005C914 /* SearchAutocompleteViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchAutocompleteViewCoordinator.swift; sourceTree = "<group>"; };
 		A7BDB212218821BC0070E543 /* FullRouteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullRouteCell.swift; sourceTree = "<group>"; };
-		A7D1A3C6217DB0EB00B374DE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
-		A7D1A3C7217DB0EB00B374DE /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
-		A7D1A3C8217DB0FA00B374DE /* be-BY */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "be-BY"; path = "be-BY.lproj/Main.strings"; sourceTree = "<group>"; };
-		A7D1A3C9217DB0FA00B374DE /* be-BY */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "be-BY"; path = "be-BY.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
 		A7D1A3CA217DB14900B374DE /* UIView+Inspectable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Inspectable.swift"; sourceTree = "<group>"; };
 		A7D1A3CC217DB16300B374DE /* String+Localizable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Localizable.swift"; sourceTree = "<group>"; };
 		A7D1A3CE217DCC7B00B374DE /* TrainPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainPlace.swift; sourceTree = "<group>"; };
@@ -230,6 +237,7 @@
 		A739C7402174DB150080F151 = {
 			isa = PBXGroup;
 			children = (
+				A7A9A41C21B6584A00A8EC77 /* Localizable.strings */,
 				A739C74B2174DB150080F151 /* RWBelarus */,
 				A739C74A2174DB150080F151 /* Products */,
 				9FEC2C8B9825FE760327A2BC /* Pods */,
@@ -356,6 +364,7 @@
 				A780B623219011D70096E3F0 /* String+Contains.swift */,
 				A7E8EA32219548CD0013D77A /* Date+Utils.swift */,
 				A782A09821B5054600959921 /* UIImage+TrainType.swift */,
+				A79769F021B7922E006E5275 /* String+Attributed.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -528,6 +537,8 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
+				"be-BY",
 			);
 			mainGroup = A739C7402174DB150080F151;
 			productRefGroup = A739C74A2174DB150080F151 /* Products */;
@@ -547,6 +558,7 @@
 				A74FDA71219D3E8D001713B6 /* Roboto-Medium.ttf in Resources */,
 				A74FDA73219D4215001713B6 /* Roboto-Regular.ttf in Resources */,
 				A74FDA75219D421C001713B6 /* Roboto-Light.ttf in Resources */,
+				A7A9A41E21B6584A00A8EC77 /* Localizable.strings in Resources */,
 				A7EF0C572177035000C075E0 /* RouteResult.storyboard in Resources */,
 				A739C7572174DB180080F151 /* LaunchScreen.storyboard in Resources */,
 				0D61493421932743003FE767 /* Favorite.storyboard in Resources */,
@@ -676,6 +688,7 @@
 				A71DFCDC2186D87E00874458 /* FullRouteViewCoordinator.swift in Sources */,
 				A795F4DF2179BD74003B942F /* APIRouter.swift in Sources */,
 				A7F45D9E2175B05D0099A9E1 /* AppCoordinator.swift in Sources */,
+				A79769F121B7922E006E5275 /* String+Attributed.swift in Sources */,
 				A74FDA8C219D7D67001713B6 /* AutocompleteRouteCell.swift in Sources */,
 				A795F4EA2179D89B003B942F /* Locale+CurrentLocale.swift in Sources */,
 				A7F45DA32175B25E0099A9E1 /* R.generated.swift in Sources */,
@@ -737,8 +750,9 @@
 			isa = PBXVariantGroup;
 			children = (
 				A739C7512174DB160080F151 /* Base */,
-				A7D1A3C6217DB0EB00B374DE /* ru */,
-				A7D1A3C8217DB0FA00B374DE /* be-BY */,
+				A7A9A41B21B6582800A8EC77 /* en */,
+				A7A9A42221B6588E00A8EC77 /* ru */,
+				A7A9A42521B6589F00A8EC77 /* be-BY */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -747,10 +761,20 @@
 			isa = PBXVariantGroup;
 			children = (
 				A739C7562174DB180080F151 /* Base */,
-				A7D1A3C7217DB0EB00B374DE /* ru */,
-				A7D1A3C9217DB0FA00B374DE /* be-BY */,
+				A7A9A42321B6588F00A8EC77 /* ru */,
+				A7A9A42621B6589F00A8EC77 /* be-BY */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		A7A9A41C21B6584A00A8EC77 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				A7A9A41D21B6584A00A8EC77 /* Base */,
+				A7A9A42421B6588F00A8EC77 /* ru */,
+				A7A9A42721B658A000A8EC77 /* be-BY */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

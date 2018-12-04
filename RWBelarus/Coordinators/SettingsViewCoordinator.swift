@@ -12,11 +12,12 @@ import MessageUI
 
 class SettingsViewCoordinator: NSObject, Coordinator, SettingsViewControllerCoordinator {
     
-    var childCoordinators: [Coordinator] = []
+    var childCoordinators: [Coordinator]
     var rootViewController: UINavigationController
     
     init(rootViewController: UINavigationController) {
         self.rootViewController = rootViewController
+        childCoordinators = []
     }
     
     func start(withCallback completion: CoordinatorCallback?) {
@@ -28,7 +29,7 @@ class SettingsViewCoordinator: NSObject, Coordinator, SettingsViewControllerCoor
             completion?(self)
         }
     }
-
+    
     // Select social network
     func callSocial(tag: Int) {
         
@@ -49,7 +50,7 @@ class SettingsViewCoordinator: NSObject, Coordinator, SettingsViewControllerCoor
         UIApplication.shared.openURL(openURL)
     }
     
-    func showActivitity(for index: Int) {
+    func showActivitity(for index: Int, vc: UIViewController) {
         
         switch index {
         // Send e-mail
@@ -62,7 +63,8 @@ class SettingsViewCoordinator: NSObject, Coordinator, SettingsViewControllerCoor
             
             // Checking the Availability of the Composition Interface
             guard MFMailComposeViewController.canSendMail() else { return }
-            rootViewController.present(mailVC, animated: false, completion: nil)
+            
+            vc.present(mailVC, animated: false, completion: nil)
         // Share link
 //        case 2:
 //            let message = "Неофициальное iOS приложение расписания поездов Белорусской железной дороги".localized

@@ -344,10 +344,577 @@ struct R: Rswift.Validatable {
     fileprivate init() {}
   }
   
-  /// This `R.string` struct is generated, and contains static references to 2 localization tables.
+  /// This `R.string` struct is generated, and contains static references to 3 localization tables.
   struct string {
     /// This `R.string.launchScreen` struct is generated, and contains static references to 0 localization keys.
     struct launchScreen {
+      fileprivate init() {}
+    }
+    
+    /// This `R.string.localizable` struct is generated, and contains static references to 51 localization keys.
+    struct localizable {
+      /// Base translation: Add your message text here
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let добавьтеВашТекстСообщенияСюда = Rswift.StringResource(key: "Добавьте Ваш текст сообщения сюда", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: Arrival: 
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let прибытие = Rswift.StringResource(key: "Прибытие: ", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: Belonging wagon: 
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let принадлежностьВагона = Rswift.StringResource(key: "Принадлежность вагона: ", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: CL
+      /// 
+      /// Locales: Base
+      static let cityLines = Rswift.StringResource(key: "City lines", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base"], comment: nil)
+      /// Base translation: Cancel
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let отмена = Rswift.StringResource(key: "Отмена", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: Carrier: 
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let перевозчик = Rswift.StringResource(key: "Перевозчик: ", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: Cities and stations
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let городаИСтанции = Rswift.StringResource(key: "Города и станции", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: City lines
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let cL = Rswift.StringResource(key: "CL", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: Departure: 
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let отправление = Rswift.StringResource(key: "Отправление: ", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: Done
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let продолжить = Rswift.StringResource(key: "Продолжить", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: FROM
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let оТКУДА = Rswift.StringResource(key: "ОТКУДА", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: From
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let откуда = Rswift.StringResource(key: "Откуда", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: IBCL
+      /// 
+      /// Locales: Base
+      static let interregionalBusinessClassLines = Rswift.StringResource(key: "Interregional business class lines", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base"], comment: nil)
+      /// Base translation: IEL
+      /// 
+      /// Locales: Base
+      static let interregionalEconomyLines = Rswift.StringResource(key: "Interregional economy lines", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base"], comment: nil)
+      /// Base translation: IL
+      /// 
+      /// Locales: Base
+      static let internationalLines = Rswift.StringResource(key: "International Lines", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base"], comment: nil)
+      /// Base translation: International Lines
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let iL = Rswift.StringResource(key: "IL", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: Interregional business class lines
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let ibcL = Rswift.StringResource(key: "IBCL", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: Interregional economy lines
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let ieL = Rswift.StringResource(key: "IEL", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: Join us in social networks
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let присоединяйтесьКНамВСоциальныхСетях = Rswift.StringResource(key: "Присоединяйтесь к нам в социальных сетях", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: No stations with this name were found
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let станцииСТакимНазваниемНеНайдено = Rswift.StringResource(key: "Станции с таким названием не найдено", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: Non-availability: 
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let номераСвободныхМест = Rswift.StringResource(key: "Номера свободных мест: ", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: Not available until the first route search
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let недоступноДоПервогоПоискаПоМаршруту = Rswift.StringResource(key: "Недоступно до первого поиска по маршруту", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: RBCL
+      /// 
+      /// Locales: Base
+      static let regionalBusinessClassLines = Rswift.StringResource(key: "Regional business class lines", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base"], comment: nil)
+      /// Base translation: RECL
+      /// 
+      /// Locales: Base
+      static let regionalEconomyClassLines = Rswift.StringResource(key: "Regional economy class lines", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base"], comment: nil)
+      /// Base translation: Regional business class lines
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let rbcL = Rswift.StringResource(key: "RBCL", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: Regional economy class lines
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let recL = Rswift.StringResource(key: "RECL", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: Routes
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let маршруты = Rswift.StringResource(key: "Маршруты", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: SCHEDULE
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let рАСПИСАНИЕ = Rswift.StringResource(key: "РАСПИСАНИЕ", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: SEARCH TRAINS
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let нАЙТИПОЕЗДА = Rswift.StringResource(key: "НАЙТИ ПОЕЗДА", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: STATION
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let сТАНЦИЯ = Rswift.StringResource(key: "СТАНЦИЯ", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: Search by station or route
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let поискПоСтанцииИлиМаршруту = Rswift.StringResource(key: "Поиск по станции или маршруту", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: Select a day
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let выберитеДень = Rswift.StringResource(key: "Выберите день", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: Send email to dev team
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let отправитьПисьмоРазработчикам = Rswift.StringResource(key: "Отправить письмо разработчикам", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: Station Schedule
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let расписаниеПоСтанции = Rswift.StringResource(key: "Расписание по станции", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: Stops: 
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let остановки = Rswift.StringResource(key: "Остановки: ", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: TO
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let кУДА = Rswift.StringResource(key: "КУДА", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: Tariff: 
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let тариф = Rswift.StringResource(key: "Тариф: ", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: The received information cannot be converted.
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let полученнуюИнформациюНеУдаетсяПреобразовать = Rswift.StringResource(key: "Полученную информацию не удается преобразовать", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: Tickets
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let билеты = Rswift.StringResource(key: "Билеты", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: To
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let куда = Rswift.StringResource(key: "Куда", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: Train days: 
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let дниКурсирования = Rswift.StringResource(key: "Дни курсирования: ", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: Type: 
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let тип = Rswift.StringResource(key: "Тип: ", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: Unfortunately, no train found
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let кСожалениюПоездаНеНайдены = Rswift.StringResource(key: "К сожалению, поезда не найдены", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: Unfortunately, the information on the car is not found
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let кСожалениюИнформацияПоВагонуНеНайдена = Rswift.StringResource(key: "К сожалению, информация по вагону не найдена", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: Unfortunately, the route information was not found
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let кСожалениюИнформацияПоМаршрутуНеНайдена = Rswift.StringResource(key: "К сожалению, информация по маршруту не найдена", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: Wagon: 
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let номерВагона = Rswift.StringResource(key: "Номер вагона: ", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: When
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let когда = Rswift.StringResource(key: "Когда", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: all days
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let наВсеДни = Rswift.StringResource(key: "на все дни", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: empty seats: 
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let свободныхМест = Rswift.StringResource(key: "Свободных мест: ", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: today
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let сегодня = Rswift.StringResource(key: "сегодня", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: tomorrow
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let завтра = Rswift.StringResource(key: "завтра", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      
+      /// Base translation: Add your message text here
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func добавьтеВашТекстСообщенияСюда(_: Void = ()) -> String {
+        return NSLocalizedString("Добавьте Ваш текст сообщения сюда", bundle: R.hostingBundle, value: "Add your message text here", comment: "")
+      }
+      
+      /// Base translation: Arrival: 
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func прибытие(_: Void = ()) -> String {
+        return NSLocalizedString("Прибытие: ", bundle: R.hostingBundle, value: "Arrival: ", comment: "")
+      }
+      
+      /// Base translation: Belonging wagon: 
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func принадлежностьВагона(_: Void = ()) -> String {
+        return NSLocalizedString("Принадлежность вагона: ", bundle: R.hostingBundle, value: "Belonging wagon: ", comment: "")
+      }
+      
+      /// Base translation: CL
+      /// 
+      /// Locales: Base
+      static func cityLines(_: Void = ()) -> String {
+        return NSLocalizedString("City lines", bundle: R.hostingBundle, value: "CL", comment: "")
+      }
+      
+      /// Base translation: Cancel
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func отмена(_: Void = ()) -> String {
+        return NSLocalizedString("Отмена", bundle: R.hostingBundle, value: "Cancel", comment: "")
+      }
+      
+      /// Base translation: Carrier: 
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func перевозчик(_: Void = ()) -> String {
+        return NSLocalizedString("Перевозчик: ", bundle: R.hostingBundle, value: "Carrier: ", comment: "")
+      }
+      
+      /// Base translation: Cities and stations
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func городаИСтанции(_: Void = ()) -> String {
+        return NSLocalizedString("Города и станции", bundle: R.hostingBundle, value: "Cities and stations", comment: "")
+      }
+      
+      /// Base translation: City lines
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func cL(_: Void = ()) -> String {
+        return NSLocalizedString("CL", bundle: R.hostingBundle, value: "City lines", comment: "")
+      }
+      
+      /// Base translation: Departure: 
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func отправление(_: Void = ()) -> String {
+        return NSLocalizedString("Отправление: ", bundle: R.hostingBundle, value: "Departure: ", comment: "")
+      }
+      
+      /// Base translation: Done
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func продолжить(_: Void = ()) -> String {
+        return NSLocalizedString("Продолжить", bundle: R.hostingBundle, value: "Done", comment: "")
+      }
+      
+      /// Base translation: FROM
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func оТКУДА(_: Void = ()) -> String {
+        return NSLocalizedString("ОТКУДА", bundle: R.hostingBundle, value: "FROM", comment: "")
+      }
+      
+      /// Base translation: From
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func откуда(_: Void = ()) -> String {
+        return NSLocalizedString("Откуда", bundle: R.hostingBundle, value: "From", comment: "")
+      }
+      
+      /// Base translation: IBCL
+      /// 
+      /// Locales: Base
+      static func interregionalBusinessClassLines(_: Void = ()) -> String {
+        return NSLocalizedString("Interregional business class lines", bundle: R.hostingBundle, value: "IBCL", comment: "")
+      }
+      
+      /// Base translation: IEL
+      /// 
+      /// Locales: Base
+      static func interregionalEconomyLines(_: Void = ()) -> String {
+        return NSLocalizedString("Interregional economy lines", bundle: R.hostingBundle, value: "IEL", comment: "")
+      }
+      
+      /// Base translation: IL
+      /// 
+      /// Locales: Base
+      static func internationalLines(_: Void = ()) -> String {
+        return NSLocalizedString("International Lines", bundle: R.hostingBundle, value: "IL", comment: "")
+      }
+      
+      /// Base translation: International Lines
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func iL(_: Void = ()) -> String {
+        return NSLocalizedString("IL", bundle: R.hostingBundle, value: "International Lines", comment: "")
+      }
+      
+      /// Base translation: Interregional business class lines
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func ibcL(_: Void = ()) -> String {
+        return NSLocalizedString("IBCL", bundle: R.hostingBundle, value: "Interregional business class lines", comment: "")
+      }
+      
+      /// Base translation: Interregional economy lines
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func ieL(_: Void = ()) -> String {
+        return NSLocalizedString("IEL", bundle: R.hostingBundle, value: "Interregional economy lines", comment: "")
+      }
+      
+      /// Base translation: Join us in social networks
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func присоединяйтесьКНамВСоциальныхСетях(_: Void = ()) -> String {
+        return NSLocalizedString("Присоединяйтесь к нам в социальных сетях", bundle: R.hostingBundle, value: "Join us in social networks", comment: "")
+      }
+      
+      /// Base translation: No stations with this name were found
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func станцииСТакимНазваниемНеНайдено(_: Void = ()) -> String {
+        return NSLocalizedString("Станции с таким названием не найдено", bundle: R.hostingBundle, value: "No stations with this name were found", comment: "")
+      }
+      
+      /// Base translation: Non-availability: 
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func номераСвободныхМест(_: Void = ()) -> String {
+        return NSLocalizedString("Номера свободных мест: ", bundle: R.hostingBundle, value: "Non-availability: ", comment: "")
+      }
+      
+      /// Base translation: Not available until the first route search
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func недоступноДоПервогоПоискаПоМаршруту(_: Void = ()) -> String {
+        return NSLocalizedString("Недоступно до первого поиска по маршруту", bundle: R.hostingBundle, value: "Not available until the first route search", comment: "")
+      }
+      
+      /// Base translation: RBCL
+      /// 
+      /// Locales: Base
+      static func regionalBusinessClassLines(_: Void = ()) -> String {
+        return NSLocalizedString("Regional business class lines", bundle: R.hostingBundle, value: "RBCL", comment: "")
+      }
+      
+      /// Base translation: RECL
+      /// 
+      /// Locales: Base
+      static func regionalEconomyClassLines(_: Void = ()) -> String {
+        return NSLocalizedString("Regional economy class lines", bundle: R.hostingBundle, value: "RECL", comment: "")
+      }
+      
+      /// Base translation: Regional business class lines
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func rbcL(_: Void = ()) -> String {
+        return NSLocalizedString("RBCL", bundle: R.hostingBundle, value: "Regional business class lines", comment: "")
+      }
+      
+      /// Base translation: Regional economy class lines
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func recL(_: Void = ()) -> String {
+        return NSLocalizedString("RECL", bundle: R.hostingBundle, value: "Regional economy class lines", comment: "")
+      }
+      
+      /// Base translation: Routes
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func маршруты(_: Void = ()) -> String {
+        return NSLocalizedString("Маршруты", bundle: R.hostingBundle, value: "Routes", comment: "")
+      }
+      
+      /// Base translation: SCHEDULE
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func рАСПИСАНИЕ(_: Void = ()) -> String {
+        return NSLocalizedString("РАСПИСАНИЕ", bundle: R.hostingBundle, value: "SCHEDULE", comment: "")
+      }
+      
+      /// Base translation: SEARCH TRAINS
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func нАЙТИПОЕЗДА(_: Void = ()) -> String {
+        return NSLocalizedString("НАЙТИ ПОЕЗДА", bundle: R.hostingBundle, value: "SEARCH TRAINS", comment: "")
+      }
+      
+      /// Base translation: STATION
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func сТАНЦИЯ(_: Void = ()) -> String {
+        return NSLocalizedString("СТАНЦИЯ", bundle: R.hostingBundle, value: "STATION", comment: "")
+      }
+      
+      /// Base translation: Search by station or route
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func поискПоСтанцииИлиМаршруту(_: Void = ()) -> String {
+        return NSLocalizedString("Поиск по станции или маршруту", bundle: R.hostingBundle, value: "Search by station or route", comment: "")
+      }
+      
+      /// Base translation: Select a day
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func выберитеДень(_: Void = ()) -> String {
+        return NSLocalizedString("Выберите день", bundle: R.hostingBundle, value: "Select a day", comment: "")
+      }
+      
+      /// Base translation: Send email to dev team
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func отправитьПисьмоРазработчикам(_: Void = ()) -> String {
+        return NSLocalizedString("Отправить письмо разработчикам", bundle: R.hostingBundle, value: "Send email to dev team", comment: "")
+      }
+      
+      /// Base translation: Station Schedule
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func расписаниеПоСтанции(_: Void = ()) -> String {
+        return NSLocalizedString("Расписание по станции", bundle: R.hostingBundle, value: "Station Schedule", comment: "")
+      }
+      
+      /// Base translation: Stops: 
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func остановки(_: Void = ()) -> String {
+        return NSLocalizedString("Остановки: ", bundle: R.hostingBundle, value: "Stops: ", comment: "")
+      }
+      
+      /// Base translation: TO
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func кУДА(_: Void = ()) -> String {
+        return NSLocalizedString("КУДА", bundle: R.hostingBundle, value: "TO", comment: "")
+      }
+      
+      /// Base translation: Tariff: 
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func тариф(_: Void = ()) -> String {
+        return NSLocalizedString("Тариф: ", bundle: R.hostingBundle, value: "Tariff: ", comment: "")
+      }
+      
+      /// Base translation: The received information cannot be converted.
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func полученнуюИнформациюНеУдаетсяПреобразовать(_: Void = ()) -> String {
+        return NSLocalizedString("Полученную информацию не удается преобразовать", bundle: R.hostingBundle, value: "The received information cannot be converted.", comment: "")
+      }
+      
+      /// Base translation: Tickets
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func билеты(_: Void = ()) -> String {
+        return NSLocalizedString("Билеты", bundle: R.hostingBundle, value: "Tickets", comment: "")
+      }
+      
+      /// Base translation: To
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func куда(_: Void = ()) -> String {
+        return NSLocalizedString("Куда", bundle: R.hostingBundle, value: "To", comment: "")
+      }
+      
+      /// Base translation: Train days: 
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func дниКурсирования(_: Void = ()) -> String {
+        return NSLocalizedString("Дни курсирования: ", bundle: R.hostingBundle, value: "Train days: ", comment: "")
+      }
+      
+      /// Base translation: Type: 
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func тип(_: Void = ()) -> String {
+        return NSLocalizedString("Тип: ", bundle: R.hostingBundle, value: "Type: ", comment: "")
+      }
+      
+      /// Base translation: Unfortunately, no train found
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func кСожалениюПоездаНеНайдены(_: Void = ()) -> String {
+        return NSLocalizedString("К сожалению, поезда не найдены", bundle: R.hostingBundle, value: "Unfortunately, no train found", comment: "")
+      }
+      
+      /// Base translation: Unfortunately, the information on the car is not found
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func кСожалениюИнформацияПоВагонуНеНайдена(_: Void = ()) -> String {
+        return NSLocalizedString("К сожалению, информация по вагону не найдена", bundle: R.hostingBundle, value: "Unfortunately, the information on the car is not found", comment: "")
+      }
+      
+      /// Base translation: Unfortunately, the route information was not found
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func кСожалениюИнформацияПоМаршрутуНеНайдена(_: Void = ()) -> String {
+        return NSLocalizedString("К сожалению, информация по маршруту не найдена", bundle: R.hostingBundle, value: "Unfortunately, the route information was not found", comment: "")
+      }
+      
+      /// Base translation: Wagon: 
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func номерВагона(_: Void = ()) -> String {
+        return NSLocalizedString("Номер вагона: ", bundle: R.hostingBundle, value: "Wagon: ", comment: "")
+      }
+      
+      /// Base translation: When
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func когда(_: Void = ()) -> String {
+        return NSLocalizedString("Когда", bundle: R.hostingBundle, value: "When", comment: "")
+      }
+      
+      /// Base translation: all days
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func наВсеДни(_: Void = ()) -> String {
+        return NSLocalizedString("на все дни", bundle: R.hostingBundle, value: "all days", comment: "")
+      }
+      
+      /// Base translation: empty seats: 
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func свободныхМест(_: Void = ()) -> String {
+        return NSLocalizedString("Свободных мест: ", bundle: R.hostingBundle, value: "empty seats: ", comment: "")
+      }
+      
+      /// Base translation: today
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func сегодня(_: Void = ()) -> String {
+        return NSLocalizedString("сегодня", bundle: R.hostingBundle, value: "today", comment: "")
+      }
+      
+      /// Base translation: tomorrow
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func завтра(_: Void = ()) -> String {
+        return NSLocalizedString("завтра", bundle: R.hostingBundle, value: "tomorrow", comment: "")
+      }
+      
       fileprivate init() {}
     }
     

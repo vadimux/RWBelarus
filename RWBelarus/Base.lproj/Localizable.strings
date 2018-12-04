@@ -1,0 +1,66 @@
+/* 
+  Localizable.strings
+  RWBelarus
+
+  Created by Vadzim Mikalayeu on 12/4/18.
+  Copyright © 2018 mikalayeu. All rights reserved.
+*/
+
+"НАЙТИ ПОЕЗДА" = "SEARCH TRAINS";
+"ОТКУДА" = "FROM";
+"КУДА" = "TO";
+"Откуда" = "From";
+"Куда" = "To";
+"Когда" = "When";
+"сегодня" = "today";
+"завтра" = "tomorrow";
+"на все дни" = "all days";
+"СТАНЦИЯ" = "STATION";
+"РАСПИСАНИЕ" = "SCHEDULE";
+"Расписание по станции" = "Station Schedule";
+"Присоединяйтесь к нам в социальных сетях" = "Join us in social networks";
+"Отправить письмо разработчикам" = "Send email to dev team";
+"Города и станции" = "Cities and stations";
+"Маршруты" = "Routes";
+
+"Отмена" = "Cancel";
+"Выберите день" = "Select a day";
+"Продолжить" = "Done";
+"Поиск по станции или маршруту" = "Search by station or route";
+
+"Билеты" = "Tickets";
+"Тип: " = "Type: ";
+"Тариф: " = "Tariff: ";
+"Перевозчик: " = "Carrier: ";
+"Принадлежность вагона: " = "Belonging wagon: ";
+"Номер вагона: " = "Wagon: ";
+"Свободных мест: " = "empty seats: ";
+"Номера свободных мест: " = "Non-availability: ";
+
+"Отправление: " = "Departure: ";
+"Прибытие: " = "Arrival: ";
+"Дни курсирования: " = "Train days: ";
+"Остановки: " = "Stops: ";
+
+"International Lines" = "IL";
+"Regional economy class lines" = "RECL";
+"Regional business class lines" = "RBCL";
+"Interregional economy lines" = "IEL";
+"Interregional business class lines" = "IBCL";
+"City lines" = "CL";
+
+"IL" = "International Lines";
+"RECL" = "Regional economy class lines";
+"RBCL" = "Regional business class lines";
+"IEL" = "Interregional economy lines";
+"IBCL" = "Interregional business class lines";
+"CL" = "City lines";
+
+"Добавьте Ваш текст сообщения сюда" = "Add your message text here";
+"Недоступно до первого поиска по маршруту" = "Not available until the first route search";
+"Полученную информацию не удается преобразовать" = "The received information cannot be converted.";
+
+"Станции с таким названием не найдено" = "No stations with this name were found";
+"К сожалению, поезда не найдены" = "Unfortunately, no train found";
+"К сожалению, информация по вагону не найдена" = "Unfortunately, the information on the car is not found";
+"К сожалению, информация по маршруту не найдена" = "Unfortunately, the route information was not found";

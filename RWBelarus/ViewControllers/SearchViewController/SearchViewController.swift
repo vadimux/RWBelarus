@@ -125,10 +125,7 @@ class SearchViewController: UIViewController {
     }
     
     @IBAction func searchButtonTapped(_ sender: Any) {
-        guard let fromAddress = self.interactor.fromData, let toAddress = self.interactor.toData else {
-            self.view.makeToast("error")
-            return
-        }
+        guard let fromAddress = self.interactor.fromData, let toAddress = self.interactor.toData else { return }
         CoreDataManager.shared().saveRouteWith(from: fromAddress, to: toAddress)
         coordinator?.showResult(vc: self, from: fromAddress, to: toAddress, date: self.date)
     }

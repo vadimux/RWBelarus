@@ -14,7 +14,7 @@ protocol SettingsViewControllerInteractor: class {
 }
 
 protocol SettingsViewControllerCoordinator: class {
-    func showActivitity(for index: Int)
+    func showActivitity(for index: Int, vc: UIViewController)
     func callSocial(tag: Int)
 }
 
@@ -50,7 +50,7 @@ extension SettingsViewController: UITableViewDataSource, UITableViewDelegate {
         cell.configureWith(text: interactor.showInfoCells(indexPath: indexPath), index: indexPath.row)
         cell.tapped = { [weak self] idx in
             guard let `self` = self else { return }
-            self.coordinator?.showActivitity(for: idx)
+            self.coordinator?.showActivitity(for: idx, vc: self)
         }
         return cell
     }

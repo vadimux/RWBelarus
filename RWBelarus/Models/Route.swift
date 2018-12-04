@@ -9,13 +9,17 @@
 import Foundation
 
 enum TrainType: String {
-    case internationalLines = "Международные линии"
-    case regionalEconomyLines = "Региональные линии экономкласса"
-    case regionalBusinessLines = "Региональные линии бизнес-класса"
-    case interregionalEconomyLines = "Межрегиональные линии экономкласса"
-    case interregionalBusinessLines = "Межрегиональные линии бизнес-класса"
-    case cityLines = "Городские линии"
+    case internationalLines = "IL"
+    case regionalEconomyLines = "RECL"
+    case regionalBusinessLines = "RBCL"
+    case interregionalEconomyLines = "IEL"
+    case interregionalBusinessLines = "IBCL"
+    case cityLines = "CL"
     case unknown = ""
+    
+    func localizedString() -> String {
+        return self.rawValue.localized
+    }
 }
 
 enum TrainImageType: String {

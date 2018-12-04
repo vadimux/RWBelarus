@@ -34,7 +34,7 @@ class DialogViewController: UINavigationController {
         let backButton = UIButton.init(frame: CGRect.init(x: 0, y: 0, width: 100, height: 44))
         backButton.setImage(R.image.crossIcon(), for: .normal)
         backButton.tintColor = UIColor.red
-//        backButton.setAttributedTitle("Cancel".localized.attributedRegularStringWithSize(16, color: UIColor.brown), for: .normal)
+        backButton.setAttributedTitle("Отмена".localized.attributedRegularStringWithSize(16, color: UIColor(rgb: 0x36608A)), for: .normal)
         backButton.addTarget(self, action: #selector(cancelActionHandler), for: .touchUpInside)
         backButton.imageEdgeInsets = UIEdgeInsets(top: 0, left: -5, bottom: 0, right: 0)
         backButton.contentHorizontalAlignment = UIControl.ContentHorizontalAlignment.left
