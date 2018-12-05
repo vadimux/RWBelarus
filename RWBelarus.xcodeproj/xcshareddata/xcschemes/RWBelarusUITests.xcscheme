@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1000"
+   LastUpgradeVersion = "1010"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -9,14 +9,14 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "YES"
-            buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A739C7482174DB150080F151"
-               BuildableName = "RWBelarus.app"
-               BlueprintName = "RWBelarus"
+               BlueprintIdentifier = "A79769F621B7C400006E5275"
+               BuildableName = "RWBelarusUITests.xctest"
+               BlueprintName = "RWBelarusUITests"
                ReferencedContainer = "container:RWBelarus.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -39,15 +39,6 @@
             </BuildableReference>
          </TestableReference>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A739C7482174DB150080F151"
-            BuildableName = "RWBelarus.app"
-            BlueprintName = "RWBelarus"
-            ReferencedContainer = "container:RWBelarus.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -61,23 +52,15 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A739C7482174DB150080F151"
-            BuildableName = "RWBelarus.app"
-            BlueprintName = "RWBelarus"
+            BlueprintIdentifier = "A79769F621B7C400006E5275"
+            BuildableName = "RWBelarusUITests.xctest"
+            BlueprintName = "RWBelarusUITests"
             ReferencedContainer = "container:RWBelarus.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "OS_ACTIVITY_MODE"
-            value = "disable"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -87,16 +70,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A739C7482174DB150080F151"
-            BuildableName = "RWBelarus.app"
-            BlueprintName = "RWBelarus"
+            BlueprintIdentifier = "A79769F621B7C400006E5275"
+            BuildableName = "RWBelarusUITests.xctest"
+            BlueprintName = "RWBelarusUITests"
             ReferencedContainer = "container:RWBelarus.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

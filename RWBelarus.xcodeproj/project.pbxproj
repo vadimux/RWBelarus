@@ -54,6 +54,8 @@
 		A795F4E82179C080003B942F /* RWAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E72179C080003B942F /* RWAPI.swift */; };
 		A795F4EA2179D89B003B942F /* Locale+CurrentLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E92179D89B003B942F /* Locale+CurrentLocale.swift */; };
 		A79769F121B7922E006E5275 /* String+Attributed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79769F021B7922E006E5275 /* String+Attributed.swift */; };
+		A79769FA21B7C400006E5275 /* RWBelarusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79769F921B7C400006E5275 /* RWBelarusUITests.swift */; };
+		A7976A0621B7C5F7006E5275 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7976A0421B7C5F7006E5275 /* SnapshotHelper.swift */; };
 		A79CADCF218C2177001DEF64 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79CADCE218C2177001DEF64 /* UIColor+RGB.swift */; };
 		A7A9A41E21B6584A00A8EC77 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A7A9A41C21B6584A00A8EC77 /* Localizable.strings */; };
 		A7AE72702193FE8D00CBB255 /* ScheduleStationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE726F2193FE8D00CBB255 /* ScheduleStationViewController.swift */; };
@@ -90,6 +92,16 @@
 		A7F45DD72175EA170099A9E1 /* AutocompleteAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F45DD62175EA170099A9E1 /* AutocompleteAPIModel.swift */; };
 		A7F45DDB2175FCDB0099A9E1 /* AutocompleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F45DDA2175FCDB0099A9E1 /* AutocompleteCell.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		A79769FC21B7C400006E5275 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A739C7412174DB150080F151 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = A739C7482174DB150080F151;
+			remoteInfo = RWBelarus;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		0165E49A68D0F07BEF232CAD /* Pods-RWBelarus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RWBelarus.release.xcconfig"; path = "Target Support Files/Pods-RWBelarus/Pods-RWBelarus.release.xcconfig"; sourceTree = "<group>"; };
@@ -142,6 +154,10 @@
 		A795F4E72179C080003B942F /* RWAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RWAPI.swift; sourceTree = "<group>"; };
 		A795F4E92179D89B003B942F /* Locale+CurrentLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+CurrentLocale.swift"; sourceTree = "<group>"; };
 		A79769F021B7922E006E5275 /* String+Attributed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Attributed.swift"; sourceTree = "<group>"; };
+		A79769F721B7C400006E5275 /* RWBelarusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RWBelarusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		A79769F921B7C400006E5275 /* RWBelarusUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RWBelarusUITests.swift; sourceTree = "<group>"; };
+		A79769FB21B7C400006E5275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A7976A0421B7C5F7006E5275 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		A79CADCE218C2177001DEF64 /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
 		A7A9A41B21B6582800A8EC77 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		A7A9A41D21B6584A00A8EC77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = RWBelarus/Base.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -196,6 +212,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A79769F421B7C400006E5275 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -237,8 +260,8 @@
 		A739C7402174DB150080F151 = {
 			isa = PBXGroup;
 			children = (
-				A7A9A41C21B6584A00A8EC77 /* Localizable.strings */,
 				A739C74B2174DB150080F151 /* RWBelarus */,
+				A79769F821B7C400006E5275 /* RWBelarusUITests */,
 				A739C74A2174DB150080F151 /* Products */,
 				9FEC2C8B9825FE760327A2BC /* Pods */,
 				9BE61F8CE32A3AA87292127A /* Frameworks */,
@@ -249,6 +272,7 @@
 			isa = PBXGroup;
 			children = (
 				A739C7492174DB150080F151 /* RWBelarus.app */,
+				A79769F721B7C400006E5275 /* RWBelarusUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -256,8 +280,8 @@
 		A739C74B2174DB150080F151 /* RWBelarus */ = {
 			isa = PBXGroup;
 			children = (
-				A739C7582174DB180080F151 /* Info.plist */,
 				A739C74C2174DB160080F151 /* AppDelegate.swift */,
+				A79769F221B7A7FC006E5275 /* Info */,
 				A776C166217623E300859BB8 /* Extensions */,
 				A7F45D9C2175B0500099A9E1 /* Coordinators */,
 				A74FDA82219D603D001713B6 /* Manager */,
@@ -266,7 +290,6 @@
 				A739C7602174DB900080F151 /* ViewControllers */,
 				A7F45DD82175FCA80099A9E1 /* Views */,
 				A7F45D9B2175AFDC0099A9E1 /* Network */,
-				A739C75E2174DB260080F151 /* Resource */,
 			);
 			path = RWBelarus;
 			sourceTree = "<group>";
@@ -385,6 +408,26 @@
 				A7891825219EAC6300BF3289 /* LoginViewInteractor.swift */,
 			);
 			path = LoginViewController;
+			sourceTree = "<group>";
+		};
+		A79769F221B7A7FC006E5275 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				A739C75E2174DB260080F151 /* Resource */,
+				A7A9A41C21B6584A00A8EC77 /* Localizable.strings */,
+				A739C7582174DB180080F151 /* Info.plist */,
+			);
+			name = Info;
+			sourceTree = "<group>";
+		};
+		A79769F821B7C400006E5275 /* RWBelarusUITests */ = {
+			isa = PBXGroup;
+			children = (
+				A7976A0421B7C5F7006E5275 /* SnapshotHelper.swift */,
+				A79769F921B7C400006E5275 /* RWBelarusUITests.swift */,
+				A79769FB21B7C400006E5275 /* Info.plist */,
+			);
+			path = RWBelarusUITests;
 			sourceTree = "<group>";
 		};
 		A7AE726E2193FE6D00CBB255 /* ScheduleStationViewController */ = {
@@ -515,18 +558,40 @@
 			productReference = A739C7492174DB150080F151 /* RWBelarus.app */;
 			productType = "com.apple.product-type.application";
 		};
+		A79769F621B7C400006E5275 /* RWBelarusUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A7976A0021B7C400006E5275 /* Build configuration list for PBXNativeTarget "RWBelarusUITests" */;
+			buildPhases = (
+				A79769F321B7C400006E5275 /* Sources */,
+				A79769F421B7C400006E5275 /* Frameworks */,
+				A79769F521B7C400006E5275 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				A79769FD21B7C400006E5275 /* PBXTargetDependency */,
+			);
+			name = RWBelarusUITests;
+			productName = RWBelarusUITests;
+			productReference = A79769F721B7C400006E5275 /* RWBelarusUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		A739C7412174DB150080F151 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1000;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1000;
 				ORGANIZATIONNAME = mikalayeu;
 				TargetAttributes = {
 					A739C7482174DB150080F151 = {
 						CreatedOnToolsVersion = 10.0;
+					};
+					A79769F621B7C400006E5275 = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = A739C7482174DB150080F151;
 					};
 				};
 			};
@@ -546,6 +611,7 @@
 			projectRoot = "";
 			targets = (
 				A739C7482174DB150080F151 /* RWBelarus */,
+				A79769F621B7C400006E5275 /* RWBelarusUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -569,6 +635,13 @@
 				0D614932219326E3003FE767 /* Station.storyboard in Resources */,
 				A739C7522174DB160080F151 /* Main.storyboard in Resources */,
 				A703176321A67630007CBADF /* Login.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A79769F521B7C400006E5275 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -743,7 +816,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		A79769F321B7C400006E5275 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A79769FA21B7C400006E5275 /* RWBelarusUITests.swift in Sources */,
+				A7976A0621B7C5F7006E5275 /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		A79769FD21B7C400006E5275 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = A739C7482174DB150080F151 /* RWBelarus */;
+			targetProxy = A79769FC21B7C400006E5275 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		A739C7502174DB160080F151 /* Main.storyboard */ = {
@@ -938,6 +1028,46 @@
 			};
 			name = Release;
 		};
+		A79769FE21B7C400006E5275 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PCNAB9NPF9;
+				INFOPLIST_FILE = RWBelarusUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = by.mikalayeu.RWBelarusUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RWBelarus;
+			};
+			name = Debug;
+		};
+		A79769FF21B7C400006E5275 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PCNAB9NPF9;
+				INFOPLIST_FILE = RWBelarusUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = by.mikalayeu.RWBelarusUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = RWBelarus;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -955,6 +1085,15 @@
 			buildConfigurations = (
 				A739C75C2174DB180080F151 /* Debug */,
 				A739C75D2174DB180080F151 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A7976A0021B7C400006E5275 /* Build configuration list for PBXNativeTarget "RWBelarusUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				A79769FE21B7C400006E5275 /* Debug */,
+				A79769FF21B7C400006E5275 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
