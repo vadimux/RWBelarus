@@ -92,21 +92,10 @@ class ScheduleStationViewController: UIViewController {
         coordinator?.showStationsList(vc: self, for: .fromView)
     }
     
-    @IBAction func todayTapped(_ sender: Any) {
-        configureDateButton(with: RouteDate.today)
-    }
-    
-    @IBAction func tomorrowTapped(_ sender: Any) {
-        configureDateButton(with: RouteDate.tomorrow)
-    }
-    
-    @IBAction func everydayTapped(_ sender: Any) {
-        configureDateButton(with: RouteDate.everyday)
-    }
-    
-    private func configureDateButton(with date: RouteDate) {
-        self.dateButton.setTitle(date.value, for: .normal)
-        self.date = date.rawValue
+    @IBAction func dayTapped(_ sender: Any) {
+        guard let element = (sender as? UIButton)?.currentTitle, let selectedDayType = RouteDate.find(element) else { return }
+        self.dateButton.setTitle(selectedDayType.value(), for: .normal)
+        date = selectedDayType.rawValue
     }
     
     private func prepareResultForTableView(station: String, completion: @escaping () -> Void) {

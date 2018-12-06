@@ -95,6 +95,7 @@ extension RouteResultViewController: UITableViewDataSource, UITableViewDelegate 
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
+            print("123")
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.headerResultCell, for: indexPath)!
             cell.configure(with: interactor.prepareForHeaderView())
             imageHeight = cell.bounds.height

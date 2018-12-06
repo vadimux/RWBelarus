@@ -121,7 +121,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="localizedTitle" value="сегодня"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="todayTapped:" destination="rEO-Xb-igy" eventType="touchUpInside" id="ATk-EQ-m9B"/>
+                                                    <action selector="dayTapped:" destination="rEO-Xb-igy" eventType="touchUpInside" id="Xkx-Yd-M9j"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y24-Ie-OhO">
@@ -134,7 +134,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="localizedTitle" value="завтра"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="tomorrowTapped:" destination="rEO-Xb-igy" eventType="touchUpInside" id="tYc-D4-mJW"/>
+                                                    <action selector="dayTapped:" destination="rEO-Xb-igy" eventType="touchUpInside" id="4ef-OH-kpI"/>
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="v6Y-im-X0n">
@@ -147,7 +147,7 @@
                                                     <userDefinedRuntimeAttribute type="string" keyPath="localizedTitle" value="на все дни"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="everydayTapped:" destination="rEO-Xb-igy" eventType="touchUpInside" id="1dE-WG-NDB"/>
+                                                    <action selector="dayTapped:" destination="rEO-Xb-igy" eventType="touchUpInside" id="8tg-z2-tAG"/>
                                                 </connections>
                                             </button>
                                         </subviews>

@@ -91,6 +91,7 @@
 		A7F45DD12175E35A0099A9E1 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F45DD02175E35A0099A9E1 /* Route.swift */; };
 		A7F45DD72175EA170099A9E1 /* AutocompleteAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F45DD62175EA170099A9E1 /* AutocompleteAPIModel.swift */; };
 		A7F45DDB2175FCDB0099A9E1 /* AutocompleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F45DDA2175FCDB0099A9E1 /* AutocompleteCell.swift */; };
+		A7F80DCC21B9505300D348CE /* Enum+Representation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F80DCB21B9505300D348CE /* Enum+Representation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,6 +201,7 @@
 		A7F45DD02175E35A0099A9E1 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		A7F45DD62175EA170099A9E1 /* AutocompleteAPIModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteAPIModel.swift; sourceTree = "<group>"; };
 		A7F45DDA2175FCDB0099A9E1 /* AutocompleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteCell.swift; sourceTree = "<group>"; };
+		A7F80DCB21B9505300D348CE /* Enum+Representation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+Representation.swift"; sourceTree = "<group>"; };
 		B64A07669D131066FE5EC111 /* Pods-RWBelarus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RWBelarus.debug.xcconfig"; path = "Target Support Files/Pods-RWBelarus/Pods-RWBelarus.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -388,6 +390,7 @@
 				A7E8EA32219548CD0013D77A /* Date+Utils.swift */,
 				A782A09821B5054600959921 /* UIImage+TrainType.swift */,
 				A79769F021B7922E006E5275 /* String+Attributed.swift */,
+				A7F80DCB21B9505300D348CE /* Enum+Representation.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -773,6 +776,7 @@
 				A74FDA78219D5ABA001713B6 /* DataModel.xcdatamodeld in Sources */,
 				A739C7632174DC180080F151 /* SearchViewController.swift in Sources */,
 				A7891824219EAC1F00BF3289 /* LoginViewController.swift in Sources */,
+				A7F80DCC21B9505300D348CE /* Enum+Representation.swift in Sources */,
 				A7D1A3D3217DEAC600B374DE /* UITableView+hideEmptyCells.swift in Sources */,
 				A71DFCDA2186D84200874458 /* FullRouteViewInteractor.swift in Sources */,
 				A7EF0C5921770C4B00C075E0 /* SearchResultCell.swift in Sources */,

@@ -12,6 +12,11 @@
 "Откуда" = "From";
 "Куда" = "To";
 "Когда" = "When";
+
+"tomorrow" = "tomorrow";
+"today" = "today";
+"everyday" = "all days";
+
 "сегодня" = "today";
 "завтра" = "tomorrow";
 "на все дни" = "all days";

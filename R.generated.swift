@@ -351,7 +351,7 @@ struct R: Rswift.Validatable {
       fileprivate init() {}
     }
     
-    /// This `R.string.localizable` struct is generated, and contains static references to 51 localization keys.
+    /// This `R.string.localizable` struct is generated, and contains static references to 54 localization keys.
     struct localizable {
       /// Base translation: Add your message text here
       /// 
@@ -544,6 +544,10 @@ struct R: Rswift.Validatable {
       /// Base translation: all days
       /// 
       /// Locales: Base, ru, be-BY
+      static let everyday = Rswift.StringResource(key: "everyday", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: all days
+      /// 
+      /// Locales: Base, ru, be-BY
       static let наВсеДни = Rswift.StringResource(key: "на все дни", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
       /// Base translation: empty seats: 
       /// 
@@ -552,7 +556,15 @@ struct R: Rswift.Validatable {
       /// Base translation: today
       /// 
       /// Locales: Base, ru, be-BY
+      static let today = Rswift.StringResource(key: "today", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: today
+      /// 
+      /// Locales: Base, ru, be-BY
       static let сегодня = Rswift.StringResource(key: "сегодня", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
+      /// Base translation: tomorrow
+      /// 
+      /// Locales: Base, ru, be-BY
+      static let tomorrow = Rswift.StringResource(key: "tomorrow", tableName: "Localizable", bundle: R.hostingBundle, locales: ["Base", "ru", "be-BY"], comment: nil)
       /// Base translation: tomorrow
       /// 
       /// Locales: Base, ru, be-BY
@@ -890,6 +902,13 @@ struct R: Rswift.Validatable {
       /// Base translation: all days
       /// 
       /// Locales: Base, ru, be-BY
+      static func everyday(_: Void = ()) -> String {
+        return NSLocalizedString("everyday", bundle: R.hostingBundle, value: "all days", comment: "")
+      }
+      
+      /// Base translation: all days
+      /// 
+      /// Locales: Base, ru, be-BY
       static func наВсеДни(_: Void = ()) -> String {
         return NSLocalizedString("на все дни", bundle: R.hostingBundle, value: "all days", comment: "")
       }
@@ -904,8 +923,22 @@ struct R: Rswift.Validatable {
       /// Base translation: today
       /// 
       /// Locales: Base, ru, be-BY
+      static func today(_: Void = ()) -> String {
+        return NSLocalizedString("today", bundle: R.hostingBundle, value: "today", comment: "")
+      }
+      
+      /// Base translation: today
+      /// 
+      /// Locales: Base, ru, be-BY
       static func сегодня(_: Void = ()) -> String {
         return NSLocalizedString("сегодня", bundle: R.hostingBundle, value: "today", comment: "")
+      }
+      
+      /// Base translation: tomorrow
+      /// 
+      /// Locales: Base, ru, be-BY
+      static func tomorrow(_: Void = ()) -> String {
+        return NSLocalizedString("tomorrow", bundle: R.hostingBundle, value: "tomorrow", comment: "")
       }
       
       /// Base translation: tomorrow

@@ -46,23 +46,20 @@ class RouteResultViewInteractor: RouteResultViewControllerInteractor {
         guard let from = fromData.value?.uppercased(), let to = toData.value?.uppercased() else { return ("", "", "")}
         
         let date: String = {
-            switch self.date {
-            case RouteDate.today.rawValue:
-                return RouteDate.today.value
-            case RouteDate.tomorrow.rawValue:
-                return RouteDate.tomorrow.value
-            case RouteDate.everyday.rawValue:
-                return RouteDate.everyday.value
-            default:
-                let inputDateFormatter = DateFormatter()
-                inputDateFormatter.dateFormat = Date.COMMON_DATE_FORMAT
-                guard let date = inputDateFormatter.date(from: self.date) else {
-                    return ""
-                }
-
-                let outputDate = Date.format(date: date, dateFormat: Date.LABEL_DATE_FORMAT)
-                return outputDate
+            let loc = self.date.localized
+            print(loc)
+            if let enumDate = RouteDate.find(self.date.localized) {
+                return enumDate.value()
             }
+            
+            let inputDateFormatter = DateFormatter()
+            inputDateFormatter.dateFormat = Date.COMMON_DATE_FORMAT
+            guard let date = inputDateFormatter.date(from: self.date) else {
+                return ""
+            }
+            
+            let outputDate = Date.format(date: date, dateFormat: Date.LABEL_DATE_FORMAT)
+            return outputDate
         }()
         
         return (from, to, date)

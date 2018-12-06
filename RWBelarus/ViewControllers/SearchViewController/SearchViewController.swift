@@ -10,12 +10,11 @@ import UIKit
 import Toast_Swift
 import Hero
 
-enum RouteDate: String {
-    case today
-    case tomorrow
-    case everyday
+enum RouteDate: String, CaseIterable {
+    typealias BaseType = String
+    case today, tomorrow, everyday
     
-    var value: String {
+    func value() -> String {
         switch self {
         case .today:
             return "сегодня".localized
@@ -35,6 +34,7 @@ enum DirectionViewType {
 protocol SearchViewControllerInteractor: class {
     var fromData: AutocompleteAPIElement? { get set }
     var toData: AutocompleteAPIElement? { get set }
+    func configureSearchButtonState(with elements: [AutocompleteAPIElement?]) -> Bool
 }
 
 protocol SearchViewControllerCoordinator: class {
@@ -75,8 +75,6 @@ class SearchViewController: UIViewController {
     private var isChangeDirectionTapped = false
     private var routeElements = [AutocompleteAPIElement?](repeating: nil, count: 2) //[from, to]
     private var date: String = "everyday"
-    private var observerFromLabel: NSKeyValueObservation?
-    private var observerToLabel: NSKeyValueObservation?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,27 +84,9 @@ class SearchViewController: UIViewController {
         self.navigationController?.delegate = self
         self.navigationController?.hero.navigationAnimationType = .fade
         
-        observerFromLabel = fromLabel.observe(\.text, options: [.new]) { (_, change) in
-            if change.newValue != nil {
-                let countEmpty = self.routeElements.reduce(0) { $1 == nil ? $0 + 1 : $0 }
-                self.searchButton.isEnabled = countEmpty == 1 || countEmpty == 0 ? true : false
-            }
-        }
-        observerToLabel = toLabel.observe(\.text, options: [.new]) { (_, change) in
-            if change.newValue != nil {
-                let countEmpty = self.routeElements.reduce(0) { $1 == nil ? $0 + 1 : $0 }
-                self.searchButton.isEnabled = countEmpty == 1 || countEmpty == 0 ? true : false
-            }
-        }
-        
         if #available(iOS 10.3, *) {
             RateManager.showRatesController()
         }
-    }
-    
-    deinit {
-        observerFromLabel?.invalidate()
-        observerToLabel?.invalidate()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -122,10 +102,13 @@ class SearchViewController: UIViewController {
             toLabel.text = toData.value?.uppercased()
             routeElements[1] = toData
         }
+        
+        self.searchButton.isEnabled = self.interactor.configureSearchButtonState(with: self.routeElements)
     }
     
     @IBAction func searchButtonTapped(_ sender: Any) {
-        guard let fromAddress = self.interactor.fromData, let toAddress = self.interactor.toData else { return }
+        guard let firstElement = routeElements.first, let fromAddress = firstElement,
+            let lastElement = routeElements.last, let toAddress = lastElement else { return }
         CoreDataManager.shared().saveRouteWith(from: fromAddress, to: toAddress)
         coordinator?.showResult(vc: self, from: fromAddress, to: toAddress, date: self.date)
     }
@@ -144,44 +127,24 @@ class SearchViewController: UIViewController {
 
         switch countEmpty {
         case 0:
-            if isChangeDirectionTapped {
-                fromLabel.text = routeElements[1]?.value?.uppercased()
-                toLabel.text = routeElements[0]?.value?.uppercased()
-                interactor.fromData = routeElements[1]
-                interactor.toData = routeElements[0]
-            } else {
-                fromLabel.text = routeElements[0]?.value?.uppercased()
-                toLabel.text = routeElements[1]?.value?.uppercased()
-                interactor.fromData = routeElements[0]
-                interactor.toData = routeElements[1]
-            }
+            fromLabel.text = routeElements[1]?.value?.uppercased()
+            toLabel.text = routeElements[0]?.value?.uppercased()
+            routeElements.swapAt(1, 0)
         case 1:
             if routeElements[0]?.value != nil {
-                interactor.toData = routeElements[0]
-                interactor.fromData = nil
-                
                 additionalFromLabel.isHidden = true
-                fromLabel.text = "Откуда".localized
+                fromLabel.text = "Откуда".localized.uppercased()
                 additionalToLabel.isHidden = false
                 toLabel.isHidden = false
-                
                 toLabel.text = routeElements[0]?.value?.uppercased()
-                routeElements[1] = routeElements[0]
-                routeElements[0] = nil
             } else {
-                interactor.fromData = routeElements[1]
-                interactor.toData = nil
-                
                 additionalFromLabel.isHidden = false
                 fromLabel.isHidden = false
                 additionalToLabel.isHidden = true
-                toLabel.text = "Куда".localized
-                
+                toLabel.text = "Куда".localized.uppercased()
                 fromLabel.text = routeElements[1]?.value?.uppercased()
-                routeElements[0] = routeElements[1]
-                routeElements[1] = nil
             }
-            isChangeDirectionTapped = false
+            routeElements.swapAt(0, 1)
         default:
             return
         }
@@ -197,23 +160,11 @@ class SearchViewController: UIViewController {
         }
     }
     
-    @IBAction func todayTapped(_ sender: Any) {
-        configureDateButton(with: RouteDate.today)
+    @IBAction func dayTapped(_ sender: Any) {
+        guard let element = (sender as? UIButton)?.currentTitle, let selectedDayType = RouteDate.find(element) else { return }
+        self.dateButton.setTitle(selectedDayType.value(), for: .normal)
+        date = selectedDayType.rawValue
     }
-    
-    @IBAction func tomorrowTapped(_ sender: Any) {
-        configureDateButton(with: RouteDate.tomorrow)
-    }
-    
-    @IBAction func everydayTapped(_ sender: Any) {
-        configureDateButton(with: RouteDate.everyday)
-    }
-    
-    private func configureDateButton(with date: RouteDate) {
-        self.dateButton.setTitle(date.value, for: .normal)
-        self.date = date.rawValue
-    }
-
 }
 
 extension SearchViewController: UINavigationControllerDelegate {
