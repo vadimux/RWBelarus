@@ -39,18 +39,14 @@ class SearchAutocompleteViewController: UIViewController {
         configureSearchBar()
         configureCancelBarButton()
         
-        if #available(iOS 11.0, *) {
-            self.additionalSafeAreaInsets.top = 11
-        }
-        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
-
         self.dataSource = AutocompleteDataSource(with: autocompleteTableView, delegate: self)
     }
     
     deinit {
         NotificationCenter.default.removeObserver(self)
+        textTimer?.invalidate()
     }
     
     private func configureSearchBar() {

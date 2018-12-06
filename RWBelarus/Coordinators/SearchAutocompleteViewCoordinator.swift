@@ -29,7 +29,8 @@ class SearchAutocompleteViewCoordinator: Coordinator, SearchAutocompleteViewCont
     }
     
     func start(withCallback completion: CoordinatorCallback?) {
-        self.rootViewController.show(presentingViewController, sender: self)
+        self.rootViewController.pushViewController(presentingViewController, animated: false)
+        presentingViewController.navigationItem.hidesBackButton = true
         completion?(self)
     }
     
