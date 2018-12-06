@@ -20,6 +20,7 @@
 "сегодня" = "today";
 "завтра" = "tomorrow";
 "на все дни" = "all days";
+
 "СТАНЦИЯ" = "STATION";
 "РАСПИСАНИЕ" = "SCHEDULE";
 "Расписание по станции" = "Station Schedule";
