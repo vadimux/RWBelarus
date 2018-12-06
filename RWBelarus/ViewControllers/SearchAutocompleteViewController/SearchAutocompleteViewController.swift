@@ -39,8 +39,6 @@ class SearchAutocompleteViewController: UIViewController {
         configureSearchBar()
         configureCancelBarButton()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         self.dataSource = AutocompleteDataSource(with: autocompleteTableView, delegate: self)
     }
     
@@ -49,7 +47,15 @@ class SearchAutocompleteViewController: UIViewController {
         textTimer?.invalidate()
     }
     
+    func registerNotificationObservers() {
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    }
+    
     private func configureSearchBar() {
+        
+        registerNotificationObservers()
+        
         searchBar.placeholder = "Поиск по станции или маршруту".localized
         navigationItem.titleView = searchBar
         searchBar.delegate = self
@@ -74,23 +80,17 @@ class SearchAutocompleteViewController: UIViewController {
         autocompleteTableView.tableFooterView = UIView()
         autocompleteTableView.backgroundView = emptyView
         searchTypeSegmentControl.isHidden = self.navigationController?.viewControllers.first is ScheduleStationViewController
-        self.navigationItem.setHidesBackButton(true, animated: true)
-        self.definesPresentationContext = true
         searchTypeSegmentControl?.setTitle("Города и станции".localized, forSegmentAt: 0)
         searchTypeSegmentControl?.setTitle("Маршруты".localized, forSegmentAt: 1)
     }
     
     @objc func keyboardWillShow(_ notification: Notification) {
-        
-        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue {
-            autocompleteTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
-        }
+        guard let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        autocompleteTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
     }
     @objc func keyboardWillHide(_ notification: Notification) {
-        
-        if ((notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue) != nil {
-            autocompleteTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        }
+        guard (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue != nil else { return }
+        autocompleteTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
     
     @objc private func callAutocomplete(_ timer: Timer) {

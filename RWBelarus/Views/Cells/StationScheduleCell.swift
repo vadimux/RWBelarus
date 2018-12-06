@@ -55,31 +55,11 @@ class StationScheduleCell: UITableViewCell {
         trainTypeLabel.text = route.trainType.localizedString()
         trainRouteLabel.text = route.routeName
         
-        if let finishTime = route.finishTime {
-            arrivalTimeLabel.text = "Прибытие: ".localized + finishTime
-        } else {
-            arrivalTimeLabel.text = nil
-        }
-        
-        if let startTime = route.startTime {
-             departureTimeLabel.text = "Отправление: ".localized + startTime
-        } else {
-            departureTimeLabel.text = nil
-        }
-        if let days = route.days {
-            daysLabel.text = "Дни курсирования: ".localized + days
-        } else {
-            daysLabel.text = nil
-        }
-        if let stops = route.exceptStops {
-            stopsLabel.text = "Остановки: ".localized + stops
-        } else {
-            stopsLabel.text = nil
-        }
-        
-        trainTypeImage.image = {
-            UIImage.configureImage(for: route.trainType)
-        }()
+        arrivalTimeLabel.text = route.finishTime == nil ? nil : "Прибытие: ".localized + route.finishTime!
+        departureTimeLabel.text = route.startTime == nil ? nil : "Отправление: ".localized + route.startTime!
+        daysLabel.text = route.days == nil ? nil: "Дни курсирования: ".localized + route.days!
+        stopsLabel.text = route.exceptStops == nil ? nil : "Остановки: ".localized + route.exceptStops!
+        trainTypeImage.image = UIImage.configureImage(for: route.trainType)
         
         model = route
     }

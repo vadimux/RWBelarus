@@ -34,20 +34,20 @@ class RWBelarusUITests: XCTestCase {
         app.staticTexts["TO"].tap()
         searchByStationOrRouteSearchField.typeText("Minsk")
         tablesQuery/*@START_MENU_TOKEN@*/.staticTexts["g. Minsk, Belarus"]/*[[".cells.staticTexts[\"g. Minsk, Belarus\"]",".staticTexts[\"g. Minsk, Belarus\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
-        app.buttons["tomorrow"].press(forDuration: 0.5);
+        app.buttons["tomorrow"].press(forDuration: 0.5)
         
         snapshot("0Launch")
         
-        app.buttons["SEARCH TRAINS"].press(forDuration: 0.5);
+        app.buttons["SEARCH TRAINS"].press(forDuration: 0.5)
         sleep(2)
 
-        tablesQuery.cells.tables.cells.containing(.staticText, identifier:"79").staticTexts["5.03 BYN"].tap()
+        tablesQuery.cells.tables.cells.containing(.staticText, identifier: "79").staticTexts["5.03 BYN"].tap()
         
         snapshot("1Launch")
         
-        app.navigationBars["RWBelarus.CarriageSchemeView"].buttons["Cancel"].press(forDuration: 0.5);
+        app.navigationBars["RWBelarus.CarriageSchemeView"].buttons["Cancel"].press(forDuration: 0.5)
         
-        tablesQuery/*@START_MENU_TOKEN@*/.cells.containing(.staticText, identifier:"08:18")/*[[".cells.containing(.staticText, identifier:\"3 h 14 min\")",".cells.containing(.staticText, identifier:\"630Б\")",".cells.containing(.staticText, identifier:\"11:32\")",".cells.containing(.staticText, identifier:\"08:18\")"],[[[-1,3],[-1,2],[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.staticTexts["till 08.12, everyday"].press(forDuration: 0.5)
+        tablesQuery.cells.containing(.staticText, identifier: "08:18").staticTexts["till 08.12, everyday"].press(forDuration: 0.5)
         sleep(2)
         snapshot("2Launch")
         
@@ -63,11 +63,11 @@ class RWBelarusUITests: XCTestCase {
         app.buttons["Done"].tap()
         
         snapshot("4Launch")
-        app.buttons["Done"].press(forDuration: 1);
-        app.buttons["SCHEDULE"].press(forDuration: 2);
+        app.buttons["Done"].press(forDuration: 1)
+        app.buttons["SCHEDULE"].press(forDuration: 2)
         sleep(2)
         snapshot("5Launch")
-        tablesQuery.staticTexts["Departure: 03:35"].press(forDuration: 1);
+        tablesQuery.staticTexts["Departure: 03:35"].press(forDuration: 1)
         
     }
 
