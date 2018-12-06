@@ -16,7 +16,7 @@ extension Date {
     static func format(date: Date, dateFormat: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = dateFormat
-        dateFormatter.locale = Locale(identifier: "en_US_POSIX")
+        dateFormatter.locale = Locale(identifier: Locale.current.languageCode ?? "en_US_POSIX")
         
         return dateFormatter.string(from: date)
     }
