@@ -24,6 +24,11 @@ class AppCoordinator: Coordinator {
         self.window?.rootViewController = self.rootViewController
         self.window?.makeKeyAndVisible()
         setupAppearance()
+        
+        if #available(iOS 10.3, *) {
+            RateManager.incrementCount()
+        }
+        
         self.startTabsScreenCoordinator(withCallback: completion)
     }
     
