@@ -1,5 +1,5 @@
 //
-//  RWAPI.swift
+//  NetworkManager.swift
 //  RWBelarus
 //
 //  Created by Vadzim Mikalayeu on 10/19/18.
@@ -8,6 +8,7 @@
 
 import Alamofire
 import SwiftSoup
+import Moya
 
 struct APIError: Error {
     var errorText: String?
@@ -15,42 +16,32 @@ struct APIError: Error {
 
 class NetworkManager {
     
+    static private let provider = MoyaProvider<RailWayAPI>()
+    
     // Request for receiving the list of stations satisfying the entered name
     static func autocomplete(term: String, completion: @escaping (Result<AutocompleteAPI?>) -> Void) {
-        Alamofire.request(APIRouter.autocomplete(term: term))
-            .response { response in
-                if let error = response.error {
-                    completion(.failure(error))
-                    return
-                }
-                guard let responseData = response.data else {
-                    let error = APIError(errorText: "Полученную информацию не удается преобразовать".localized)
-                    completion(.failure(error))
-                    return
-                }
-                
-                let autocompleteAPI = try? JSONDecoder().decode(AutocompleteAPI.self, from: responseData)
+        provider.request(.autocomplete(term: term)) { result in
+            switch result {
+            case .success(let response):
+                let autocompleteAPI = try? JSONDecoder().decode(AutocompleteAPI.self, from: response.data)
                 completion(.success(autocompleteAPI))
+            case .failure(let error):
+                completion(.failure(error))
+            }
         }
     }
     
     // Request to receive trains for a given route
     static func getRouteBetweenCities(fromData: AutocompleteAPIElement, toData: AutocompleteAPIElement, date: String, completion: @escaping (Result<[Route]?>) -> Void) {
-
-        Alamofire.request(APIRouter.search(fromData: fromData, toData: toData, date: date))
-            .responseString { response in
-                
-                if let error = response.error {
-                    completion(.failure(error))
-                    return
-                }
-                
-                guard let responseData = response.data, let html = String(data: responseData, encoding: .utf8) else {
+        provider.request(.search(fromData: fromData, toData: toData, date: date)) { result in
+            switch result {
+            case .success(let response):
+                guard let html = String(data: response.data, encoding: .utf8) else {
                     let error = APIError(errorText: "Полученную информацию не удается преобразовать".localized)
                     completion(.failure(error))
                     return
                 }
-
+                
                 var routeList = [Route]()
                 
                 do {
@@ -66,7 +57,7 @@ class NetworkManager {
                     }
                     
                     let trCollection: Elements = try table.select("tr")
-
+                    
                     for element in trCollection where try element.select(K.APIParseConstant.PATH).first()?.text() != nil {
                         let trainId: String? = try element.select(K.APIParseConstant.TRAIN_ID).first()?.text()
                         let travelTime: String? = try element.select(K.APIParseConstant.TRAVEL_TIME).first()?.text()
@@ -90,7 +81,7 @@ class NetworkManager {
                                 let splitCost = Locale.current.currentLanguageCode == "en" ? cost.components(separatedBy: "N ")[j] : cost.components(separatedBy: ". ")[j]
                                 let count = try countPlace.array()[j].text()
                                 let link = try countPlace.array()[j].attr("data-get")
-
+                                
                                 places.append(TrainPlace.create()
                                     .name(name)
                                     .cost(splitCost)
@@ -122,21 +113,18 @@ class NetworkManager {
                 } catch let error {
                     completion(.failure(error))
                 }
+            case .failure(let error):
+                completion(.failure(error))
+            }
         }
     }
     
     // Request for getting the train route
     static func getFullRoute(for route: Route, completion: @escaping (Result<[RouteItem]?>) -> Void) {
-
-        Alamofire.request(APIRouter.searchFullRoute(urlPath: route.urlPath))
-            .responseString { response in
-                
-                if let error = response.error {
-                    completion(.failure(error))
-                    return
-                }
-                
-                guard let responseData = response.data, let html = String(data: responseData, encoding: .utf8) else {
+        provider.request(.searchFullRoute(urlPath: route.urlPath)) { result in
+            switch result {
+            case .success(let response):
+                guard let html = String(data: response.data, encoding: .utf8) else {
                     let error = APIError(errorText: "Полученную информацию не удается преобразовать".localized)
                     completion(.failure(error))
                     return
@@ -156,7 +144,7 @@ class NetworkManager {
                     
                     let trCollection: Elements = try table.select("tr")
                     var stations = [RouteItem]()
-
+                    
                     for element in trCollection where try element.select(K.APIParseConstant.STATION).first()?.text() != nil {
                         let station: String? = try element.select(K.APIParseConstant.STATION).first()?.text()
                         let arrival: String? = try element.select(K.APIParseConstant.ARRIVAL).first()?.text()
@@ -184,37 +172,31 @@ class NetworkManager {
                 } catch let error {
                     completion(.failure(error))
                 }
+            case .failure(let error):
+                completion(.failure(error))
+            }
         }
     }
     
     // Request for getting of the scheme of the car and info about places
     static func getSchemePlaces(with urlPath: String, completion: @escaping (Result<SchemeCarAPIModel?>) -> Void) {
-        Alamofire.request(APIRouter.getSchemePlaces(urlPath: urlPath))
-            .response { response in
-                if let error = response.error {
-                    completion(.failure(error))
-                    return
-                }
-                guard let responseData = response.data else {
-                    let error = APIError(errorText: "Полученную информацию не удается преобразовать".localized)
-                    completion(.failure(error))
-                    return
-                }
-                let autocompleteAPI = try? JSONDecoder().decode(SchemeCarAPIModel.self, from: responseData)
-                completion(.success(autocompleteAPI))
+        provider.request(.getSchemePlaces(urlPath: urlPath)) { result in
+            switch result {
+            case .success(let response):
+                let schemeAPIModel = try? JSONDecoder().decode(SchemeCarAPIModel.self, from: response.data)
+                completion(.success(schemeAPIModel))
+            case .failure(let error):
+                completion(.failure(error))
+            }
         }
     }
     
     // Request for receiving the schedule for the selected station
-    static func getScheduleByStation(station: String?, date: String?, completion: @escaping (Result<[Route]?>) -> Void) {
-        Alamofire.request(APIRouter.getScheduleByStation(station: station, date: date))
-            .response { response in
-                if let error = response.error {
-                    completion(.failure(error))
-                    return
-                }
-                
-                guard let responseData = response.data, let html = String(data: responseData, encoding: .utf8) else {
+    static func getScheduleByStation(station: String, date: String, completion: @escaping (Result<[Route]?>) -> Void) {
+        provider.request(.getScheduleByStation(station: station, date: date)) { result in
+            switch result {
+            case .success(let response):
+                guard let html = String(data: response.data, encoding: .utf8) else {
                     let error = APIError(errorText: "Полученную информацию не удается преобразовать".localized)
                     completion(.failure(error))
                     return
@@ -262,6 +244,9 @@ class NetworkManager {
                 } catch let error {
                     completion(.failure(error))
                 }
+            case .failure(let error):
+                completion(.failure(error))
+            }
         }
     }
     

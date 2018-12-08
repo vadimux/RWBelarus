@@ -16,5 +16,6 @@ target 'RWBelarus' do
     pod 'Hero'
     pod 'Kingfisher'
     pod 'JTAppleCalendar'
+    pod 'Moya', '~> 12.0'
     
 end

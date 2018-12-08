@@ -48,10 +48,9 @@
 		A7891824219EAC1F00BF3289 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7891823219EAC1F00BF3289 /* LoginViewController.swift */; };
 		A7891826219EAC6300BF3289 /* LoginViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7891825219EAC6300BF3289 /* LoginViewInteractor.swift */; };
 		A7891828219EAC7900BF3289 /* LoginViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7891827219EAC7900BF3289 /* LoginViewCoordinator.swift */; };
-		A795F4DF2179BD74003B942F /* APIRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4DE2179BD74003B942F /* APIRouter.swift */; };
+		A795F4DF2179BD74003B942F /* RailWayAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4DE2179BD74003B942F /* RailWayAPI.swift */; };
 		A795F4E12179BE0E003B942F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E02179BE0E003B942F /* Constants.swift */; };
-		A795F4E32179BE42003B942F /* APIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E22179BE42003B942F /* APIConfiguration.swift */; };
-		A795F4E82179C080003B942F /* RWAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E72179C080003B942F /* RWAPI.swift */; };
+		A795F4E82179C080003B942F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E72179C080003B942F /* NetworkManager.swift */; };
 		A795F4EA2179D89B003B942F /* Locale+CurrentLocale.swift in Sources */ = {isa = PBXBuildFile; fileRef = A795F4E92179D89B003B942F /* Locale+CurrentLocale.swift */; };
 		A79769F121B7922E006E5275 /* String+Attributed.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79769F021B7922E006E5275 /* String+Attributed.swift */; };
 		A79769FA21B7C400006E5275 /* RWBelarusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79769F921B7C400006E5275 /* RWBelarusUITests.swift */; };
@@ -149,10 +148,9 @@
 		A7891823219EAC1F00BF3289 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		A7891825219EAC6300BF3289 /* LoginViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewInteractor.swift; sourceTree = "<group>"; };
 		A7891827219EAC7900BF3289 /* LoginViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewCoordinator.swift; sourceTree = "<group>"; };
-		A795F4DE2179BD74003B942F /* APIRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRouter.swift; sourceTree = "<group>"; };
+		A795F4DE2179BD74003B942F /* RailWayAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RailWayAPI.swift; sourceTree = "<group>"; };
 		A795F4E02179BE0E003B942F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
-		A795F4E22179BE42003B942F /* APIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIConfiguration.swift; sourceTree = "<group>"; };
-		A795F4E72179C080003B942F /* RWAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RWAPI.swift; sourceTree = "<group>"; };
+		A795F4E72179C080003B942F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		A795F4E92179D89B003B942F /* Locale+CurrentLocale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Locale+CurrentLocale.swift"; sourceTree = "<group>"; };
 		A79769F021B7922E006E5275 /* String+Attributed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Attributed.swift"; sourceTree = "<group>"; };
 		A79769F721B7C400006E5275 /* RWBelarusUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RWBelarusUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -473,10 +471,9 @@
 		A7F45D9B2175AFDC0099A9E1 /* Network */ = {
 			isa = PBXGroup;
 			children = (
-				A795F4E22179BE42003B942F /* APIConfiguration.swift */,
-				A795F4DE2179BD74003B942F /* APIRouter.swift */,
 				A795F4E02179BE0E003B942F /* Constants.swift */,
-				A795F4E72179C080003B942F /* RWAPI.swift */,
+				A795F4E72179C080003B942F /* NetworkManager.swift */,
+				A795F4DE2179BD74003B942F /* RailWayAPI.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -664,7 +661,9 @@
 				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
 				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
+				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
 				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
+				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
 				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
 			);
@@ -676,7 +675,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
 			);
@@ -762,7 +763,7 @@
 				A7B40D7A217F60EB0005C914 /* SearchAutocompleteViewCoordinator.swift in Sources */,
 				A7F45DAA2175B55D0099A9E1 /* SearchViewInteractor.swift in Sources */,
 				A71DFCDC2186D87E00874458 /* FullRouteViewCoordinator.swift in Sources */,
-				A795F4DF2179BD74003B942F /* APIRouter.swift in Sources */,
+				A795F4DF2179BD74003B942F /* RailWayAPI.swift in Sources */,
 				A7F45D9E2175B05D0099A9E1 /* AppCoordinator.swift in Sources */,
 				A79769F121B7922E006E5275 /* String+Attributed.swift in Sources */,
 				A74FDA8C219D7D67001713B6 /* AutocompleteRouteCell.swift in Sources */,
@@ -806,8 +807,7 @@
 				A780B62021900BC80096E3F0 /* CarriageHeader.swift in Sources */,
 				A776C1682176240700859BB8 /* UIViewController+dismissKeyboard.swift in Sources */,
 				A765CB1321A283EC00111482 /* SettingsViewController.swift in Sources */,
-				A795F4E32179BE42003B942F /* APIConfiguration.swift in Sources */,
-				A795F4E82179C080003B942F /* RWAPI.swift in Sources */,
+				A795F4E82179C080003B942F /* NetworkManager.swift in Sources */,
 				A74FDA8A219D6EC0001713B6 /* AutocompleteDataSource.swift in Sources */,
 				A7B2E3922182ED4600CC7273 /* CalendarViewCoordinator.swift in Sources */,
 				A7F45DD12175E35A0099A9E1 /* Route.swift in Sources */,
