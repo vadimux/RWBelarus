@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0930"
+   LastUpgradeVersion = "1010"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "7099D0B1E00A50D11CF5974B1FEE9527"
+               BlueprintIdentifier = "F4D9E6BAA8E25D0F84A93271BB140A96"
                BuildableName = "Toast_Swift.framework"
                BlueprintName = "Toast-Swift"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "7099D0B1E00A50D11CF5974B1FEE9527"
+            BlueprintIdentifier = "F4D9E6BAA8E25D0F84A93271BB140A96"
             BuildableName = "Toast_Swift.framework"
             BlueprintName = "Toast-Swift"
             ReferencedContainer = "container:Pods.xcodeproj">

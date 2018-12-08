@@ -37,13 +37,14 @@ class RouteResultViewInteractor: RouteResultViewControllerInteractor {
         }
     }
     
-    func prepareForTitle() -> String {
-        guard let from = fromData.value?.uppercased(), let to = toData.value?.uppercased() else { return ""}
-        return "\(from) - \(to)"
+    func prepareForTitle() -> TitleInfo? {
+        guard let from = fromData.value?.uppercased(), let to = toData.value?.uppercased() else { return nil }
+        let title = TitleInfo(from: from, to: to, date: nil)
+        return title
     }
     
-    func prepareForHeaderView() -> (String, String, String) {
-        guard let from = fromData.value?.uppercased(), let to = toData.value?.uppercased() else { return ("", "", "")}
+    func prepareForHeaderView() -> TitleInfo? {
+        guard let from = fromData.value?.uppercased(), let to = toData.value?.uppercased() else { return nil }
         
         let date: String = {
             let loc = self.date.localized
@@ -61,7 +62,14 @@ class RouteResultViewInteractor: RouteResultViewControllerInteractor {
             let outputDate = Date.format(date: date, dateFormat: Date.LABEL_DATE_FORMAT)
             return outputDate
         }()
-        
-        return (from, to, date)
+        let header = TitleInfo(from: from, to: to, date: date)
+        return header
     }
+}
+
+struct TitleInfo {
+    
+    var from: String
+    var to: String
+    var date: String?
 }

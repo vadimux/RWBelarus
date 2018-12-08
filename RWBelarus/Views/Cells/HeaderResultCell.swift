@@ -22,10 +22,10 @@ class HeaderResultCell: UITableViewCell {
         dateLabel.text = nil
     }
 
-    func configure(with info: (String, String, String)) {
-        self.fromLabel.text = info.0
-        self.toLabel.text = info.1
-        self.dateLabel.text = info.2
+    func configure(with info: TitleInfo?) {
+        self.fromLabel.text = info?.from
+        self.toLabel.text = info?.to
+        self.dateLabel.text = info?.date
     }
     
     @IBAction func favoriteButtonTapped(_ sender: Any) {

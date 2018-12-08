@@ -9,9 +9,9 @@
 import UIKit
 
 protocol RouteResultViewControllerInteractor: class {
-    func prepareForTitle() -> String
+    func prepareForTitle() -> TitleInfo?
     func prepareForShowResult(completion: @escaping (_ route: [Route]?, _ error: String?) -> Void)
-    func prepareForHeaderView() -> (String, String, String)
+    func prepareForHeaderView() -> TitleInfo?
 }
 
 protocol RouteResultViewControllerCoordinator: class {
@@ -34,7 +34,7 @@ class RouteResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.title = interactor?.prepareForTitle()
+        self.title = "\(interactor?.prepareForTitle()?.from ?? "") - \(interactor?.prepareForTitle()?.to ?? "")"
         prepareResultForTableView()
     }
     
@@ -86,16 +86,11 @@ class RouteResultViewController: UIViewController {
 extension RouteResultViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return searchResult.count + 1
+        return searchResult.count > 0 ? searchResult.count + 1 : 0
     }
-    
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
-    }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            print("123")
             let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.headerResultCell, for: indexPath)!
             cell.configure(with: interactor.prepareForHeaderView())
             imageHeight = cell.bounds.height
