@@ -21,7 +21,12 @@ desc "Take screenshots"
 end
 
 lane :release do
+  get_certificates           # invokes cert
+  get_provisioning_profile   # invokes sigh # see code signing guide for more information
   build_app(scheme: "RWBelarus")
+  upload_to_app_store(
+  	skip_screenshots: true
+  	)
 end
 
 
