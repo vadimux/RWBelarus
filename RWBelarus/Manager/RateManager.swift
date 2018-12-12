@@ -14,7 +14,7 @@ class RateManager {
     
     private static let kRunCount = "run_count"
     
-    class func incrementCount() {
+    static func incrementCount() {
         
         // get current number of times app has been launched
         let count = UserDefaults.standard.integer(forKey: kRunCount)
@@ -27,7 +27,7 @@ class RateManager {
         }
     }
     
-    class func showRatesController() {
+    static func showRatesController() {
         // get current number of times app has been launched
         let count = UserDefaults.standard.integer(forKey: kRunCount)
         
