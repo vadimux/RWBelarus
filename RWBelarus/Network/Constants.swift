@@ -11,7 +11,8 @@ import Foundation
 struct K {
     struct RWServer {
         static let baseRWURL = "https://poezd.rw.by"
-        static let baseURL = "https://rasp.rw.by/\(Locale.current.currentLanguageCode)/"
+        static let baseURL = "https://rasp.rw.by/api/ru/index/"
+//        static let baseURL = "https://rasp.rw.by/\(Locale.current.currentLanguageCode)/"
     }
     
     struct APIParameterKey {

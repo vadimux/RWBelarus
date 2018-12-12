@@ -72,6 +72,6 @@ extension RailWayAPI: TargetType {
     }
     
     var headers: [String: String]? {
-        return ["Content-Type": "application/json;charset=UTF-8"]
+        return ["Content-Type": "application/xml;charset=UTF-8", "X-AppId": "7b5973ab1e88e23476579bae7916d768"]
     }
 }
