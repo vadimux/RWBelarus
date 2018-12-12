@@ -17,5 +17,6 @@ target 'RWBelarus' do
     pod 'Kingfisher'
     pod 'JTAppleCalendar'
     pod 'Moya', '~> 12.0'
+    pod 'FeedKit', '~> 8.0'
     
 end

@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (4.8.0)
+  - FeedKit (8.0.0)
   - Hero (1.4.0)
   - JTAppleCalendar (7.1.6)
   - Kingfisher (4.10.1)
@@ -18,6 +19,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - FeedKit (~> 8.0)
   - Hero
   - JTAppleCalendar
   - Kingfisher
@@ -30,6 +32,7 @@ DEPENDENCIES:
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
+    - FeedKit
     - Hero
     - JTAppleCalendar
     - Kingfisher
@@ -43,6 +46,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   Alamofire: 3ec537f71edc9804815215393ae2b1a8ea33a844
+  FeedKit: 4a78f07adf7f0a224b904014678f1de82a7ffc21
   Hero: bac92350d7201a1a940003e0767c7b52ce7c99a1
   JTAppleCalendar: abb30678f42a4ef8a340a932b1dcb8c85a33dac2
   Kingfisher: c148cd7b47ebde9989f6bc7c27dcaa79d81279a0
@@ -54,6 +58,6 @@ SPEC CHECKSUMS:
   SwiftSoup: 92f5b348c131aed8af04f4326db1579ab19fa08c
   Toast-Swift: e42a638589a2f95036b4bb7626cfbdde7daf0393
 
-PODFILE CHECKSUM: 4e288be286b0f86dcc95f3eb375ae38c40854299
+PODFILE CHECKSUM: 2eab498f9ce053f204c014b3cd4ab27c5dc00f71
 
 COCOAPODS: 1.6.0.beta.1

@@ -246,16 +246,53 @@
                                 <color key="tintColor" red="0.21176470589999999" green="0.37647058820000001" blue="0.54117647059999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" image="basicCalendar"/>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jSJ-Hj-PD1">
+                                <rect key="frame" x="16" y="227" width="802" height="56.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QIk-hu-ZeA">
+                                        <rect key="frame" x="8" y="8" width="786" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VYT-JR-hZj">
+                                        <rect key="frame" x="8" y="36" width="786" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="QIk-hu-ZeA" secondAttribute="trailing" constant="8" id="AYc-PX-HyF"/>
+                                    <constraint firstAttribute="trailing" secondItem="VYT-JR-hZj" secondAttribute="trailing" constant="8" id="CoV-B7-8yI"/>
+                                    <constraint firstItem="QIk-hu-ZeA" firstAttribute="leading" secondItem="jSJ-Hj-PD1" secondAttribute="leading" constant="8" id="DUn-AC-FC6"/>
+                                    <constraint firstAttribute="bottom" secondItem="VYT-JR-hZj" secondAttribute="bottom" id="KOI-5G-xbV"/>
+                                    <constraint firstItem="VYT-JR-hZj" firstAttribute="leading" secondItem="jSJ-Hj-PD1" secondAttribute="leading" constant="8" id="Nu2-0a-RXq"/>
+                                    <constraint firstItem="QIk-hu-ZeA" firstAttribute="top" secondItem="jSJ-Hj-PD1" secondAttribute="top" constant="8" id="uKB-hk-MkL"/>
+                                    <constraint firstItem="VYT-JR-hZj" firstAttribute="top" secondItem="QIk-hu-ZeA" secondAttribute="bottom" constant="7.5" id="vIy-lf-kOX"/>
+                                </constraints>
+                            </view>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="3sV-pa-dkg">
+                                <rect key="frame" x="20" y="288.5" width="794" height="37"/>
+                                <color key="pageIndicatorTintColor" red="0.0078431372550000003" green="0.36078431370000003" blue="0.56862745100000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.92156862745098034" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="RIa-hh-dbA" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="IWV-PB-GUF" secondAttribute="trailing" constant="4" id="1Gg-0V-6CK"/>
                             <constraint firstItem="zcf-IV-LaE" firstAttribute="top" secondItem="RIa-hh-dbA" secondAttribute="top" constant="10" id="7OG-Rh-HE9"/>
+                            <constraint firstItem="jSJ-Hj-PD1" firstAttribute="leading" secondItem="RIa-hh-dbA" secondAttribute="leading" constant="16" id="9xv-WJ-Gsb"/>
                             <constraint firstItem="siz-n8-47c" firstAttribute="bottom" secondItem="Uh4-di-HCa" secondAttribute="bottom" id="GgR-mA-obS"/>
+                            <constraint firstItem="RIa-hh-dbA" firstAttribute="trailing" secondItem="jSJ-Hj-PD1" secondAttribute="trailing" constant="16" id="Nhe-lA-q4W"/>
                             <constraint firstItem="o1j-EW-HHy" firstAttribute="centerY" secondItem="aYb-0R-vby" secondAttribute="centerY" id="O6E-V0-DU1"/>
+                            <constraint firstItem="jSJ-Hj-PD1" firstAttribute="top" secondItem="zcf-IV-LaE" secondAttribute="bottom" constant="8" id="O9X-ca-g0b"/>
+                            <constraint firstItem="RIa-hh-dbA" firstAttribute="trailing" secondItem="3sV-pa-dkg" secondAttribute="trailing" constant="20" id="OyS-ki-Dh0"/>
                             <constraint firstItem="zcf-IV-LaE" firstAttribute="leading" secondItem="RIa-hh-dbA" secondAttribute="leading" constant="40" id="Y3e-cl-tlC"/>
                             <constraint firstItem="zcf-IV-LaE" firstAttribute="leading" secondItem="o1j-EW-HHy" secondAttribute="trailing" constant="5" id="YaU-ge-uF3"/>
+                            <constraint firstItem="3sV-pa-dkg" firstAttribute="top" secondItem="jSJ-Hj-PD1" secondAttribute="bottom" constant="5" id="boP-Gw-djB"/>
                             <constraint firstItem="zcf-IV-LaE" firstAttribute="leading" secondItem="siz-n8-47c" secondAttribute="trailing" constant="5" id="sDc-ui-MNE"/>
+                            <constraint firstItem="3sV-pa-dkg" firstAttribute="leading" secondItem="RIa-hh-dbA" secondAttribute="leading" constant="20" id="su4-au-1ws"/>
                             <constraint firstItem="zcf-IV-LaE" firstAttribute="trailing" secondItem="RIa-hh-dbA" secondAttribute="trailing" id="zzk-7K-LgQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="RIa-hh-dbA"/>
@@ -272,6 +309,10 @@
                         <outlet property="dateButton" destination="aYb-0R-vby" id="lru-az-iee"/>
                         <outlet property="fromLabel" destination="PS9-hT-s6a" id="cKl-La-cfN"/>
                         <outlet property="fromView" destination="Uh4-di-HCa" id="RvP-ph-fN0"/>
+                        <outlet property="newsDescriptionLabel" destination="VYT-JR-hZj" id="sL4-A9-SpW"/>
+                        <outlet property="newsPageControl" destination="3sV-pa-dkg" id="nJB-hi-ndd"/>
+                        <outlet property="newsTitleLabel" destination="QIk-hu-ZeA" id="eu9-B3-Gi0"/>
+                        <outlet property="newsView" destination="jSJ-Hj-PD1" id="R8J-Rh-jxO"/>
                         <outlet property="searchButton" destination="IWV-PB-GUF" id="r3C-KP-gU1"/>
                         <outlet property="toLabel" destination="1IL-mS-Xff" id="ab9-cJ-haV"/>
                         <outlet property="toView" destination="tw4-P0-2Fv" id="hZQ-SS-6CR"/>
@@ -291,7 +332,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2168.8000000000002" y="114.69265367316342"/>
+            <point key="canvasLocation" x="2167.6258992805756" y="114.3884892086331"/>
         </scene>
         <!--Calendar View Controller-->
         <scene sceneID="ZQc-jO-4qH">
@@ -553,13 +594,13 @@
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <subviews>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E3D-6D-si6">
-                                                                    <rect key="frame" x="5" y="10" width="803" height="21.5"/>
+                                                                    <rect key="frame" x="5" y="10" width="803" height="21"/>
                                                                     <fontDescription key="fontDescription" name="Roboto-Medium" family="Roboto" pointSize="18"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hPh-UT-TmE">
-                                                                    <rect key="frame" x="5" y="33.5" width="803" height="42"/>
+                                                                    <rect key="frame" x="5" y="33" width="803" height="42.5"/>
                                                                     <fontDescription key="fontDescription" name="Roboto-Light" family="Roboto" pointSize="14"/>
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>

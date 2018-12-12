@@ -9,6 +9,8 @@
 import UIKit
 import Toast_Swift
 import Hero
+import FeedKit
+import WebKit
 
 enum RouteDate: String, CaseIterable {
     typealias BaseType = String
@@ -34,6 +36,7 @@ enum DirectionViewType {
 protocol SearchViewControllerInteractor: class {
     var fromData: AutocompleteAPIElement? { get set }
     var toData: AutocompleteAPIElement? { get set }
+    var newsItems: [RSSFeedItem]? { get }
     func configureSearchButtonState(with elements: [AutocompleteAPIElement?]) -> Bool
 }
 
@@ -43,10 +46,16 @@ protocol SearchViewControllerCoordinator: class {
     func showCalendar(currentDate: Date, completion: @escaping (_ selectedDate: Date) -> Void)
 }
 
-class SearchViewController: UIViewController {
+class SearchViewController: UIViewController, WKUIDelegate {
     
     var interactor: SearchViewControllerInteractor!
     var coordinator: SearchViewControllerCoordinator?
+    
+    @IBOutlet weak var newsDescriptionLabel: UILabel!
+    @IBOutlet weak var newsTitleLabel: UILabel!
+    @IBOutlet weak var newsPageControl: UIPageControl!
+    @IBOutlet weak var newsView: UIView!
+    private var webView: WKWebView!
     
     @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var fromView: UIView!
@@ -70,11 +79,12 @@ class SearchViewController: UIViewController {
     }
     
     var directionView: DirectionViewType?
-    
+
     private let heroTransition = HeroTransition()
     private var isChangeDirectionTapped = false
     private var routeElements = [AutocompleteAPIElement?](repeating: nil, count: 2) //[from, to]
     private var date: String = "everyday"
+    private var newsRSS = [RSSFeedItem]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -87,6 +97,15 @@ class SearchViewController: UIViewController {
         if #available(iOS 10.3, *) {
             RateManager.showRatesController()
         }
+
+        guard let newsItems = interactor.newsItems else {
+            newsPageControl.isHidden = true
+            return
+        }
+        addWebView()
+        newsRSS = newsItems
+        newsPageControl.numberOfPages = newsItems.count
+        configureNewsGestureRecognizer()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -104,6 +123,17 @@ class SearchViewController: UIViewController {
         }
         
         self.searchButton.isEnabled = self.interactor.configureSearchButtonState(with: self.routeElements)
+    }
+    
+    private func addWebView() {
+        createWebView()
+        configureWebView()
+        newsView.addSubview(webView)
+        webView.topAnchor.constraint(equalTo: newsView.topAnchor).isActive = true
+        webView.rightAnchor.constraint(equalTo: newsView.rightAnchor).isActive = true
+        webView.leftAnchor.constraint(equalTo: newsView.leftAnchor).isActive = true
+        webView.bottomAnchor.constraint(equalTo: newsView.bottomAnchor).isActive = true
+        webView.heightAnchor.constraint(equalTo: newsView.heightAnchor).isActive = true
     }
     
     @IBAction func searchButtonTapped(_ sender: Any) {
@@ -165,6 +195,61 @@ class SearchViewController: UIViewController {
         self.dateButton.setTitle(selectedDayType.value(), for: .normal)
         date = selectedDayType.rawValue
     }
+    
+    private func configureNewsGestureRecognizer() {
+        
+        let swipeGestureLeft = UISwipeGestureRecognizer()
+        let swipeGestureRight = UISwipeGestureRecognizer()
+        
+        // set gesture direction
+        swipeGestureLeft.direction = UISwipeGestureRecognizer.Direction.left
+        swipeGestureRight.direction = UISwipeGestureRecognizer.Direction.right
+        
+        // add gesture target
+        swipeGestureLeft.addTarget(self, action: #selector(handleSwipeLeft(_:)))
+        swipeGestureRight.addTarget(self, action: #selector(handleSwipeRight(_:)))
+        
+        // add gesture in to view
+        self.view.addGestureRecognizer(swipeGestureLeft)
+        self.view.addGestureRecognizer(swipeGestureRight)
+        
+        // set current page number label.
+        self.setCurrentPageLabel()
+    }
+    
+    private func createWebView() {
+        let webConfiguration = WKWebViewConfiguration()
+        let customFrame = CGRect.init(origin: .zero, size: CGSize.init(width: 0.0, height: newsView.frame.size.height))
+        webView = WKWebView(frame: customFrame, configuration: webConfiguration)
+    }
+    
+    private func configureWebView() {
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        webView.uiDelegate = self
+    }
+    
+    // increase page number on swift left
+    @objc func handleSwipeLeft(_ gesture: UISwipeGestureRecognizer) {
+        if self.newsPageControl.currentPage < newsRSS.count {
+            self.newsPageControl.currentPage += 1
+            self.setCurrentPageLabel()
+        }
+    }
+    
+    // reduce page number on swift right
+    @objc func handleSwipeRight(_ gesture: UISwipeGestureRecognizer) {
+        if self.newsPageControl.currentPage != 0 {
+            self.newsPageControl.currentPage -= 1
+            self.setCurrentPageLabel()
+        }
+    }
+    
+    private func setCurrentPageLabel() {
+        self.newsTitleLabel.text = newsRSS[newsPageControl.currentPage].title
+        guard let newsText = newsRSS[newsPageControl.currentPage].description else { return }
+        self.webView.loadHTMLString(newsText, baseURL: nil)
+    }
+    
 }
 
 extension SearchViewController: UINavigationControllerDelegate {

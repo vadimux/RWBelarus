@@ -122,7 +122,7 @@ class CalendarViewController: UIViewController {
             
             calendarView?.selectDates(from: begin, to: end, triggerSelectionDelegate: true, keepSelectionIfMultiSelectionAllowed: true)
             
-            if let beginCellState = calendarView?.cellStatus(for: begin), calendarView != nil  {
+            if let beginCellState = calendarView?.cellStatus(for: begin), calendarView != nil {
                 if beginCellState.isSelected == false && calendarView!.selectedDates.count > 1 {
                     calendarView?.selectDates([begin])
                 }
