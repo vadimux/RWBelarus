@@ -246,8 +246,14 @@ class SearchViewController: UIViewController, WKUIDelegate {
     
     private func setCurrentPageLabel() {
         self.newsTitleLabel.text = newsRSS[newsPageControl.currentPage].title
-        guard let newsText = newsRSS[newsPageControl.currentPage].description else { return }
-        self.webView.loadHTMLString(newsText, baseURL: nil)
+        if let newsText = newsRSS[newsPageControl.currentPage].description {
+            self.webView.isHidden = false
+            self.webView.loadHTMLString(newsText, baseURL: nil)
+        } else {
+            self.webView.isHidden = true
+            self.newsTitleLabel.text = newsRSS[newsPageControl.currentPage].title
+        }
+        
     }
     
 }
