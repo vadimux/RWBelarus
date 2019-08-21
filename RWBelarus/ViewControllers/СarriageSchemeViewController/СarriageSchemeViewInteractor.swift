@@ -10,15 +10,17 @@ import Foundation
 
 class СarriageSchemeViewInteractor: СarriageSchemeViewControllerInteractor {
     
-    private var urlPath: String
+    private var route: Route
+    private var carType: String
     
-    init(urlPath: String) {
-        self.urlPath = urlPath
+    init(route: Route, carType: String) {
+        self.route = route
+        self.carType = carType
     }
     
     func fetchСarriageScheme(completion: @escaping (_ information: SchemeCarAPIModel?, _ error: String?) -> Void) {
         
-        NetworkManager.getSchemePlaces(with: self.urlPath) { result in
+        NetworkManager.getSchemePlaces(with: self.route, carType: carType) { result in
             switch result {
             case .success(let information):
                 completion(information, nil)

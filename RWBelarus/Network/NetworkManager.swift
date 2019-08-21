@@ -81,11 +81,14 @@ class NetworkManager {
                                 let splitCost = Locale.current.currentLanguageCode == "en" ? cost.components(separatedBy: "N ")[j] : cost.components(separatedBy: ". ")[j]
                                 let count = try countPlace.array()[j].text()
                                 let link = try countPlace.array()[j].attr("data-get")
-                                
+                                var type: String?
+                                if let range = link.range(of: "car_type=") {
+                                    type = String(link[range.upperBound...])
+                                }
                                 places.append(TrainPlace.create()
                                     .name(name)
                                     .cost(splitCost)
-                                    .link(link)
+                                    .carType(type ?? "")
                                     .count(count)
                                     .build())
                             }
@@ -121,7 +124,7 @@ class NetworkManager {
     
     // Request for getting the train route
     static func getFullRoute(for route: Route, completion: @escaping (Result<[RouteItem]?>) -> Void) {
-        provider.request(.searchFullRoute(urlPath: route.urlPath)) { result in
+        provider.request(.searchFullRoute(for: route)) { result in
             switch result {
             case .success(let response):
                 guard let html = String(data: response.data, encoding: .utf8) else {
@@ -179,8 +182,8 @@ class NetworkManager {
     }
     
     // Request for getting of the scheme of the car and info about places
-    static func getSchemePlaces(with urlPath: String, completion: @escaping (Result<SchemeCarAPIModel?>) -> Void) {
-        provider.request(.getSchemePlaces(urlPath: urlPath)) { result in
+    static func getSchemePlaces(with route: Route, carType: String, completion: @escaping (Result<SchemeCarAPIModel?>) -> Void) {
+        provider.request(.getSchemePlaces(for: route, carType: carType)) { result in
             switch result {
             case .success(let response):
                 let schemeAPIModel = try? JSONDecoder().decode(SchemeCarAPIModel.self, from: response.data)

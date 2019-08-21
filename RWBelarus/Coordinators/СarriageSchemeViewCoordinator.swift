@@ -15,11 +15,13 @@ class СarriageSchemeViewCoordinator: NSObject, Coordinator, СarriageSchemeView
     lazy var presentingViewController: UIViewController = self.createCarriageSchemeViewController()
     weak var delegate: FinishCoordinatorDelegate?
     private var dialogViewController: DialogViewController?
-    private var urlPath: String
+    private var route: Route
+    private var carType: String
     
-    init(rootViewController: UINavigationController, urlPath: String) {
+    init(rootViewController: UINavigationController, route: Route, carType: String) {
         self.rootViewController = rootViewController
-        self.urlPath = urlPath
+        self.route = route
+        self.carType = carType
     }
     
     func start(withCallback completion: CoordinatorCallback?) {
@@ -48,7 +50,7 @@ extension СarriageSchemeViewCoordinator {
         }
         
         carriageSchemeViewController.coordinator = self
-        carriageSchemeViewController.interactor = СarriageSchemeViewInteractor(urlPath: self.urlPath)
+        carriageSchemeViewController.interactor = СarriageSchemeViewInteractor(route: self.route, carType: self.carType)
         
         return carriageSchemeViewController
     }

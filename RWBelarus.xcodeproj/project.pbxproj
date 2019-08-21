@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -56,6 +56,7 @@
 		A79769FA21B7C400006E5275 /* RWBelarusUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79769F921B7C400006E5275 /* RWBelarusUITests.swift */; };
 		A7976A0621B7C5F7006E5275 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7976A0421B7C5F7006E5275 /* SnapshotHelper.swift */; };
 		A79CADCF218C2177001DEF64 /* UIColor+RGB.swift in Sources */ = {isa = PBXBuildFile; fileRef = A79CADCE218C2177001DEF64 /* UIColor+RGB.swift */; };
+		A7A49FAE230D5B7B00ADE6C3 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7A49FAD230D5B7A00ADE6C3 /* R.generated.swift */; };
 		A7A9A41E21B6584A00A8EC77 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = A7A9A41C21B6584A00A8EC77 /* Localizable.strings */; };
 		A7AE72702193FE8D00CBB255 /* ScheduleStationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE726F2193FE8D00CBB255 /* ScheduleStationViewController.swift */; };
 		A7AE72722193FF2700CBB255 /* ScheduleStationViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7AE72712193FF2700CBB255 /* ScheduleStationViewCoordinator.swift */; };
@@ -82,7 +83,6 @@
 		A7EF0C5921770C4B00C075E0 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7EF0C5821770C4B00C075E0 /* SearchResultCell.swift */; };
 		A7F45D9E2175B05D0099A9E1 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F45D9D2175B05D0099A9E1 /* AppCoordinator.swift */; };
 		A7F45DA12175B1A50099A9E1 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F45DA02175B1A50099A9E1 /* Coordinator.swift */; };
-		A7F45DA32175B25E0099A9E1 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F45DA22175B25E0099A9E1 /* R.generated.swift */; };
 		A7F45DA52175B27B0099A9E1 /* TabsScreenCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F45DA42175B27B0099A9E1 /* TabsScreenCoordinator.swift */; };
 		A7F45DAA2175B55D0099A9E1 /* SearchViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F45DA92175B55D0099A9E1 /* SearchViewInteractor.swift */; };
 		A7F45DAC2175B5AD0099A9E1 /* SearchViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F45DAB2175B5AD0099A9E1 /* SearchViewCoordinator.swift */; };
@@ -158,6 +158,7 @@
 		A79769FB21B7C400006E5275 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A7976A0421B7C5F7006E5275 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		A79CADCE218C2177001DEF64 /* UIColor+RGB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+RGB.swift"; sourceTree = "<group>"; };
+		A7A49FAD230D5B7A00ADE6C3 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		A7A9A41B21B6582800A8EC77 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Main.strings; sourceTree = "<group>"; };
 		A7A9A41D21B6584A00A8EC77 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = RWBelarus/Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		A7A9A42221B6588E00A8EC77 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
@@ -191,7 +192,6 @@
 		A7EF0C5821770C4B00C075E0 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
 		A7F45D9D2175B05D0099A9E1 /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		A7F45DA02175B1A50099A9E1 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		A7F45DA22175B25E0099A9E1 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		A7F45DA42175B27B0099A9E1 /* TabsScreenCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabsScreenCoordinator.swift; sourceTree = "<group>"; };
 		A7F45DA92175B55D0099A9E1 /* SearchViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewInteractor.swift; sourceTree = "<group>"; };
 		A7F45DAB2175B5AD0099A9E1 /* SearchViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewCoordinator.swift; sourceTree = "<group>"; };
@@ -297,9 +297,9 @@
 		A739C75E2174DB260080F151 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				A7A49FAD230D5B7A00ADE6C3 /* R.generated.swift */,
 				A74FDA6F219D3E67001713B6 /* fonts */,
 				A739C7532174DB180080F151 /* Assets.xcassets */,
-				A7F45DA22175B25E0099A9E1 /* R.generated.swift */,
 				A74FDA76219D5ABA001713B6 /* DataModel.xcdatamodeld */,
 			);
 			path = Resource;
@@ -654,32 +654,11 @@
 			files = (
 			);
 			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-RWBelarus/Pods-RWBelarus-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/Hero/Hero.framework",
-				"${BUILT_PRODUCTS_DIR}/JTAppleCalendar/JTAppleCalendar.framework",
-				"${BUILT_PRODUCTS_DIR}/Kingfisher/Kingfisher.framework",
-				"${BUILT_PRODUCTS_DIR}/Moya/Moya.framework",
-				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
-				"${BUILT_PRODUCTS_DIR}/Result/Result.framework",
-				"${BUILT_PRODUCTS_DIR}/SwiftSoup/SwiftSoup.framework",
-				"${BUILT_PRODUCTS_DIR}/Toast-Swift/Toast_Swift.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-RWBelarus/Pods-RWBelarus-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Hero.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JTAppleCalendar.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Kingfisher.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Moya.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Result.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftSoup.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Toast_Swift.framework",
+				"${PODS_ROOT}/Target Support Files/Pods-RWBelarus/Pods-RWBelarus-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -734,14 +713,16 @@
 			inputFileListPaths = (
 			);
 			inputPaths = (
+				"$TEMP_DIR/rswift-lastrun",
 			);
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				$SRCROOT/R.generated.swift,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT\"\n";
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT/R.generated.swift\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -768,7 +749,6 @@
 				A79769F121B7922E006E5275 /* String+Attributed.swift in Sources */,
 				A74FDA8C219D7D67001713B6 /* AutocompleteRouteCell.swift in Sources */,
 				A795F4EA2179D89B003B942F /* Locale+CurrentLocale.swift in Sources */,
-				A7F45DA32175B25E0099A9E1 /* R.generated.swift in Sources */,
 				A7EF0C532177029100C075E0 /* RouteResultViewInteractor.swift in Sources */,
 				A7AE72702193FE8D00CBB255 /* ScheduleStationViewController.swift in Sources */,
 				A7D1A3CD217DB16300B374DE /* String+Localizable.swift in Sources */,
@@ -813,6 +793,7 @@
 				A7F45DD12175E35A0099A9E1 /* Route.swift in Sources */,
 				0DE3F6E5218DAD5700054E1E /* HeaderResultCell.swift in Sources */,
 				A765CB1B21A293C500111482 /* RateManager.swift in Sources */,
+				A7A49FAE230D5B7B00ADE6C3 /* R.generated.swift in Sources */,
 				A71DFCDE2186E47500874458 /* RouteItem.swift in Sources */,
 				A7BDB213218821BC0070E543 /* FullRouteCell.swift in Sources */,
 				A74FDA84219D605C001713B6 /* CoreDataManager.swift in Sources */,

@@ -101,9 +101,9 @@ extension SearchResultCell: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.ticketInfoCell, for: indexPath)!
         cell.configure(with: self.ticketInfo[indexPath.row])
-        cell.tapped = { [weak self] link in
-            guard let `self` = self, let rootVC = (UIApplication.shared.keyWindow?.rootViewController as? UINavigationController), let link = link, self.model.trainType != .regionalEconomyLines, self.model.trainType != .cityLines else { return }
-            let coordinator = СarriageSchemeViewCoordinator.init(rootViewController: rootVC, urlPath: link)
+        cell.tapped = { [weak self] carType in
+            guard let `self` = self, let rootVC = (UIApplication.shared.keyWindow?.rootViewController as? UINavigationController), let carType = carType, self.model.trainType != .regionalEconomyLines, self.model.trainType != .cityLines else { return }
+            let coordinator = СarriageSchemeViewCoordinator.init(rootViewController: rootVC, route: self.model, carType: carType)
             coordinator.start(withCallback: nil)
         }
         return cell

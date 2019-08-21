@@ -17,6 +17,7 @@ struct K {
     struct APIParameterKey {
         static let term = "term"
         static let train = "train"
+        static let trainNumber = "train_number"
         static let from = "from"
         static let to = "to"
         static let date = "date"
@@ -25,6 +26,7 @@ struct K {
         static let toExp = "to_exp"
         static let toEsr = "to_esr"
         static let station = "station"
+        static let carType = "car_type"
     }
     
     struct APIParseConstant {

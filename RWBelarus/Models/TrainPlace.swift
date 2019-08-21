@@ -12,7 +12,7 @@ class TrainPlace {
     
     var name: String = ""
     var count: String = ""
-    var link: String = ""
+    var carType: String = ""
     var cost: String = ""
 }
 
@@ -20,14 +20,14 @@ extension TrainPlace {
     class Builder {
         private var name: String?
         private var count: String?
-        private var link: String?
+        private var carType: String?
         private var cost: String?
         
         init(trainPlaceObject: TrainPlace? = nil) {
             if let trainPlaceObject = trainPlaceObject {
                 name = trainPlaceObject.name
                 count = trainPlaceObject.count
-                link = trainPlaceObject.link
+                carType = trainPlaceObject.carType
                 cost = trainPlaceObject.cost
             }
         }
@@ -42,8 +42,8 @@ extension TrainPlace {
             return self
         }
         
-        func link(_ link: String) -> Builder {
-            self.link = link
+        func carType(_ carType: String) -> Builder {
+            self.carType = carType
             return self
         }
         
@@ -62,8 +62,8 @@ extension TrainPlace {
             if let count = count {
                 trainPlaceObject.count = count
             }
-            if let link = link {
-                trainPlaceObject.link = link
+            if let carType = carType {
+                trainPlaceObject.carType = carType
             }
             if let cost = cost {
                 trainPlaceObject.cost = cost

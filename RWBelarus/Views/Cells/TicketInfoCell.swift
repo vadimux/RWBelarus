@@ -15,7 +15,8 @@ class TicketInfoCell: UITableViewCell {
     @IBOutlet weak var countLabel: UILabel!
     
     var tapped: ((String?) -> Void)?
-    var link: String?
+    var carType: String?
+    
     private var tapRecognizer: UITapGestureRecognizer?
     
     override func awakeFromNib() {
@@ -42,10 +43,10 @@ class TicketInfoCell: UITableViewCell {
         type.text = placeInfo.name
         priceLabel.text = placeInfo.cost
         countLabel.text = placeInfo.count
-        link = placeInfo.link
+        carType = placeInfo.carType
     }
 
     @objc private func tappedInTicketView(recognizer: UITapGestureRecognizer?) {
-        tapped?(link)
+        tapped?(carType)
     }
 }

@@ -114,6 +114,7 @@ extension CoreDataManager {
             for result in fetchResults where result.fromTo == primaryKey {
                 let managedObjectData: NSManagedObject = result
                 managedContext.delete(managedObjectData)
+                self.save(managedContext: managedContext)
             }
         } catch let error as NSError {
             print("Delete route by primaryKey in RouteCoreData error: \(error)")
