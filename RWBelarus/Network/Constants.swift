@@ -17,6 +17,7 @@ struct K {
     struct APIParameterKey {
         static let term = "term"
         static let train = "train"
+        static let thread = "thread"
         static let trainNumber = "train_number"
         static let from = "from"
         static let to = "to"

@@ -70,6 +70,9 @@ class NetworkManager {
                         let urlPath: String? = try element.select(K.APIParseConstant.URL).first()?.select("a").first()?.attr("href")
                         let elementPlace = try element.select(K.APIParseConstant.PLACE)
                         
+                        let at: String? = try element.select(K.APIParseConstant.PATH).attr("href")
+                        let thread: String? = at?.slice(from: "thread=", to: "&")
+                        
                         var places = [TrainPlace]()
                         
                         for i in 0..<elementPlace.array().count {
@@ -98,6 +101,7 @@ class NetworkManager {
                             .trainId(trainId)
                             .travelTime(travelTime)
                             .startTime(startTime)
+                            .thread(thread)
                             .finishTime(finishTime)
                             .routeName(routeName)
                             .fromExp(fromData.exp)
@@ -231,12 +235,16 @@ class NetworkManager {
                         let exceptStops: String? = try element.select(K.APIParseConstant.STOPS_EXCEPT_VERSION_2).first()?.text()
                         let urlPath: String? = try element.select(K.APIParseConstant.URL_VERSION_2).first()?.select("a").first()?.attr("href")
                         
+                        let at: String? = try element.select(K.APIParseConstant.PATH).attr("href")
+                        let thread: String? = at?.slice(from: "thread=", to: "&")
+                        
                         routeList.append(Route.create()
                             .trainId(trainId)
                             .startTime(startTime)
                             .finishTime(finishTime)
                             .routeName(routeName)
                             .days(days)
+                            .thread(thread)
                             .trainType(trainType)
                             .date(date)
                             .exceptStops(exceptStops)
@@ -371,4 +379,16 @@ class NetworkManager {
 //                }
 //        }
 //    }
+}
+
+extension String {
+    
+    func slice(from: String, to: String) -> String? {
+        
+        return (range(of: from)?.upperBound).flatMap { substringFrom in
+            (range(of: to, range: substringFrom..<endIndex)?.lowerBound).map { substringTo in
+                String(self[substringFrom..<substringTo])
+            }
+        }
+    }
 }

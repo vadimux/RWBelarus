@@ -61,7 +61,9 @@ extension RailWayAPI: TargetType {
         case .getSchemePlaces(let route, let carType):
             return .requestParameters(parameters: [K.APIParameterKey.trainNumber: route.trainId ?? "", K.APIParameterKey.from: route.fromExp ?? "", K.APIParameterKey.to: route.toExp ?? "", K.APIParameterKey.date: route.date ?? "", K.APIParameterKey.carType: carType], encoding: parameterEncoding)
         case .searchFullRoute(let route):
-            return .requestParameters(parameters: [K.APIParameterKey.train: route.trainId ?? "", K.APIParameterKey.fromExp: route.fromExp ?? "", K.APIParameterKey.toExp: route.toExp ?? "", K.APIParameterKey.from: route.fromStation ?? "", K.APIParameterKey.to: route.toStation ?? "", K.APIParameterKey.date: route.date ?? ""], encoding: parameterEncoding)
+            let trainDict = (route.thread == nil) ? [K.APIParameterKey.train: route.trainId ?? ""] : [K.APIParameterKey.thread: route.thread ?? ""]
+            let combinedDict = [K.APIParameterKey.fromExp: route.fromExp ?? "", K.APIParameterKey.toExp: route.toExp ?? "", K.APIParameterKey.from: route.fromStation ?? "", K.APIParameterKey.to: route.toStation ?? "", K.APIParameterKey.date: route.date ?? ""].merging(trainDict) { $1 }
+            return .requestParameters(parameters: combinedDict, encoding: parameterEncoding)
         case .getScheduleByStation(let station, let date):
             return .requestParameters(parameters: [K.APIParameterKey.station: station, K.APIParameterKey.date: date], encoding: parameterEncoding)
         }

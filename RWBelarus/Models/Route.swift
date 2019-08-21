@@ -48,6 +48,7 @@ class Route {
     var trainType: TrainType = .unknown
     var exceptStops: String?
     var urlPath: String?
+    var thread: String?
     var place: [TrainPlace] = [TrainPlace]()
 }
 
@@ -68,6 +69,7 @@ extension Route {
         private var trainType: TrainType?
         private var exceptStops: String?
         private var urlPath: String?
+        private var thread: String?
         private var place: [TrainPlace]?
         
         init(routeObject: Route? = nil) {
@@ -87,11 +89,17 @@ extension Route {
                 urlPath = routeObject.urlPath
                 fromStation = routeObject.fromStation
                 toStation = routeObject.toStation
+                thread = routeObject.thread
             }
         }
         
         func trainId(_ trainId: String?) -> Builder {
             self.trainId = trainId
+            return self
+        }
+        
+        func thread(_ thread: String?) -> Builder {
+            self.thread = thread
             return self
         }
         
@@ -174,6 +182,9 @@ extension Route {
             }
             if let travelTime = travelTime {
                 routeObject.travelTime = travelTime
+            }
+            if let thread = thread {
+                routeObject.thread = thread
             }
             if let startTime = startTime {
                 routeObject.startTime = startTime
