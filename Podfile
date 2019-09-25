@@ -17,5 +17,8 @@ target 'RWBelarus' do
     pod 'Kingfisher'
     pod 'JTAppleCalendar'
     pod 'Moya'
+    pod 'RxSwift', '~> 5'
+    pod 'RxCocoa', '~> 5'
+    pod 'RxGesture'
     
 end

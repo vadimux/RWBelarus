@@ -9,6 +9,9 @@
 import UIKit
 import Toast_Swift
 import Hero
+import RxSwift
+import RxCocoa
+import RxGesture
 
 enum RouteDate: String, CaseIterable {
     typealias BaseType = String
@@ -34,7 +37,7 @@ enum DirectionViewType {
 protocol SearchViewControllerInteractor: class {
     var fromData: AutocompleteAPIElement? { get set }
     var toData: AutocompleteAPIElement? { get set }
-    func configureSearchButtonState(with elements: [AutocompleteAPIElement?]) -> Bool
+    func configureSearchButtonState(with elements: [AutocompleteAPIElement?]) -> Int
 }
 
 protocol SearchViewControllerCoordinator: class {
@@ -48,9 +51,11 @@ class SearchViewController: UIViewController {
     var interactor: SearchViewControllerInteractor!
     var coordinator: SearchViewControllerCoordinator?
     
+    @IBOutlet weak var changeDirectionButton: UIButton!
     @IBOutlet weak var dateButton: UIButton!
     @IBOutlet weak var fromView: UIView!
     @IBOutlet weak var toView: UIView!
+    
     @IBOutlet weak var additionalFromLabel: UILabel! {
         didSet {
             additionalFromLabel.isHidden = true
@@ -61,24 +66,64 @@ class SearchViewController: UIViewController {
             additionalToLabel.isHidden = true
         }
     }
-    @IBOutlet weak var fromLabel: UILabel!
-    @IBOutlet weak var toLabel: UILabel!
-    @IBOutlet weak var searchButton: UIButton! {
-        didSet {
-            searchButton.isEnabled = false
-        }
-    }
+    @IBOutlet weak var fromLabel: CapitalizedLabel!
+    @IBOutlet weak var toLabel: CapitalizedLabel!
     
-    var directionView: DirectionViewType?
-    
+    @IBOutlet weak var searchButton: UIButton!
+
     private let heroTransition = HeroTransition()
     private var isChangeDirectionTapped = false
     private var routeElements = [AutocompleteAPIElement?](repeating: nil, count: 2) //[from, to]
     private var date: String = "everyday"
     
+    let bag = DisposeBag()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        changeDirectionButton.rx.tap
+          .subscribe(onNext: {
+            self.configureDirection()
+          })
+          .disposed(by: bag)
+        
+        fromView.rx.gesture(.tap())
+            .subscribe({ (event) in
+                if event.element?.state == .ended {
+                    self.coordinator?.showStationsList(vc: self, for: .fromView)
+                }
+            })
+        .disposed(by: bag)
+        
+        toView.rx.gesture(.tap())
+            .subscribe({ (event) in
+                if event.element?.state == .ended {
+                    self.coordinator?.showStationsList(vc: self, for: .toView)
+                }
+            })
+        .disposed(by: bag)
+        
+        searchButton.rx.tap
+        .subscribe(onNext: {
+            guard let firstElement = self.routeElements.first, let fromAddress = firstElement,
+                let lastElement = self.routeElements.last, let toAddress = lastElement else { return }
+            CoreDataManager.shared().saveRouteWith(from: fromAddress, to: toAddress)
+            self.coordinator?.showResult(vc: self, from: fromAddress, to: toAddress, date: self.date)
+        })
+        .disposed(by: bag)
+
+        dateButton.rx.tap
+        .subscribe(onNext: {
+            self.coordinator?.showCalendar(currentDate: Date()) { [weak self] date in
+                guard let `self` = self else { return }
+                let newDate = Date.format(date: date, dateFormat: Date.LABEL_DATE_FORMAT)
+                let searchDate = Date.format(date: date, dateFormat: Date.COMMON_DATE_FORMAT)
+                self.dateButton.setTitle(newDate, for: .normal)
+                self.date = searchDate
+            }
+        })
+        .disposed(by: bag)
+
         self.hero.isEnabled = true
         self.hideKeyboardWhenTappedAround()
         self.navigationController?.delegate = self
@@ -92,71 +137,62 @@ class SearchViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
 
-        if let fromData = interactor.fromData {
-            additionalFromLabel.isHidden = false
-            fromLabel.text = fromData.value?.uppercased()
-            routeElements[0] = fromData
-        }
-        if let toData = interactor.toData {
-            additionalToLabel.isHidden = false
-            toLabel.text = toData.value?.uppercased()
-            routeElements[1] = toData
-        }
+        var isFullDirection: BehaviorRelay<Bool>?
+        let additionalFromLabelData = BehaviorRelay(value: interactor.fromData)
+        let additionalToLabelData = BehaviorRelay(value: interactor.toData)
         
-        self.searchButton.isEnabled = self.interactor.configureSearchButtonState(with: self.routeElements)
-    }
-    
-    @IBAction func searchButtonTapped(_ sender: Any) {
-        guard let firstElement = routeElements.first, let fromAddress = firstElement,
-            let lastElement = routeElements.last, let toAddress = lastElement else { return }
-        CoreDataManager.shared().saveRouteWith(from: fromAddress, to: toAddress)
-        coordinator?.showResult(vc: self, from: fromAddress, to: toAddress, date: self.date)
-    }
-    
-    @IBAction func tapOnView(_ sender: Any) {
-        if let info = sender as? UITapGestureRecognizer {
-            directionView = info.view == fromView ? .fromView : .toView
-            coordinator?.showStationsList(vc: self, for: directionView)
-        }
+        additionalFromLabelData
+            .subscribe({ (element) in
+                guard let element = element.element, let autocompleteElement = element else { return }
+                self.additionalFromLabel.isHidden = false
+                self.fromLabel.text = autocompleteElement.value
+                self.routeElements[0] = autocompleteElement
+                isFullDirection = BehaviorRelay(value: self.interactor.configureSearchButtonState(with: self.routeElements) == 0)
+            })
+        .disposed(by: bag)
+        
+        additionalToLabelData
+            .subscribe({ (element) in
+                guard let element = element.element, let autocompleteElement = element else { return }
+                self.additionalToLabel.isHidden = false
+                self.toLabel.text = autocompleteElement.value
+                self.routeElements[1] = autocompleteElement
+                isFullDirection = BehaviorRelay(value: self.interactor.configureSearchButtonState(with: self.routeElements) == 0)
+            })
+        .disposed(by: bag)
+        
+        isFullDirection?.asObservable()
+        .bind(to: searchButton.rx.isEnabled)
+        .disposed(by: bag)
     }
 
-    @IBAction func changeDirectionTapped(_ sender: Any) {
+    private func configureDirection() {
         
         isChangeDirectionTapped = !isChangeDirectionTapped
-        let countEmpty = routeElements.reduce(0) { $1 == nil ? $0 + 1 : $0 }
+        let countEmpty = self.interactor.configureSearchButtonState(with: self.routeElements)
 
         switch countEmpty {
         case 0:
-            fromLabel.text = routeElements[1]?.value?.uppercased()
-            toLabel.text = routeElements[0]?.value?.uppercased()
+            fromLabel.text = routeElements[1]?.value
+            toLabel.text = routeElements[0]?.value
             routeElements.swapAt(1, 0)
         case 1:
             if routeElements[0]?.value != nil {
                 additionalFromLabel.isHidden = true
-                fromLabel.text = "Откуда".localized.uppercased()
+                fromLabel.text = "Откуда".localized
                 additionalToLabel.isHidden = false
                 toLabel.isHidden = false
-                toLabel.text = routeElements[0]?.value?.uppercased()
+                toLabel.text = routeElements[0]?.value
             } else {
                 additionalFromLabel.isHidden = false
                 fromLabel.isHidden = false
                 additionalToLabel.isHidden = true
-                toLabel.text = "Куда".localized.uppercased()
-                fromLabel.text = routeElements[1]?.value?.uppercased()
+                toLabel.text = "Куда".localized
+                fromLabel.text = routeElements[1]?.value
             }
             routeElements.swapAt(0, 1)
         default:
             return
-        }
-    }
-    
-    @IBAction func calendarTapped(_ sender: Any) {
-        coordinator?.showCalendar(currentDate: Date()) { [weak self] date in
-            guard let `self` = self else { return }
-            let newDate = Date.format(date: date, dateFormat: Date.LABEL_DATE_FORMAT)
-            let searchDate = Date.format(date: date, dateFormat: Date.COMMON_DATE_FORMAT)
-            self.dateButton.setTitle(newDate, for: .normal)
-            self.date = searchDate
         }
     }
     

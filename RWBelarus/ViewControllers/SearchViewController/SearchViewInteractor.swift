@@ -14,8 +14,7 @@ class SearchViewInteractor: SearchViewControllerInteractor {
     var fromData: AutocompleteAPIElement?
     var toData: AutocompleteAPIElement?
     
-    func configureSearchButtonState(with elements: [AutocompleteAPIElement?]) -> Bool {
-        let countEmpty = elements.reduce(0) { $1 == nil ? $0 + 1 : $0 }
-        return countEmpty == 0
+    func configureSearchButtonState(with elements: [AutocompleteAPIElement?]) -> Int {
+        return elements.reduce(0) { $1 == nil ? $0 + 1 : $0 }
     }
 }

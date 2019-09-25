@@ -91,6 +91,7 @@
 		A7F45DD72175EA170099A9E1 /* AutocompleteAPIModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F45DD62175EA170099A9E1 /* AutocompleteAPIModel.swift */; };
 		A7F45DDB2175FCDB0099A9E1 /* AutocompleteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F45DDA2175FCDB0099A9E1 /* AutocompleteCell.swift */; };
 		A7F80DCC21B9505300D348CE /* Enum+Representation.swift in Sources */ = {isa = PBXBuildFile; fileRef = A7F80DCB21B9505300D348CE /* Enum+Representation.swift */; };
+		BE638F4A233B9BA700464F45 /* CapitalizedLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE638F49233B9BA700464F45 /* CapitalizedLabel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -201,6 +202,7 @@
 		A7F45DDA2175FCDB0099A9E1 /* AutocompleteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AutocompleteCell.swift; sourceTree = "<group>"; };
 		A7F80DCB21B9505300D348CE /* Enum+Representation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Enum+Representation.swift"; sourceTree = "<group>"; };
 		B64A07669D131066FE5EC111 /* Pods-RWBelarus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RWBelarus.debug.xcconfig"; path = "Target Support Files/Pods-RWBelarus/Pods-RWBelarus.debug.xcconfig"; sourceTree = "<group>"; };
+		BE638F49233B9BA700464F45 /* CapitalizedLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CapitalizedLabel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -514,6 +516,7 @@
 			children = (
 				A780B61E21900BA50096E3F0 /* Other */,
 				A7F45DD92175FCAF0099A9E1 /* Cells */,
+				BE638F49233B9BA700464F45 /* CapitalizedLabel.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -734,6 +737,7 @@
 				A7F45DA12175B1A50099A9E1 /* Coordinator.swift in Sources */,
 				A7891828219EAC7900BF3289 /* LoginViewCoordinator.swift in Sources */,
 				A782A09921B5054600959921 /* UIImage+TrainType.swift in Sources */,
+				BE638F4A233B9BA700464F45 /* CapitalizedLabel.swift in Sources */,
 				A79CADCF218C2177001DEF64 /* UIColor+RGB.swift in Sources */,
 				A7D1A3CB217DB14900B374DE /* UIView+Inspectable.swift in Sources */,
 				A765CB1921A288F200111482 /* SettingsCell.swift in Sources */,
