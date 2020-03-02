@@ -48,6 +48,7 @@ class NetworkManager {
                     
                     let doc: Document = try SwiftSoup.parse(html)
                     
+                    
                     guard let table: Element = try doc.select("table").first() else {
                         let errorTitle: String? = try doc.select(K.APIParseConstant.ERROR_TITLE).first()?.text()
                         let errorText: String? = try doc.select(K.APIParseConstant.ERROR).first()?.text()
